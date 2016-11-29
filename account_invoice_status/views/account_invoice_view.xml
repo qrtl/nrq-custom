@@ -8,9 +8,9 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='action_invoice_open']" position="replace">
-                    <button name="action_invoice_ok" type="object" attrs="{'invisible':['|',('ready_to_validate','=',True), ('state', '!=', 'draft')]}" string="OK to Invoice" class="oe_highlight" groups="account.group_account_invoice"/>
+                    <button name="action_invoice_ok" type="object" attrs="{'invisible':['|',('ready_to_validate','=',True), ('state', '!=', 'draft')]}" string="OK to Validate" class="oe_highlight" groups="account.group_account_invoice"/>
                     <button name="action_invoice_open" type="object" attrs="{'invisible':['|',('ready_to_validate','=',False), ('state', '!=', 'draft')]}" string="Validate" class="oe_highlight" groups="account.group_account_invoice"/>
-                    <button name="action_invoice_ng" type="object" attrs="{'invisible':['|',('ready_to_validate','=',False), ('state', '!=', 'draft')]}" string="NG to Invoice" groups="account.group_account_invoice"/>
+                    <button name="action_invoice_ng" type="object" attrs="{'invisible':['|',('ready_to_validate','=',False), ('state', '!=', 'draft')]}" string="NG to Validate" groups="account.group_account_invoice"/>
                 </xpath>
                 <xpath expr="//field[@name='date_invoice']" position="before">
                     <field name="ready_to_validate" states="draft"/>
