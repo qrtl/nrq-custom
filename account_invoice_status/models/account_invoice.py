@@ -22,7 +22,7 @@ class AccountInvoice(models.Model):
     @api.depends('state')
     def _update_ready_to_validate(self):
         for inv in self:
-            if inv.state == 'open':
+            if inv.state != 'draft':
                 inv.ready_to_validate == False
 
     @api.multi
