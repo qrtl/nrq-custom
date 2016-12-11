@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 08:27+0000\n"
-"PO-Revision-Date: 2016-12-11 08:27+0000\n"
+"POT-Creation-Date: 2016-12-11 16:32+0000\n"
+"PO-Revision-Date: 2016-12-11 16:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -68,50 +68,64 @@ msgstr "<br/>\n"
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 msgid "<br/>\n"
-"                                <strong>Salesperson: </strong>"
+"                                    <br/>\n"
+"                                    Salesperson:"
 msgstr "<br/>\n"
-"                                <strong>営業担当: </strong>"
+"                                    <br/>\n"
+"                                    営業担当:"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 msgid "<br/>\n"
-"                                Email:"
+"                                    Effective for one month from the date of quotation."
 msgstr "<br/>\n"
-"                                Email:"
+"                                    見積日より一ヶ月有効"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 msgid "<br/>\n"
-"                                Fax:"
+"                                    Email:"
 msgstr "<br/>\n"
-"                                Fax:"
+"                                    Email:"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 msgid "<br/>\n"
-"                                Phone:"
+"                                    Fax:"
 msgstr "<br/>\n"
-"                                Phone:"
+"                                    Fax:"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 msgid "<br/>\n"
-"                                Website:"
+"                                    Phone:"
 msgstr "<br/>\n"
-"                                Website:"
+"                                    Phone:"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
-msgid "<br/><br/>\n"
-"                                Effective for one month from the date of quotation."
-msgstr "<br/><br/>\n"
-"                                見積日より一ヶ月有効"
+msgid "<br/>\n"
+"                                    Website:"
+msgstr "<br/>\n"
+"                                    Website:"
+
+#. module: nrq_sale_report
+#: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
+msgid "<br/>\n"
+"                                    ZIP:"
+msgstr "<br/>\n"
+"                                    〒"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
 msgid "<span>Please find the details as follows.</span>"
 msgstr "<span>下記のとおり、お見積申し上げます。</span>"
+
+#. module: nrq_sale_report
+#: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
+msgid "<strong>Customer Name: </strong>"
+msgstr "<strong>Customer Name: </strong>"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
@@ -141,12 +155,16 @@ msgstr "<strong>Order Number: </strong>"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
+msgid "<strong>Quotation Amount: </strong>"
+msgstr "<strong>お見積金額: </strong>"
+
+#. module: nrq_sale_report
+#: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
 msgid "<strong>Subtotal: </strong>"
 msgstr "<strong>小計: </strong>"
 
 #. module: nrq_sale_report
-#: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
 msgid "<strong>Total Ordered Amount: </strong>"
 msgstr "<strong>合計金額: </strong>"
@@ -154,13 +172,13 @@ msgstr "<strong>合計金額: </strong>"
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 msgid "<strong>Total Without Taxes</strong>"
-msgstr "<strong>税抜合計金額</strong>"
+msgstr "<strong>小計</strong>"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
 msgid "<strong>Total</strong>"
-msgstr "<strong>合計</strong>"
+msgstr "<strong>合計金額</strong>"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
@@ -171,7 +189,7 @@ msgstr "消費税は別途申し受けます"
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
 msgid "Description"
-msgstr "説明"
+msgstr "項目"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
@@ -180,7 +198,6 @@ msgid "Disc.(%)"
 msgstr "値引 (%)"
 
 #. module: nrq_sale_report
-#: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
 msgid "Order #"
 msgstr "Order #"
@@ -199,6 +216,10 @@ msgstr "数量"
 
 #. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.report_saleorder_tax_document
+msgid "Quotation"
+msgstr "見積書"
+
+#. module: nrq_sale_report
 #: model:ir.ui.view,arch_db:nrq_sale_report.sale_without_tax_view
 msgid "Quotation #"
 msgstr "見積書 #"

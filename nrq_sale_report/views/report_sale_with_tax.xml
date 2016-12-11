@@ -32,14 +32,14 @@
                         </tr>
                         <tr  style="border-top:hidden;">
                             <td width="60%">
-                                <h2>
-                                    <span t-if="o.state not in ['draft','sent']">Order # </span>
-                                    <span t-if="o.state in ['draft','sent']">Quotation # </span>
-                                    <span t-field="o.name"/>
-                                </h2>
+                                <h2>Quotation</h2>
                             </td>
                             <td width="5%" ></td>
-                            <td width="35%" ></td>
+                            <td width="35%" >
+                                <div class="background-image" style="position:absolute; opacity:0.6; right:0; padding:50px; background-repeat:no-repeat;">
+                                    <img t-if="o.company_id.chop" t-att-src="'data:image/png;base64,%s' % o.company_id.chop" style="max-height: 120px;"/>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                     <table BORDER="0">
@@ -48,7 +48,10 @@
                                 <table class="table">
                                     <tr t-if="o.partner_id.name">
                                         <td>
-                                            <span t-field="o.partner_id.name"/> <span t-field="o.partner_id.title"/>
+                                            <span t-field="o.partner_id.name"/>
+                                            <t t-if="o.partner_id.lang == 'ja_JP'">
+                                                <span t-field="o.partner_id.title"/>
+                                            </t>
                                         </td>
                                     </tr>
                                     <tr>
@@ -58,7 +61,7 @@
                                     </tr>
                                     <tr t-if="o.amount_total">
                                         <td>
-                                            <strong>Total Ordered Amount: </strong><span t-field="o.amount_total"/>
+                                            <strong>Quotation Amount: </strong><span style="font-size:30px" t-field="o.amount_total"/>
                                         </td>
                                     </tr>
                                     <tr t-if="o.doc_title">
@@ -71,19 +74,17 @@
                             <td width="5%">
                             </td>
                             <td width="35%">
-                                <strong><span t-field="o.company_id.name"/></strong><br/>
+                                <strong><span style="font-size:20px" t-field="o.company_id.name"/></strong><br/>
+                                ZIP: <span t-field="o.company_id.zip"/><br/>
                                 <span t-field="o.company_id.street"/><br/>
-                                <span t-field="o.company_id.city"/>
-                                <span t-field="o.company_id.state_id"/>
-                                <span t-field="o.company_id.zip"/><br/>
-                                <span t-field="o.company_id.country_id"/><br/>
+                                <span t-field="o.company_id.street2"/><br/>
                                 Phone: <span t-field="o.company_id.phone"/><br/>
                                 Fax: <span t-field="o.company_id.fax"/><br/>
                                 Email: <span t-field="o.company_id.email"/><br/>
-                                Website: <span t-field="o.company_id.website"/>
+                                Website: <span t-field="o.company_id.website"/><br/>
                                 <br/>
-                                <strong>Salesperson: </strong><span t-field="o.user_id.name"/><br/><br/>
-                                Effective for one month from the date of quotation.
+                                Salesperson: <span t-field="o.user_id.name"/><br/>
+                                <span>Effective for one month from the date of quotation.</span>
                             </td>
                         </tr>
                     </table>
@@ -168,7 +169,7 @@
                                 </tr>
                                 <t t-foreach="o._get_tax_amount_by_group()" t-as="amount_by_group">
                                     <tr>
-                                        <td><span t-esc="amount_by_group[0] or 'Taxes'"/></td>
+                                        <td><span t-esc="amount_by_group[0] or 'Tax Amount'"/></td>
                                         <td class="text-right">
                                             <span t-esc="amount_by_group[1]"/>
                                         </td>

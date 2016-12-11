@@ -12,6 +12,7 @@ It will adds custom fields on Sales Order, Invoice and Partner.
     'depends': ['account', 'sale'],
     'data': [
         'data/res_partner_data.xml',
+        'views/res_company_view.xml',
         'views/res_partner_view.xml',
         'views/account_invoice_view.xml',
         'views/sale_order_view.xml',
