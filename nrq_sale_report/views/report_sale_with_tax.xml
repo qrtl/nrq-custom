@@ -4,11 +4,11 @@
     id="sale_with_tax_report"
     model="sale.order"
     string="Sale Report With Tax"
-    name="nrq_sale_report.sale_with_tax_view"
-    file="nrq_sale_report.sale_with_tax_view"
+    name="nrq_sale_report.report_saleorder_tax"
+    file="nrq_sale_report.report_saleorder_tax"
     report_type="qweb-pdf" />
 
-<template id="sale_with_tax_view">
+<template id="report_saleorder_tax_document">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="o">
             <t t-call="report.internal_layout">
@@ -197,6 +197,14 @@
                     </div>
                 </div>
             </t>
+        </t>
+    </t>
+</template>
+
+<template id="report_saleorder_tax">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="nrq_sale_report.report_saleorder_tax_document" t-lang="doc.partner_id.lang"/>
         </t>
     </t>
 </template>
