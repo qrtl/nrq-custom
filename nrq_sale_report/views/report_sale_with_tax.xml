@@ -44,7 +44,7 @@
                     </table>
                     <table BORDER="0">
                         <tr>
-                            <td width="60%">
+                            <td width="500">
                                 <table class="table">
                                     <tr t-if="o.partner_id.name">
                                         <td>
@@ -71,9 +71,9 @@
                                     </tr>
                                 </table>
                             </td>
-                            <td width="5%">
+                            <td width="30">
                             </td>
-                            <td width="35%">
+                            <td width="270">
                                 <strong><span style="font-size:20px" t-field="o.company_id.name"/></strong><br/>
                                 ZIP: <span t-field="o.company_id.zip"/><br/>
                                 <span t-field="o.company_id.street"/><br/>
