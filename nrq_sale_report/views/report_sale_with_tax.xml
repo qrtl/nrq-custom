@@ -25,7 +25,7 @@
                         <div>
                             <strong>Date: </strong>
                             <t t-if="doc.partner_id.lang == 'ja_JP'">
-                                <span t-field="doc.date_order" t-field-options="{'format':'yyyy/mm/dd'}"/><br/>
+                                <span t-field="doc.date_order" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
                             </t>
                             <t t-if="doc.partner_id.lang != 'ja_JP'">
                                 <span t-field="doc.date_order"/><br/>
@@ -50,13 +50,13 @@
             </table>
             <table BORDER="0">
                 <tr>
-                    <td width="500">
+                    <td width="490">
                         <table class="table">
                             <tr t-if="doc.partner_id.name">
-                                <td>
+                                <td style="font-size:16px">
                                     <span t-field="doc.partner_id.name"/>
                                     <t t-if="doc.partner_id.lang == 'ja_JP'">
-                                        <span t-field="doc.partner_id.title"/>
+                                        <span style="position:relative; left:20px;" t-field="doc.partner_id.title"/>
                                     </t>
                                 </td>
                             </tr>
@@ -67,19 +67,19 @@
                             </tr>
                             <tr t-if="doc.amount_total">
                                 <td>
-                                    <strong>Quotation Amount: </strong><span style="font-size:30px" t-field="doc.amount_total"/>
+                                    Quotation Amount: <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_total"/>
                                 </td>
                             </tr>
                             <tr t-if="doc.doc_title">
                                 <td>
-                                    <strong>Doc Title: </strong><span t-field="doc.doc_title"/>
+                                    Doc Title: <span t-field="doc.doc_title"/>
                                 </td>
                             </tr>
                         </table>
                     </td>
-                    <td width="30">
+                    <td width="50">
                     </td>
-                    <td width="270">
+                    <td width="260">
                         <strong><span style="font-size:20px" t-field="doc.company_id.name"/></strong><br/>
                         ZIP: <span t-field="doc.company_id.zip"/><br/>
                         <span t-field="doc.company_id.street"/><br/>
@@ -103,7 +103,7 @@
                             <th class="text-right">Quantity</th>
                             <th class="text-right">Unit Price</th>
                             <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
-                            <th class="text-right">Taxes</th>
+                            <th t-if="doc.show_tax" class="text-right">Taxes</th>
                             <th class="text-right" groups="sale.group_show_price_subtotal">Price</th>
                             <th class="text-right price_tax_included" groups="sale.group_show_price_total">Total Price</th>
                         </tr>
@@ -132,9 +132,11 @@
                                     <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
                                         <span t-field="l.discount"/>
                                     </td>
-                                    <td class="text-right">
-                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.tax_id))"/>
-                                    </td>
+                                    <t t-if="doc.show_tax">
+                                        <td class="text-right">
+                                            <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.tax_id))"/>
+                                        </td>
+                                    </t>
                                     <td class="text-right" groups="sale.group_show_price_subtotal">
                                         <span t-field="l.price_subtotal"
                                             t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
@@ -166,31 +168,42 @@
             <div class="row" name="total">
                 <div class="col-xs-4 pull-right">
                     <table class="table table-condensed">
-                        <tr class="border-black">
-                            <td><strong>Total Without Taxes</strong></td>
-                            <td class="text-right">
-                                <span t-field="doc.amount_untaxed"
-                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                            </td>
-                        </tr>
-                        <t t-foreach="doc._get_tax_amount_by_group()" t-as="amount_by_group">
-                            <tr>
-                                <td><span t-esc="amount_by_group[0] or 'Tax Amount'"/></td>
+                        <t t-if="doc.show_tax">
+                            <tr class="border-black">
+                                <td><strong>Total Without Taxes</strong></td>
                                 <td class="text-right">
-                                    <span t-esc="amount_by_group[1]"/>
+                                    <span t-field="doc.amount_untaxed"
+                                        t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tax Amount</strong></td>
+                                <td class="text-right">
+                                    <span t-field="doc.amount_tax"
+                                        t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                </td>
+                            </tr>
+                            <tr class="border-black">
+                                <td><strong>Total</strong></td>
+                                <td class="text-right">
+                                    <span t-field="doc.amount_total"
+                                        t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
                                 </td>
                             </tr>
                         </t>
-                        <tr class="border-black">
-                            <td><strong>Total</strong></td>
-                            <td class="text-right">
-                                <span t-field="doc.amount_total"
-                                    t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
-                            </td>
-                        </tr>
+                        <t t-if="doc.show_tax == False">
+                            <tr class="border-black">
+                                <td><strong>Total</strong></td>
+                                <td class="text-right">
+                                    <span t-field="doc.amount_untaxed"
+                                        t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                </td>
+                            </tr>
+                        </t>
                     </table>
                 </div>
             </div>
+            <p t-if="doc.show_tax == False" align="right">Consumption tax will be added in our invoice as applicable.</p>
             <p t-if="doc.note">
                 <span t-field="doc.note"/>
             </p>
