@@ -163,7 +163,7 @@
                     <table class="table table-condensed">
                         <t t-if="doc.show_tax">
                             <tr class="border-black">
-                                <td><strong>Total Without Taxes</strong></td>
+                                <td><strong>Total without Taxes</strong></td>
                                 <td class="text-right">
                                     <span t-field="doc.amount_untaxed"
                                         t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
@@ -177,7 +177,7 @@
                                 </td>
                             </tr>
                             <tr class="border-black">
-                                <td><strong>Total</strong></td>
+                                <td><strong>Total Amount</strong></td>
                                 <td class="text-right">
                                     <span t-field="doc.amount_total"
                                         t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
@@ -186,7 +186,7 @@
                         </t>
                         <t t-if="doc.show_tax == False">
                             <tr class="border-black">
-                                <td><strong>Total</strong></td>
+                                <td><strong>Total Amount</strong></td>
                                 <td class="text-right">
                                     <span t-field="doc.amount_untaxed"
                                         t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
