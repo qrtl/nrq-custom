@@ -23,7 +23,7 @@
         "nrq_base",
     ],
     "data": [
-        'views/sale_quotation_template.xml'
+        'report/sale_quotation_template.xml'
     ],
     "demo": [
     ],

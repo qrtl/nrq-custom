@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data>
-        
-        <template id="report_invoice_only_document">
-                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
-            <div class="page">
+<openerp>
+<data>
+
+    <template id="nrq_invoice_report_view"> 
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                            <div class="page">
                 <div class="row">
                     <table class="table"> 
                         <thead>
                             <tr style="border-bottom:hidden;">
-                                <td width="65%" style="background-color:black;">
-                                    <!--div></div-->
+                                <td width="65%" style="background-color:black;"> 
+                                    <div></div>
                                 </td>
                                 <td width="5%" >
                                 </td>
@@ -38,31 +38,26 @@
                             </tr>
                         </thead>
                     </table>
-                    <t t-call="nrq_account_report.nrq_invoice_header_view"/>
-                    <t t-call="nrq_account_report.nrq_invoice_table_view"/>
-                    <t t-call="nrq_account_report.nrq_invoice_footer_view"/>
+                    <t t-call="account_report_nrq.nrq_invoice_header_view"/>
+                    <t t-call="account_report_nrq.nrq_invoice_table_view"/>
+                    <t t-call="account_report_nrq.nrq_invoice_footer_view"/>
+                    <p style="page-break-before:always;"> </p>
+                    <t t-call="account_report_nrq.acceptance_req_report"/>
+                    <p style="page-break-before:always;"> </p>
+                    <t t-if="o.delivery_notice" t-call="account_report_nrq.delivery_report"/>
                 </div>
             </div>
-        </template>
-        
-    <template id="report_invoice_only">
-        <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="nrq_account_report.report_invoice_only_document" t-lang="o.partner_id.lang"/>
             </t>
         </t>
     </template>
-            
-        <!-- QWeb Reports -->
-        <report 
-            id="nrq_account_invoices_only"
-            model="account.invoice"
-            string="Only Invoices"
-            report_type="qweb-pdf"
-            name="nrq_account_report.report_invoice_only"
-            file="nrq_account_report.report_invoice_only"
-            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
-        />
 
-    </data>
-</odoo>
+    <report
+        id="nrq_inoice_report"
+        model="account.invoice"
+        string="Nrq Invoice"
+        name="account_report_nrq.nrq_invoice_report_view"
+        file="account_report_nrq.nrq_invoice_report_view"
+        report_type="qweb-pdf" />
+
+</data>
+</openerp>

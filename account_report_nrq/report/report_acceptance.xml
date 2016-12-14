@@ -1,13 +1,5 @@
 <openerp>
 <data>
-    <report
-        id="acceptance_report"
-        model="account.invoice"
-        string="Acceptance"
-        name="nrq_account_report.acceptance_view" 
-        file="nrq_account_report.acceptance_view"
-        report_type="qweb-pdf" />
-
         <template id="acceptance_req_report">
             <table class="table"> 
                 <thead>
@@ -72,7 +64,7 @@
                     <td></td>
                 </tr>
             </table>
-            <t t-call="nrq_account_report.nrq_invoice_table_view"/>
+            <t t-call="account_report_nrq.nrq_invoice_table_view"/>
             <p t-if="o.comment">    
                 <span t-field="o.comment"/>
             </p>
@@ -85,10 +77,19 @@
                 <t t-call="report.html_container">
                     <t t-foreach="docs" t-as="o">
                         <div class="page">
-                              <t t-call="nrq_account_report.acceptance_req_report"/>
+                              <t t-call="account_report_nrq.acceptance_req_report"/>
                         </div>
                     </t>
                 </t>
             </template>
+
+    <report
+        id="acceptance_report"
+        model="account.invoice"
+        string="Acceptance"
+        name="account_repor_nrq.acceptance_view"
+        file="account_report_nrq.acceptance_view"
+        report_type="qweb-pdf" />
+
 </data>
 </openerp>
