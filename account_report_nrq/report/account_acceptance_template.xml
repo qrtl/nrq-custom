@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
         <template id="acceptance_req_report">
@@ -10,10 +11,10 @@
                         <td width="5%" ></td>
                         <td width="45%">
                             <div>
-                                <strong>Invoice Date: </strong><span t-field="o.date_invoice"/><br/>
+                                <strong>Invoice Date: </strong><span t-field="doc.date_invoice"/><br/>
                             </div>
                             <div>
-                                <strong>Invoice Number: </strong><span t-field="o.number"/>
+                                <strong>Invoice Number: </strong><span t-field="doc.number"/>
                             </div>
                         </td>
                     </tr>
@@ -29,11 +30,11 @@
             <table class="table">
                 <tr>
                     <td width="55%" >
-                        <strong>Company Name: </strong><span t-field="o.company_id.name"/> <span t-field="o.partner_id.title"/> 
+                        <strong>Company Name: </strong><span t-field="doc.company_id.name"/> <span t-field="doc.partner_id.title"/>
                     </td>
                     <td width="5%" style="border-bottom:hidden;border-top:hidden;"></td>
                     <td width="45%" style="border-bottom:hidden;border-top:hidden;">
-                        <strong>Customer Name: </strong><span t-field="o.partner_id.name"/>
+                        <strong>Customer Name: </strong><span t-field="doc.partner_id.name"/>
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +56,7 @@
                 </tr>
                 <tr style="border-bottom:hidden;">
                     <td width="55%">
-                        <strong>Doc Title: </strong><span t-field="o.doc_title"/>
+                        <strong>Doc Title: </strong><span t-field="doc.doc_title"/>
                     </td>
                     <td width="5%" ></td>
                     <td width="45%" ></td>
@@ -65,17 +66,17 @@
                 </tr>
             </table>
             <t t-call="account_report_nrq.nrq_invoice_table_view"/>
-            <p t-if="o.comment">    
-                <span t-field="o.comment"/>
+            <p t-if="doc.comment">
+                <span t-field="doc.comment"/>
             </p>
-            <p t-if="o.payment_term_id">
-                <span t-field="o.payment_term_id.note"/>
+            <p t-if="doc.payment_term_id">
+                <span t-field="doc.payment_term_id.note"/>
             </p>
         </template>
             
         <template id="acceptance_view">
                 <t t-call="report.html_container">
-                    <t t-foreach="docs" t-as="o">
+                    <t t-foreach="docs" t-as="doc">
                         <div class="page">
                               <t t-call="account_report_nrq.acceptance_req_report"/>
                         </div>
@@ -86,7 +87,7 @@
     <report
         id="acceptance_report"
         model="account.invoice"
-        string="Acceptance"
+        string="Acceptance (NRQ)"
         name="account_repor_nrq.acceptance_view"
         file="account_report_nrq.acceptance_view"
         report_type="qweb-pdf" />

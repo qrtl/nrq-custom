@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
 
     <template id="nrq_invoice_report_view"> 
         <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="o">
+            <t t-foreach="docs" t-as="doc">
                             <div class="page">
                 <div class="row">
-                    <table class="table"> 
+                    <table class="table">
                         <thead>
                             <tr style="border-bottom:hidden;">
                                 <td width="65%" style="background-color:black;"> 
@@ -15,20 +16,20 @@
                                 <td width="5%" >
                                 </td>
                                 <td width="30%">
-                                    <strong>Invoice Date: </strong><span t-field="o.date_invoice"/><br/>
-                                    <strong>Invoice Number: </strong><span t-field="o.number"/>
+                                    <strong>Invoice Date: </strong><span t-field="doc.date_invoice"/><br/>
+                                    <strong>Invoice Number: </strong><span t-field="doc.number"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="65%">
                                     <h2>
-                                        <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
-                                        <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
-                                        <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
-                                        <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
-                                        <span t-if="o.type == 'out_refund'">Refund</span>
-                                        <span t-if="o.type == 'in_refund'">Vendor Refund</span>
-                                        <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+                                        <span t-if="doc.type == 'out_invoice' and (doc.state == 'open' or doc.state == 'paid')">Invoice</span>
+                                        <span t-if="doc.type == 'out_invoice' and doc.state == 'proforma2'">PRO-FORMA</span>
+                                        <span t-if="doc.type == 'out_invoice' and doc.state == 'draft'">Draft Invoice</span>
+                                        <span t-if="doc.type == 'out_invoice' and doc.state == 'cancel'">Cancelled Invoice</span>
+                                        <span t-if="doc.type == 'out_refund'">Refund</span>
+                                        <span t-if="doc.type == 'in_refund'">Vendor Refund</span>
+                                        <span t-if="doc.type == 'in_invoice'">Vendor Bill</span>
                                     </h2>
                                 </td>
                                 <td width="5%" >
@@ -38,13 +39,13 @@
                             </tr>
                         </thead>
                     </table>
-                    <t t-call="account_report_nrq.nrq_invoice_header_view"/>
-                    <t t-call="account_report_nrq.nrq_invoice_table_view"/>
-                    <t t-call="account_report_nrq.nrq_invoice_footer_view"/>
+                    <t t-call="account_report_nrq.invoice_header_layout"/>
+                    <t t-call="account_report_nrq.invoice_table_layout"/>
+                    <t t-call="account_report_nrq.invoice_footer_layout"/>
                     <p style="page-break-before:always;"> </p>
                     <t t-call="account_report_nrq.acceptance_req_report"/>
                     <p style="page-break-before:always;"> </p>
-                    <t t-if="o.delivery_notice" t-call="account_report_nrq.delivery_report"/>
+                    <t t-if="doc.delivery_notice" t-call="account_report_nrq.delivery_report"/>
                 </div>
             </div>
             </t>
@@ -54,7 +55,7 @@
     <report
         id="nrq_inoice_report"
         model="account.invoice"
-        string="Nrq Invoice"
+        string="Invoice + Acceptance (NRQ)"
         name="account_report_nrq.nrq_invoice_report_view"
         file="account_report_nrq.nrq_invoice_report_view"
         report_type="qweb-pdf" />

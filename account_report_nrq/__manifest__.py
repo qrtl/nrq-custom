@@ -1,30 +1,3 @@
-# # -*- coding: utf-8 -*-
-# # Part of Odoo. See LICENSE file for full copyright and licensing details.
-# {
-#     'name' : 'Nrq:: Account Report',
-#     'version' : '1.0',
-#     'summary': '',
-#     'description': """
-# It will adds reports on invoice as below:
-#     - Acceptance
-#     - Delivery Notice
-#     - Invoice with Acceptance and Delivery Notice
-#     """,
-#     'category': 'Accounting',
-#     'website': 'https://www.odoo.com/page/billing',
-#     'depends' : ['nrq_base'],
-#     'data': [
-#         'views/report_comman.xml',
-#         'views/report_only_invoice.xml',
-#         'views/report_acceptance.xml',
-#         'views/report_delivery_note.xml',
-#         'views/report_nrq_invoice.xml',
-#     ],
-#     'installable': True,
-#     'application': False,
-#     'auto_install': False,
-# }
-
 # -*- coding: utf-8 -*-
 # Copyright 2016 Rooms For (Hong Kong) Limited T/A OSCG
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
@@ -50,11 +23,11 @@
         "nrq_base",
     ],
     "data": [
-        'report/report_comman.xml',
-        'report/report_only_invoice.xml',
-        'report/report_acceptance.xml',
-        'report/report_delivery_note.xml',
-        'report/report_nrq_invoice.xml',
+        'report/common_template.xml',
+        'report/account_invoice_template.xml',
+        'report/account_acceptance_template.xml',
+        'report/account_deliverynote_template.xml',
+        'report/account_invoice_acceptance_template.xml',
     ],
     "demo": [
     ],

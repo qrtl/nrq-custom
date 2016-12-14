@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
 
@@ -12,8 +13,8 @@
                             <td width="5%" >
                             </td>
                             <td width="30%">
-                                <strong>Invoice Date: </strong><span t-field="o.date_invoice"/><br/>
-                                <strong>Invoice Number: </strong><span t-field="o.number"/>
+                                <strong>Invoice Date: </strong><span t-field="doc.date_invoice"/><br/>
+                                <strong>Invoice Number: </strong><span t-field="doc.number"/>
                             </td>
                         </tr>
                         <tr>
@@ -29,15 +30,15 @@
                         </tr>
                     </thead>
                 </table>
-                <t t-call="account_report_nrq.nrq_invoice_header_view"/>
-                <t t-call="account_report_nrq.nrq_invoice_table_view"/>
-                <t t-call="account_report_nrq.nrq_invoice_footer_view"/>
+                <t t-call="account_report_nrq.invoice_header_layout"/>
+                <t t-call="account_report_nrq.invoice_table_layout"/>
+                <t t-call="account_report_nrq.invoice_footer_layout"/>
 
     </template>
 
     <template id="delivery_note_view">
             <t t-call="report.html_container">
-                <t t-foreach="docs" t-as="o">
+                <t t-foreach="docs" t-as="doc">
                     <div class="page">
                         <div class="row">
                             <t t-call="account_report_nrq.delivery_report"/>
@@ -50,7 +51,7 @@
     <report
         id="delivery_note_report"
         model="account.invoice"
-        string="Delivery Note"
+        string="Delivery Note (NRQ)"
         name="account_report_nrq.delivery_note_view"
         file="account_report_nrq.delivery_note_view"
         report_type="qweb-pdf" />

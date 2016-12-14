@@ -13,7 +13,7 @@
                             <td style="background-color:black;" height="30px"></td>
                         </table>
                     </td>
-                    <td width="5%" ></td>
+                    <td width="5%"></td>
                     <td width="35%">
                         <div>
                             <strong>Date: </strong>
@@ -21,7 +21,7 @@
                                 <span t-field="doc.date_order" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
                             </t>
                             <t t-if="doc.partner_id.lang != 'ja_JP'">
-                                <span t-field="doc.date_order"/><br/>
+                                <span t-field="doc.date_order" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
                             </t>
                         </div>
                         <div>
@@ -29,12 +29,12 @@
                         </div>
                     </td>
                 </tr>
-                <tr  style="border-top:hidden;">
+                <tr style="border-top:hidden;">
                     <td width="60%">
-                        <h2>Quotation</h2>
+                        <span style="font-size:35px">Quotation</span>
                     </td>
-                    <td width="5%" ></td>
-                    <td width="35%" >
+                    <td width="5%"></td>
+                    <td width="35%">
                         <div class="background-image" style="position:absolute; opacity:0.6; right:0; padding:50px; background-repeat:no-repeat;">
                             <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;"/>
                         </div>
@@ -45,7 +45,7 @@
                 <tr>
                     <td width="490">
                         <table class="table">
-                            <tr t-if="doc.partner_id.name">
+                            <tr>
                                 <td style="font-size:16px">
                                     <span t-field="doc.partner_id.name"/>
                                     <t t-if="doc.partner_id.lang == 'ja_JP'">
@@ -70,20 +70,26 @@
                             </tr>
                         </table>
                     </td>
-                    <td width="50">
-                    </td>
+                    <td width="50"></td>
                     <td width="260">
-                        <strong><span style="font-size:20px" t-field="doc.company_id.name"/></strong><br/>
-                        ZIP: <span t-field="doc.company_id.zip"/><br/>
-                        <span t-field="doc.company_id.street"/><br/>
-                        <span t-field="doc.company_id.street2"/><br/>
-                        Phone: <span t-field="doc.company_id.phone"/><br/>
-                        Fax: <span t-field="doc.company_id.fax"/><br/>
-                        Email: <span t-field="doc.company_id.email"/><br/>
-                        Website: <span t-field="doc.company_id.website"/><br/>
-                        <br/>
-                        Salesperson: <span t-field="doc.user_id.name"/><br/>
-                        <span>Effective for one month from the date of quotation.</span>
+                        <p>
+                            <strong><span style="font-size:20px" t-field="doc.company_id.name"/></strong>
+                        </p>
+                        <p>
+                            ZIP: <span t-field="doc.company_id.zip"/><br/>
+                            <span t-field="doc.company_id.street"/><br/>
+                            <span t-field="doc.company_id.street2"/>
+                        </p>
+                        <p>
+                            Phone: <span t-field="doc.company_id.phone"/><br/>
+                            Fax: <span t-field="doc.company_id.fax"/><br/>
+                            Email: <span t-field="doc.company_id.email"/><br/>
+                            Website: <span t-field="doc.company_id.website"/>
+                        </p>
+                        <p>
+                            Salesperson: <span t-field="doc.user_id.name"/><br/>
+                            <span>Effective for one month from the date of quotation.</span>
+                        </p>
                     </td>
                 </tr>
             </table>
@@ -92,13 +98,13 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr>
-                            <th>Description</th>
+                            <th>Item</th>
                             <th class="text-right">Quantity</th>
                             <th class="text-right">Unit Price</th>
                             <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
                             <th t-if="doc.show_tax" class="text-right">Taxes</th>
                             <th class="text-right" groups="sale.group_show_price_subtotal">Price</th>
-                            <th class="text-right price_tax_included" groups="sale.group_show_price_total">Total Price</th>
+                            <th class="text-right price_tax_included" groups="sale.group_show_price_total">Amount</th>
                         </tr>
                    </thead>
                    <tbody class="sale_tbody">
