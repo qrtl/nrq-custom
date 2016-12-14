@@ -2,14 +2,14 @@
 <openerp>
 <data>
 <report
-    id="sale_with_tax_report"
+    id="report_sale_quotation"
     model="sale.order"
-    string="Sale Report With Tax"
-    name="nrq_sale_report.report_saleorder_tax"
-    file="nrq_sale_report.report_saleorder_tax"
+    string="Quotation (NRQ)"
+    name="sale_report_nrq.report_salequotation"
+    file="sale_report_nrq.report_salequotation"
     report_type="qweb-pdf" />
 
-<template id="report_saleorder_tax_document">
+<template id="report_salequotation_document">
     <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
     <t t-call="report.internal_layout">
         <div class="page">
@@ -219,10 +219,10 @@
     </t>
 </template>
 
-<template id="report_saleorder_tax">
+<template id="report_salequotation">
     <t t-call="report.html_container">
         <t t-foreach="docs" t-as="doc">
-            <t t-call="nrq_sale_report.report_saleorder_tax_document" t-lang="doc.partner_id.lang"/>
+            <t t-call="sale_report_nrq.report_salequotation_document" t-lang="doc.partner_id.lang"/>
         </t>
     </t>
 </template>
