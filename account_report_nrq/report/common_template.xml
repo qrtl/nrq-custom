@@ -199,19 +199,19 @@
     </div>
     <table class="table">
         <tr>
-            <td width="32%">
-                    <strong t-if="doc.name">Reference/Description: </strong>
-                    <span t-field="doc.name"/>
+            <td width="32%" style="font-size:16px">
+                <span t-if="doc.name">Reference: </span>
+                <span t-field="doc.name"/>
             </td>
-            <td width="32%">
-                    <strong t-if="doc.origin">Source Document: </strong>
-                    <span t-field="doc.origin"/>
+            <td width="32%" style="font-size:16px">
+                <span t-if="doc.origin">Source Document: </span>
+                <span t-field="doc.origin"/>
             </td>
             <td width="18%" t-if="doc.partner_id.partner_no">
-                    [<span t-field="doc.partner_id.partner_no"/>]
+                <span t-field="doc.partner_id.partner_no"/>
             </td>
             <td width="18%" t-if="doc.team_id">
-                    [<span t-field="doc.team_id"/>]
+                <span t-field="doc.team_id"/>
             </td>
         </tr>
     </table>
@@ -229,14 +229,15 @@
             <div style="border-bottom: 1px solid #DCDCDC;"></div>
         </div>
     </div>
-    <p t-if="doc.bank_details">
-        <strong>Bank Details: </strong>
-        <span t-field="doc.bank_details"/>
-    </p>
-    <p t-if="doc.date_due">
-        <strong>Due Date: </strong>
-        <span t-field="doc.date_due"/>  <span>Bank charges are borne by the customer.</span>
-    </p>
+    <div style="font-size:16px">
+        <p t-if="doc.company_id.bank_details">
+            Bank Details: <span t-field="doc.company_id.bank_details"/>
+        </p>
+        <p t-if="doc.date_due">
+            Due Date: <span t-field="doc.date_due"/>
+            <span style="position:relative; left:20px; font-size:14px">Bank charges shall be borne by the customer.</span>
+        </p>
+    </div>
 </template>
 
 </data>

@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Copyright 2016 Rooms For (Hong Kong) Limited T/A OSCG
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models, _
 
@@ -9,18 +11,19 @@ class ResPartner(models.Model):
     delivery_notice = fields.Boolean(
         string="Delivery Notice",
         default=True,
-        help="Tick if you want to print Delivery notice with invoice report.",
+        help="Select if delivery notice should be printed together with "
+             "invoice.",
     )
     partner_no = fields.Char(
         string="Partner Number",
-        readonly=True,
+        readonly=False,
         copy=False,
     )
 
     _sql_constraints = [
         ('name_unique',
          'UNIQUE(partner_no)',
-         "Partner number must be unique"),
+         "Partner number must be unique."),
     ]
 
     @api.model

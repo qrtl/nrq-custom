@@ -7,6 +7,11 @@
         <field name="inherit_id" ref="base.view_company_form" />
         <field name="arch" type="xml">
             <xpath expr="//page[1]" position="after">
+                <page string="Miscellaneous">
+                    <group>
+                        <field name="bank_details"/>
+                    </group>
+                </page>
                 <page string="Company Chop" groups="base.group_system">
                     <group>
                         <group>
