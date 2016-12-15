@@ -15,4 +15,16 @@
         </field>
     </record>
 
+    <record id="view_project_tree" model="ir.ui.view">
+        <field name="name">view.project.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="date_start"/>
+                <field name="date"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
