@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
+<odoo>
 
     <template id="nrq_invoice_report_view"> 
         <t t-call="report.html_container">
@@ -45,20 +44,19 @@
                     <p style="page-break-before:always;"> </p>
                     <t t-call="account_report_nrq.acceptance_req_report"/>
                     <p style="page-break-before:always;"> </p>
-                    <t t-if="doc.delivery_notice" t-call="account_report_nrq.delivery_report"/>
+                    <t t-if="doc.delivery_note" t-call="account_report_nrq.delivery_report"/>
                 </div>
             </div>
             </t>
         </t>
     </template>
 
-    <report
-        id="nrq_inoice_report"
-        model="account.invoice"
-        string="Invoice + Acceptance (NRQ)"
-        name="account_report_nrq.nrq_invoice_report_view"
-        file="account_report_nrq.nrq_invoice_report_view"
-        report_type="qweb-pdf" />
+<report
+    id="nrq_inoice_report"
+    model="account.invoice"
+    string="Invoice + Acceptance (NRQ)"
+    name="account_report_nrq.nrq_invoice_report_view"
+    file="account_report_nrq.nrq_invoice_report_view"
+    report_type="qweb-pdf" />
 
-</data>
-</openerp>
+</odoo>

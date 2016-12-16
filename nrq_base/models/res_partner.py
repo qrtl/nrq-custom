@@ -8,10 +8,10 @@ from odoo import api, fields, models, _
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    delivery_notice = fields.Boolean(
-        string="Delivery Notice",
+    delivery_note = fields.Boolean(
+        string="Delivery Note",
         default=True,
-        help="Select if delivery notice should be printed together with "
+        help="Select if delivery note should be printed together with "
              "invoice.",
     )
     partner_no = fields.Char(

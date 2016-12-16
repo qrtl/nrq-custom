@@ -1,96 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
-        <template id="acceptance_req_report">
-            <table class="table"> 
-                <thead>
-                    <tr style="border-bottom:hidden;">
-                        <td width="55%" style="background-color:black;"> 
-                            <div></div>
-                        </td>
-                        <td width="5%" ></td>
-                        <td width="45%">
-                            <div>
-                                <strong>Invoice Date: </strong><span t-field="doc.date_invoice"/><br/>
-                            </div>
-                            <div>
-                                <strong>Invoice Number: </strong><span t-field="doc.number"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr >
-                        <td width="55%">
-                            <h2>Acceptance</h2>
-                        </td>
-                        <td width="5%" style="border-bottom:hidden;"></td>
-                        <td width="45%" style="border-bottom:hidden;"></td>
-                    </tr>
-                </thead>
-            </table>
-            <table class="table">
-                <tr>
-                    <td width="55%" >
-                        <strong>Company Name: </strong><span t-field="doc.company_id.name"/> <span t-field="doc.partner_id.title"/>
-                    </td>
-                    <td width="5%" style="border-bottom:hidden;border-top:hidden;"></td>
-                    <td width="45%" style="border-bottom:hidden;border-top:hidden;">
-                        <strong>Customer Name: </strong><span t-field="doc.partner_id.name"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="55%">
-                        <span>Please find the details as follows.</span>
-                    </td>
-                    <td width="5%" style="border-bottom:hidden;"></td>
-                    <td width="45%" style="border-bottom:hidden;">
-                        <strong>Date: </strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;____________________
-                    </td>
-                </tr>
-                <tr>
-                    <td width="55%">
-                    </td>
-                    <td width="5%" style="border-bottom:hidden;"></td>
-                    <td width="45%" style="border-bottom:hidden;">
-                        <strong>Signature: </strong>____________________
-                    </td>
-                </tr>
-                <tr style="border-bottom:hidden;">
-                    <td width="55%">
-                        <strong>Doc Title: </strong><span t-field="doc.doc_title"/>
-                    </td>
-                    <td width="5%" ></td>
-                    <td width="45%" ></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
-            <t t-call="account_report_nrq.nrq_invoice_table_view"/>
-            <p t-if="doc.comment">
-                <span t-field="doc.comment"/>
-            </p>
-            <p t-if="doc.payment_term_id">
-                <span t-field="doc.payment_term_id.note"/>
-            </p>
-        </template>
+<odoo>
+
+<template id="acceptance_req_report">
+    <table class="table">
+        <thead>
+            <tr style="border-bottom:hidden;">
+                <td width="55%" style="background-color:black;">
+                    <div></div>
+                </td>
+                <td width="5%" ></td>
+                <td width="45%">
+                    <div>
+                        <strong>Invoice Date: </strong><span t-field="doc.date_invoice"/><br/>
+                    </div>
+                    <div>
+                        <strong>Invoice Number: </strong><span t-field="doc.number"/>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td width="55%">
+                    <h2>Acceptance</h2>
+                </td>
+                <td width="5%" style="border-bottom:hidden;"></td>
+                <td width="45%" style="border-bottom:hidden;"></td>
+            </tr>
+        </thead>
+    </table>
+    <table class="table">
+        <tr>
+            <td width="55%" >
+                <strong>Company Name: </strong><span t-field="doc.company_id.name"/> <span t-field="doc.partner_id.title"/>
+            </td>
+            <td width="5%" style="border-bottom:hidden;border-top:hidden;"></td>
+            <td width="45%" style="border-bottom:hidden;border-top:hidden;">
+                <strong>Customer Name: </strong><span t-field="doc.partner_id.name"/>
+            </td>
+        </tr>
+        <tr>
+            <td width="55%">
+                <span>Please find the details as follows.</span>
+            </td>
+            <td width="5%" style="border-bottom:hidden;"></td>
+            <td width="45%" style="border-bottom:hidden;">
+                <strong>Date: </strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;____________________
+            </td>
+        </tr>
+        <tr>
+            <td width="55%">
+            </td>
+            <td width="5%" style="border-bottom:hidden;"></td>
+            <td width="45%" style="border-bottom:hidden;">
+                <strong>Signature: </strong>____________________
+            </td>
+        </tr>
+        <tr style="border-bottom:hidden;">
+            <td width="55%">
+                <strong>Doc Title: </strong><span t-field="doc.doc_title"/>
+            </td>
+            <td width="5%" ></td>
+            <td width="45%" ></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+    <t t-call="account_report_nrq.invoice_table_layout"/>
+    <p t-if="doc.comment">
+        <span t-field="doc.comment"/>
+    </p>
+    <p t-if="doc.payment_term_id">
+        <span t-field="doc.payment_term_id.note"/>
+    </p>
+</template>
             
-        <template id="acceptance_view">
-                <t t-call="report.html_container">
-                    <t t-foreach="docs" t-as="doc">
-                        <div class="page">
-                              <t t-call="account_report_nrq.acceptance_req_report"/>
-                        </div>
-                    </t>
-                </t>
-            </template>
+<template id="report_acceptance">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <div class="page">
+                <t t-call="account_report_nrq.acceptance_req_report" t-lang="doc.partner_id.lang"/>
+            </div>
+        </t>
+    </t>
+</template>
 
-    <report
-        id="acceptance_report"
-        model="account.invoice"
-        string="Acceptance (NRQ)"
-        name="account_repor_nrq.acceptance_view"
-        file="account_report_nrq.acceptance_view"
-        report_type="qweb-pdf" />
+<report
+    id="acceptance_report"
+    model="account.invoice"
+    string="Acceptance (NRQ)"
+    name="account_report_nrq.report_acceptance"
+    file="account_report_nrq.report_acceptance"
+    report_type="qweb-pdf" />
 
-</data>
-</openerp>
+</odoo>

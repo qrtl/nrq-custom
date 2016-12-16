@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<data>
-        
+
 <template id="report_invoice_document">
-    <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+    <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
     <t t-call="report.internal_layout">
         <div class="page">
             <table class="table">
@@ -52,6 +51,12 @@
             <t t-call="account_report_nrq.invoice_header_layout"/>
             <t t-call="account_report_nrq.invoice_table_layout"/>
             <t t-call="account_report_nrq.invoice_footer_layout"/>
+
+            <p style="page-break-before:always;"> </p>
+            <t t-call="account_report_nrq.acceptance_req_report"/>
+            <p style="page-break-before:always;"> </p>
+            <t t-if="doc.delivery_note" t-call="account_report_nrq.report_deliverynote_document"/>
+
         </div>
     </t>
 </template>
@@ -73,5 +78,4 @@
     file="account_report_nrq.report_invoice"
     attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
 
-</data>
 </odoo>
