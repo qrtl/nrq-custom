@@ -10,7 +10,6 @@ class ResPartner(models.Model):
 
     delivery_note = fields.Boolean(
         string="Delivery Note",
-        default=True,
         help="Select if delivery note should be printed together with "
              "invoice.",
     )
