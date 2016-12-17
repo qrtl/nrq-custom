@@ -20,10 +20,10 @@
         "bin": [],
     },
     "depends": [
-        "nrq_base",
+        "account",
+        "report_common_nrq",
     ],
     "data": [
-        'report/common_template.xml',
         'report/account_invoice_template.xml',
         'report/account_acceptance_template.xml',
         'report/account_deliverynote_template.xml',

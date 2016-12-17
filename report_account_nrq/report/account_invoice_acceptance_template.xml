@@ -38,13 +38,13 @@
                             </tr>
                         </thead>
                     </table>
-                    <t t-call="account_report_nrq.invoice_header_layout"/>
-                    <t t-call="account_report_nrq.invoice_table_layout"/>
-                    <t t-call="account_report_nrq.invoice_footer_layout"/>
+                    <t t-call="report_common_nrq.invoice_header_layout"/>
+                    <t t-call="report_common_nrq.invoice_table_layout"/>
+                    <t t-call="report_common_nrq.invoice_footer_layout"/>
                     <p style="page-break-before:always;"> </p>
-                    <t t-call="account_report_nrq.acceptance_req_report"/>
+                    <t t-call="report_account_nrq.acceptance_req_report"/>
                     <p style="page-break-before:always;"> </p>
-                    <t t-if="doc.delivery_note" t-call="account_report_nrq.delivery_report"/>
+                    <t t-if="doc.delivery_note" t-call="report_account_nrq.delivery_report"/>
                 </div>
             </div>
             </t>
@@ -55,8 +55,8 @@
     id="nrq_inoice_report"
     model="account.invoice"
     string="Invoice + Acceptance (NRQ)"
-    name="account_report_nrq.nrq_invoice_report_view"
-    file="account_report_nrq.nrq_invoice_report_view"
+    name="report_account_nrq.nrq_invoice_report_view"
+    file="report_account_nrq.nrq_invoice_report_view"
     report_type="qweb-pdf" />
 
 </odoo>

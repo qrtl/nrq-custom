@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_invoice_document">
+    <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+    <t t-call="report.internal_layout">
+        <div class="page">
+            <t t-set="type">invoice</t>
+            <t t-call="report_common_nrq.doc_top_layout"/>
+            <t t-call="report_common_nrq.invoice_header_layout"/>
+            <t t-call="report_common_nrq.invoice_table_layout"/>
+            <t t-call="report_common_nrq.invoice_footer_layout"/>
+
+            <p style="page-break-before:always;"> </p>
+            <t t-call="report_account_nrq.acceptance_req_report"/>
+            <p style="page-break-before:always;"> </p>
+            <t t-if="doc.delivery_note" t-call="report_account_nrq.report_deliverynote_document"/>
+
+        </div>
+    </t>
+</template>
+
+<template id="report_invoice">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="report_account_nrq.report_invoice_document" t-lang="doc.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+
+<report
+    id="report_account_invoice"
+    model="account.invoice"
+    string="Invoice (NRQ)"
+    report_type="qweb-pdf"
+    name="report_account_nrq.report_invoice"
+    file="report_account_nrq.report_invoice"
+    attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
+
+</odoo>

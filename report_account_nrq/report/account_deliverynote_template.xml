@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="report_deliverynote_document">
+    <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+    <t t-call="report.internal_layout">
+        <div class="page">
+            <t t-set="type">deliverynote</t>
+            <t t-call="report_common_nrq.doc_top_layout"/>
+            <t t-call="report_common_nrq.invoice_header_layout"/>
+            <t t-call="report_common_nrq.invoice_table_layout"/>
+            <t t-call="report_common_nrq.invoice_footer_layout"/>
+        </div>
+    </t>
+</template>
+
+<template id="report_deliverynote">
+    <t t-call="report.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <!--div class="page"-->
+                <div class="row">
+                    <t t-call="report_account_nrq.report_deliverynote_document" t-lang="doc.partner_id.lang"/>
+                </div>
+            <!--/div-->
+        </t>
+    </t>
+</template>
+
+<report
+    id="report_delivery_note"
+    model="account.invoice"
+    string="Delivery Note (NRQ)"
+    name="report_account_nrq.report_deliverynote"
+    file="report_account_nrq.report_deliverynote"
+    report_type="qweb-pdf" />
+
+</odoo>

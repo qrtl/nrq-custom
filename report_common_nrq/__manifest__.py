@@ -2,13 +2,10 @@
 # Copyright 2016 Rooms For (Hong Kong) Limited T/A OSCG
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    'name': 'Document Print Base',
-    "version": "10.0.1.0.0",
+    "name": "Report Common",
     "summary": "",
-    'description': """
-    Adds custom fields on Partmer, Sales Order, Invoice, etc.
-        """,
-    'category': 'Miscellaneous',
+    "version": "10.0.1.0.0",
+    "category": "Uncategorized",
     "website": "https://www.odoo-asia.com/",
     "author": "Rooms For (Hong Kong) Limited T/A OSCG",
     "license": "AGPL-3",
@@ -22,16 +19,17 @@
         "python": [],
         "bin": [],
     },
-    'depends': [
-        'account',
-        'sale'
+    "depends": [
+        "account",
+        "sale",
+        "base_partner_number",
     ],
-    'data': [
-        'data/res_partner_data.xml',
+    "data": [
         'views/res_company_views.xml',
         'views/res_partner_views.xml',
-        'views/account_invoice_views.xml',
         'views/sale_order_views.xml',
+        'views/account_invoice_views.xml',
+        'report/common_template.xml',
     ],
     "demo": [
     ],
