@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="invoice_header_layout">
+        <table BORDER="0">
+            <tr>
+                <td width="490">
+                    <table class="table">
+                        <tr>
+                            <td style="font-size:16px">
+                                <t t-if="doc.partner_id.parent_id">
+                                    <span t-field="doc.partner_id.parent_id.name"/>, <span t-field="doc.partner_id.name"/>
+                                </t>
+                                <t t-if="not doc.partner_id.parent_id">
+                                    <span t-field="doc.partner_id.name"/>
+                                </t>
+                                <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                    <span style="position:relative; left:20px;" t-field="doc.partner_id.title"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <t t-if="type == 'invoice'">
+                                    <span>Please find our invoice details as follows.</span>
+                                </t>
+                                <t t-if="type == 'deliverynote'">
+                                    <span>Please find our delivery details as follows.</span>
+                                </t>
+                                <t t-if="type == 'quotation'">
+                                    <span>Please find our quotation details as follows.</span>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr t-if="doc.amount_total">
+                            <td>
+                                <t t-if="type in ('invoice', 'deliverynote')">Total Invoiced: </t>
+                                <t t-if="type == 'quotation'"> Quotation Amount: </t>
+                                <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_total"/>
+                            </td>
+                        </tr>
+                        <tr t-if="doc.doc_title">
+                            <td>
+                                Title: <span t-field="doc.doc_title"/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50"></td>
+                <td width="260">
+                    <table>
+                        <div class="background-image" style="position:absolute; opacity:0.6; right:35px; padding:0px; background-repeat:no-repeat;">
+                            <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;" align="top"/>
+                        </div>
+                        <tr>
+                            <table>
+                                <tr height="40px"/>
+                            </table>
+                            <p>
+                                <strong><span style="font-size:20px" t-field="doc.company_id.name"/></strong>
+                            </p>
+                            <p>
+                                ZIP: <span t-field="doc.company_id.zip"/><br/>
+                                <span t-field="doc.company_id.street"/><br/>
+                                <span t-field="doc.company_id.street2"/>
+                            </p>
+
+                            <table style="margin-bottom:10px;">
+                                <tr>
+                                    <td style="width:100;">Phone: </td><td><span t-field="doc.company_id.phone"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:100;">Fax: </td><td><span t-field="doc.company_id.fax"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:100;">Email: </td><td><span t-field="doc.company_id.email"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:100;">Website: </td><td><span t-field="doc.company_id.website"/></td>
+                                </tr>
+                            </table>
+                            <t t-if="type in ('invoice', 'deliveryoder')">
+                                <table class="table table-bordered">
+                                    <tr height="70">
+                                        <td/>
+                                        <td/>
+                                        <td/>
+                                    </tr>
+                                </table>
+                            </t>
+                            <t t-if="type == 'quotation'">
+                                <p>
+                                    Salesperson: <span t-field="doc.user_id.name"/><br/>
+                                    <span>Effective for one month from the date of quotation.</span>
+                                </p>
+                            </t>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="acceptance_header_layout">
+        <table BORDER="0">
+            <tr>
+                <td width="430">
+                    <table class="table">
+                        <tr>
+                            <td style="font-size:16px">
+                                <span t-field="doc.company_id.name"/>
+                                <t t-if="user.lang == 'ja_JP'">
+                                    <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                        <span style="position:relative; left:20px;" t-field="doc.company_id.partner_id.title"/>
+                                    </t>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>We have accepted your work listed as follows.</span>
+                            </td>
+                        </tr>
+                        <tr t-if="doc.doc_title">
+                            <td>
+                                Title: <span t-field="doc.doc_title"/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50"></td>
+                <td width="320">
+                    <p>
+                        <span style="font-size:16px" t-field="doc.partner_id.name"/>
+                    </p>
+                    <table style="margin-bottom:20px;">
+                        <tr height="60">
+                            <td style="vertical-align:bottom; width:100;">Date: </td><td width="200" style="border-bottom: 1px solid black;"></td>
+                        </tr>
+                        <tr height="60">
+                            <td style="vertical-align:bottom; width:100;">Signature: </td><td width="200" style="border-bottom: 1px solid black;"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="invoice_table_layout">
+        <br/>
+        <!-- Is there a discount on at least one line? -->
+        <t t-set="display_discount" t-value="any([l.discount for l in doc.invoice_line_ids])"/>
+
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th class="hidden">Source Document</th>
+                    <th class="text-right">Quantity</th>
+                    <th class="text-right">Unit Price</th>
+                    <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
+                    <th class="text-right">Taxes</th>
+                    <th class="text-right">Amount</th>
+                </tr>
+            </thead>
+            <tbody class="invoice_tbody">
+                <tr t-foreach="doc.invoice_line_ids" t-as="l">
+                    <td><span t-field="l.name"/></td>
+                    <td class="hidden"><span t-field="l.origin"/></td>
+                    <td class="text-right">
+                        <span t-field="l.quantity"/>
+                        <span t-field="l.uom_id"  groups="product.group_uom"/>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="l.price_unit"/>
+                    </td>
+                    <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+                        <span t-field="l.discount"/>
+                    </td>
+                    <td class="text-right">
+                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="l.price_subtotal"
+                            t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <t groups="sale.group_sale_layout" t-foreach="doc.order_lines_layouted()" t-as="page">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th class="text-right">Quantity</th>
+                        <th class="text-right">Unit Price</th>
+                        <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
+                        <th class="text-right">Taxes</th>
+                        <th class="text-right" groups="sale.group_show_price_subtotal">Price</th>
+                        <th class="text-right price_tax_included" groups="sale.group_show_price_total">Amount</th>
+                    </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                    <t t-foreach="page" t-as="layout_category">
+                        <t t-if="layout_category_size > 1 or page_size > 1" groups="sale.group_sale_layout">
+                            <tr class="active">
+                                <td colspan="7" style="font-weight: bold; border-bottom: 1px solid black;">&amp;bull;
+                                    <t t-esc="layout_category['name']"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <!-- Lines associated -->
+                        <t t-foreach="layout_category['lines']" t-as="l">
+                            <tr>
+                                <td><span t-field="l.name"/></td>
+                                <td class="text-right">
+                                    <span t-field="l.quantity"/>
+                                    <span t-field="l.uom_id"  groups="product.group_uom"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.price_unit"/>
+                                </td>
+                                <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+                                    <span t-field="l.discount"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_ids))"/>
+                                </td>
+                                <td class="text-right" groups="sale.group_show_price_subtotal">
+                                    <span t-field="l.price_subtotal"
+                                        t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                </td>
+                                <td class="text-right" groups="sale.group_show_price_total">
+                                    <span t-field="l.price_total"
+                                        t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                </td>
+                            </tr>
+                        </t>
+
+                        <t t-if="(layout_category_size > 1 or page_size > 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
+                            <tr class="text-right">
+                                <td colspan="6">
+                                    <strong>Subtotal: </strong>
+                                    <t t-set="subtotal" t-value="sum(line.price_subtotal for line in layout_category['lines'])"/>
+                                    <span t-esc="subtotal" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </tbody>
+            </table>
+
+            <t t-if="page_index &lt; page_size - 1" groups="sale.group_sale_layout">
+                <p style="page-break-before:always;"> </p>
+            </t>
+        </t>
+        <div class="row">
+            <div class="col-xs-4 pull-right">
+                <table class="table table-condensed">
+                    <tr class="border-black">
+                        <td><strong>Subtotal</strong></td>
+                        <td class="text-right">
+                            <span t-field="doc.amount_untaxed" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tax Amount</strong></td>
+                        <td class="text-right">
+                            <span t-field="doc.amount_tax" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                        </td>
+                    </tr>
+                    <tr class="border-black">
+                        <td><strong>Total Amount</strong></td>
+                        <td class="text-right">
+                             <span t-field="doc.amount_total" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <td width="32%" style="font-size:16px">
+                    <span t-if="doc.name">Reference: </span>
+                    <span t-field="doc.name"/>
+                </td>
+                <td width="32%" style="font-size:16px">
+                    <span t-if="doc.origin">Source Document: </span>
+                    <span t-field="doc.origin"/>
+                </td>
+                <td width="18%">
+                    <t t-if="doc.partner_id.partner_no">
+                        <span t-field="doc.partner_id.partner_no"/>
+                    </t>
+                    <t t-if="not doc.partner_id.partner_no and doc.partner_id.parent_id and doc.partner_id.parent_id.partner_no">
+                        <span t-field="doc.partner_id.parent_id.partner_no"/>
+                    </t>
+                </td>
+                <td width="18%" t-if="doc.team_id">
+                    <span t-field="doc.team_id"/>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="document_footer_layout">
+        <t t-if="type in ('invoice', 'acceptance', 'deliverynote')">
+            <p t-if="doc.comment">
+                <span t-field="doc.comment"/>
+            </p>
+        </t>
+        <t t-if="type == 'quotation'">
+            <p t-if="doc.note">
+                <span t-field="doc.note"/>
+            </p>
+        </t>
+        <p t-if="doc.payment_term_id">
+            <span t-field="doc.payment_term_id.note"/>
+        </p>
+        <t t-if="type in ('invoice', 'deliverynote')">
+            <div class="row zero_min_height" style="margin-top:20px; margin-bottom:10px;">
+                <div class="col-xs-12">
+                    <div style="border-bottom: 1px solid #DCDCDC;"></div>
+                </div>
+            </div>
+            <div style="font-size:16px">
+                <p t-if="doc.company_id.bank_details">
+                    Bank Details: <span t-field="doc.company_id.bank_details"/>
+                </p>
+                <p t-if="doc.date_due">
+                    Due Date: <span t-field="doc.date_due"/>
+                    <span style="position:relative; left:20px; font-size:14px">Bank charges shall be borne by the customer.</span>
+                </p>
+            </div>
+            <div class="row zero_min_height">
+                <div class="col-xs-12">
+                    <div style="border-bottom: 1px solid black;"></div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="external_layout_nrq">
+        <!-- Multicompany -->
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
+
+        <div class="header">
+            <table class="table">
+                <tr style="border-top:hidden;">
+                    <td width="60%">
+                        <table class="table">
+                            <td style="background-color:black;" height="30px"></td>
+                        </table>
+                    </td>
+                    <td width="5%" ></td>
+                    <td width="35%">
+                        <t t-if="type in ('invoice', 'deliverynote')">
+                            <table>
+                                <tr>
+                                    <td style="width:120;">Invoice Date: </td>
+                                    <td>
+                                        <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
+                                        </t>
+                                        <t t-if="doc.partner_id.lang != 'ja_JP'">
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:120;">Invoice No.: </td>
+                                    <td>
+                                        <span t-field="doc.number"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+                        <t t-if="type == 'acceptance'">
+                            <table>
+                                <tr>
+                                    <td style="width:120;">Acceptance Date: </td>
+                                    <td>
+                                        <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
+                                        </t>
+                                        <t t-if="doc.partner_id.lang != 'ja_JP'">
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:120;">Invoice No.: </td>
+                                    <td>
+                                        <span t-field="doc.number"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+                        <t t-if="type == 'quotation'">
+                            <table>
+                                <tr>
+                                    <td style="width:120;">Quotation Date: </td>
+                                    <td>
+                                        <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                            <span t-field="doc.date_order" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
+                                        </t>
+                                        <t t-if="doc.partner_id.lang != 'ja_JP'">
+                                            <span t-field="doc.date_order" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:120;">Quotation No.: </td>
+                                    <td>
+                                        <span t-field="doc.name"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+                    </td>
+                </tr>
+                <tr style="border-top:hidden;">
+                    <td width="60%">
+                        <div style="font-size:35px">
+                            <t t-if="type == 'invoice'">
+                                <span t-if="doc.type == 'out_invoice' and (doc.state == 'open' or doc.state == 'paid')">Invoice</span>
+                                <span t-if="doc.type == 'out_invoice' and doc.state == 'proforma2'">PRO-FORMA</span>
+                                <span t-if="doc.type == 'out_invoice' and doc.state == 'draft'">Draft Invoice</span>
+                                <span t-if="doc.type == 'out_invoice' and doc.state == 'cancel'">Cancelled Invoice</span>
+                                <span t-if="doc.type == 'out_refund'">Refund</span>
+                                <span t-if="doc.type == 'in_refund'">Vendor Refund</span>
+                                <span t-if="doc.type == 'in_invoice'">Vendor Bill</span>
+                            </t>
+                            <t t-if="type == 'acceptance'">
+                                <span>Acceptance</span>
+                            </t>
+                            <t t-if="type == 'deliverynote'">
+                                <span>Delivery Note</span>
+                            </t>
+                            <t t-if="type == 'quotation'">
+                                <span>Quotation</span>
+                            </t>
+                        </div>
+                    </td>
+                    <td width="5%"></td>
+                    <td width="35%"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <ul class="list-inline">
+                        <li><span class="page"/></li>
+                        <li>/</li>
+                        <li><span class="topage"/></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <t t-raw="0" />
+    </template>
+
+</odoo>
