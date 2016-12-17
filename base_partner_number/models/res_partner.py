@@ -8,12 +8,6 @@ from odoo import api, fields, models, _
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    delivery_note = fields.Boolean(
-        string="Delivery Note",
-        default=True,
-        help="Select if delivery note should be printed together with "
-             "invoice.",
-    )
     partner_no = fields.Char(
         string="Partner Number",
         readonly=False,
@@ -28,6 +22,8 @@ class ResPartner(models.Model):
 
     @api.model
     def create(self, vals):
-        partner_no = self.env['ir.sequence'].next_by_code('res.partner')
-        vals.update({'partner_no': partner_no})
+        if vals['is_company'] or (not vals['is_company']
+                                  and not vals['parent_id']):
+            partner_no = self.env['ir.sequence'].next_by_code('res.partner')
+            vals.update({'partner_no': partner_no})
         return super(ResPartner, self).create(vals)

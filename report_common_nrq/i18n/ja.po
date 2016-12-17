@@ -1,0 +1,327 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* report_common_nrq
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-17 16:00+0000\n"
+"PO-Revision-Date: 2016-12-17 16:00+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "&amp;bull;"
+msgstr "&amp;bull;"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "<br/>\n"
+"                                    <span>Effective for one month from the date of quotation.</span>"
+msgstr "<br/>\n"
+"                                    <span>見積日より一ヶ月有効</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.document_footer_layout
+msgid "<span style=\"position:relative; left:20px; font-size:14px\">Bank charges shall be borne by the customer.</span>"
+msgstr "<span style=\"position:relative; left:20px; font-size:14px\">※お振込手数料はご負担ください。</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "<span>Acceptance</span>"
+msgstr "<span>検収書</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "<span>Delivery Note</span>"
+msgstr "<span>納品書</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "<span>Please find our quotation details as follows.</span>"
+msgstr "<span>下記のとおり、お見積申し上げます。</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "<span>Please find our invoice details as follows.</span>"
+msgstr "<span>下記のとおり、ご請求申し上げます。</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "<span>Please find our delivery details as follows.</span>"
+msgstr "<span>下記のとおり、ご納品申し上げます。</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "<span>Quotation</span>"
+msgstr "<span>見積書</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
+msgid "<span>We have accepted your work listed as follows.</span>"
+msgstr "<span>下記のとおり、検収いたしました。</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "<strong>Subtotal: </strong>"
+msgstr "<strong>小計: </strong>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>小計</strong>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "<strong>Tax Amount</strong>"
+msgstr "<strong>消費税</strong>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "<strong>Total Amount</strong>"
+msgstr "<strong>合計金額</strong>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Acceptance Date:"
+msgstr "検収日:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Amount"
+msgstr "金額"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_bank_details
+msgid "Bank Details"
+msgstr "銀行詳細"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.document_footer_layout
+msgid "Bank Details:"
+msgstr "お振込先:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Cancelled Invoice"
+msgstr "取消済請求書"
+
+#. module: report_common_nrq
+#: model:ir.model,name:report_common_nrq.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.view_company_form
+msgid "Company Chop"
+msgstr "社印"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_chop
+msgid "Company Chop Image"
+msgstr "社印画像"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
+msgid "Date:"
+msgstr "日付:"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_account_invoice_delivery_note
+msgid "Delivery Note"
+msgstr "納品書"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Disc.(%)"
+msgstr "値引 (%)"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_account_invoice_doc_title
+#: model:ir.model.fields,field_description:report_common_nrq.field_sale_order_doc_title
+msgid "Doc Title"
+msgstr "件名"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Draft Invoice"
+msgstr "ドラフト請求書"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.document_footer_layout
+msgid "Due Date:"
+msgstr "お支払期限:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Email:"
+msgstr "Email:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Fax:"
+msgstr "FAX:"
+
+#. module: report_common_nrq
+#: model:ir.model,name:report_common_nrq.model_account_invoice
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Invoice"
+msgstr "請求書"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Invoice Date:"
+msgstr "請求日:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Invoice No.:"
+msgstr "請求番号:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Item"
+msgstr "項目"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.view_company_form
+msgid "Miscellaneous"
+msgstr "その他"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "PRO-FORMA"
+msgstr "プロフォーマ"
+
+#. module: report_common_nrq
+#: model:ir.model,name:report_common_nrq.model_res_partner
+msgid "Partner"
+msgstr "取引先"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Phone:"
+msgstr "Phone:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Price"
+msgstr "金額"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Quantity"
+msgstr "数量"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Quotation Amount:"
+msgstr "お見積金額:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Quotation Date:"
+msgstr "見積日:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Quotation No.:"
+msgstr "見積番号:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Reference:"
+msgstr "注文書参照:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Refund"
+msgstr "返金"
+
+#. module: report_common_nrq
+#: model:ir.model,name:report_common_nrq.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "受注前払請求書"
+
+#. module: report_common_nrq
+#: model:ir.model,name:report_common_nrq.model_sale_order
+msgid "Sales Order"
+msgstr "受注"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Salesperson:"
+msgstr "営業担当:"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_sale_order_show_tax
+msgid "Show Tax"
+msgstr "税を表示"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,help:report_common_nrq.field_sale_order_show_tax
+msgid "Show tax in printed quotation."
+msgstr "見積書に税を表示する。"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
+msgid "Signature:"
+msgstr "署名:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Source Document"
+msgstr "見積番号"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Source Document:"
+msgstr "見積番号:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Taxes"
+msgstr "税"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Title:"
+msgstr "件名:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Total Invoiced:"
+msgstr "ご請求金額:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "Unit Price"
+msgstr "単価"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Vendor Bill"
+msgstr "仕入先請求書"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Vendor Refund"
+msgstr "仕入先返金"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Website:"
+msgstr "Website:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "ZIP:"
+msgstr "〒"
+

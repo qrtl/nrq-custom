@@ -25,6 +25,7 @@
         "base_partner_number",
     ],
     "data": [
+        'data/res_partner_data.xml',
         'views/res_company_views.xml',
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',

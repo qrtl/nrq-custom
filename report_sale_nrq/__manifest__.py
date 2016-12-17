@@ -24,7 +24,7 @@
         "report_common_nrq",
     ],
     "data": [
-        'report/sale_quotation_template.xml'
+        'report/sale_report_quotation.xml'
     ],
     "demo": [
     ],

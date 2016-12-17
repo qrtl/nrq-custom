@@ -24,10 +24,8 @@
         "report_common_nrq",
     ],
     "data": [
-        'report/account_invoice_template.xml',
-        'report/account_acceptance_template.xml',
-        'report/account_deliverynote_template.xml',
-        'report/account_invoice_acceptance_template.xml',
+        'report/account_report_invoice_acceptance.xml',
+        'report/account_report_deliverynote.xml',
     ],
     "demo": [
     ],

@@ -14,20 +14,3 @@ class ResPartner(models.Model):
         help="Select if delivery note should be printed together with "
              "invoice.",
     )
-    partner_no = fields.Char(
-        string="Partner Number",
-        readonly=False,
-        copy=False,
-    )
-
-    _sql_constraints = [
-        ('name_unique',
-         'UNIQUE(partner_no)',
-         "Partner number must be unique."),
-    ]
-
-    @api.model
-    def create(self, vals):
-        partner_no = self.env['ir.sequence'].next_by_code('res.partner')
-        vals.update({'partner_no': partner_no})
-        return super(ResPartner, self).create(vals)
