@@ -35,8 +35,13 @@
                         <tr t-if="doc.amount_total">
                             <td>
                                 <t t-if="type in ('invoice', 'deliverynote')">Total Invoiced: </t>
-                                <t t-if="type == 'quotation'"> Quotation Amount: </t>
-                                <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_total"/>
+                                <t t-if="type == 'quotation'">Quotation Amount: </t>
+                                <t t-if="type == 'quotation' and doc.show_tax == False">
+                                    <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_untaxed"/>
+                                </t>
+                                <t t-if="type != 'quotation' or doc.show_tax == True">
+                                    <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_total"/>
+                                </t>
                             </td>
                         </tr>
                         <tr t-if="doc.doc_title">
@@ -49,7 +54,7 @@
                 <td width="50"></td>
                 <td width="260">
                     <table>
-                        <div class="background-image" style="position:absolute; opacity:0.6; right:35px; padding:0px; background-repeat:no-repeat;">
+                        <div class="background-image" style="position:absolute; opacity:0.6; right:90px; padding:0px; background-repeat:no-repeat;">
                             <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;" align="top"/>
                         </div>
                         <tr>
@@ -329,7 +334,15 @@
                     Bank Details: <span t-field="doc.company_id.bank_details"/>
                 </p>
                 <p t-if="doc.date_due">
-                    Due Date: <span t-field="doc.date_due"/>
+                    Due Date: 
+                    <t t-if="doc.partner_id.lang == 'ja_JP'">
+                        <span t-field="doc.date_due" t-field-options="{'format':'YYYY'}"/>年
+                        <span t-field="doc.date_due" t-field-options="{'format':'MM'}"/>月
+                        <span t-field="doc.date_due" t-field-options="{'format':'dd'}"/>日
+                    </t>
+                    <t t-if="doc.partner_id.lang != 'ja_JP'">
+                        <span t-field="doc.date_due" t-field-options="{'format':'MMM dd, YYYY'}"/>
+                    </t>
                     <span style="position:relative; left:20px; font-size:14px">Bank charges shall be borne by the customer.</span>
                 </p>
             </div>
@@ -366,7 +379,9 @@
                                     <td style="width:120;">Invoice Date: </td>
                                     <td>
                                         <t t-if="doc.partner_id.lang == 'ja_JP'">
-                                            <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY'}"/>年
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'MM'}"/>月
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'dd'}"/>日<br/>
                                         </t>
                                         <t t-if="doc.partner_id.lang != 'ja_JP'">
                                             <span t-field="doc.date_invoice" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
@@ -387,7 +402,9 @@
                                     <td style="width:120;">Acceptance Date: </td>
                                     <td>
                                         <t t-if="doc.partner_id.lang == 'ja_JP'">
-                                            <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY'}"/>年
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'MM'}"/>月
+                                            <span t-field="doc.date_invoice" t-field-options="{'format':'dd'}"/>日<br/>
                                         </t>
                                         <t t-if="doc.partner_id.lang != 'ja_JP'">
                                             <span t-field="doc.date_invoice" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
@@ -408,7 +425,9 @@
                                     <td style="width:120;">Quotation Date: </td>
                                     <td>
                                         <t t-if="doc.partner_id.lang == 'ja_JP'">
-                                            <span t-field="doc.date_order" t-field-options="{'format':'YYYY/MM/dd'}"/><br/>
+                                            <span t-field="doc.date_order" t-field-options="{'format':'YYYY'}"/>年
+                                            <span t-field="doc.date_order" t-field-options="{'format':'MM'}"/>月
+                                            <span t-field="doc.date_order" t-field-options="{'format':'dd'}"/>日<br/>
                                         </t>
                                         <t t-if="doc.partner_id.lang != 'ja_JP'">
                                             <span t-field="doc.date_order" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
