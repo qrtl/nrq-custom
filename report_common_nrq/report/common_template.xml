@@ -54,7 +54,7 @@
                 <td width="50"></td>
                 <td width="260">
                     <table>
-                        <div class="background-image" style="position:absolute; opacity:0.6; right:90px; padding:0px; background-repeat:no-repeat;">
+                        <div class="background-image" style="position:absolute; opacity:0.6; right:100px; padding:0px; background-repeat:no-repeat;">
                             <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;" align="top"/>
                         </div>
                         <tr>
@@ -334,7 +334,7 @@
                     Bank Details: <span t-field="doc.company_id.bank_details"/>
                 </p>
                 <p t-if="doc.date_due">
-                    Due Date: 
+                    Due Date:
                     <t t-if="doc.partner_id.lang == 'ja_JP'">
                         <span t-field="doc.date_due" t-field-options="{'format':'YYYY'}"/>年
                         <span t-field="doc.date_due" t-field-options="{'format':'MM'}"/>月
