@@ -1,0 +1,92 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* report_purchase_nrq
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-17 16:26+0000\n"
+"PO-Revision-Date: 2016-12-17 16:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "&amp;bull;"
+msgstr "&amp;bull;"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "<strong>Subtotal: </strong>"
+msgstr "<strong>小計: </strong>"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "<strong>Tax Amount</strong>"
+msgstr "<strong>消費税</strong>"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "<strong>Total Amount</strong>"
+msgstr "<strong>合計金額</strong>"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "<strong>Total without Taxes</strong>"
+msgstr "<strong>小計</strong>"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Amount"
+msgstr "金額"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Consumption tax will be added in our invoice as applicable."
+msgstr "消費税は別途申し受けます"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Disc.(%)"
+msgstr "値引 (%)"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Item"
+msgstr "項目"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Price"
+msgstr "金額"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Quantity"
+msgstr "数量"
+
+#. module: report_purchase_nrq
+#: model:ir.actions.report.xml,name:report_purchase_nrq.report_sale_quotation
+msgid "Quotation (NRQ)"
+msgstr "見積書 (NRQ)"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Taxes"
+msgstr "税"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "Unit Price"
+msgstr "単価"
+
+#. module: report_purchase_nrq
+#: model:ir.ui.view,arch_db:report_purchase_nrq.report_salequotation_document
+msgid "quotation"
+msgstr "quotation"
+
