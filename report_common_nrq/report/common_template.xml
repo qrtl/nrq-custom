@@ -31,7 +31,7 @@
                                     <span>Please find our quotation details as follows.</span>
                                 </t>
                                 <t t-if="type == 'purchase'">
-                                    <span>Please find our purchase details as follows.</span>
+                                    <span>Please find our order details as follows.</span>
                                 </t>
                             </td>
                         </tr>
@@ -39,7 +39,7 @@
                             <td>
                                 <t t-if="type in ('invoice', 'deliverynote')">Total Invoiced: </t>
                                 <t t-if="type == 'quotation'">Quotation Amount: </t>
-                                <t t-if="type == 'purchase'">Purchase Amount: </t>
+                                <t t-if="type == 'purchase'">Total Amount: </t>
                                 <t t-if="type == 'quotation' and doc.show_tax == False">
                                     <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_untaxed"/>
                                 </t>
@@ -103,10 +103,9 @@
                                     <span>Effective for one month from the date of quotation.</span>
                                 </p>
                             </t>
-                            <t t-if="type == 'purchase' and doc.show_user == True">
+                            <t t-if="type == 'purchase'">
                                 <p>
                                     Salesperson: <span t-field="doc.user_id.name"/><br/>
-                                    <span>Effective for one month from the date of quotation.</span>
                                 </p>
                             </t>
                         </tr>
@@ -331,8 +330,8 @@
             </p>
         </t>
         <t t-if="type == 'purchase'">
-            <p t-if="doc.note">
-                <span t-field="doc.note"/>
+            <p t-if="doc.notes">
+                <span t-field="doc.notes"/>
             </p>
         </t>
         <p t-if="doc.payment_term_id">
@@ -460,7 +459,7 @@
                         <t t-if="type == 'purchase'">
                             <table>
                                 <tr>
-                                    <td style="width:120;">Purchase Date: </td>
+                                    <td style="width:120;">Order Date: </td>
                                     <td>
                                         <t t-if="doc.partner_id.lang == 'ja_JP'">
                                             <span t-field="doc.date_order" t-field-options="{'format':'YYYY'}"/>年
@@ -473,7 +472,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width:120;">Purchase No.: </td>
+                                    <td style="width:120;">Order No.: </td>
                                     <td>
                                         <span t-field="doc.name"/>
                                     </td>
@@ -504,7 +503,7 @@
                                 <span>Quotation</span>
                             </t>
                             <t t-if="type == 'purchase'">
-                                <span>Purchase</span>
+                                <span>Purchase Order</span>
                             </t>
                         </div>
                     </td>
