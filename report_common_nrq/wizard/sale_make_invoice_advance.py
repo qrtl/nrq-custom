@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Copyright 2016-2017 Rooms For (Hong Kong) Limited T/A OSCG
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, models
