@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-17 16:00+0000\n"
-"PO-Revision-Date: 2016-12-17 16:00+0000\n"
+"POT-Creation-Date: 2017-02-03 00:11+0000\n"
+"PO-Revision-Date: 2017-02-03 00:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -44,8 +44,8 @@ msgstr "<span>納品書</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
-msgid "<span>Please find our quotation details as follows.</span>"
-msgstr "<span>下記のとおり、お見積申し上げます。</span>"
+msgid "<span>Please find our delivery details as follows.</span>"
+msgstr "<span>下記のとおり、ご納品申し上げます。</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
@@ -54,8 +54,18 @@ msgstr "<span>下記のとおり、ご請求申し上げます。</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
-msgid "<span>Please find our delivery details as follows.</span>"
-msgstr "<span>下記のとおり、ご納品申し上げます。</span>"
+msgid "<span>Please find our order details as follows.</span>"
+msgstr "<span>下記のとおり、注文いたします。</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "<span>Please find our quotation details as follows.</span>"
+msgstr "<span>下記のとおり、お見積申し上げます。</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "<span>Purchase Order</span>"
+msgstr "<span>注文書</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
@@ -144,6 +154,7 @@ msgstr "値引 (%)"
 
 #. module: report_common_nrq
 #: model:ir.model.fields,field_description:report_common_nrq.field_account_invoice_doc_title
+#: model:ir.model.fields,field_description:report_common_nrq.field_purchase_order_doc_title
 #: model:ir.model.fields,field_description:report_common_nrq.field_sale_order_doc_title
 msgid "Doc Title"
 msgstr "件名"
@@ -196,6 +207,16 @@ msgstr "その他"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Order Date:"
+msgstr "発注日:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "Order No.:"
+msgstr "注文番号:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
 msgid "PRO-FORMA"
 msgstr "プロフォーマ"
 
@@ -213,6 +234,16 @@ msgstr "Phone:"
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
 msgid "Price"
 msgstr "金額"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+msgid "Total Amount:"
+msgstr "合計金額:"
+
+#. module: report_common_nrq
+#: model:ir.model,name:report_common_nrq.model_purchase_order
+msgid "Purchase Order"
+msgstr "発注"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
@@ -253,6 +284,11 @@ msgstr "受注前払請求書"
 #: model:ir.model,name:report_common_nrq.model_sale_order
 msgid "Sales Order"
 msgstr "受注"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_purchase_order_user_id
+msgid "Salesperson"
+msgstr "営業担当"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
