@@ -6,7 +6,7 @@
         <t t-call="report_common_nrq.external_layout_nrq">
             <div class="page">
                 <t t-set="type">quotation</t>
-                <t t-call="report_common_nrq.invoice_header_layout"/>
+                <t t-call="report_common_nrq.common_header_layout"/>
                 <t t-foreach="doc.order_lines_layouted()" t-as="page">
                     <table class="table table-condensed">
                         <thead>
@@ -116,6 +116,14 @@
                     </div>
                 </div>
                 <p t-if="doc.show_tax == False" align="right">Consumption tax will be added in our invoice as applicable.</p>
+                <table class="table">
+                    <tr>
+                        <td style="font-size:16px">
+                            <span t-if="doc.client_order_ref">Reference: </span>
+                            <span t-field="doc.client_order_ref"/>
+                        </td>
+                    </tr>
+                </table>
                 <t t-call="report_common_nrq.document_footer_layout"/>
             </div>
         </t>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="invoice_header_layout">
+    <template id="common_header_layout">
         <table BORDER="0">
             <tr>
                 <td width="490">
@@ -82,9 +82,6 @@
                                     <td style="width:100;">Fax: </td><td><span t-field="doc.company_id.fax"/></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:100;">Email: </td><td><span t-field="doc.company_id.email"/></td>
-                                </tr>
-                                <tr>
                                     <td style="width:100;">Website: </td><td><span t-field="doc.company_id.website"/></td>
                                 </tr>
                             </table>
@@ -123,10 +120,8 @@
                         <tr>
                             <td style="font-size:16px">
                                 <span t-field="doc.company_id.name"/>
-                                <t t-if="user.lang == 'ja_JP'">
-                                    <t t-if="doc.partner_id.lang == 'ja_JP'">
-                                        <span style="position:relative; left:20px;" t-field="doc.company_id.partner_id.title"/>
-                                    </t>
+                                <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                    <span style="position:relative; left:20px;" t-field="doc.company_id.partner_id.title"/>
                                 </t>
                             </td>
                         </tr>
