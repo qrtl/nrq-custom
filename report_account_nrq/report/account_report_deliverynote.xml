@@ -6,7 +6,7 @@
         <t t-call="report_common_nrq.external_layout_nrq">
             <div class="page">
                 <t t-set="type">deliverynote</t>
-                <t t-call="report_common_nrq.invoice_header_layout"/>
+                <t t-call="report_common_nrq.common_header_layout"/>
                 <t t-call="report_common_nrq.invoice_table_layout"/>
                 <t t-call="report_common_nrq.document_footer_layout"/>
             </div>

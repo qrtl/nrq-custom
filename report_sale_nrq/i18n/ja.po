@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-17 16:26+0000\n"
-"PO-Revision-Date: 2016-12-17 16:26+0000\n"
+"POT-Creation-Date: 2017-04-04 10:19+0000\n"
+"PO-Revision-Date: 2017-04-04 10:19+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -74,6 +74,11 @@ msgstr "数量"
 #: model:ir.actions.report.xml,name:report_sale_nrq.report_sale_quotation
 msgid "Quotation (NRQ)"
 msgstr "見積書 (NRQ)"
+
+#. module: report_sale_nrq
+#: model:ir.ui.view,arch_db:report_sale_nrq.report_salequotation_document
+msgid "Reference:"
+msgstr "顧客参照:"
 
 #. module: report_sale_nrq
 #: model:ir.ui.view,arch_db:report_sale_nrq.report_salequotation_document
