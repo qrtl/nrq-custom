@@ -82,9 +82,6 @@
                                     <td style="width:100;">Fax: </td><td><span t-field="doc.company_id.fax"/></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:100;">Email: </td><td><span t-field="doc.company_id.email"/></td>
-                                </tr>
-                                <tr>
                                     <td style="width:100;">Website: </td><td><span t-field="doc.company_id.website"/></td>
                                 </tr>
                             </table>
