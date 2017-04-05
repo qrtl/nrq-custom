@@ -78,7 +78,7 @@ msgstr "見積書 (NRQ)"
 #. module: report_sale_nrq
 #: model:ir.ui.view,arch_db:report_sale_nrq.report_salequotation_document
 msgid "Reference:"
-msgstr "顧客参照:"
+msgstr "貴社参照番号:"
 
 #. module: report_sale_nrq
 #: model:ir.ui.view,arch_db:report_sale_nrq.report_salequotation_document
