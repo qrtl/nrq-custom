@@ -268,7 +268,7 @@ msgstr "見積番号:"
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
 msgid "Reference:"
-msgstr "注文書参照:"
+msgstr "貴社参照番号:"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
