@@ -21,7 +21,7 @@ msgid "&amp;bull;"
 msgstr "&amp;bull;"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "<br/>\n"
 "                                    <span>Effective for one month from the date of quotation.</span>"
 msgstr "<br/>\n"
@@ -43,22 +43,22 @@ msgid "<span>Delivery Note</span>"
 msgstr "<span>納品書</span>"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "<span>Please find our delivery details as follows.</span>"
 msgstr "<span>下記のとおり、ご納品申し上げます。</span>"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "<span>Please find our invoice details as follows.</span>"
 msgstr "<span>下記のとおり、ご請求申し上げます。</span>"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "<span>Please find our order details as follows.</span>"
 msgstr "<span>下記のとおり、注文いたします。</span>"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "<span>Please find our quotation details as follows.</span>"
 msgstr "<span>下記のとおり、お見積申し上げます。</span>"
 
@@ -170,12 +170,12 @@ msgid "Due Date:"
 msgstr "お支払期限:"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Email:"
 msgstr "Email:"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Fax:"
 msgstr "FAX:"
 
@@ -226,7 +226,7 @@ msgid "Partner"
 msgstr "取引先"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Phone:"
 msgstr "Phone:"
 
@@ -236,7 +236,7 @@ msgid "Price"
 msgstr "金額"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Total Amount:"
 msgstr "合計金額:"
 
@@ -251,7 +251,7 @@ msgid "Quantity"
 msgstr "数量"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Quotation Amount:"
 msgstr "お見積金額:"
 
@@ -291,7 +291,7 @@ msgid "Salesperson"
 msgstr "営業担当"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Salesperson:"
 msgstr "営業担当:"
 
@@ -327,12 +327,12 @@ msgstr "税"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Title:"
 msgstr "件名:"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Total Invoiced:"
 msgstr "ご請求金額:"
 
@@ -352,12 +352,12 @@ msgid "Vendor Refund"
 msgstr "仕入先返金"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Website:"
 msgstr "Website:"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.invoice_header_layout
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "ZIP:"
 msgstr "〒"
 
