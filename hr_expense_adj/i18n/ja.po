@@ -1,0 +1,72 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_expense_adj
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-26 12:28+0000\n"
+"PO-Revision-Date: 2017-04-26 12:28+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_expense_adj
+#: model:ir.model,name:hr_expense_adj.model_hr_expense
+msgid "Expense"
+msgstr "経費"
+
+#. module: hr_expense_adj
+#: model:ir.model,name:hr_expense_adj.model_hr_expense_sheet
+msgid "Expense Report"
+msgstr "経費レポート"
+
+#. module: hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+msgid "Please mention here any special situation to note.  e.g. there is no expense for this month, receipt has been lost, etc."
+msgstr "当月に経費が発生しない場合、領収書を紛失した場合などはこちらにその旨入力してください。"
+
+#. module: hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_expenses_tree
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
+msgid "Reference"
+msgstr "稟議番号"
+
+#. module: hr_expense
+#: model:ir.model.fields,help:hr_expense.field_hr_expense_name
+msgid "\n"
+"        Please describe the usage of the expense.\n"
+"        Examples:\n"
+"        For transporation expenses:\n"
+"        - Train (Shibuya - Ichigaya)\n"
+"        - Bus (Shibuya - Ichigaya)\n"
+"        - Commuter pass (6-month, Shibuya - Ichigaya)\n"
+"        - Taxi (Shibuya - Ichigaya)\n"
+"        For meeting expenses:\n"
+"        - Food and drinks - 2 from NQ, 1 from XXX\n"
+"        For entertainment expenses:\n"
+"        - Food and drinks - 2 from NQ, 1 from XXX\n"
+"        "
+msgstr "\n"
+"        次の例に倣い使用目的を入力してください。\n"
+"        \n"
+"        ◆記入例◆\n"
+"        \n"
+"        【交通費(「製品」)】\n"
+"        電車賃・・・電車(渋谷―市ヶ谷)\n"
+"        バス代・・・バス(渋谷―市ヶ谷)\n"
+"        定期代・・・定期6か月分(渋谷―市ヶ谷)\n"
+"        使用目的：タクシー・・・タクシー(渋谷―市ヶ谷)\n"
+"        \n"
+"        【会議費(「製品」)】\n"
+"        飲食・・・NQ2名、○社1名\n"
+"        \n"
+"        【交際費(「製品」)】\n"
+"        飲食・・・NQ2名、○社1名\n"
+"        "
+
