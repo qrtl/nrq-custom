@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Rooms For (Hong Kong) Limited
+# Copyright 2017 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import models, fields, api
@@ -23,6 +23,10 @@ class HrExpense(models.Model):
         - Food and drinks - 2 from NQ, 1 from XXX
         """
     )
+    number = fields.Char(
+        readonly=True,
+        copy=False,
+    )
 
     @api.multi
     def submit_expenses(self):
@@ -31,3 +35,9 @@ class HrExpense(models.Model):
         res = super(HrExpense, self).submit_expenses()
         res['context']['default_name'] = y + '.' + m
         return res
+
+    @api.multi
+    def write(self, vals):
+        if 'sheet_id' in vals and not vals.get('sheet_id'):
+            vals['number'] = False
+        return super(HrExpense, self).write(vals)

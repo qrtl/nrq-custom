@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- Payment sequences -->
+    <record id="sequence_expense" model="ir.sequence">
+        <field name="name">Expense sequence</field>
+        <field name="code">hr.expense</field>
+        <field name="prefix">%(range_month)s-</field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+        <field eval="True" name="use_date_range"/>
+        <field eval="False" name="company_id"/>
+        <field name="padding">3</field>
+    </record>
+
+</odoo>

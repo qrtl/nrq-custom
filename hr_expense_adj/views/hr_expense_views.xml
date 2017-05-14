@@ -6,6 +6,9 @@
         <field name="model">hr.expense</field>
         <field name="inherit_id" ref="hr_expense.view_expenses_tree"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="before">
+                <field name="number"/>
+            </xpath>
             <xpath expr="//field[@name='date']" position="after">
                 <field name="product_id"/>
             </xpath>
@@ -27,7 +30,33 @@
                 <attribute name="invisible">True</attribute>
             </xpath>
             <xpath expr="//field[@name='reference']" position="attributes">
-                <attribute name="string">Reference</attribute>
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//sheet/div[2]" position="replace">
+                <div class="oe_title">
+                    <label for="number" attrs="{'invisible':[('number','=',False)]}"/>
+                    <h1>
+                        <field name="number"/>
+                    </h1>
+                    <label for="name"/>
+                    <h5>
+                        <field name="name" placeholder="See explanation by placing the pointer over above label."/>
+                    </h5>
+                </div>
+                <group>
+                    <group>
+                        <field name="reference" string="Reference"/>
+                    </group>
+                    <group>
+                        <p>
+                        Please put the approval number (NOT the document number) here.<br/>
+                        Reference should be provided for expenses of purchasing goods, entertainment or business trip.
+                        </p>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="attributes">
+                <attribute name="string">Expense Type</attribute>
             </xpath>
             <xpath expr="//field[@name='account_id']" position="attributes">
                 <attribute name="invisible">True</attribute>
