@@ -23,6 +23,7 @@ class HrExpense(models.Model):
         - Food and drinks - 2 from NQ, 1 from XXX
         """
     )
+    number = fields.Char(readonly=True)
 
     @api.multi
     def submit_expenses(self):

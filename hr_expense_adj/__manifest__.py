@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Rooms For (Hong Kong) Limited
+# Copyright 2017 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Adjustments on Expense Functions",
@@ -9,10 +9,10 @@
 * Adjust expense tree view fields
 * Propose a default value in expense report summary field
     """,
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.1.0",
     "category": "HR",
     "website": "https://www.odoo-asia.com/",
-    "author": "Rooms For (Hong Kong) Limited",
+    "author": "Quartile Limited",
     "license": "LGPL-3",
     "application": False,
     "installable": True,
