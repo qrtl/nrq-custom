@@ -2,15 +2,14 @@
 # Copyright 2017 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
-    "name": "Adjustments on Expense Functions",
+    "name": "Auto-create monthly date ranges for sequence",
     "summary": "",
     "description": """
-* Hide "Submit to Manager" button and Account field in expense form
-* Adjust expense tree view fields
-* Propose a default value in expense report summary field
+* Odoo's sequence engine by defauld does not support refreshing 'next number'
+on monthly basis.  This module adds thel logic to support it.
     """,
-    "version": "10.0.1.1.0",
-    "category": "HR",
+    "version": "10.0.1.0.0",
+    "category": "Technical Settings",
     "website": "https://www.odoo-asia.com/",
     "author": "Quartile Limited",
     "license": "LGPL-3",
@@ -25,13 +24,9 @@
         "bin": [],
     },
     "depends": [
-        "hr_expense",
-        "ir_sequence_range_month",
+        "base",
     ],
     "data": [
-        'data/expense_data.xml',
-        'views/hr_expense_views.xml',
-        'views/hr_expense_sheet_views.xml',
     ],
     "demo": [
     ],

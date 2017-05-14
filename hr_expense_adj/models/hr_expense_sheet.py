@@ -26,7 +26,8 @@ class HrExpenseSheet(models.Model):
     @api.model
     def create(self, vals):
         sheet = super(HrExpenseSheet, self).create(vals)
-        for line in sheet.expense_line_ids.sorted(key=lambda x: (x.date, x.id)):
+        for line in sheet.expense_line_ids.sorted(
+                key=lambda x: (x.date, x.id)):
             self._assign_number(line)
         return sheet
 
@@ -34,7 +35,8 @@ class HrExpenseSheet(models.Model):
     def write(self, vals):
         res = super(HrExpenseSheet, self).write(vals)
         if self.state == 'submit':
-            for line in self.expense_line_ids.sorted(key=lambda x: (x.date, x.id)):
+            for line in self.expense_line_ids.sorted(
+                    key=lambda x: (x.date, x.id)):
                 self._assign_number(line)
             return res
 
