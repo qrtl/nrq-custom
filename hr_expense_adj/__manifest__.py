@@ -28,6 +28,7 @@
         "hr_expense",
     ],
     "data": [
+        'data/expense_data.xml',
         'views/hr_expense_views.xml',
         'views/hr_expense_sheet_views.xml',
     ],
