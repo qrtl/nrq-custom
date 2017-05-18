@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-14 08:32+0000\n"
-"PO-Revision-Date: 2017-05-14 08:32+0000\n"
+"POT-Creation-Date: 2017-05-17 08:37+0000\n"
+"PO-Revision-Date: 2017-05-17 08:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,14 +21,21 @@ msgid "Expense"
 msgstr "経費"
 
 #. module: hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_expenses_tree
+msgid "Expense Description"
+msgstr "経費内訳等"
+
+#. module: hr_expense_adj
 #: model:ir.model,name:hr_expense_adj.model_hr_expense_sheet
 msgid "Expense Report"
 msgstr "経費レポート"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_expenses_tree
 msgid "Expense Type"
-msgstr "経費タイプ"
+msgstr "経費種別"
 
 #. module: hr_expense_adj
 #: model:ir.model.fields,field_description:hr_expense_adj.field_hr_expense_number
@@ -36,23 +43,31 @@ msgid "Number"
 msgstr "経費番号"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
 msgid "Please mention here any special situation to note.  e.g. there is no expense for this month, receipt has been lost, etc."
 msgstr "当月に経費が発生しない場合、領収書を紛失した場合などはこちらにその旨入力してください。"
 
 #. module: hr_expense_adj
 #: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
-msgid "Please put the approval number (NOT the document number) here.<br/>\n"
-"                        Reference should be provided for expenses of purchasing goods, entertainment or business trip."
-msgstr "稟議番号とは『決裁番号』のことで『文書番号』ではありません。<br/>\n"
-"                        物品購入、接待、出張等は稟議番号を入力してください。"
+msgid "Preserved Text"
+msgstr "Preserved Text"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
 #: model:ir.ui.view,arch_db:hr_expense_adj.view_expenses_tree
 #: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
 msgid "Reference"
 msgstr "稟議番号"
+
+#. module: hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
+msgid "See explanation by placing the pointer over above label."
+msgstr "←の「経費内訳等」にマウスを置くと、書き方の説明が出ます"
+
+#. module: hr_expense_adj
+#: model:ir.model,name:hr_expense_adj.model_ir_sequence
+msgid "ir.sequence"
+msgstr "ir.sequence"
 
 #. module: hr_expense
 #: model:ir.model.fields,help:hr_expense.field_hr_expense_name
@@ -87,13 +102,23 @@ msgstr "\n"
 "        飲食・・・NQ2名、○社1名\n"
 "        "
 
-#. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
-msgid "See explanation by placing the pointer over above label."
-msgstr "↑の「経費説明」にマウスを置くと、書き方の説明が出ます"
+#. module: hr_expense
+#: model:ir.model.fields,help:hr_expense.field_hr_expense_reference
+msgid "\n"
+"        Please put the approval number (NOT the document number) here.\n"
+"        Reference should be provided for expenses of purchasing goods, entertainment or business trip.\n"
+"        "
+msgstr "稟議番号とは『決裁番号』のことで『文書番号』ではありません。\n"
+"物品購入、接待、出張等は稟議番号を入力してください。"
 
-#. module: hr_expense_adj
-#: model:ir.model,name:hr_expense_adj.model_ir_sequence
-msgid "ir.sequence"
-msgstr "ir.sequence"
+#. module: hr_expense
+#: model:ir.model.fields,field_description:hr_expense.field_hr_expense_name
+msgid "Expense Description"
+msgstr "経費内訳等"
+
+#. module: hr_expense
+#: model:ir.model.fields,field_description:hr_expense.field_hr_expense_product_id
+#: model:ir.ui.view,arch_db:hr_expense.view_hr_expense_filter
+msgid "Product"
+msgstr "経費種別"
 
