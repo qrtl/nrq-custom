@@ -9,6 +9,7 @@ class HrExpense(models.Model):
     _inherit = 'hr.expense'
 
     name = fields.Char(
+        string='Expense Description',
         help="""
         Please describe the usage of the expense.
         Examples:
@@ -26,6 +27,12 @@ class HrExpense(models.Model):
     number = fields.Char(
         readonly=True,
         copy=False,
+    )
+    reference = fields.Char(
+        help="""
+        Please put the approval number (NOT the document number) here.
+        Reference should be provided for expenses of purchasing goods, entertainment or business trip.
+        """
     )
 
     @api.multi
