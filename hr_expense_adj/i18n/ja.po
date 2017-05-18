@@ -21,7 +21,7 @@ msgid "Expense"
 msgstr "経費"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
 #: model:ir.ui.view,arch_db:hr_expense_adj.view_expenses_tree
 msgid "Expense Description"
 msgstr "経費内訳等"
@@ -32,7 +32,7 @@ msgid "Expense Report"
 msgstr "経費レポート"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
 #: model:ir.ui.view,arch_db:hr_expense_adj.view_expenses_tree
 msgid "Expense Type"
 msgstr "経費種別"
@@ -43,7 +43,7 @@ msgid "Number"
 msgstr "経費番号"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
 msgid "Please mention here any special situation to note.  e.g. there is no expense for this month, receipt has been lost, etc."
 msgstr "当月に経費が発生しない場合、領収書を紛失した場合などはこちらにその旨入力してください。"
 
@@ -60,7 +60,7 @@ msgid "Reference"
 msgstr "稟議番号"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view
+#: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
 msgid "See explanation by placing the pointer over above label."
 msgstr "←の「経費内訳等」にマウスを置くと、書き方の説明が出ます"
 
