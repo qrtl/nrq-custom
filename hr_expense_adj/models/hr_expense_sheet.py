@@ -26,7 +26,7 @@ class HrExpenseSheet(models.Model):
         )
     submitted = fields.Boolean(
         string='Submitted',
-        compute='_update_ready_to_approve',
+        compute='_update_submitted',
         store=True,
         readonly=True,
         default=False,
@@ -73,6 +73,8 @@ class HrExpenseSheet(models.Model):
             sheet.submitted = False
 
     @api.multi
-    def refuse_expenses(self, reason):
-        super(HrExpenseSheet, self).refuse_expenses(reason)
-        self.submitted = False
+    @api.depends('state')
+    def _update_submitted(self):
+        for sheet in self:
+            if sheet.state != 'submit':
+                sheet.submitted = False
