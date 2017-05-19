@@ -16,7 +16,22 @@ class HrExpenseSheet(models.Model):
     name = fields.Char(
         default=_default_name,
     )
-
+    # change string of "submit" from "Submitted" to "To Be Approved"
+    state = fields.Selection(
+        [('submit', 'To Be Approved'),
+         ('approve', 'Approved'),
+         ('post', 'Posted'),
+         ('done', 'Paid'),
+         ('cancel', 'Refused')],
+        )
+    submitted = fields.Boolean(
+        string='Submitted',
+        compute='_update_ready_to_approve',
+        store=True,
+        readonly=True,
+        default=False,
+        copy=False,
+    )
 
     def _assign_number(self, line):
         context = {'ir_sequence_date': line.date}
@@ -46,3 +61,18 @@ class HrExpenseSheet(models.Model):
         for line in self.expense_line_ids:
             line.number = False
         super(HrExpenseSheet, self).unlink()
+
+    @api.multi
+    def action_submit(self):
+        for sheet in self:
+            sheet.submitted = True
+
+    @api.multi
+    def action_cancel_submission(self):
+        for sheet in self:
+            sheet.submitted = False
+
+    @api.multi
+    def refuse_expenses(self, reason):
+        super(HrExpenseSheet, self).refuse_expenses(reason)
+        self.submitted = False
