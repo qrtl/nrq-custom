@@ -17,6 +17,14 @@ class HrExpenseSheet(models.Model):
         default=_default_name,
     )
 
+    ready_to_approve = fields.Boolean(
+        string='Ready to Approve',
+        compute='_update_ready_to_approve',
+        store=True,
+        readonly=True,
+        default=False,
+        copy=False,
+    )
 
     def _assign_number(self, line):
         context = {'ir_sequence_date': line.date}
@@ -46,3 +54,13 @@ class HrExpenseSheet(models.Model):
         for line in self.expense_line_ids:
             line.number = False
         super(HrExpenseSheet, self).unlink()
+
+    @api.multi
+    def action_approve_ok(self):
+        for inv in self:
+            inv.ready_to_approve = True
+
+    @api.multi
+    def action_approve_ng(self):
+        for inv in self:
+            inv.ready_to_approve = False

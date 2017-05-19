@@ -122,3 +122,29 @@ msgstr "経費内訳等"
 msgid "Product"
 msgstr "経費種別"
 
+#. module: hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
+msgid "OK to Approve"
+msgstr "承認準備済"
+
+#. module: hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
+msgid "NG to Approve"
+msgstr "承認準備取消"
+
+#. module: hr_expense_adj
+#: model:ir.model.fields,field_description:hr_expense_adj.field_hr_expense_sheet_ready_to_approve
+msgid "Ready to Approve"
+msgstr "承認準備済"
+
+#. modules: hr_expense, hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense.view_hr_expense_sheet_form
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
+msgid "Approve"
+msgstr "承認"
+
+#. module: hr_expense
+#: model:ir.model.fields,field_description:hr_expense.field_hr_expense_reference
+msgid "Bill Reference"
+msgstr "稟議番号"
+

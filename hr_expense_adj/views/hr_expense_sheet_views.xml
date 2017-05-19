@@ -6,6 +6,11 @@
         <field name="model">hr.expense.sheet</field>
         <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//button[@name='approve_expense_sheets']" position="replace">
+                <button name="action_approve_ok" type="object" attrs="{'invisible':['|',('ready_to_approve','=',True), ('state', '!=', 'submit')]}" string="OK to Approve" class="oe_highlight" />
+                <button name="approve_expense_sheets" states="submit" string="Approve" type="object" groups="hr_expense.group_hr_expense_user" class="oe_highlight o_expense_sheet_approve" attrs="{'invisible':['|',('ready_to_approve','=',False)]}" />
+                <button name="action_approve_ng" type="object" attrs="{'invisible':['|',('ready_to_approve','=',False), ('state', '!=', 'submit')]}" string="NG to Approve" />
+            </xpath>
             <xpath expr="//tree" position="attributes">
                 <attribute name="default_order">date,id</attribute>
             </xpath>
@@ -23,6 +28,9 @@
             </xpath>
             <xpath expr="//tree/field[@name='total_amount']" position="after">
                 <field name="description"/>
+            </xpath>
+            <xpath expr="//field[@name='journal_id']" position="before">
+                <field name="ready_to_approve"/>
             </xpath>
         </field>
     </record>
