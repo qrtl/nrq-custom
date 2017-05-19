@@ -16,9 +16,16 @@ class HrExpenseSheet(models.Model):
     name = fields.Char(
         default=_default_name,
     )
-
-    ready_to_approve = fields.Boolean(
-        string='Ready to Approve',
+    # change string of "submit" from "Submitted" to "To Be Approved"
+    state = fields.Selection(
+        [('submit', 'To Be Approved'),
+         ('approve', 'Approved'),
+         ('post', 'Posted'),
+         ('done', 'Paid'),
+         ('cancel', 'Refused')],
+        )
+    submitted = fields.Boolean(
+        string='Submitted',
         compute='_update_ready_to_approve',
         store=True,
         readonly=True,
@@ -56,11 +63,16 @@ class HrExpenseSheet(models.Model):
         super(HrExpenseSheet, self).unlink()
 
     @api.multi
-    def action_approve_ok(self):
-        for inv in self:
-            inv.ready_to_approve = True
+    def action_submit(self):
+        for sheet in self:
+            sheet.submitted = True
 
     @api.multi
-    def action_approve_ng(self):
-        for inv in self:
-            inv.ready_to_approve = False
+    def action_cancel_submission(self):
+        for sheet in self:
+            sheet.submitted = False
+
+    @api.multi
+    def refuse_expenses(self, reason):
+        super(HrExpenseSheet, self).refuse_expenses(reason)
+        self.submitted = False

@@ -65,6 +65,11 @@ msgid "See explanation by placing the pointer over above label."
 msgstr "←の「経費内訳等」にマウスを置くと、書き方の説明が出ます"
 
 #. module: hr_expense_adj
+#: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
+msgid "Submit"
+msgstr "申請"
+
+#. module: hr_expense_adj
 #: model:ir.model,name:hr_expense_adj.model_ir_sequence
 msgid "ir.sequence"
 msgstr "ir.sequence"
@@ -123,19 +128,14 @@ msgid "Product"
 msgstr "経費種別"
 
 #. module: hr_expense_adj
-#: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
-msgid "OK to Approve"
-msgstr "承認準備済"
+#: model:ir.model.fields,field_description:hr_expense_adj.field_hr_expense_sheet_submitted
+msgid "Submitted"
+msgstr "申請済"
 
 #. module: hr_expense_adj
 #: model:ir.ui.view,arch_db:hr_expense_adj.view_hr_expense_sheet_form
-msgid "NG to Approve"
-msgstr "承認準備取消"
-
-#. module: hr_expense_adj
-#: model:ir.model.fields,field_description:hr_expense_adj.field_hr_expense_sheet_ready_to_approve
-msgid "Ready to Approve"
-msgstr "承認準備済"
+msgid "Cancel Submission"
+msgstr "申請取消"
 
 #. modules: hr_expense, hr_expense_adj
 #: model:ir.ui.view,arch_db:hr_expense.view_hr_expense_sheet_form
@@ -148,3 +148,8 @@ msgstr "承認"
 msgid "Bill Reference"
 msgstr "稟議番号"
 
+#. module: hr_expense
+#: selection:hr.expense.sheet,state:0
+#: model:mail.message.subtype,name:hr_expense.mt_expense_confirmed
+msgid "To Be Approved"
+msgstr "未承認"
