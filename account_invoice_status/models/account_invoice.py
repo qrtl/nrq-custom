@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016 Rooms For (Hong Kong) Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2016-2017 Quartile Limited
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import api, models, fields
 
@@ -15,6 +15,13 @@ class AccountInvoice(models.Model):
         readonly=True,
         default=False,
         copy=False,
+    )
+    # make the field editable when status is 'open'
+    comment = fields.Text(
+        states={'draft': [('readonly', False)],
+                'proforma': [('readonly', False)],
+                'proforma2': [('readonly', False)],
+                'open': [('readonly', False)]}
     )
 
 
