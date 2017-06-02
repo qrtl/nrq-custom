@@ -41,4 +41,8 @@ msgstr "検証準備済"
 msgid "Validate"
 msgstr "検証"
 
-
+#. module: account
+#: code:addons/account/static/src/xml/account_reconciliation.xml:150
+#: code:addons/account/static/src/xml/account_reconciliation.xml:266
+msgid "Account"
+msgstr "金額"
