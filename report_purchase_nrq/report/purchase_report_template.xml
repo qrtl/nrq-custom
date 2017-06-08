@@ -109,7 +109,7 @@
     <report
         id="report_purchase_order"
         model="purchase.order"
-        string="Purchase Order (NQR)"
+        string="Purchase Order (NRQ)"
         name="report_purchase_nrq.report_purchaseorder"
         file="report_purchase_nrq.report_purchaseorder"
         report_type="qweb-pdf"/>
