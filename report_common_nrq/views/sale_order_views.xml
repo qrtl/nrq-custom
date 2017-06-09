@@ -12,5 +12,49 @@
             </xpath>
         </field>
     </record>
+
+     <record id="sale_order_quatation_tree" model="ir.ui.view">
+        <field name="name">sale_order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="doc_title"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_quatation_filter" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.quotation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="doc_title"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_tree" model="ir.ui.view">
+        <field name="name">sale_order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="doc_title"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_filter" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="doc_title"/>
+            </xpath>
+        </field>
+    </record>
 </data>
 </odoo>
