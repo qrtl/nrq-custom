@@ -31,9 +31,17 @@ class HrExpense(models.Model):
     reference = fields.Char(
         help="""
         Please put the approval number (NOT the document number) here.
-        Reference should be provided for expenses of purchasing goods, entertainment or business trip.
+        Reference should be provided for expenses of purchasing goods,
+        entertainment or business trip.
         """
     )
+    # just to assign a compute method as hiding account_id in view nullifies
+    # the effect of standard _onchange_product_id method
+    account_id = fields.Many2one(
+        compute='_compute_account_id',
+        store=True,
+    )
+
 
     @api.multi
     def submit_expenses(self):
@@ -48,3 +56,12 @@ class HrExpense(models.Model):
         if 'sheet_id' in vals and not vals.get('sheet_id'):
             vals['number'] = False
         return super(HrExpense, self).write(vals)
+
+    @api.multi
+    @api.depends('product_id')
+    def _compute_account_id(self):
+        for exp in self:
+            account = exp.product_id.product_tmpl_id._get_product_accounts()[
+                'expense']
+            if account:
+                exp.account_id = account

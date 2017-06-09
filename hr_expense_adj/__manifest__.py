@@ -9,7 +9,7 @@
 * Adjust expense tree view fields
 * Propose a default value in expense report summary field
     """,
-    "version": "10.0.1.2.0",
+    "version": "10.0.1.2.1",
     "category": "HR",
     "website": "https://www.odoo-asia.com/",
     "author": "Quartile Limited",
