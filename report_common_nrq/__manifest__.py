@@ -4,7 +4,7 @@
 {
     "name": "Report Common",
     "summary": "",
-    "version": "10.0.1.3.0",
+    "version": "10.0.1.4.0",
     "category": "Uncategorized",
     "website": "https://www.odoo-asia.com/",
     "author": "Rooms For (Hong Kong) Limited T/A OSCG",
