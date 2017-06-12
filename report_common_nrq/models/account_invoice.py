@@ -20,16 +20,6 @@ class ResPartner(models.Model):
         for invoice in self:
             invoice.delivery_note = invoice.partner_id.delivery_note
 
-    #@api.onchange('origin')
-    #def onchange_reference(self):
-    #    for invoice in self:
-    #        if invoice.origin:
-    #            purchase_order = self.env['purchase.order'].search([('name', '=', invoice.origin)])
-    #            if purchase_order:
-    #                invoice.doc_title = purchase_order.doc_title
-    #               invoice.reference =  purchase_order.partner_ref
-
-
     @api.onchange('invoice_line_ids')
     def _onchange_origin(self):
         res = super(ResPartner, self)._onchange_origin()
