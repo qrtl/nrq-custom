@@ -19,3 +19,16 @@ class ResPartner(models.Model):
     def onchange_partner(self):
         for invoice in self:
             invoice.delivery_note = invoice.partner_id.delivery_note
+
+    @api.onchange('invoice_line_ids')
+    def _onchange_origin(self):
+        purchase_ids = self.invoice_line_ids.mapped('purchase_id')
+        if purchase_ids:
+            self.origin = ', '.join(purchase_ids.mapped('name'))
+            self.doc_title = ""
+            for title in purchase_ids.mapped('doc_title'):
+                if title:
+                    if self.doc_title == "":
+                        self.doc_title += title
+                    else:
+                        self.doc_title += ", " + title
