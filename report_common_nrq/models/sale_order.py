@@ -16,38 +16,8 @@ class SaleOrder(models.Model):
         string="Doc Title",
     )
 
-    approval = fields.Boolean(
-        string='Approval',
-        compute='_update_approve',
-        store=True,
-        readonly=True,
-        default=False,
-        copy=False,
-    )
-
     @api.multi
     def _prepare_invoice(self):
         res = super(SaleOrder, self)._prepare_invoice()
         res.update({'doc_title': self.doc_title})
         return res
-
-    @api.multi
-    def write(self, vals):
-        if 'state' in vals:
-            for quotation in self:
-                if quotation.state == "draft" and quotation.approval:
-                    vals['approval'] = True
-                elif quotation.state != "draft":
-                    vals['approval'] = False
-        res = super(SaleOrder, self).write(vals)
-        return res
-
-    @api.multi
-    def action_approve(self):
-        for inv in self:
-            inv.approval = True
-
-    @api.multi
-    def action_disapprove(self):
-        for inv in self:
-            inv.approval = False
