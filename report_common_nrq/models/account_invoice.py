@@ -22,10 +22,10 @@ class ResPartner(models.Model):
 
     @api.onchange('invoice_line_ids')
     def _onchange_origin(self):
-        res = super(ResPartner, self)._onchange_origin()
         purchase_ids = self.invoice_line_ids.mapped('purchase_id')
-        self.doc_title = ""
         if purchase_ids:
+            self.origin = ', '.join(purchase_ids.mapped('name'))
+            self.doc_title = ""
             for title in purchase_ids.mapped('doc_title'):
                 if title != False:
                     if self.doc_title == "":
