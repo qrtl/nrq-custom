@@ -32,11 +32,15 @@ class SaleOrder(models.Model):
         return res
 
     @api.multi
-    @api.depends('state', 'approval')
-    def _update_approve(self):
-        for inv in self:
-            if inv.state != 'draft':
-                inv.approval == False
+    def write(self, vals):
+        if 'state' in vals:
+            for quotation in self:
+                if quotation.state == "draft" and quotation.approval:
+                    vals['approval'] = True
+                elif quotation.state != "draft":
+                    vals['approval'] = False
+        res = super(SaleOrder, self).write(vals)
+        return res
 
     @api.multi
     def action_approve(self):
