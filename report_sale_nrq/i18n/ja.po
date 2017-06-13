@@ -95,7 +95,3 @@ msgstr "単価"
 msgid "quotation"
 msgstr "見積書"
 
-#. module: report_sale_nrq
-#: model:ir.ui.view,arch_db:report_sale_nrq.report_salequotation_document
-msgid "draft quotation"
-msgstr "ドラフト見積書"

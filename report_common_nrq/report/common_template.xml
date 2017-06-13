@@ -22,7 +22,7 @@
                         <tr>
                             <td>
                                 <t t-if="type == 'invoice'">
-                                    <span>Please find our invoice details as follows. lol</span>
+                                    <span>Please find our invoice details as follows.</span>
                                 </t>
                                 <t t-if="type == 'deliverynote'">
                                     <span>Please find our delivery details as follows.</span>
