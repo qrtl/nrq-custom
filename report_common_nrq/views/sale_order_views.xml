@@ -6,9 +6,20 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_confirm' and @states='draft']" position="replace"/>
+            <xpath expr="//button[@name='action_confirm' and @states='sent']" position="replace"/>
+            <xpath expr="//button[@name='print_quotation']" position="after">
+                <button name="action_approve" type="object" attrs="{'invisible':['|',('approval','=',True), ('state', 'in', ['sale', 'cancel', 'done'])]}" string="Approve" class="oe_highlight" groups="sales_team.group_sale_manager"/>
+                <button name="action_confirm" attrs="{'invisible': ['|', ('approval','=', False), ('state', '!=', 'sent')]}" string="Confirm Sale" class="btn-primary o_sale_confirm" type="object"/>
+                <button name="action_confirm" attrs="{'invisible': ['|', ('approval','=', False), ('state', '!=', 'draft')]}" string="Confirm Sale" class="o_sale_confirm" type="object"/>
+                <button name="action_disapprove" type="object" attrs="{'invisible':['|',('approval','=',False), ('state', 'in', ['sale', 'cancel', 'done'])]}" string="Disapprove" groups="sales_team.group_sale_manager"/>
+            </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <field name="show_tax"/>
                 <field name="doc_title"/>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="before">
+                <field name="approval" states="draft,sent"/>
             </xpath>
         </field>
     </record>
