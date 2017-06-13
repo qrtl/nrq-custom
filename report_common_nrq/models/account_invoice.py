@@ -27,7 +27,7 @@ class ResPartner(models.Model):
             self.origin = ', '.join(purchase_ids.mapped('name'))
             self.doc_title = ""
             for title in purchase_ids.mapped('doc_title'):
-                if title != False:
+                if title:
                     if self.doc_title == "":
                         self.doc_title += title
                     else:
