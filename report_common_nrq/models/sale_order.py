@@ -35,9 +35,7 @@ class SaleOrder(models.Model):
     @api.depends('state', 'approval')
     def _update_approve(self):
         for inv in self:
-            if inv.state == 'sent' and inv.approval:
-                inv.approval == True
-            elif inv.state != 'draft':
+            if inv.state != 'draft':
                 inv.approval == False
 
     @api.multi

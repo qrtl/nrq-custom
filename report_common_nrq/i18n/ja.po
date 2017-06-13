@@ -365,3 +365,14 @@ msgstr "Website:"
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "ZIP:"
 msgstr "〒"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_sale_order_approval
+msgid "Approval"
+msgstr "承認済"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.view_order_form
+msgid "Disapprove"
+msgstr "承認取消"
+
