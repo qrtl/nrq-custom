@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016 Rooms For (Hong Kong) Limited T/A OSCG
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2016-2017 Quartile Limited
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Sales Document Print",
     "summary": "",
     "version": "10.0.1.1.0",
     "category": "Sales",
     "website": "https://www.odoo-asia.com/",
-    "author": "Rooms For (Hong Kong) Limited T/A OSCG",
-    "license": "AGPL-3",
+    "author": "Quartile Limited",
+    "license": "LGPL-3",
     "application": False,
     "installable": True,
     "pre_init_hook": "",
