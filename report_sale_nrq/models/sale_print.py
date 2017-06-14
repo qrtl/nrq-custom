@@ -10,6 +10,7 @@ class SalePrint(models.Model):
 
     @api.multi
     def print_quotation(self):
-        self.filtered(lambda s: s.state == 'draft').write({'state': 'sent'})
+        self.filtered(lambda s: s.state == 'draft').write(
+            {'state': 'sent'})
         return self.env['report'].get_action(
             self, 'report_sale_nrq.report_salequotation')
