@@ -31,4 +31,15 @@
         file="report_account_nrq.report_deliverynote"
         report_type="qweb-pdf" />
 
+    <report
+            id="account.account_invoice_action_report_duplicate"
+            model="account.invoice"
+            string="Duplicates"
+            report_type="qweb-pdf"
+            menu="False"
+            name="account.account_invoice_report_duplicate_main"
+            file="account.report_invoice_duplicate"
+            attachment_use="False"
+        />
+
 </odoo>

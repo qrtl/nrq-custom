@@ -4,7 +4,7 @@
 {
     "name": "Sales Document Print",
     "summary": "",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.1.0",
     "category": "Sales",
     "website": "https://www.odoo-asia.com/",
     "author": "Rooms For (Hong Kong) Limited T/A OSCG",
