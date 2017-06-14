@@ -5,11 +5,11 @@
 from odoo import api, fields, models
 
 
-class Quotation(models.Model):
+class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     approval = fields.Boolean(
-        string='Approval',
+        string='Approved',
         compute='_update_approve',
         store=True,
         readonly=True,
@@ -25,7 +25,7 @@ class Quotation(models.Model):
                     vals['approval'] = True
                 elif quote.state != "draft":
                     vals['approval'] = False
-        res = super(Quotation, self).write(vals)
+        res = super(SaleOrder, self).write(vals)
         return res
 
     @api.multi

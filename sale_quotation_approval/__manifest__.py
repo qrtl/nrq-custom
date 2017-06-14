@@ -5,7 +5,7 @@
     "name": "Quotation Approval",
     "summary": "",
     "version": "10.0.1.0.0",
-    "category": "Uncategorized",
+    "category": "Sales",
     "website": "https://www.odoo-asia.com/",
     "author": "Quartile Limited",
     "license": "LGPL-3",
@@ -23,7 +23,7 @@
         "sale",
     ],
     "data": [
-        'views/quotation_views.xml',
+        'views/sale_order_views.xml',
     ],
     "demo": [
     ],

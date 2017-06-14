@@ -37,6 +37,6 @@ msgstr "受注"
 
 #. module: sale_quotation_approval
 #: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_approval
-msgid "Approval"
+msgid "Approved"
 msgstr "承認済"
 
