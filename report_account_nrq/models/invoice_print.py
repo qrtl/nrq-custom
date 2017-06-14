@@ -4,6 +4,7 @@
 
 from odoo import api, fields, models
 
+
 class InvoicePrint(models.Model):
     _inherit = 'account.invoice'
 

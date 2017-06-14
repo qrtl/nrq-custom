@@ -4,6 +4,7 @@
 
 from odoo import api, fields, models
 
+
 class SalePrint(models.Model):
     _inherit = 'sale.order'
 
