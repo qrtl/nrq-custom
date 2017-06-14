@@ -145,4 +145,13 @@
         file="report_sale_nrq.report_salequotation"
         report_type="qweb-pdf"/>
 
+    <report
+        id="sale.report_sale_order"
+        string="Quotation / Order"
+        model="sale.order"
+        report_type="qweb-pdf"
+        menu="False"
+        file="sale.report_saleorder"
+        name="sale.report_saleorder"/>
+
 </odoo>

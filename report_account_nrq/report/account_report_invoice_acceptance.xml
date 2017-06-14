@@ -44,4 +44,14 @@
         file="report_account_nrq.report_invoice_acceptance"
         attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
 
+    <report
+        id="account.account_invoices"
+        model="account.invoice"
+        string="Invoices"
+        report_type="qweb-pdf"
+        menu="False"
+        name="account.report_invoice"
+        file="account.report_invoice"
+        attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
+
 </odoo>
