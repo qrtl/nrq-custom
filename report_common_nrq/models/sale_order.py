@@ -16,7 +16,6 @@ class SaleOrder(models.Model):
         string="Doc Title",
     )
 
-
     @api.multi
     def _prepare_invoice(self):
         res = super(SaleOrder, self)._prepare_invoice()
