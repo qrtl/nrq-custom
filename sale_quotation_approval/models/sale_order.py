@@ -10,7 +10,6 @@ class SaleOrder(models.Model):
 
     approval = fields.Boolean(
         string='Approved',
-        store=True,
         readonly=True,
         default=False,
         copy=False,
