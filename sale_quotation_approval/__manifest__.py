@@ -21,9 +21,11 @@
     },
     "depends": [
         "sale",
+        "report_sale_nrq",
     ],
     "data": [
         'views/sale_order_views.xml',
+        'report/sale_report.xml',
     ],
     "demo": [
     ],
