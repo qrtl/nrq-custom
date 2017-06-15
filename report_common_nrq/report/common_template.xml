@@ -495,7 +495,7 @@
                                 <span>Delivery Note</span>
                             </t>
                             <t t-if="type == 'quotation'">
-                                <span>Quotation</span>
+                                <span name='quotation'>Quotation</span>
                             </t>
                             <t t-if="type == 'purchase'">
                                 <span>Purchase Order</span>
