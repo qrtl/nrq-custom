@@ -69,13 +69,8 @@ msgstr "<span>注文書</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
-msgid "<span>Quotation</span>"
-msgstr "<span>見積書</span>"
-
-#. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
-msgid "<span>Draft Quotation</span>"
-msgstr "<span>ドラフト見積書</span>"
+msgid "<span name='quotation'>Quotation</span>"
+msgstr "<span name='quotation'>見積書</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout

@@ -495,8 +495,7 @@
                                 <span>Delivery Note</span>
                             </t>
                             <t t-if="type == 'quotation'">
-                                <t t-if="doc.approval == True"><span>Quotation</span></t>
-                                <t t-if="doc.approval == False"><span>Draft Quotation</span></t>
+                                <span name='quotation'>Quotation</span>
                             </t>
                             <t t-if="type == 'purchase'">
                                 <span>Purchase Order</span>

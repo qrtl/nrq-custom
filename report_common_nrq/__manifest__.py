@@ -24,7 +24,6 @@
         "sale",
         "purchase",
         "base_partner_number",
-        "sale_quotation_approval",
     ],
     "data": [
         'data/res_partner_data.xml',

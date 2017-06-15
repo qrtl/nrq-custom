@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="external_layout_nrq" inherit_id="report_common_nrq.external_layout_nrq">
+        <xpath expr="//span[@name='quotation']" position="replace">
+            <t t-if="doc.approval == True or doc.state in ['sale', 'done']"><span>Quotation</span></t>
+            <t t-if="doc.approval == False and doc.state not in ['sale', 'done']"><span>Draft Quotation</span></t>
+        </xpath>
+    </template>
+</odoo>
