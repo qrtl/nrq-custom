@@ -15,13 +15,16 @@ class SaleOrder(models.Model):
         readonly=True,
         default=False,
         copy=False,
+        track_visibility='onchange',
     )
 
     @api.multi
     def write(self, vals):
         if 'state' in vals:
             for quote in self:
-                if (quote.state == "draft" and quote.approval) or vals['state'] == "sale":
+                if vals['state'] == "cancel":
+                    vals['approval'] = False
+                elif (quote.state == "draft" and quote.approval) or vals['state'] in ["sale", "done"]:
                     vals['approval'] = True
                 elif quote.state != "draft":
                     vals['approval'] = False
