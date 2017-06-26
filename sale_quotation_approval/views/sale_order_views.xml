@@ -16,6 +16,10 @@
             <xpath expr="//field[@name='date_order']" position="before">
                 <field name="approval" states="draft,sent"/>
             </xpath>
+            <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="attrs">{'readonly':['|', ('approval', '=', True), ('state', 'in', ('done','cancel'))]}</attribute>
+            </xpath>
+
         </field>
     </record>
 
