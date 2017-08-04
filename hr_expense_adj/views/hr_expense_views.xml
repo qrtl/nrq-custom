@@ -52,6 +52,7 @@
                         <group>
                             <field name="date"/>
                             <field name="product_id" string="Expense Type" context="{'default_can_be_expensed': 1}"/>
+                            <field name="employee_id" groups="hr_expense.group_hr_expense_manager"/>
                             <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
                             <field name="reference" string="Reference"/>
                         </group>
@@ -70,9 +71,6 @@
                         <field name="name" string="Expense Description" placeholder="See explanation by placing the pointer over above label."/>
                     </group>
                     <group invisible="1">
-                        <group>
-                            <field name="employee_id"/>
-                        </group>
                         <group>
                             <field name="currency_id" groups="base.group_multi_currency"/>
                         </group>
