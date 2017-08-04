@@ -52,7 +52,7 @@
                         <group>
                             <field name="date"/>
                             <field name="product_id" string="Expense Type" context="{'default_can_be_expensed': 1}"/>
-                            <field name="employee_id" groups="hr_expense.group_hr_expense_manager"/>
+                            <field name="employee_id"/>
                             <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
                             <field name="reference" string="Reference"/>
                         </group>
