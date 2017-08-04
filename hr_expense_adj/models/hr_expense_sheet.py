@@ -23,7 +23,7 @@ class HrExpenseSheet(models.Model):
          ('post', 'Posted'),
          ('done', 'Paid'),
          ('cancel', 'Refused')],
-        )
+    )
     submitted = fields.Boolean(
         string='Submitted',
         compute='_update_submitted',

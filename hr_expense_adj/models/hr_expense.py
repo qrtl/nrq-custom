@@ -42,7 +42,6 @@ class HrExpense(models.Model):
         store=True,
     )
 
-
     @api.multi
     def submit_expenses(self):
         date = max(line.date for line in self)
