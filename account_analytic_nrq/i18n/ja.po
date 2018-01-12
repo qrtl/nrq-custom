@@ -24,5 +24,3 @@ msgstr "分析行"
 #: model:ir.model.fields,field_description:account_analytic_nrq.field_account_analytic_line_move_partner_id
 msgid "Move Line Partner"
 msgstr "仕訳明細取引先"
-
-

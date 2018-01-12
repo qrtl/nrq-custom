@@ -14,5 +14,3 @@ class AccountAnalyticLine(models.Model):
         readonly=True,
         store=True,
     )
-
-
