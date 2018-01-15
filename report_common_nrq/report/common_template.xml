@@ -147,7 +147,7 @@
                             <t t-if="doc.date_invoice">
                                 <t t-if="doc.partner_id.lang == 'ja_JP'">
                                     <td style="vertical-align:bottom; width:150px;">Date: </td>
-                                    <td style="vertical-align:bottom;">
+                                    <td class="text-center" style="vertical-align:bottom; border-bottom: 1px solid black;">
                                         <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY'}"/>年
                                         <span t-field="doc.date_invoice" t-field-options="{'format':'MM'}"/>月
                                         <span t-field="doc.date_invoice" t-field-options="{'format':'dd'}"/>日<br/>
@@ -155,7 +155,7 @@
                                 </t>
                                 <t t-if="doc.partner_id.lang != 'ja_JP'">
                                     <td style="vertical-align:bottom; width:150px;">Acceptance Date: </td>
-                                    <td style="vertical-align:bottom;">
+                                    <td class="text-center" style="vertical-align:bottom; border-bottom: 1px solid black;">
                                         <span t-field="doc.date_invoice" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
                                     </td>
                                 </t>
