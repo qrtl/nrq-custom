@@ -144,10 +144,28 @@
                     </p>
                     <table style="margin-bottom:20px;">
                         <tr height="60">
-                            <td style="vertical-align:bottom; width:100;">Date: </td><td width="200" style="border-bottom: 1px solid black;"></td>
+                            <t t-if="doc.date_invoice">
+                                <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                    <td style="vertical-align:bottom; width:150px;">Date: </td>
+                                    <td style="vertical-align:bottom;">
+                                        <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY'}"/>年
+                                        <span t-field="doc.date_invoice" t-field-options="{'format':'MM'}"/>月
+                                        <span t-field="doc.date_invoice" t-field-options="{'format':'dd'}"/>日<br/>
+                                    </td>
+                                </t>
+                                <t t-if="doc.partner_id.lang != 'ja_JP'">
+                                    <td style="vertical-align:bottom; width:150px;">Acceptance Date: </td>
+                                    <td style="vertical-align:bottom;">
+                                        <span t-field="doc.date_invoice" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
+                                    </td>
+                                </t>
+                            </t>
+                            <t t-if="not doc.date_invoice">
+                                <td style="vertical-align:bottom; width:150px;">Date: </td><td width="200" style="border-bottom: 1px solid black;"></td>
+                            </t>
                         </tr>
                         <tr height="60">
-                            <td style="vertical-align:bottom; width:100;">Signature: </td><td width="200" style="border-bottom: 1px solid black;"></td>
+                            <td style="vertical-align:bottom; width:150px;">Signature/Seal: </td><td width="200" style="border-bottom: 1px solid black;"></td>
                         </tr>
                     </table>
                 </td>
@@ -407,19 +425,6 @@
                         </t>
                         <t t-if="type == 'acceptance'">
                             <table>
-                                <tr>
-                                    <td style="width:120;">Acceptance Date: </td>
-                                    <td>
-                                        <t t-if="doc.partner_id.lang == 'ja_JP'">
-                                            <span t-field="doc.date_invoice" t-field-options="{'format':'YYYY'}"/>年
-                                            <span t-field="doc.date_invoice" t-field-options="{'format':'MM'}"/>月
-                                            <span t-field="doc.date_invoice" t-field-options="{'format':'dd'}"/>日<br/>
-                                        </t>
-                                        <t t-if="doc.partner_id.lang != 'ja_JP'">
-                                            <span t-field="doc.date_invoice" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
-                                        </t>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td style="width:120;">Invoice No.: </td>
                                     <td>

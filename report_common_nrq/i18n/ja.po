@@ -98,7 +98,7 @@ msgid "<strong>Total Amount</strong>"
 msgstr "<strong>合計金額</strong>"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
 msgid "Acceptance Date:"
 msgstr "検収日:"
 
@@ -307,8 +307,8 @@ msgstr "見積書に税を表示する。"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
-msgid "Signature:"
-msgstr "署名:"
+msgid "Signature/Seal:"
+msgstr "署名または確認印:"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
