@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_analytic_profit_loss_analysis, project_parent
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-24 12:24+0000\n"
+"PO-Revision-Date: 2018-01-24 12:24+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model,name:account_analytic_profit_loss_analysis.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "分析勘定"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_pivot
+msgid "Analytic Entries"
+msgstr "分析エントリ"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model,name:account_analytic_profit_loss_analysis.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "分析行"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_project_partner_id
+msgid "Customer"
+msgstr "顧客"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_parent_project_id
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_sale_order_parent_project_id
+msgid "Parent Project"
+msgstr "案件"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_pj_id
+msgid "Related Project"
+msgstr "関連プロジェクト"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model,name:account_analytic_profit_loss_analysis.model_sale_order
+msgid "Sales Order"
+msgstr "受注"
+
+#. module: project_parent
+#: model:ir.model,name:project_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "分析勘定"
+
+#. module: project_parent
+#: model:ir.ui.view,arch_db:project_parent.view_project_parent_project_filter
+msgid "Parent"
+msgstr "親プロジェクト"
+
+#. module: project_parent
+#: model:ir.model.fields,field_description:project_parent.field_account_analytic_account_parent_project_id
+#: model:ir.model.fields,field_description:project_parent.field_project_project_parent_project_id
+msgid "Parent Project"
+msgstr "親プロジェクト"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Past 90 days"
+msgstr "過去90日"
+
