@@ -11,13 +11,8 @@ class AccountAnalyticLine(models.Model):
     pj_id = fields.Many2one(
         'project.project',
         string='Related Project',
-        store=True,
-    )
-    project_partner_id = fields.Many2one(
-        related='pj_id.partner_id',
-        string='Customer',
-        store=True,
-        readonly=True,
+        compute='_compute_pj_id',
+        inverse='_set_account_id',
     )
     parent_project_id = fields.Many2one(
         related='pj_id.parent_project_id',
@@ -26,10 +21,15 @@ class AccountAnalyticLine(models.Model):
         readonly=True,
     )
 
-    @api.model
-    def create(self, vals):
-        res = super(AccountAnalyticLine, self).create(vals)
-        if res.account_id.project_ids:
-            for project in res.account_id.project_ids:
-                res.pj_id = project.id
-                return res
+    @api.multi
+    @api.depends('account_id')
+    def _compute_pj_id(self):
+        for line in self:
+            if line.account_id and line.account_id.project_ids:
+                for project in line.account_id.project_ids:
+                    line.pj_id = project.id
+
+    @api.multi
+    def _set_account_id(self):
+        for line in self:
+            line.account_id = line.pj_id.account_id.id

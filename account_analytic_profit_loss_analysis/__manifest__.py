@@ -15,6 +15,7 @@
     "depends": [
         "account",
         "project_parent",
+        "sale_timesheet",
     ],
     "data": [
         "views/account_analytic_line_views.xml",

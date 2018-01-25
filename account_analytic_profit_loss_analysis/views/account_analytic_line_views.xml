@@ -8,7 +8,6 @@
                ref="analytic.view_account_analytic_line_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='account_id']" position="after">
-                <field name="project_partner_id"/>
                 <field name="parent_project_id"/>
             </xpath>
         </field>
@@ -20,7 +19,7 @@
         <field eval="15" name="priority"/>
         <field name="arch" type="xml">
             <pivot string="Analytic Entries" >
-                <field name="project_partner_id" type="row"/>
+                <field name="partner_id" type="row"/>
                 <field name="parent_project_id" type="row"/>
                 <field name="account_id" type="row"/>
                 <field name="date" interval="month" type="col"/>
