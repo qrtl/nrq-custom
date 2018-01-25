@@ -16,11 +16,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_analytic_profit_loss_analysis
-#: model:ir.model,name:account_analytic_profit_loss_analysis.model_account_analytic_account
-msgid "Analytic Account"
-msgstr "分析勘定"
-
-#. module: account_analytic_profit_loss_analysis
 #: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_pivot
 msgid "Analytic Entries"
 msgstr "分析エントリ"
@@ -40,6 +35,11 @@ msgstr "顧客"
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_sale_order_parent_project_id
 msgid "Parent Project"
 msgstr "案件"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Past 90 days"
+msgstr "過去90日"
 
 #. module: account_analytic_profit_loss_analysis
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_pj_id
@@ -66,9 +66,3 @@ msgstr "親プロジェクト"
 #: model:ir.model.fields,field_description:project_parent.field_project_project_parent_project_id
 msgid "Parent Project"
 msgstr "親プロジェクト"
-
-#. module: account_analytic_profit_loss_analysis
-#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
-msgid "Past 90 days"
-msgstr "過去90日"
-
