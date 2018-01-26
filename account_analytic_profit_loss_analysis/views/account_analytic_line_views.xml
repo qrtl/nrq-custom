@@ -40,4 +40,9 @@
         </field>
     </record>
 
+    <record model="ir.actions.act_window"
+            id="analytic.account_analytic_line_action_entries">
+        <field name="context">{'search_default_past_90_days': 1}</field>
+    </record>
+
 </odoo>
