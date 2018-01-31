@@ -5,7 +5,7 @@
     "name": "Analytic Account Profit and Loss Analysis",
     "summary": "",
     "description": """""",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.0.1",
     "category": "Accounting",
     "website": "https://www.odoo-asia.com/",
     "author": "Quartile Limited",
