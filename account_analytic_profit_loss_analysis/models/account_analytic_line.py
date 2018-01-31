@@ -32,4 +32,4 @@ class AccountAnalyticLine(models.Model):
     @api.multi
     def _set_account_id(self):
         for line in self:
-            line.account_id = line.pj_id.account_id.id
+            line.account_id = line.pj_id.analytic_account_id.id
