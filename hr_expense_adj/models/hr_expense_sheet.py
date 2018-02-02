@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Quartile Limited
+# Copyright 2017-2018 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import models, fields, api
@@ -32,6 +32,12 @@ class HrExpenseSheet(models.Model):
         default=False,
         copy=False,
     )
+    # Overwrite default field definition
+    expense_line_ids = fields.One2many('hr.expense', 'sheet_id',
+                                       string='Expense Lines',
+                                       states={'done': [('readonly', True)],
+                                               'post': [('readonly', True)]},
+                                       copy=False)
 
     def _assign_number(self, line):
         context = {'ir_sequence_date': line.date}
