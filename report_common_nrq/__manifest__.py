@@ -4,21 +4,12 @@
 {
     "name": "Report Common",
     "summary": "",
-    "version": "10.0.1.6.0",
+    "version": "10.0.1.7.0",
     "category": "Uncategorized",
     "website": "https://www.odoo-asia.com/",
     "author": "Quartile Limited",
     "license": "AGPL-3",
-    "application": False,
     "installable": True,
-    "pre_init_hook": "",
-    "post_init_hook": "",
-    "post_load": "",
-    "uninstall_hook": "",
-    "external_dependencies": {
-        "python": [],
-        "bin": [],
-    },
     "depends": [
         "account",
         "sale",
@@ -33,9 +24,5 @@
         'views/purchase_order_views.xml',
         'views/account_invoice_views.xml',
         'report/common_template.xml',
-    ],
-    "demo": [
-    ],
-    "qweb": [
     ]
 }
