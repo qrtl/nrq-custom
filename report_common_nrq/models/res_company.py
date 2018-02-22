@@ -17,12 +17,34 @@ class Company(models.Model):
         translate=True,
     )
     company_address = fields.Text(
-        "Company Address for Reports",
+        "Address for Reports",
         translate=True,
     )
     company_address_alt = fields.Text(
-        "Company Address for Reports (Alt.)",
+        "Address for Reports (Alt.)",
         translate=True,
+    )
+    company_phone = fields.Char(
+        "Phone for Reports",
+        translate=True,
+    )
+    company_phone_alt = fields.Char(
+        "Phone for Reports (Alt.)",
+        translate=True,
+    )
+    company_fax = fields.Char(
+        "Fax for Reports",
+        translate=True,
+    )
+    company_fax_alt = fields.Char(
+        "Fax for Reports (Alt.)",
+        translate=True,
+    )
+    company_website = fields.Char(
+        "Website for Reports",
+    )
+    company_website_alt = fields.Char(
+        "Website for Reports (Alt.)",
     )
     bank_details = fields.Text(
         string="Bank Details",

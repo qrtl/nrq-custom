@@ -66,23 +66,57 @@
                                 <tr height="40px"/>
                             </table>
                             <p>
-                                <strong><span style="font-size:20px" t-field="doc.company_id.name"/></strong>
+                                <strong style="font-size:20px">
+                                    <t t-if="alt != 'true'">
+                                        <span t-field="doc.company_id.company_name"/>
+                                    </t>
+                                    <t t-if="alt == 'true'">
+                                        <span t-field="doc.company_id.company_name_alt"/>
+                                    </t>
+                                </strong>
                             </p>
                             <p>
-                                ZIP: <span t-field="doc.company_id.zip"/><br/>
-                                <span t-field="doc.company_id.street"/><br/>
-                                <span t-field="doc.company_id.street2"/>
+                                <t t-if="alt != 'true'">
+                                    <span t-field="doc.company_id.company_address"/>
+                                </t>
+                                <t t-if="alt == 'true'">
+                                    <span t-field="doc.company_id.company_address_alt"/>
+                                </t>
                             </p>
 
                             <table style="margin-bottom:10px;">
                                 <tr>
-                                    <td style="width:100;">Phone: </td><td><span t-field="doc.company_id.phone"/></td>
+                                    <td style="width:100;">Phone: </td>
+                                    <td>
+                                        <t t-if="alt != 'true'">
+                                            <span t-field="doc.company_id.company_phone"/>
+                                        </t>
+                                        <t t-if="alt == 'true'">
+                                            <span t-field="doc.company_id.company_phone_alt"/>
+                                        </t>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td style="width:100;">Fax: </td><td><span t-field="doc.company_id.fax"/></td>
+                                    <td style="width:100;">Fax: </td>
+                                    <td>
+                                        <t t-if="alt != 'true'">
+                                            <span t-field="doc.company_id.company_fax"/>
+                                        </t>
+                                        <t t-if="alt == 'true'">
+                                            <span t-field="doc.company_id.company_fax_alt"/>
+                                        </t>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td style="width:100;">Website: </td><td><span t-field="doc.company_id.website"/></td>
+                                    <td style="width:100;">Website: </td>
+                                    <td>
+                                        <t t-if="alt != 'true'">
+                                            <span t-field="doc.company_id.company_website"/>
+                                        </t>
+                                        <t t-if="alt == 'true'">
+                                            <span t-field="doc.company_id.company_website_alt"/>
+                                        </t>
+                                    </td>
                                 </tr>
                             </table>
                             <t t-if="type in ('invoice', 'deliveryoder')">
