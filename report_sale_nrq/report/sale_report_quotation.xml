@@ -157,7 +157,7 @@
     <report
         id="report_sale_quotation_alt"
         model="sale.order"
-        string="Quotation Alt."
+        string="Quotation (Alt.)"
         name="report_sale_nrq.report_salequotation_alt"
         file="report_sale_nrq.report_salequotation_alt"
         report_type="qweb-pdf"/>

@@ -126,7 +126,7 @@
     <report
         id="report_purchase_order_alt"
         model="purchase.order"
-        string="Purchase Order Alt."
+        string="Purchase Order (Alt.)"
         name="report_purchase_nrq.report_purchaseorder_alt"
         file="report_purchase_nrq.report_purchaseorder_alt"
         report_type="qweb-pdf"/>

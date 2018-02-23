@@ -58,7 +58,7 @@
     <report
         id="report_account_invoice_acceptance_alt"
         model="account.invoice"
-        string="Invoice Alt."
+        string="Invoice (Alt.)"
         report_type="qweb-pdf"
         name="report_account_nrq.report_invoice_acceptance_alt"
         file="report_account_nrq.report_invoice_acceptance_alt"

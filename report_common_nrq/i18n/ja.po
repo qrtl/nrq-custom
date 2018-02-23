@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-03 00:11+0000\n"
-"PO-Revision-Date: 2017-02-03 00:11+0000\n"
+"POT-Creation-Date: 2018-02-23 11:38+0000\n"
+"PO-Revision-Date: 2018-02-23 11:38+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_users_task_count
+msgid "# Tasks"
+msgstr "タスク数"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
@@ -26,6 +31,11 @@ msgid "<br/>\n"
 "                                    <span>Effective for one month from the date of quotation.</span>"
 msgstr "<br/>\n"
 "                                    <span>見積日より一ヶ月有効</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
+msgid "<span name=\"quotation\">Quotation</span>"
+msgstr "<span name='quotation'>見積書</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.document_footer_layout
@@ -68,11 +78,6 @@ msgid "<span>Purchase Order</span>"
 msgstr "<span>注文書</span>"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.external_layout_nrq
-msgid "<span name='quotation'>Quotation</span>"
-msgstr "<span name='quotation'>見積書</span>"
-
-#. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
 msgid "<span>We have accepted your work listed as follows.</span>"
 msgstr "<span>下記のとおり、検収いたしました。</span>"
@@ -103,14 +108,39 @@ msgid "Acceptance Date:"
 msgstr "検収日:"
 
 #. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_address
+msgid "Address for Reports"
+msgstr "レポート用アドレス"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_address_alt
+msgid "Address for Reports (Alt.)"
+msgstr "レポート用アドレス(旧)"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.view_company_form
+msgid "Alternative Particulars"
+msgstr "旧詳細"
+
+#. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
 msgid "Amount"
 msgstr "金額"
 
 #. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_sale_order_approval
+msgid "Approved"
+msgstr "承認済"
+
+#. module: report_common_nrq
 #: model:ir.model.fields,field_description:report_common_nrq.field_res_company_bank_details
 msgid "Bank Details"
 msgstr "銀行詳細"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_bank_details_alt
+msgid "Bank Details (Alt.)"
+msgstr "銀行詳細(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.document_footer_layout
@@ -138,12 +168,28 @@ msgid "Company Chop Image"
 msgstr "社印画像"
 
 #. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_chop_alt
+msgid "Company Chop Image (Alt.)"
+msgstr "社印画像(旧)"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_name
+msgid "Company Name for Reports"
+msgstr "レポート用社名"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_name_alt
+msgid "Company Name for Reports (Alt.)"
+msgstr "レポート用社名(旧)"
+
+#. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
 msgid "Date:"
 msgstr "日付:"
 
 #. module: report_common_nrq
 #: model:ir.model.fields,field_description:report_common_nrq.field_account_invoice_delivery_note
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_users_delivery_note
 msgid "Delivery Note"
 msgstr "納品書"
 
@@ -170,9 +216,14 @@ msgid "Due Date:"
 msgstr "お支払期限:"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
-msgid "Email:"
-msgstr "Email:"
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_fax
+msgid "Fax for Reports"
+msgstr "レポート用FAX"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_fax_alt
+msgid "Fax for Reports (Alt.)"
+msgstr "レポート用FAX(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
@@ -202,6 +253,11 @@ msgstr "項目"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.view_company_form
+msgid "Main Particulars"
+msgstr "現詳細"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.view_company_form
 msgid "Miscellaneous"
 msgstr "その他"
 
@@ -226,6 +282,21 @@ msgid "Partner"
 msgstr "取引先"
 
 #. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_users_partner_no
+msgid "Partner Number"
+msgstr "取引先番号"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_phone
+msgid "Phone for Reports"
+msgstr "レポート用電話番号"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_phone_alt
+msgid "Phone for Reports (Alt.)"
+msgstr "レポート用電話番号(旧)"
+
+#. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Phone:"
 msgstr "Phone:"
@@ -234,11 +305,6 @@ msgstr "Phone:"
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
 msgid "Price"
 msgstr "金額"
-
-#. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
-msgid "Total Amount:"
-msgstr "合計金額:"
 
 #. module: report_common_nrq
 #: model:ir.model,name:report_common_nrq.model_purchase_order
@@ -296,6 +362,11 @@ msgid "Salesperson:"
 msgstr "営業担当:"
 
 #. module: report_common_nrq
+#: model:ir.model.fields,help:report_common_nrq.field_res_users_delivery_note
+msgid "Select if delivery note should be printed together with invoice."
+msgstr "請求書とともに納品書を印刷する場合は選択してください。"
+
+#. module: report_common_nrq
 #: model:ir.model.fields,field_description:report_common_nrq.field_sale_order_show_tax
 msgid "Show Tax"
 msgstr "税を表示"
@@ -313,12 +384,17 @@ msgstr "署名または確認印:"
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
 msgid "Source Document"
-msgstr "見積番号"
+msgstr "参照元"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
 msgid "Source Document:"
 msgstr "見積番号:"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_users_task_ids
+msgid "Tasks"
+msgstr "タスク"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
@@ -330,6 +406,11 @@ msgstr "税"
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
 msgid "Title:"
 msgstr "件名:"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
+msgid "Total Amount:"
+msgstr "合計金額:"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
@@ -352,13 +433,17 @@ msgid "Vendor Refund"
 msgstr "仕入先返金"
 
 #. module: report_common_nrq
-#: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
-msgid "Website:"
-msgstr "Website:"
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_website
+msgid "Website for Reports"
+msgstr "レポート用ウェブサイト"
+
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_website_alt
+msgid "Website for Reports (Alt.)"
+msgstr "レポート用ウェブサイト(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
-msgid "ZIP:"
-msgstr "〒"
-
+msgid "Website:"
+msgstr "Website:"
 

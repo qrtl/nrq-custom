@@ -45,7 +45,7 @@
     <report
         id="report_delivery_note_alt"
         model="account.invoice"
-        string="Delivery Note Alt."
+        string="Delivery Note (Alt.)"
         name="report_account_nrq.report_deliverynote_alt"
         file="report_account_nrq.report_deliverynote_alt"
         report_type="qweb-pdf" />
