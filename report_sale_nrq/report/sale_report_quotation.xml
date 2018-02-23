@@ -149,7 +149,7 @@
     <report
         id="report_sale_quotation"
         model="sale.order"
-        string="Quotation (NRQ)"
+        string="Quotation"
         name="report_sale_nrq.report_salequotation"
         file="report_sale_nrq.report_salequotation"
         report_type="qweb-pdf"/>
@@ -157,7 +157,7 @@
     <report
         id="report_sale_quotation_alt"
         model="sale.order"
-        string="Quotation Alt. (NRQ)"
+        string="Quotation Alt."
         name="report_sale_nrq.report_salequotation_alt"
         file="report_sale_nrq.report_salequotation_alt"
         report_type="qweb-pdf"/>

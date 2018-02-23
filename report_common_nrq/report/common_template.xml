@@ -59,7 +59,12 @@
                 <td width="260">
                     <table>
                         <div class="background-image" style="position:absolute; opacity:0.6; right:100px; padding:0px; background-repeat:no-repeat;">
-                            <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;" align="top"/>
+                            <t t-if="alt != 'true'">
+                                <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;" align="top"/>
+                            </t>
+                            <t t-if="alt == 'true'">
+                                <img t-if="doc.company_id.chop_alt" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop_alt" style="max-height: 120px;" align="top"/>
+                            </t>
                         </div>
                         <tr>
                             <table>
@@ -153,7 +158,12 @@
                     <table class="table">
                         <tr>
                             <td style="font-size:16px">
-                                <span t-field="doc.company_id.name"/>
+                                <t t-if="alt != 'true'">
+                                    <span t-field="doc.company_id.company_name"/>
+                                </t>
+                                <t t-if="alt == 'true'">
+                                    <span t-field="doc.company_id.company_name_alt"/>
+                                </t>
                                 <t t-if="doc.partner_id.lang == 'ja_JP'">
                                     <span style="position:relative; left:20px;" t-field="doc.company_id.partner_id.title"/>
                                 </t>
@@ -391,21 +401,44 @@
                 </div>
             </div>
             <div style="font-size:16px">
-                <p t-if="doc.company_id.bank_details">
-                    Bank Details: <span t-field="doc.company_id.bank_details"/>
-                </p>
-                <p t-if="doc.date_due">
-                    Due Date:
-                    <t t-if="doc.partner_id.lang == 'ja_JP'">
-                        <span t-field="doc.date_due" t-field-options="{'format':'YYYY'}"/>年
-                        <span t-field="doc.date_due" t-field-options="{'format':'MM'}"/>月
-                        <span t-field="doc.date_due" t-field-options="{'format':'dd'}"/>日
-                    </t>
-                    <t t-if="doc.partner_id.lang != 'ja_JP'">
-                        <span t-field="doc.date_due" t-field-options="{'format':'MMM dd, YYYY'}"/>
-                    </t>
-                    <span style="position:relative; left:20px; font-size:14px">Bank charges shall be borne by the customer.</span>
-                </p>
+                <t t-if="alt != 'true'">
+                    <table style="margin-bottom:10px;">
+                        <tr>
+                            <td style="width:120;">Bank Details: </td>
+                            <td>
+                                <span t-field="doc.company_id.bank_details"/>
+                            </td>
+                        </tr>
+                    </table>
+                </t>
+                <t t-if="alt == 'true'">
+                    <table style="margin-bottom:10px;">
+                        <tr>
+                            <td style="width:120;">Bank Details: </td>
+                            <td>
+                                <span t-field="doc.company_id.bank_details_alt"/>
+                            </td>
+                        </tr>
+                    </table>
+                </t>
+                <t t-if="doc.date_due">
+                    <table style="margin-bottom:10px;">
+                        <tr>
+                            <td style="width:120;">Due Date: </td>
+                            <td style="width:120;">
+                                <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                    <span t-field="doc.date_due" t-field-options="{'format':'YYYY'}"/>年
+                                    <span t-field="doc.date_due" t-field-options="{'format':'MM'}"/>月
+                                    <span t-field="doc.date_due" t-field-options="{'format':'dd'}"/>日
+                                </t>
+                                <t t-if="doc.partner_id.lang != 'ja_JP'">
+                                    <span t-field="doc.date_due" t-field-options="{'format':'MMM dd, YYYY'}"/>
+                                </t>
+                                <span style="position:relative; left:20px; font-size:14px">Bank charges shall be borne by the customer.</span>
+                            </td>
+                        </tr>
+                    </table>
+                </t>
             </div>
             <div class="row zero_min_height">
                 <div class="col-xs-12">
