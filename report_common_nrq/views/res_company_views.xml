@@ -8,14 +8,30 @@
         <field name="arch" type="xml">
             <xpath expr="//page[1]" position="after">
                 <page string="Miscellaneous">
-                    <group>
+                    <group name="misc_main" string="Main Particulars">
+                        <field name="company_name"/>
+                        <field name="company_address"/>
+                        <field name="company_phone"/>
+                        <field name="company_fax"/>
+                        <field name="company_website"/>
                         <field name="bank_details"/>
+                    </group>
+                    <group name="misc_alt" string="Alternative Particulars">
+                        <field name="company_name_alt"/>
+                        <field name="company_address_alt"/>
+                        <field name="company_phone_alt"/>
+                        <field name="company_fax_alt"/>
+                        <field name="company_website_alt"/>
+                        <field name="bank_details_alt"/>
                     </group>
                 </page>
                 <page string="Company Chop" groups="base.group_system">
                     <group>
                         <group>
                             <field name="chop" widget='image' class="oe_avatar"/>
+                        </group>
+                        <group>
+                            <field name="chop_alt" widget='image' class="oe_avatar"/>
                         </group>
                     </group>
                 </page>
