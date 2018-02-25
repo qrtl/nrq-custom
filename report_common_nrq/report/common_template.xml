@@ -58,14 +58,16 @@
                 <td width="50"></td>
                 <td width="260">
                     <table>
-                        <div class="background-image" style="position:absolute; opacity:0.6; right:100px; padding:0px; background-repeat:no-repeat;">
-                            <t t-if="alt != 'true'">
+                        <t t-if="alt != 'true'">
+                            <div class="background-image" style="position:absolute; opacity:0.6; right:150px; padding:0px; background-repeat:no-repeat;">
                                 <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;" align="top"/>
-                            </t>
-                            <t t-if="alt == 'true'">
+                            </div>
+                        </t>
+                        <t t-if="alt == 'true'">
+                            <div class="background-image" style="position:absolute; opacity:0.6; right:100px; padding:0px; background-repeat:no-repeat;">
                                 <img t-if="doc.company_id.chop_alt" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop_alt" style="max-height: 120px;" align="top"/>
-                            </t>
-                        </div>
+                            </div>
+                        </t>
                         <tr>
                             <table>
                                 <tr height="40px"/>
