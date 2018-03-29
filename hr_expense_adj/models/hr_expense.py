@@ -42,6 +42,22 @@ class HrExpense(models.Model):
         store=True,
     )
 
+    # override the standard method
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        if self.product_id:
+            # QTL: prevent updates of name and unit_amount
+            # if not self.name:
+            #     self.name = self.product_id.display_name or ''
+            # self.unit_amount = self.product_id.price_compute(
+            # 'standard_price')[self.product_id.id]
+            self.product_uom_id = self.product_id.uom_id
+            self.tax_ids = self.product_id.supplier_taxes_id
+            account = self.product_id.product_tmpl_id._get_product_accounts()[
+                'expense']
+            if account:
+                self.account_id = account
+
     @api.multi
     def submit_expenses(self):
         date = max(line.date for line in self)
