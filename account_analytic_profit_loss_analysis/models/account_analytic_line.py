@@ -43,14 +43,26 @@ class AccountAnalyticLine(models.Model):
         store=True,
         readonly=True,
     )
+    sale_id = fields.Many2one(
+        'sale.order',
+        string='Sales Order',
+        compute='_compute_pj_id',
+        store=True,
+        readonly=True,
+    )
 
     @api.multi
     @api.depends('account_id')
     def _compute_pj_id(self):
-        for line in self:
-            if line.account_id and line.account_id.project_ids:
-                for project in line.account_id.project_ids:
-                    line.pj_id = project.id
+        for ln in self:
+            projects = ln.account_id and ln.account_id.project_ids
+            ln.pj_id = projects and projects[0].id or False
+            # if line.account_id and line.account_id.project_ids:
+            #     for project in line.account_id.project_ids:
+            #         line.pj_id = project.id
+            sale_orders = self.env['sale.order'].search([('project_id', '=', ln.account_id.id), ('state', '!=', 'cancel')])
+            if len(sale_orders) == 1 and sale_orders[0].project_project_id:
+                ln.sale_id = sale_orders[0].id
 
     @api.multi
     def _set_account_id(self):
@@ -73,15 +85,14 @@ class AccountAnalyticLine(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('general_account_id', False) and\
-            vals['general_account_id'] and not\
-                vals.get('analytic_type_id', False):
-            account_obj = self.env['account.account']
-            account = account_obj.browse(vals['general_account_id'])
-            vals.update(analytic_type_id=account.analytic_type_id.id)
+        analytic_type = False
+        if vals.get('general_account_id') and not vals.get('analytic_type_id'):
+            account = self.env['account.account'].browse(
+                vals['general_account_id'])
+            analytic_type = account.analytic_type_id
         # assumption: project_id is included only for timesheet entries
-        if vals.get('project_id', False):
-            analytic_type_id = self.env['analytic.type'].search([
-                ('analytic_type', '=', 'labour')])[0].id
-            vals.update(analytic_type_id=analytic_type_id)
+        if vals.get('project_id'):
+            analytic_type = self.env['analytic.type'].search([
+                ('analytic_type', '=', 'labour')])[0]
+        vals['analytic_type_id'] = analytic_type and analytic_type.id or False
         return super(AccountAnalyticLine, self).create(vals)
