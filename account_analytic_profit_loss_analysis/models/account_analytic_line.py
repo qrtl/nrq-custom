@@ -34,6 +34,14 @@ class AccountAnalyticLine(models.Model):
         string='Employee',
         compute='_compute_employee_id',
         store=True,
+        readonly=True,
+    )
+    department_id = fields.Many2one(
+        'hr.department',
+        string='Department',
+        compute='_compute_employee_id',
+        store=True,
+        readonly=True,
     )
 
     @api.multi
@@ -55,7 +63,9 @@ class AccountAnalyticLine(models.Model):
         for line in self:
             emp_ids = self.env['hr.employee'].search(
                 [('user_id', '=', self.user_id.id)])
-            line.employee_id = emp_ids and emp_ids[0] or False
+            if emp_ids:
+                line.employee_id = emp_ids[0]
+                line.department_ids = emp_ids[0].department_id
 
     @api.onchange('general_account_id')
     def _onchange_analytic_type_id(self):
