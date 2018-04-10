@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_expense_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.expense.tree.inherited</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.view_expenses_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='analytic_account_id']" position="after">
+                <field name="analytic_type_id"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="hr_expense_form_inherit" model="ir.ui.view">
+        <field name="name">hr.expense.form.inherited</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='analytic_account_id']" position="after">
+                <field name="analytic_type_id"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="hr_expense_filter_inherit" model="ir.ui.view">
+        <field name="name">hr.expense.filter.inherited</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='analytic_account_id']" position="after">
+                <field name="analytic_type_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

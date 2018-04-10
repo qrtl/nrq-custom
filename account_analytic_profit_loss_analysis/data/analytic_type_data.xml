@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="analytic_type_sales" model="analytic.type">
+        <field name="name">Sales</field>
+        <field name="analytic_type">sales</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="analytic_type_labour" model="analytic.type">
+        <field name="name">Labour</field>
+        <field name="analytic_type">labour</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="analytic_type_overhead" model="analytic.type">
+        <field name="name">Overhead</field>
+        <field name="analytic_type">overhead</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="analytic_type_outsourcing" model="analytic.type">
+        <field name="name">Outsourcing</field>
+        <field name="analytic_type">outsourcing</field>
+        <field name="sequence">40</field>
+    </record>
+
+</odoo>
