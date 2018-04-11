@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_timesheet_sheet_form_view_inherit" model="ir.ui.view">
+        <field name="name">hr.timesheet.sheet.form.inherited</field>
+        <field name="model">hr_timesheet_sheet.sheet</field>
+        <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page/field/tree/field[@name='name']" position="after">
+                <field name="analytic_type_id"/>
+            </xpath>
+            <xpath expr="//page/field/form/group/field[@name='name']" position="after">
+                <field name="analytic_type_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

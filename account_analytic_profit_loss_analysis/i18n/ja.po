@@ -1,19 +1,24 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_analytic_profit_loss_analysis, project_parent
+#	* account_analytic_profit_loss_analysis
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-24 12:24+0000\n"
-"PO-Revision-Date: 2018-01-24 12:24+0000\n"
+"POT-Creation-Date: 2018-04-11 16:07+0000\n"
+"PO-Revision-Date: 2018-04-11 16:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model,name:account_analytic_profit_loss_analysis.model_account_account
+msgid "Account"
+msgstr "勘定科目"
 
 #. module: account_analytic_profit_loss_analysis
 #: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_pivot
@@ -26,9 +31,90 @@ msgid "Analytic Line"
 msgstr "分析行"
 
 #. module: account_analytic_profit_loss_analysis
-#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_project_partner_id
-msgid "Customer"
-msgstr "顧客"
+#: model:ir.actions.act_window,name:account_analytic_profit_loss_analysis.account_type_action
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_account_analytic_type_id
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_analytic_type_id
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_related_analytic_type
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_type
+#: model:ir.ui.menu,name:account_analytic_profit_loss_analysis.account_type_menu
+msgid "Analytic Type"
+msgstr "分析タイプ"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.actions.act_window,help:account_analytic_profit_loss_analysis.account_type_action
+msgid "Click to add a new type."
+msgstr "クリックして新しい分析タイプを追加してください。"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_create_uid
+msgid "Created by"
+msgstr "作成者"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_create_date
+msgid "Created on"
+msgstr "作成日"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Current Month"
+msgstr "今月"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_display_name
+msgid "Display Name"
+msgstr "表示名"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_employee_id
+msgid "Employee"
+msgstr "従業員"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_expenses
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Expenses"
+msgstr "経費"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_labour
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Labour"
+msgstr "労務費"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type___last_update
+msgid "Last Modified on"
+msgstr "最終更新日"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_write_uid
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_write_date
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_name
+msgid "Name"
+msgstr "名称"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_outsourcing
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Outsourcing"
+msgstr "外注費"
 
 #. module: account_analytic_profit_loss_analysis
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_parent_project_id
@@ -42,27 +128,56 @@ msgid "Past 90 days"
 msgstr "過去90日"
 
 #. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Previous Month"
+msgstr "先月"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_purchase_id
+msgid "Purchase Order"
+msgstr "参照(PO)"
+
+#. module: account_analytic_profit_loss_analysis
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_pj_id
 msgid "Related Project"
 msgstr "関連プロジェクト"
 
 #. module: account_analytic_profit_loss_analysis
+#: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_sales
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Sales"
+msgstr "売上"
+
+#. module: account_analytic_profit_loss_analysis
 #: model:ir.model,name:account_analytic_profit_loss_analysis.model_sale_order
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_sale_id
 msgid "Sales Order"
-msgstr "受注"
+msgstr "オーダ番号(SO)"
 
-#. module: project_parent
-#: model:ir.model,name:project_parent.model_account_analytic_account
-msgid "Analytic Account"
-msgstr "分析勘定"
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_team_id
+msgid "Sales Team"
+msgstr "販売チーム"
 
-#. module: project_parent
-#: model:ir.ui.view,arch_db:project_parent.view_project_parent_project_filter
-msgid "Parent"
-msgstr "親プロジェクト"
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_sale_employee_id
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_sale_user_id
+msgid "Salesperson"
+msgstr "販売担当者"
 
-#. module: project_parent
-#: model:ir.model.fields,field_description:project_parent.field_account_analytic_account_parent_project_id
-#: model:ir.model.fields,field_description:project_parent.field_project_project_parent_project_id
-msgid "Parent Project"
-msgstr "親プロジェクト"
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_sequence
+msgid "Sequence"
+msgstr "付番"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.account_type_view_form
+msgid "Type"
+msgstr "タイプ"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model,name:account_analytic_profit_loss_analysis.model_analytic_type
+msgid "analytic.type"
+msgstr "analytic.type"
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_type_view_form" model="ir.ui.view">
+        <field name="name">Type</field>
+        <field name="model">analytic.type</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <group>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="sequence"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_type_action" model="ir.actions.act_window">
+        <field name="name">Analytic Type</field>
+        <field name="res_model">analytic.type</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to add a new type.</p>
+        </field>
+    </record>
+
+    <menuitem id="account_type_menu" parent="account.menu_analytic_accounting" action="account_type_action"
+        groups="base.group_no_one"/>
+
+</odoo>

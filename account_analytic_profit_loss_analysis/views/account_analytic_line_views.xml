@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="account_analytic_line_form_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.form</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='account_id']" position="after">
+                <field name="analytic_type_id" readonly="1"/>
+                <field name="team_id"/>
+                <field name="sale_user_id" invisible="1"/>
+                <field name="sale_employee_id"/>
+                <field name="parent_project_id"/>
+                <field name="sale_id"/>
+                <field name="purchase_id"/>
+                <field name="department_id"/>
+                <field name="employee_id"/>
+            </xpath>
+        </field>
+    </record>
+
     <record id="view_account_analytic_line_tree" model="ir.ui.view">
         <field name="name">account.analytic.line.tree</field>
         <field name="model">account.analytic.line</field>
         <field name="inherit_id"
                ref="analytic.view_account_analytic_line_tree"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="team_id"/>
+                <field name="sale_user_id" invisible="1"/>
+                <field name="sale_employee_id"/>
+            </xpath>
             <xpath expr="//field[@name='account_id']" position="after">
                 <field name="parent_project_id"/>
+                <field name="sale_id"/>
+                <field name="purchase_id"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="department_id"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="employee_id"/>
+            </xpath>
+            <xpath expr="//field[@name='amount']" position="after">
+                <field name="analytic_type_id" readonly="1"/>
             </xpath>
         </field>
     </record>
@@ -23,6 +61,7 @@
                 <field name="parent_project_id" type="row"/>
                 <field name="account_id" type="row"/>
                 <field name="date" interval="month" type="col"/>
+                <field name="analytic_type_id" type="col"/>
                 <field name="amount" type="measure"/>
             </pivot>
         </field>
@@ -34,15 +73,30 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_line_filter"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="before">
+                <filter string="Sales" name="sales" domain="[('related_analytic_type','=','sales')]"/>
+                <filter string="Labour" name="labour" domain="[('related_analytic_type','=','labour')]"/>
+                <filter string="Outsourcing" name="Outsourcing" domain="[('related_analytic_type','=','outsourcing')]"/>
+                <filter string="Expenses" name="expenses" domain="[('related_analytic_type','=','expenses')]"/>
+                <separator/>
+                <filter string="Current Month" name="current_month"
+                        domain="[('date','&gt;=',context_today().strftime('%%Y-%%m-01')),('date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01'))]"/>
+                <filter string="Previous Month" name="prev_month"
+                        domain="[('date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%%Y-%%m-01')),('date','&lt;',context_today().strftime('%%Y-%%m-01'))]"/>
                 <filter string="Past 90 days" name="past_90_days"
-                        domain="[('date', '&gt;=',  (context_today() - datetime.timedelta(days=90)).strftime('%%Y-%%m-%%d'))]"/>
+                        domain="[('date','&gt;=',(context_today()-relativedelta(days=90)).strftime('%%Y-%%m-%%d'))]"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="analytic_type_id"/>
+                <field name="sale_id"/>
+                <field name="team_id"/>
+                <field name="sale_employee_id"/>
             </xpath>
         </field>
     </record>
 
     <record model="ir.actions.act_window"
             id="analytic.account_analytic_line_action_entries">
-        <field name="context">{'search_default_past_90_days': 1}</field>
+        <field name="context">{'search_default_current_month': 1}</field>
     </record>
 
 </odoo>
