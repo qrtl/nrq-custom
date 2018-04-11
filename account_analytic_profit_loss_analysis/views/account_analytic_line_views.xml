@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='account_id']" position="after">
-                <field name="analytic_type_id"/>
+                <field name="analytic_type_id" readonly="1"/>
             </xpath>
         </field>
     </record>
@@ -18,6 +18,11 @@
         <field name="inherit_id"
                ref="analytic.view_account_analytic_line_tree"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="team_id"/>
+                <field name="sale_user_id" invisible="1"/>
+                <field name="sale_employee_id"/>
+            </xpath>
             <xpath expr="//field[@name='account_id']" position="after">
                 <field name="parent_project_id"/>
                 <field name="sale_id"/>
@@ -32,7 +37,7 @@
                 <field name="employee_id"/>
             </xpath>
             <xpath expr="//field[@name='amount']" position="after">
-                <field name="analytic_type_id"/>
+                <field name="analytic_type_id" readonly="1"/>
             </xpath>
         </field>
     </record>

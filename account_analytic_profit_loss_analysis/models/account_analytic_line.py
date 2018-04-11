@@ -9,10 +9,12 @@ class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
     _order = "date desc, id desc"
 
+    # we cannot make this field required at model level because that would
+    # interfere the record creation from HrTimesheetSheet thru JS
     analytic_type_id = fields.Many2one(
         'analytic.type',
         string='Analytic Type',
-        required=True,
+        # required=True,
     )
     related_analytic_type = fields.Selection(
         related="analytic_type_id.analytic_type",
@@ -50,6 +52,23 @@ class AccountAnalyticLine(models.Model):
         store=True,
         readonly=True,
     )
+    team_id = fields.Many2one(
+        related='sale_id.team_id',
+        store=True,
+        readonly=True,
+    )
+    sale_user_id = fields.Many2one(
+        related='sale_id.user_id',
+        store=True,
+        readonly=True,
+    )
+    sale_employee_id = fields.Many2one(
+        'hr.employee',
+        string='Salesperson',
+        compute='_compute_sale_employee_id',
+        store=True,
+        readonly=True,
+    )
 
     @api.multi
     @api.depends('account_id')
@@ -57,10 +76,9 @@ class AccountAnalyticLine(models.Model):
         for ln in self:
             projects = ln.account_id and ln.account_id.project_ids
             ln.pj_id = projects and projects[0].id or False
-            # if line.account_id and line.account_id.project_ids:
-            #     for project in line.account_id.project_ids:
-            #         line.pj_id = project.id
-            sale_orders = self.env['sale.order'].search([('project_id', '=', ln.account_id.id), ('state', '!=', 'cancel')])
+            sale_orders = self.env['sale.order'].search(
+                [('project_id', '=', ln.account_id.id),
+                 ('state', '!=', 'cancel')])
             if len(sale_orders) == 1 and sale_orders[0].project_project_id:
                 ln.sale_id = sale_orders[0].id
 
@@ -74,10 +92,19 @@ class AccountAnalyticLine(models.Model):
     def _compute_employee_id(self):
         for line in self:
             emp_ids = self.env['hr.employee'].search(
-                [('user_id', '=', self.user_id.id)])
+                [('user_id', '=', line.user_id.id)])
             if emp_ids:
                 line.employee_id = emp_ids[0]
                 line.department_ids = emp_ids[0].department_id
+
+    @api.multi
+    @api.depends('sale_user_id')
+    def _compute_sale_employee_id(self):
+        for line in self:
+            emp_ids = self.env['hr.employee'].search(
+                [('user_id', '=', line.sale_user_id.id)])
+            if emp_ids:
+                line.sale_employee_id = emp_ids[0]
 
     @api.onchange('general_account_id')
     def _onchange_analytic_type_id(self):
