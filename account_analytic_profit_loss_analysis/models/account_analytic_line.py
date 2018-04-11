@@ -101,10 +101,11 @@ class AccountAnalyticLine(models.Model):
     @api.depends('sale_user_id')
     def _compute_sale_employee_id(self):
         for line in self:
-            emp_ids = self.env['hr.employee'].search(
-                [('user_id', '=', line.sale_user_id.id)])
-            if emp_ids:
-                line.sale_employee_id = emp_ids[0]
+            if line.sale_user_id:
+                emp_ids = self.env['hr.employee'].search(
+                    [('user_id', '=', line.sale_user_id.id)])
+                if emp_ids:
+                    line.sale_employee_id = emp_ids[0]
 
     @api.onchange('general_account_id')
     def _onchange_analytic_type_id(self):
