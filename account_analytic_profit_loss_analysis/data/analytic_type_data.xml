@@ -3,22 +3,22 @@
 
     <record id="analytic_type_sales" model="analytic.type">
         <field name="name">Sales</field>
-        <field name="analytic_type">sales</field>
+        <field name="type">sales</field>
         <field name="sequence">10</field>
     </record>
     <record id="analytic_type_labour" model="analytic.type">
         <field name="name">Labour</field>
-        <field name="analytic_type">labour</field>
+        <field name="type">labour</field>
         <field name="sequence">20</field>
     </record>
     <record id="analytic_type_outsourcing" model="analytic.type">
         <field name="name">Outsourcing</field>
-        <field name="analytic_type">outsourcing</field>
+        <field name="type">outsourcing</field>
         <field name="sequence">30</field>
     </record>
     <record id="analytic_type_expenses" model="analytic.type">
         <field name="name">Expenses</field>
-        <field name="analytic_type">expenses</field>
+        <field name="type">expenses</field>
         <field name="sequence">40</field>
     </record>
 

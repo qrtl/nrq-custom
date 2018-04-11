@@ -119,6 +119,7 @@ class AccountAnalyticLine(models.Model):
     @api.model
     def create(self, vals):
         analytic_type = False
+        purchase_id = False
         if vals.get('general_account_id') and not vals.get('analytic_type_id'):
             account = self.env['account.account'].browse(
                 vals['general_account_id'])
@@ -126,6 +127,21 @@ class AccountAnalyticLine(models.Model):
         # assumption: project_id is included only for timesheet entries
         if vals.get('project_id'):
             analytic_type = self.env['analytic.type'].search([
-                ('analytic_type', '=', 'labour')])[0]
+                ('type', '=', 'labour')])[0]
+        if analytic_type and analytic_type.type not in ['sales', 'labour']:
+            move_line_id = vals.get('move_id')
+            if move_line_id:
+                move_line = self.env['account.move.line'].browse(move_line_id)
+                invoice = move_line.invoice_id
+                if invoice and invoice.type in ['in_invoice', 'in_refund']:
+                    invoice_lines = invoice.invoice_line_ids.filtered(
+                        lambda r: r.account_analytic_id.id == vals[
+                            'account_id'])
+                    purchase_line = invoice_lines[0].mapped(
+                        'purchase_line_id') if invoice_lines else False
+                    if purchase_line:
+                        purchase_id = self.env['purchase.order.line'].browse(
+                            purchase_line.id).order_id.id
         vals['analytic_type_id'] = analytic_type and analytic_type.id or False
+        vals['purchase_id'] = purchase_id
         return super(AccountAnalyticLine, self).create(vals)

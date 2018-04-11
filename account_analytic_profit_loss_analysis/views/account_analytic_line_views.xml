@@ -8,6 +8,14 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='account_id']" position="after">
                 <field name="analytic_type_id" readonly="1"/>
+                <field name="team_id"/>
+                <field name="sale_user_id" invisible="1"/>
+                <field name="sale_employee_id"/>
+                <field name="parent_project_id"/>
+                <field name="sale_id"/>
+                <field name="purchase_id"/>
+                <field name="department_id"/>
+                <field name="employee_id"/>
             </xpath>
         </field>
     </record>
@@ -26,6 +34,7 @@
             <xpath expr="//field[@name='account_id']" position="after">
                 <field name="parent_project_id"/>
                 <field name="sale_id"/>
+                <field name="purchase_id"/>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="before">
                 <field name="department_id"/>

@@ -16,6 +16,7 @@
         'project_parent',
         'sale_timesheet',
         'hr_timesheet_sheet',
+        'purchase',
     ],
     "data": [
         'data/analytic_type_data.xml',
