@@ -17,7 +17,7 @@ class AccountAnalyticLine(models.Model):
         # required=True,
     )
     related_analytic_type = fields.Selection(
-        related="analytic_type_id.analytic_type",
+        related="analytic_type_id.type",
     )
     pj_id = fields.Many2one(
         'project.project',
@@ -50,6 +50,11 @@ class AccountAnalyticLine(models.Model):
         string='Sales Order',
         compute='_compute_pj_id',
         store=True,
+        readonly=True,
+    )
+    purchase_id = fields.Many2one(
+        'purchase.order',
+        string='Purchase Order',
         readonly=True,
     )
     team_id = fields.Many2one(

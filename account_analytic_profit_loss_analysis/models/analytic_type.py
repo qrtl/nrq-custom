@@ -14,7 +14,7 @@ class AnalyticType(models.Model):
         translate=True,
         required=True
     )
-    analytic_type = fields.Selection(selection=[
+    type = fields.Selection(selection=[
         ('sales', 'Sales'),
         ('labour', 'Labour'),
         ('outsourcing', 'Outsourcing'),

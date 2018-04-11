@@ -8,7 +8,7 @@
             <form string="Type">
                 <group>
                     <field name="name"/>
-                    <field name="analytic_type"/>
+                    <field name="type"/>
                     <field name="sequence"/>
                 </group>
             </form>
