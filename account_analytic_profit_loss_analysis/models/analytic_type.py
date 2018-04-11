@@ -17,8 +17,8 @@ class AnalyticType(models.Model):
     analytic_type = fields.Selection(selection=[
         ('sales', 'Sales'),
         ('labour', 'Labour'),
-        ('overhead', 'Overhead'),
-        ('outsourcing', 'Outsourcing')],
+        ('outsourcing', 'Outsourcing'),
+        ('expenses', 'Expenses')],
         string='Analytic Type',
         required=True,
     )

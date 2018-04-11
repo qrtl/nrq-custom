@@ -11,14 +11,14 @@
         <field name="analytic_type">labour</field>
         <field name="sequence">20</field>
     </record>
-    <record id="analytic_type_overhead" model="analytic.type">
-        <field name="name">Overhead</field>
-        <field name="analytic_type">overhead</field>
-        <field name="sequence">30</field>
-    </record>
     <record id="analytic_type_outsourcing" model="analytic.type">
         <field name="name">Outsourcing</field>
         <field name="analytic_type">outsourcing</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="analytic_type_expenses" model="analytic.type">
+        <field name="name">Expenses</field>
+        <field name="analytic_type">expenses</field>
         <field name="sequence">40</field>
     </record>
 
