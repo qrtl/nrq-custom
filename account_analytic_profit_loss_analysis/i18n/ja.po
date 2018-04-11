@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 08:50+0000\n"
-"PO-Revision-Date: 2018-04-11 08:50+0000\n"
+"POT-Creation-Date: 2018-04-11 16:07+0000\n"
+"PO-Revision-Date: 2018-04-11 16:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "分析行"
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_account_analytic_type_id
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_analytic_type_id
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_related_analytic_type
-#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_analytic_type
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_type
 #: model:ir.ui.menu,name:account_analytic_profit_loss_analysis.account_type_menu
 msgid "Analytic Type"
 msgstr "分析タイプ"
@@ -56,6 +56,11 @@ msgid "Created on"
 msgstr "作成日"
 
 #. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Current Month"
+msgstr "今月"
+
+#. module: account_analytic_profit_loss_analysis
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_analytic_type_display_name
 msgid "Display Name"
 msgstr "表示名"
@@ -66,8 +71,9 @@ msgid "Employee"
 msgstr "従業員"
 
 #. module: account_analytic_profit_loss_analysis
-#: selection:analytic.type,analytic_type:0
 #: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_expenses
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
 msgid "Expenses"
 msgstr "経費"
 
@@ -77,13 +83,9 @@ msgid "ID"
 msgstr "ID"
 
 #. module: account_analytic_profit_loss_analysis
-#: model:ir.model,name:account_analytic_profit_loss_analysis.model_account_move_line
-msgid "Journal Item"
-msgstr "仕訳明細"
-
-#. module: account_analytic_profit_loss_analysis
-#: selection:analytic.type,analytic_type:0
 #: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_labour
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
 msgid "Labour"
 msgstr "労務費"
 
@@ -108,8 +110,9 @@ msgid "Name"
 msgstr "名称"
 
 #. module: account_analytic_profit_loss_analysis
-#: selection:analytic.type,analytic_type:0
 #: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_outsourcing
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
 msgid "Outsourcing"
 msgstr "外注費"
 
@@ -125,15 +128,26 @@ msgid "Past 90 days"
 msgstr "過去90日"
 
 #. module: account_analytic_profit_loss_analysis
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
+msgid "Previous Month"
+msgstr "先月"
+
+#. module: account_analytic_profit_loss_analysis
+#: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_purchase_id
+msgid "Purchase Order"
+msgstr "参照(PO)"
+
+#. module: account_analytic_profit_loss_analysis
 #: model:ir.model.fields,field_description:account_analytic_profit_loss_analysis.field_account_analytic_line_pj_id
 msgid "Related Project"
 msgstr "関連プロジェクト"
 
 #. module: account_analytic_profit_loss_analysis
-#: selection:analytic.type,analytic_type:0
 #: model:analytic.type,name:account_analytic_profit_loss_analysis.analytic_type_sales
+#: selection:analytic.type,type:0
+#: model:ir.ui.view,arch_db:account_analytic_profit_loss_analysis.view_account_analytic_line_filter
 msgid "Sales"
-msgstr "売上高"
+msgstr "売上"
 
 #. module: account_analytic_profit_loss_analysis
 #: model:ir.model,name:account_analytic_profit_loss_analysis.model_sale_order
