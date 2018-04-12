@@ -1,162 +1,317 @@
-# Swedish translation for openobject-addons
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the openobject-addons package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * auto_backup
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: openobject-addons\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-11-24 13:49+0000\n"
-"PO-Revision-Date: 2012-06-18 22:40+0000\n"
-"Last-Translator: Anders Wallenquist <anders.wallenquist@vertel.se>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-18 02:29+0000\n"
+"PO-Revision-Date: 2017-02-18 02:29+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+"Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-04-20 05:35+0000\n"
-"X-Generator: Launchpad (build 16567)\n"
+"Content-Transfer-Encoding: \n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: auto_backup
-#: help:db.backup,name:0
-msgid "Database you want to schedule backups for"
-msgstr "Databas du önskar schemlägga säkerhetskopiering för"
-
-#. module: auto_backup
-#: constraint:ir.model:0
-msgid ""
-"The Object name must start with x_ and not contain any special character !"
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "/home/odoo/.ssh/id_rsa"
 msgstr ""
-"Objektnamnet måste börja med x_ och får inte innehålla några specialtecken !"
 
 #. module: auto_backup
-#: constraint:ir.actions.act_window:0
-msgid "Invalid model name in the action definition."
-msgstr "Felaktigt namn för klassen i händelsedefinitionen."
-
-#. module: auto_backup
-#: model:ir.model,name:auto_backup.model_db_backup
-msgid "db.backup"
-msgstr "db.backup"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid ""
-"1) Go to Administration / Configuration / Scheduler / Scheduled Actions"
+#: model:ir.model.fields,help:auto_backup.field_db_backup_folder
+msgid "Absolute path for storing the backups"
 msgstr ""
-"1) Gå till Inställningar / Konfiguration / Schemaläggare / Schemalagda "
-"åtgärder"
 
 #. module: auto_backup
 #: model:ir.actions.act_window,name:auto_backup.action_backup_conf_form
 #: model:ir.ui.menu,name:auto_backup.backup_conf_menu
-msgid "Configure Backup"
-msgstr "Konfigurera säkerhetskopiering"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid "Test"
-msgstr "Prova"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid "IP Configuration"
-msgstr "IP-konfiguration"
-
-#. module: auto_backup
-#: help:db.backup,bkp_dir:0
-msgid "Absolute path for storing the backups"
-msgstr "Absolut sökväg för att spara säkerhetskopian"
-
-#. module: auto_backup
-#: model:ir.module.module,shortdesc:auto_backup.module_meta_information
-msgid "Database Auto-Backup"
-msgstr "Automatisk databassäkerhetskopiering"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid "Database Configuration"
-msgstr "Databaskonfiguration"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid "4) Set other values as per your preference"
-msgstr "4) Ställ in andra värden för dina inställningar"
-
-#. module: auto_backup
-#: field:db.backup,host:0
-msgid "Host"
-msgstr "Värd"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid ""
-"Automatic backup of all the databases under this can be scheduled as "
-"follows: "
+msgid "Automated Backups"
 msgstr ""
 
 #. module: auto_backup
-#: constraint:ir.ui.view:0
-msgid "Invalid XML for View Architecture!"
-msgstr "Felaktig XML för vyarkitektur!"
-
-#. module: auto_backup
-#: field:db.backup,bkp_dir:0
-msgid "Backup Directory"
-msgstr "Säkerhetskopiekatalog"
-
-#. module: auto_backup
-#: field:db.backup,name:0
-msgid "Database"
-msgstr "Databas"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid "2) Schedule new action(create a new record)"
-msgstr "2) Schemalägg ny åtgärd (skapa ny post)"
-
-#. module: auto_backup
-#: model:ir.module.module,description:auto_backup.module_meta_information
-msgid ""
-"The generic Open ERP Database Auto-Backup system enables the user to make "
-"configurations for the automatic backup of the database.\n"
-"User simply requires to specify host & port under IP Configuration & "
-"database(on specified host running at specified port) and backup "
-"directory(in which all the backups of the specified database will be stored) "
-"under Database Configuration.\n"
-"\n"
-"Automatic backup for all such configured databases under this can then be "
-"scheduled as follows:  \n"
-"                      \n"
-"1) Go to Administration / Configuration / Scheduler / Scheduled Actions\n"
-"2) Schedule new action(create a new record)\n"
-"3) Set 'Object' to 'db.backup' and 'Function' to 'schedule_backup' under "
-"page 'Technical Data'\n"
-"4) Set other values as per your preference"
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "Automatic backups of the database can be scheduled as follows:"
 msgstr ""
 
 #. module: auto_backup
-#: view:db.backup:0
-msgid ""
-"3) Set 'Object' to 'db.backup' and 'Function' to 'schedule_backup' under "
-"page 'Technical Data'"
+#: model:mail.message.subtype,name:auto_backup.mail_message_subtype_failure
+msgid "Backup Failed"
 msgstr ""
-"3) Ställ in 'Klass' till 'db.backup' och 'Funktion' till 'schedule_backup' "
-"på sidan 'Tekniska data'"
 
 #. module: auto_backup
-#: view:db.backup:0
+#: model:mail.message.subtype,name:auto_backup.mail_message_subtype_success
+msgid "Backup Successful"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_tree
+msgid "Backups"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_days_to_keep
+msgid ""
+"Backups older than this will be deleted automatically. Set 0 to disable "
+"autodeletion."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "Basic backup configuration"
+msgstr ""
+
+#. module: auto_backup
+#: sql_constraint:db.backup:0
+msgid "Cannot duplicate a configuration."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_method
+msgid "Choose the storage method for this backup."
+msgstr ""
+
+#. module: auto_backup
+#: code:addons/auto_backup/models/db_backup.py:251
+#, python-format
+msgid "Cleanup of old database backups failed."
+msgstr ""
+
+#. module: auto_backup
+#: code:addons/auto_backup/models/db_backup.py:131
+#, python-format
+msgid "Connection Test Failed!"
+msgstr ""
+
+#. module: auto_backup
+#: code:addons/auto_backup/models/db_backup.py:128
+#, python-format
+msgid "Connection Test Succeeded!"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: auto_backup
+#: code:addons/auto_backup/models/db_backup.py:206
+#: model:mail.message.subtype,description:auto_backup.mail_message_subtype_failure
+#, python-format
+msgid "Database backup failed."
+msgstr ""
+
+#. module: auto_backup
+#: code:addons/auto_backup/models/db_backup.py:214
+#: model:mail.message.subtype,description:auto_backup.mail_message_subtype_success
+#, python-format
+msgid "Database backup succeeded."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_days_to_keep
+msgid "Days to keep"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_display_name
+msgid "Display Name"
+msgstr "Visa namn"
+
+#. module: auto_backup
+#: code:addons/auto_backup/models/db_backup.py:119
+#, python-format
+msgid ""
+"Do not save backups on your filestore, or you will backup your backups too!"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.actions.server,name:auto_backup.action_server_backup
+msgid "Execute backup(s)"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_folder
+msgid "Folder"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "Go to Settings / Technical / Automation / Scheduled Actions."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
 msgid "Help"
-msgstr "Hjälp"
-
-#. module: auto_backup
-#: view:db.backup:0
-msgid ""
-"This configures the scheduler for automatic backup of the given database "
-"running on given host at given port on regular intervals."
 msgstr ""
 
 #. module: auto_backup
-#: field:db.backup,port:0
-msgid "Port"
-msgstr "Port"
+#: sql_constraint:db.backup:0
+msgid "I cannot remove backups from the future. Ask Doc for that."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_id
+msgid "ID"
+msgstr "ID"
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup___last_update
+msgid "Last Modified on"
+msgstr "Senast redigerad"
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad"
+
+#. module: auto_backup
+#: selection:db.backup,method:0
+msgid "Local disk"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_method
+msgid "Method"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_name
+msgid "Name"
+msgstr "Namn"
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_sftp_private_key
+msgid ""
+"Path to the private key file. Only the Odoo user should have read "
+"permissions for that file."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_sftp_private_key
+msgid "Private key location"
+msgstr ""
+
+#. module: auto_backup
+#: selection:db.backup,method:0
+msgid "Remote SFTP server"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_sftp_password
+msgid "SFTP Password"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_sftp_port
+msgid "SFTP Port"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_sftp_host
+msgid "SFTP Server"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "SFTP Settings"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_search
+msgid "Search options"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "Search the action named 'Backup scheduler'."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid ""
+"Set the scheduler to active and fill in how often you want backups "
+"generated."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_name
+msgid "Summary of this backup process"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "Test SFTP Connection"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_sftp_host
+msgid ""
+"The host name or IP address from your remote server. For example 192.168.0.1"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_sftp_password
+msgid ""
+"The password for the SFTP connection. If you specify a private key file, "
+"then this is the password to decrypt it."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_sftp_port
+msgid "The port on the FTP server that accepts SSH/SFTP calls."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,help:auto_backup.field_db_backup_sftp_user
+msgid ""
+"The username where the SFTP connection should be made with. This is the user"
+" on the external server."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid ""
+"Use SFTP with caution! This writes files to external servers under the path "
+"you specify."
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model.fields,field_description:auto_backup.field_db_backup_sftp_user
+msgid "Username in the SFTP Server"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "Warning:"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.model,name:auto_backup.model_db_backup
+msgid "db.backup"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "john"
+msgstr ""
+
+#. module: auto_backup
+#: model:ir.ui.view,arch_db:auto_backup.view_backup_conf_form
+msgid "sftp.example.com"
+msgstr ""
