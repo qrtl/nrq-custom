@@ -50,6 +50,7 @@
                 <attribute name="options">{'currency_field':'company_currency_id'}</attribute>
             </xpath>
             <xpath expr="//field[@name='amount']" position="after">
+                <field name="company_currency_id" invisible="1"/>
                 <field name="analytic_type_id" readonly="1"/>
             </xpath>
         </field>
