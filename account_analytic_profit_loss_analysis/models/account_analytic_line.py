@@ -74,6 +74,13 @@ class AccountAnalyticLine(models.Model):
         store=True,
         readonly=True,
     )
+    # to be used in pivot view
+    amount_int = fields.Integer(
+        'Amount',
+        compute='_compute_amount_int',
+        store=True,
+        readonly=True,
+    )
 
     @api.multi
     @api.depends('account_id')
@@ -111,6 +118,12 @@ class AccountAnalyticLine(models.Model):
                     [('user_id', '=', line.sale_user_id.id)])
                 if emp_ids:
                     line.sale_employee_id = emp_ids[0]
+
+    @api.multi
+    @api.depends('amount')
+    def _compute_amount_int(self):
+        for line in self:
+            line.amount_int = int(line.amount)
 
     @api.onchange('general_account_id')
     def _onchange_analytic_type_id(self):

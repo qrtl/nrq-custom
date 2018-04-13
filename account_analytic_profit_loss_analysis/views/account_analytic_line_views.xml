@@ -45,6 +45,10 @@
             <xpath expr="//field[@name='user_id']" position="after">
                 <field name="employee_id"/>
             </xpath>
+            <xpath expr="//field[@name='amount']" position="attributes">
+                <attribute name="widget">monetary</attribute>
+                <attribute name="options">{'currency_field':'company_currency_id'}</attribute>
+            </xpath>
             <xpath expr="//field[@name='amount']" position="after">
                 <field name="analytic_type_id" readonly="1"/>
             </xpath>
@@ -62,7 +66,8 @@
                 <field name="account_id" type="row"/>
                 <field name="date" interval="month" type="col"/>
                 <field name="analytic_type_id" type="col"/>
-                <field name="amount" type="measure"/>
+                <!--here we use amount_int field as monetary widget doesn't work in pivot view-->
+                <field name="amount_int" type="measure"/>
             </pivot>
         </field>
     </record>
@@ -90,6 +95,8 @@
                 <field name="sale_id"/>
                 <field name="team_id"/>
                 <field name="sale_employee_id"/>
+                <field name="department_id"/>
+                <field name="employee_id"/>
             </xpath>
         </field>
     </record>
