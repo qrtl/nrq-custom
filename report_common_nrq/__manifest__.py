@@ -4,9 +4,9 @@
 {
     "name": "Report Common",
     "summary": "",
-    "version": "10.0.1.7.0",
+    "version": "10.0.1.7.1",
     "category": "Uncategorized",
-    "website": "https://www.odoo-asia.com/",
+    "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,

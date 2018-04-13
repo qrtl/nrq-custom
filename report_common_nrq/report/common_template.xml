@@ -59,13 +59,13 @@
                 <td width="260">
                     <table>
                         <t t-if="alt != 'true'">
-                            <div class="background-image" style="position:absolute; opacity:0.6; right:150px; padding:0px; background-repeat:no-repeat;">
-                                <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 120px;" align="top"/>
+                            <div class="background-image" style="position:absolute; opacity:0.6; right:50px; padding:100px; background-repeat:no-repeat;">
+                                <img t-if="doc.company_id.chop" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop" style="max-height: 100px;" align="top"/>
                             </div>
                         </t>
                         <t t-if="alt == 'true'">
-                            <div class="background-image" style="position:absolute; opacity:0.6; right:100px; padding:0px; background-repeat:no-repeat;">
-                                <img t-if="doc.company_id.chop_alt" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop_alt" style="max-height: 120px;" align="top"/>
+                            <div class="background-image" style="position:absolute; opacity:0.6; right:0px; padding:50px; background-repeat:no-repeat;">
+                                <img t-if="doc.company_id.chop_alt" t-att-src="'data:image/png;base64,%s' % doc.company_id.chop_alt" style="max-height: 100px;" align="top"/>
                             </div>
                         </t>
                         <tr>
