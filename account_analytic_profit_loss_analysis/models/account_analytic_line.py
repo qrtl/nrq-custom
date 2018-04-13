@@ -100,7 +100,7 @@ class AccountAnalyticLine(models.Model):
                 [('user_id', '=', line.user_id.id)])
             if emp_ids:
                 line.employee_id = emp_ids[0]
-                line.department_ids = emp_ids[0].department_id
+                line.department_id = emp_ids[0].department_id
 
     @api.multi
     @api.depends('sale_user_id')
