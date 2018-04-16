@@ -139,7 +139,7 @@ class AccountAnalyticLine(models.Model):
             analytic_type = account.analytic_type_id
         # assumption: project_id is included only for timesheet entries
         if vals.get('project_id'):
-            analytic_type = self.env['analytic.type'].search([
+            analytic_type = self.env['analytic.type'].sudo().search([
                 ('type', '=', 'labour')])[0]
         if analytic_type and analytic_type.type not in ['sales', 'labour']:
             move_line_id = vals.get('move_id')
