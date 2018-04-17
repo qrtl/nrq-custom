@@ -7,7 +7,6 @@ from odoo import models, fields, api
 
 class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
-    _order = "date desc, id desc"
 
     # we cannot make this field required at model level because that would
     # interfere the record creation from HrTimesheetSheet thru JS
@@ -18,6 +17,7 @@ class AccountAnalyticLine(models.Model):
     )
     related_analytic_type = fields.Selection(
         related="analytic_type_id.type",
+        readonly=True,
     )
     pj_id = fields.Many2one(
         'project.project',
