@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_attendance_reason_tree_view" model="ir.ui.view">
+        <field name="name">hr.attendance.reason.tree</field>
+        <field name="model">hr.attendance.reason</field>
+        <field name="arch" type="xml">
+            <tree string="Reason of Attendances Adjustment" editable="top">
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_attendance_reason_action" model="ir.actions.act_window">
+        <field name="name">Reason of Attendances Adjustment</field>
+        <field name="res_model">hr.attendance.reason</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="hr_attendance_reason_tree_view"/>
+    </record>
+
+    <menuitem id="menu_hr_attendance_reason"
+              name="Reason of Attendances Adjustment" sequence="10"
+              parent="hr_attendance.menu_hr_attendance_manage_attendances"
+              groups="hr_attendance.group_hr_attendance_user"
+              action="hr_attendance_reason_action"/>
+
+</odoo>
