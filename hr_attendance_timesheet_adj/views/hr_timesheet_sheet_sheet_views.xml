@@ -8,11 +8,17 @@
                ref="hr_timesheet_attendance.hr_timesheet_sheet_form" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_sheet_report']"
-                   position="replace">
-                <button type="object" groups="hr.group_hr_attendance"
-                        class="oe_stat_button" icon="fa-users"
-                        name="action_attendance_list">
-                    <field name="attendance_count" widget="statinfo" string="Attendances"/>
+                   position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_sheet_report']"
+                   position="after">
+                <button type="object" name="action_attendance_list"
+                        class="oe_stat_button" icon="fa-users">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value"><field name="total_attendances_worked_hours" widget="float_time"/></span>
+                        <span class="o_stat_text">Attendances</span>
+                    </div>
                 </button>
             </xpath>
         </field>

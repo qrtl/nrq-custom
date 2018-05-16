@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hr_attendance_reason_manager,hr_attendance_reason_manager,model_hr_attendance_reason,hr.group_hr_manager,1,1,1,1
-access_hr_attendance_reason_user,hr_attendance_reason_user,model_hr_attendance_reason,hr_attendance.group_hr_attendance_user,1,1,1,1
-access_hr_attendance_reason_attendance,hr_attendance_reason_attendance,model_hr_attendance_reason,hr.group_hr_attendance,1,0,0,0

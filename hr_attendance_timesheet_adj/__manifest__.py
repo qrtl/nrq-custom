@@ -17,10 +17,8 @@
         'hr_timesheet_sheet',
     ],
     'data': [
-        'security/ir.model.access.csv',
         'security/base_security.xml',
         'views/hr_attendance_views.xml',
-        'views/hr_timesheet_reason_views.xml',
         'views/hr_timesheet_sheet_sheet_views.xml',
     ],
     'application': False,
