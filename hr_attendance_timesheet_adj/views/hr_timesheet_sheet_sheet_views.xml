@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_timesheet_sheet_form" model="ir.ui.view">
+        <field name="name">hr.timesheet.sheet.form</field>
+        <field name="model">hr_timesheet_sheet.sheet</field>
+        <field name="inherit_id"
+               ref="hr_timesheet_attendance.hr_timesheet_sheet_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_sheet_report']"
+                   position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_sheet_report']"
+                   position="after">
+                <button type="object" name="action_attendance_list"
+                        class="oe_stat_button" icon="fa-users">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value"><field name="total_attendances_worked_hours" widget="float_time"/></span>
+                        <span class="o_stat_text">Attendances</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

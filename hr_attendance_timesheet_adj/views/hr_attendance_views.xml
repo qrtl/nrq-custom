@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_attendance_view_form" model="ir.ui.view">
+        <field name="name">hr.attendance.form</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']"
+                   position="attributes">
+                <attribute name="groups">hr_attendance.group_hr_attendance_user</attribute>
+                <attribute name="attrs">{'readonly': [('state', 'in', ('confirm', 'done'))]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='check_in']"
+                   position="attributes">
+                <attribute name="attrs">{'readonly': [('state', 'in', ('confirm', 'done'))]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='check_out']"
+                   position="attributes">
+                <attribute name="attrs">{'readonly': [('state', 'in', ('confirm', 'done'))]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='check_out']" position="after">
+                <field name="worked_hours" widget="float_time"/>
+                <field name="update_manually" class="oe_read_only"/>
+                <field name="state" invisible="True"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_attendance_tree" model="ir.ui.view">
+        <field name="name">hr.attendance.tree</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']"
+                   position="attributes">
+                <attribute name="groups">hr_attendance.group_hr_attendance_user</attribute>
+            </xpath>
+            <xpath expr="//field[@name='check_out']" position="after">
+                <field name="worked_hours" widget="float_time"/>
+                <field name="update_manually"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
