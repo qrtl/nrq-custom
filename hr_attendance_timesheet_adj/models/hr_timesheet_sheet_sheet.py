@@ -11,7 +11,7 @@ class HrTimesheetSheet(models.Model):
 
     total_attendances_worked_hours = fields.Float(
         compute='_compute_total_attendances_worked_hours',
-        string="Attendances"
+        string="Total Attendances Worked Hours",
     )
 
     @api.multi
