@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 11:11+0000\n"
-"PO-Revision-Date: 2017-06-13 11:11+0000\n"
+"POT-Creation-Date: 2018-05-24 09:18+0000\n"
+"PO-Revision-Date: 2018-05-24 09:18+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,36 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sale_quotation_approval
+#: model:ir.ui.view,arch_db:sale_quotation_approval.external_layout_nrq
+msgid "<span>Draft Quotation</span>"
+msgstr "<span>ドラフト見積書</span>"
+
+#. module: sale_quotation_approval
+#: model:ir.ui.view,arch_db:sale_quotation_approval.external_layout_nrq
+msgid "<span>Quotation</span>"
+msgstr "<span>見積書</span>"
+
+#. module: sale_quotation_approval
+#: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_approval_availability
+msgid "Approval Availability"
+msgstr "承認可能"
+
+#. module: sale_quotation_approval
 #: model:ir.ui.view,arch_db:sale_quotation_approval.view_order_form
 msgid "Approve"
 msgstr "承認"
+
+#. module: sale_quotation_approval
+#: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_approval
+#: model:ir.ui.view,arch_db:sale_quotation_approval.sale_order_view_search_inherit_quotation
+#: model:ir.ui.view,arch_db:sale_quotation_approval.view_order_form
+msgid "Approved"
+msgstr "承認済"
+
+#. module: sale_quotation_approval
+#: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_approval_user_id
+msgid "Approver"
+msgstr "承認者"
 
 #. module: sale_quotation_approval
 #: model:ir.ui.view,arch_db:sale_quotation_approval.view_order_form
@@ -36,18 +63,8 @@ msgid "Sales Order"
 msgstr "受注"
 
 #. module: sale_quotation_approval
-#: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_approval
-#: model:ir.ui.view,arch_db:sale_quotation_approval.sale_order_view_search_inherit_quotation
-msgid "Approved"
-msgstr "承認済"
+#: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_self_approval_permission
+msgid "Self-approval Permission"
+msgstr "自己承認許可"
 
-#. module: sale_quotation_approval
-#: model:ir.ui.view,arch_db:sale_quotation_approval.external_layout_nrq
-msgid "<span>Quotation</span>"
-msgstr "<span>見積書</span>"
-
-#. module: sale_quotation_approval
-#: model:ir.ui.view,arch_db:sale_quotation_approval.external_layout_nrq
-msgid "<span>Draft Quotation</span>"
-msgstr "<span>ドラフト見積書</span>"
 
