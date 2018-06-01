@@ -28,7 +28,7 @@ msgstr "<strong>合計金額</strong>"
 #. module: report_purchase_nrq
 #: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_document
 msgid "Date Req."
-msgstr "予定日"
+msgstr "納期"
 
 #. module: report_purchase_nrq
 #: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_document
