@@ -27,4 +27,8 @@
         </field>
     </record>
 
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
 </odoo>
