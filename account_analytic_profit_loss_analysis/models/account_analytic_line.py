@@ -24,6 +24,7 @@ class AccountAnalyticLine(models.Model):
         string='Related Project',
         compute='_compute_pj_id',
         inverse='_set_account_id',
+        store=True,
     )
     parent_project_id = fields.Many2one(
         related='pj_id.parent_project_id',
