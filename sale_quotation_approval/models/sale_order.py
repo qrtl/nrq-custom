@@ -2,7 +2,7 @@
 # Copyright 2017-2018 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 
 class SaleOrder(models.Model):
@@ -13,7 +13,6 @@ class SaleOrder(models.Model):
         readonly=True,
         default=False,
         copy=False,
-        track_visibility='onchange',
     )
     approval_user_id = fields.Many2one(
         'res.users',
@@ -39,8 +38,13 @@ class SaleOrder(models.Model):
                     vals['approval'] = True
                 elif quote.state != "draft":
                     vals['approval'] = False
-        res = super(SaleOrder, self).write(vals)
-        return res
+        if 'approval' in vals:
+            for quote in self:
+                if quote.approval != vals['approval']:
+                    self.send_track_notification_email(_('Approval'),
+                                                       str(quote.approval),
+                                                       str(vals['approval']))
+        return super(SaleOrder, self).write(vals)
 
     @api.multi
     def action_approve(self):
@@ -59,3 +63,55 @@ class SaleOrder(models.Model):
         for quote in self:
             quote.approval_availability = (quote.user_id != quote.env.user) \
                                           or quote.self_approval_permission
+
+    @api.multi
+    def send_track_notification_email(self, field, old_value, new_value):
+        self.ensure_one()
+        email_act = self.action_track_notification_email_send(field,
+                                                              old_value,
+                                                              new_value)
+        if email_act and email_act.get('context'):
+            email_ctx = email_act['context']
+            self.with_context(email_ctx).message_post_with_template(
+                email_ctx.get('default_template_id'))
+        return True
+
+    @api.multi
+    def action_track_notification_email_send(self, field, old_value,
+                                             new_value):
+        self.ensure_one()
+        ir_model_data = self.env['ir.model.data']
+        try:
+            template_id = ir_model_data.get_object_reference(
+                'sale_quotation_approval',
+                'sale_order_track_notification')[1]
+        except ValueError:
+            template_id = False
+        try:
+            compose_form_id = ir_model_data.get_object_reference(
+                'mail',
+                'email_compose_message_wizard_form')[1]
+        except ValueError:
+            compose_form_id = False
+        ctx = dict()
+        ctx.update({
+            'default_model': 'sale.order',
+            'default_res_id': self.ids[0],
+            'default_use_template': bool(template_id),
+            'default_template_id': template_id,
+            'default_composition_mode': 'comment',
+            'user_name': self.env.user.name,
+            'track_field': field,
+            'old_value': old_value,
+            'new_value': new_value
+        })
+        return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(compose_form_id, 'form')],
+            'view_id': compose_form_id,
+            'target': 'new',
+            'context': ctx,
+        }

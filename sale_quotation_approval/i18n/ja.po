@@ -6,14 +6,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-24 09:18+0000\n"
-"PO-Revision-Date: 2018-05-24 09:18+0000\n"
+"POT-Creation-Date: 2018-06-29 04:13+0000\n"
+"PO-Revision-Date: 2018-06-29 04:13+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: sale_quotation_approval
+#: model:mail.template,body_html:sale_quotation_approval.sale_order_track_notification
+msgid "\n"
+"Note by ${ctx[\"user_name\"]}</br>\n"
+"<ul>\n"
+"    <li>Untaxed Amount: ${object.amount_untaxed}</li>\n"
+"    <li>Taxes: ${object.amount_tax}</li>\n"
+"    <li>Customer: ${object.partner_id.name}</li>\n"
+"    <li>Total: ${object.amount_total}</li>\n"
+"    <li>${ctx[\"track_field\"]}: ${ctx[\"old_value\"]} → ${ctx[\"new_value\"]}</li>\n"
+"</ul>\n"
+"\n"
+"        "
+msgstr "\n"
+"Note by ${ctx[\"user_name\"]}</br>\n"
+"<ul>\n"
+"    <li>税抜金額: ${object.amount_untaxed}</li>\n"
+"    <li>税: ${object.amount_tax}</li>\n"
+"    <li>顧客: ${object.partner_id.name}</li>\n"
+"    <li>合計: ${object.amount_total}</li>\n"
+"    <li>${ctx[\"track_field\"]}: ${ctx[\"old_value\"]} → ${ctx[\"new_value\"]}</li>\n"
+"</ul>\n"
+"\n"
+"        "
+
+#. module: sale_quotation_approval
+#: model:mail.template,subject:sale_quotation_approval.sale_order_track_notification
+msgid "${object.name}"
+msgstr "${object.name}"
 
 #. module: sale_quotation_approval
 #: model:ir.ui.view,arch_db:sale_quotation_approval.external_layout_nrq
@@ -24,6 +54,12 @@ msgstr "<span>ドラフト見積書</span>"
 #: model:ir.ui.view,arch_db:sale_quotation_approval.external_layout_nrq
 msgid "<span>Quotation</span>"
 msgstr "<span>見積書</span>"
+
+#. module: sale_quotation_approval
+#: code:addons/sale_quotation_approval/models/sale_order.py:44
+#, python-format
+msgid "Approval"
+msgstr "承認済"
 
 #. module: sale_quotation_approval
 #: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_approval_availability
