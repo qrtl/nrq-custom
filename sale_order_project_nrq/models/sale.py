@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2014 Akretion - Sébastien BEAU <sebastien.beau@akretion.com>
 # © 2014 Akretion - Benoît GUILLOT <benoit.guillot@akretion.com>
+# Copyright 2018 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, models, _
@@ -13,14 +14,15 @@ class SaleOrder(models.Model):
 
     def _prepare_project_vals(self):
         self.ensure_one()
-        name = u" %s - %s - %s" % (
-            self.partner_id.name,
-            date.today().year,
-            self.name)
+        name = u" %s - %s" % (
+            self.name,
+            self.doc_title
+        )
         return {
             'user_id': self.user_id.id,
             'name': name,
             'partner_id': self.partner_id.id,
+            'allow_timesheets': False,
         }
 
     @api.multi
