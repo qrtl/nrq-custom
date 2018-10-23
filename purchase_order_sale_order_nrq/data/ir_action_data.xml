@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_sale_ids_initialize" model="ir.actions.server">
+        <field name="name">Purchase Order: Initialize sale_ids</field>
+        <field name="model_id" ref="model_purchase_order"/>
+        <field name="condition">True</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="code">env['purchase.order'].search([])._compute_sale_ids()</field>
+    </record>
+
+    <record id="account_invoice_sale_ids_initialize" model="ir.actions.server">
+        <field name="name">Account Invoice: Initialize sale_ids</field>
+        <field name="model_id" ref="model_account_invoice"/>
+        <field name="condition">True</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="code">env['account.invoice'].search([('type', '=', 'in_invoice')])._compute_sale_ids()</field>
+    </record>
+
+</odoo>
