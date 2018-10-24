@@ -8,7 +8,7 @@
 - Add two list view for Customer Invoice Lines and Vedor Invoice Lines
     """,
     "version": "10.0.1.0.0",
-    "category": "Sales",
+    "category": "Account",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
     "license": "AGPL-3",
