@@ -51,7 +51,7 @@
                 <div>
                     <field name="project_manager_user_id"/>
                 </div>
-            </xpath>cc
+            </xpath>
         </field>
     </record>
 
