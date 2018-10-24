@@ -22,7 +22,6 @@
         "sale_timesheet",
     ],
     "data": [
-        "data/ir_action_data.xml",
         "views/account_invoice_views.xml",
         "views/purchase_order_views.xml",
     ],
