@@ -12,4 +12,8 @@
         </field>
     </record>
 
+    <record id="purchase.action_invoice_pending" model="ir.actions.act_window">
+        <field name="search_view_id" ref="view_account_invoice_filter"/>
+    </record>
+
 </odoo>
