@@ -10,20 +10,6 @@ class PurchaseOrder(models.Model):
 
     sale_ids = fields.Many2many(
         'sale.order',
-        compute="_compute_sale_ids",
-        store=True,
+        related='order_line.sale_ids',
         string='Related Sales Order(s)'
     )
-
-    @api.multi
-    @api.depends('order_line')
-    def _compute_sale_ids(self):
-        for order in self:
-            account_analytic_id_list = []
-            for order_line in order.order_line:
-                if order_line.account_analytic_id:
-                    account_analytic_id_list.append(
-                        order_line.account_analytic_id.id)
-            if account_analytic_id_list:
-                order.sale_ids = self.env["sale.order"].search([(
-                    "project_id", "in", account_analytic_id_list)])
