@@ -21,6 +21,6 @@ class AccountInvoice(models.Model):
         for invoice_line in self:
             if invoice_line.account_analytic_id and \
                     invoice_line.invoice_id.type in ('in_invoice',
-                                                     'out_invoice'):
+                                                     'in_refund'):
                 invoice_line.sale_ids = self.env["sale.order"].search([(
                     "project_id", "=", invoice_line.account_analytic_id.id)])
