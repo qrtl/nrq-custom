@@ -44,7 +44,6 @@
             </xpath>
             <xpath expr="//field[@name='state']" position="after">
                 <field name="approval"/>
-                <field name="approval_user_id"/>
             </xpath>
         </field>
     </record>
