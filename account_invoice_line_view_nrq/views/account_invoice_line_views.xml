@@ -47,6 +47,7 @@
         <field name="arch" type="xml">
             <search string="Search Invoice Lines">
                 <field name="invoice_id"/>
+                <field name="account_id"/>
                 <field name="account_analytic_id"/>
                 <field name="product_id"/>
                 <separator/>
@@ -58,6 +59,8 @@
                     <filter name="invoice" string="Invoice"
                             context="{'group_by':'invoice_id'}"/>
                     <filter name="group_by_partner_id" string="Partner" context="{'group_by':'commercial_partner_id'}"/>
+                    <filter name="account" string="Analytic Account"
+                            context="{'group_by':'account_id'}"/>
                     <filter name="status" string="Status" context="{'group_by':'state'}"/>
                 </group>
            </search>
