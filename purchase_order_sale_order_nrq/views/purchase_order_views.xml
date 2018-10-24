@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="view_purchase_order_filter" model="ir.ui.view">
+        <field name="name">request.quotation.select</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="sale_ids"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
