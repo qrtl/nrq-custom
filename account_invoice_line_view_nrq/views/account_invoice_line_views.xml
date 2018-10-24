@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="customer_invoice_line_tree" model="ir.ui.view">
+        <field name="name">customer.invoice.line.tree</field>
+        <field name="model">account.invoice.line</field>
+        <field name="arch" type="xml">
+            <tree string="Invoice Lines" create="0" edit="0">
+                <field name="invoice_id"/>
+                <field name="partner_id" groups="base.group_user" string="Customer"/>
+                <field name="product_id"/>
+                <field name="name"/>
+                <field name="account_id"/>
+                <field name="account_analytic_id"/>
+                <field name="quantity"/>
+                <field name="price_unit"/>
+                <field name="invoice_line_tax_ids" widget="many2many_tags"/>
+                <field name="price_subtotal"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="supplier_invoice_line_tree" model="ir.ui.view">
+        <field name="name">invoice.line.tree</field>
+        <field name="model">account.invoice.line</field>
+        <field name="arch" type="xml">
+            <tree string="Invoice Lines" create="0" edit="0">
+                <field name="invoice_id"/>
+                <field name="partner_id" groups="base.group_user" string="Vendor"/>
+                <field name="product_id"/>
+                <field name="name"/>
+                <field name="account_id"/>
+                <field name="account_analytic_id"/>
+                <field name="quantity"/>
+                <field name="price_unit"/>
+                <field name="invoice_line_tax_ids" widget="many2many_tags"/>
+                <field name="price_subtotal"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_account_invoice_line_filter" model="ir.ui.view">
+        <field name="name">account.invoice.line.select</field>
+        <field name="model">account.invoice.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Invoice Lines">
+                <field name="invoice_id"/>
+                <field name="account_analytic_id"/>
+                <field name="product_id"/>
+                <separator/>
+                <filter name="draft" string="Draft" domain="[('state','in',('draft', 'proforma'))]"/>
+                <filter name="open" string="Open" domain="[('state','=','open')]"/>
+                <filter name="paid" string="Paid" domain="[('state','=','paid')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="invoice" string="Invoice"
+                            context="{'group_by':'invoice_id'}"/>
+                    <filter name="group_by_partner_id" string="Partner" context="{'group_by':'commercial_partner_id'}"/>
+                    <filter name="status" string="Status" context="{'group_by':'state'}"/>
+                </group>
+           </search>
+        </field>
+    </record>
+
+    <record id="action_supplier_invoice_line" model="ir.actions.act_window">
+        <field name="name">Supplier Invoice Lines</field>
+        <field name="res_model">account.invoice.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="supplier_invoice_line_tree"/>
+        <field name="domain">[('invoice_id.type','in',('in_invoice', 'in_refund'))]</field>
+        <field name="search_view_id" ref="view_account_invoice_line_filter"/>
+    </record>
+
+    <record id="action_customer_invoice_line" model="ir.actions.act_window">
+        <field name="name">Customer Invoice Lines</field>
+        <field name="res_model">account.invoice.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="customer_invoice_line_tree"/>
+        <field name="domain">[('invoice_id.type','in',('out_invoice', 'out_refund'))]</field>
+        <field name="search_view_id" ref="view_account_invoice_line_filter"/>
+    </record>
+
+    <menuitem action="action_customer_invoice_line"
+              id="customer_invoice_line"
+              parent="account.menu_finance_receivables" sequence="2"/>
+
+    <menuitem action="action_supplier_invoice_line"
+              id="supplier_invoice_line"
+              parent="account.menu_finance_payables" sequence="2"/>
+
+</odoo>
