@@ -21,6 +21,11 @@ msgid "Customer"
 msgstr "顧客"
 
 #. module: account_invoice_line_view_nrq
+#: model:ir.ui.view,arch_db:account_invoice_line_view_nrq.view_account_invoice_line_filter
+msgid "Analytic Account"
+msgstr "勘定科目"
+
+#. module: account_invoice_line_view_nrq
 #: model:ir.actions.act_window,name:account_invoice_line_view_nrq.action_customer_invoice_line
 #: model:ir.ui.menu,name:account_invoice_line_view_nrq.customer_invoice_line
 msgid "Customer Invoice Lines"
