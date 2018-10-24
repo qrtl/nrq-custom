@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-23 06:13+0000\n"
-"PO-Revision-Date: 2018-10-23 06:13+0000\n"
+"POT-Creation-Date: 2018-10-24 03:11+0000\n"
+"PO-Revision-Date: 2018-10-24 03:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,15 +21,26 @@ msgid "Invoice"
 msgstr "請求書"
 
 #. module: purchase_order_sale_order_nrq
+#: model:ir.model,name:purchase_order_sale_order_nrq.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "請求書行"
+
+#. module: purchase_order_sale_order_nrq
 #: model:ir.model,name:purchase_order_sale_order_nrq.model_purchase_order
 msgid "Purchase Order"
 msgstr "注文書"
 
 #. module: purchase_order_sale_order_nrq
+#: model:ir.model,name:purchase_order_sale_order_nrq.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "発注明細"
+
+#. module: purchase_order_sale_order_nrq
+#: model:ir.model.fields,field_description:purchase_order_sale_order_nrq.field_account_invoice_line_sale_ids
 #: model:ir.model.fields,field_description:purchase_order_sale_order_nrq.field_account_invoice_sale_ids
+#: model:ir.model.fields,field_description:purchase_order_sale_order_nrq.field_purchase_order_line_sale_ids
 #: model:ir.model.fields,field_description:purchase_order_sale_order_nrq.field_purchase_order_sale_ids
-#: model:ir.ui.view,arch_db:purchase_order_sale_order_nrq.invoice_supplier_form
-#: model:ir.ui.view,arch_db:purchase_order_sale_order_nrq.purchase_order_form
 msgid "Related Sales Order(s)"
 msgstr "関連販売オーダ"
+
 
