@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-     <record id="view_purchase_order_filter" model="ir.ui.view">
+    <record id="view_purchase_order_filter" model="ir.ui.view">
         <field name="name">request.quotation.select</field>
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
@@ -14,6 +14,17 @@
 
     <record id="purchase.action_invoice_pending" model="ir.actions.act_window">
         <field name="search_view_id" ref="view_account_invoice_filter"/>
+    </record>
+
+    <record id="purchase_order_tree" model="ir.ui.view">
+        <field name="name">purchase.order.tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_planned']" position="before">
+                <field name="sale_ids"/>
+            </xpath>
+        </field>
     </record>
 
 </odoo>
