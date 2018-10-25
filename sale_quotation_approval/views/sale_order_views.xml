@@ -28,6 +28,7 @@
             <xpath expr="//field[@name='related_project_id']"
                    position="after">
                 <field name="self_approval_permission"
+                       invisible="1"
                        groups="sales_team.group_sale_manager"
                        attrs="{'readonly':[('approval', '=', True)]}"/>
             </xpath>
