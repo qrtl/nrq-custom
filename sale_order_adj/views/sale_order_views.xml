@@ -12,12 +12,12 @@
             </xpath>
             <xpath expr="//field[@name='date_order']"
                    position="before">
-                <field name="confirmation_date"/>
+                <field name="confirmation_date" widget="date"/>
             </xpath>
             <xpath expr="//field[@name='amount_total']" position="before">
                 <field name="amount_untaxed"/>
             </xpath>
-            <xpath expr="//field[@name='state']" position="after">
+            <xpath expr="//field[@name='user_id']" position="after">
                 <field name="project_manager_user_id"/>
             </xpath>
         </field>
@@ -31,7 +31,7 @@
             <xpath expr="//field[@name='amount_total']" position="before">
                 <field name="amount_untaxed"/>
             </xpath>
-            <xpath expr="//field[@name='state']" position="after">
+            <xpath expr="//field[@name='user_id']" position="after">
                 <field name="project_manager_user_id"/>
             </xpath>
         </field>
