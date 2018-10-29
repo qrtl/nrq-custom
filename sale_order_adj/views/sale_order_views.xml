@@ -15,7 +15,7 @@
                 <field name="confirmation_date" widget="date"/>
             </xpath>
             <xpath expr="//field[@name='amount_total']" position="before">
-                <field name="amount_untaxed"/>
+                <field name="amount_untaxed" widget="monetary"/>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="after">
                 <field name="project_manager_user_id"/>
@@ -28,8 +28,12 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_order']"
+                   position="attributes">
+                <attribute name="widget">date</attribute>
+            </xpath>
             <xpath expr="//field[@name='amount_total']" position="before">
-                <field name="amount_untaxed"/>
+                <field name="amount_untaxed" widget="monetary"/>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="after">
                 <field name="project_manager_user_id"/>
