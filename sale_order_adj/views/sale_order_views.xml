@@ -14,10 +14,6 @@
                    position="before">
                 <field name="confirmation_date" widget="date"/>
             </xpath>
-            <xpath expr="//field[@name='amount_total']"
-                   position="attributes">
-                <attribute name="widget">monetary</attribute>
-            </xpath>
             <xpath expr="//field[@name='amount_total']" position="before">
                 <field name="amount_untaxed" widget="monetary"/>
             </xpath>
@@ -35,10 +31,6 @@
             <xpath expr="//field[@name='date_order']"
                    position="attributes">
                 <attribute name="widget">date</attribute>
-            </xpath>
-            <xpath expr="//field[@name='amount_total']"
-                   position="attributes">
-                <attribute name="widget">monetary</attribute>
             </xpath>
             <xpath expr="//field[@name='amount_total']" position="before">
                 <field name="amount_untaxed" widget="monetary"/>
