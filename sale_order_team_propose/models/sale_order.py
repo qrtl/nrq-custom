@@ -9,14 +9,17 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     @api.multi
-    @api.onchange('partner_id')
-    def onchange_partner_id(self):
-        super(SaleOrder, self).onchange_partner_id()
+    @api.onchange('user_id')
+    def onchange_user_id(self):
         values = {}
-        if not self.partner_id.team_id and self.partner_id.user_id:
-            sale_team = self.env['crm.team'].search([
-                ('member_ids.id', '=', self.partner_id.user_id.id)
-            ], limit=1)
-            if sale_team:
-                values['team_id'] = sale_team.id
+        values['team_id'] = self._get_default_team()
+        if not self.partner_id.team_id:
+            if self.user_id:
+                sale_team = self.env['crm.team'].sudo().search([
+                    '|',
+                    ('user_id', '=', self.user_id.id),
+                    ('member_ids.id', '=', self.user_id.id)
+                ], limit=1)
+                if sale_team:
+                    values['team_id'] = sale_team.id
         self.update(values)
