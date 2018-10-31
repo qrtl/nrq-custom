@@ -12,8 +12,8 @@ class SaleOrder(models.Model):
     @api.onchange('user_id')
     def onchange_user_id(self):
         values = {}
-        values['team_id'] = self._get_default_team()
         if not self.partner_id.team_id:
+            values['team_id'] = self._get_default_team()
             if self.user_id:
                 sale_team = self.env['crm.team'].sudo().search([
                     '|',
