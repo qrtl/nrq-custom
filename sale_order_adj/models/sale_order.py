@@ -12,3 +12,6 @@ class SaleOrder(models.Model):
         related='project_project_id.user_id',
         string='Project Manager',
     )
+    gross_profit_margin = fields.Float(
+        string='Gross Profit Margin',
+    )

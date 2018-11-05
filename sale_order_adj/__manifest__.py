@@ -9,7 +9,7 @@
 - Show Untaxed Amount in the list view
 - Show Confirmation Date instead of order date in the list view
     """,
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.1.0",
     "category": "Sales",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
@@ -20,6 +20,7 @@
         "sale",
         "sale_timesheet",
         "sale_quotation_approval",
+        "account_analytic_profit_loss_analysis",
     ],
     "data": [
         'views/sale_order_views.xml',
