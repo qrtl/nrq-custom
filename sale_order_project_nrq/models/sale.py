@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
-# © 2014 Akretion - Sébastien BEAU <sebastien.beau@akretion.com>
-# © 2014 Akretion - Benoît GUILLOT <benoit.guillot@akretion.com>
 # Copyright 2018 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models, _
-from odoo.exceptions import Warning
-from datetime import date
+from odoo import models, api
 
 
 class SaleOrder(models.Model):
@@ -26,16 +22,22 @@ class SaleOrder(models.Model):
         }
 
     @api.multi
-    def action_create_project(self):
-        project_obj = self.env['project.project']
-        for order in self:
-            if order.project_id:
-                raise Warning(_(
-                    'There is a project already related with this sale order.'
-                ))
-            vals = order._prepare_project_vals()
-            project = project_obj.create(vals)
-            order.write({
-                'project_id': project.analytic_account_id.id
-            })
-        return True
+    def write(self, vals):
+        if 'state' in vals and vals['state'] in ('sale', 'cancel'):
+            for order in self:
+                if order.project_project_id:
+                    order.update_project_allow_timesheets(vals['state'])
+        return super(SaleOrder, self).write(vals)
+
+    def update_project_allow_timesheets(self, state):
+        if state == 'sale':
+            self.project_project_id.allow_timesheets = True
+        if state == 'cancel':
+            related_sales_orders = self.search([
+                ('project_id', '=',
+                 self.project_project_id.analytic_account_id.id),
+                ('state', '!=', 'cancel'),
+                ('id', '!=', self.id),
+            ])
+            if not related_sales_orders:
+                self.project_project_id.allow_timesheets = False
