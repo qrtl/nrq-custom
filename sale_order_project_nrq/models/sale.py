@@ -36,7 +36,7 @@ class SaleOrder(models.Model):
             related_sales_orders = self.search([
                 ('project_id', '=',
                  self.project_project_id.analytic_account_id.id),
-                ('state', '!=', 'cancel'),
+                ('state', 'in', ('sale', 'done')),
                 ('id', '!=', self.id),
             ])
             if not related_sales_orders:
