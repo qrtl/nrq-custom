@@ -53,9 +53,11 @@ class HrAttendance(models.Model):
             local_tz = timezone(
                 ts.employee_id.user_id.partner_id.tz or 'utc')
             local_date_from_dt = local_tz.localize(datetime.strptime(
-                ts.date_from, DEFAULT_SERVER_DATE_FORMAT))
+                ts.date_from, DEFAULT_SERVER_DATE_FORMAT)).replace(
+                    hour=0, minute=0, second=0)
             local_date_to_dt = local_tz.localize(datetime.strptime(
-                ts.date_to, DEFAULT_SERVER_DATE_FORMAT))
+                ts.date_to, DEFAULT_SERVER_DATE_FORMAT)).replace(
+                    hour=23, minute=59, second=59)
             utc_date_from_dt = local_date_from_dt.astimezone(
                 pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
             utc_date_to_dt = local_date_to_dt.astimezone(pytz.utc).strftime(
