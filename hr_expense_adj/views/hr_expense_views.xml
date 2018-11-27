@@ -84,7 +84,6 @@
                     <field name="company_id" groups="base.group_multi_company"/>
                     <div>
                         <field name="description" placeholder="Please mention here any special situation to note.  e.g. there is no expense for this month, receipt has been lost, etc."/>
-                        <p>Preserved Text</p>
                     </div>
                 </sheet>
                 <div class="oe_chatter">
