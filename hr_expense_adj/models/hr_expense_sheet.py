@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017-2018 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api
 
@@ -16,21 +16,32 @@ class HrExpenseSheet(models.Model):
     name = fields.Char(
         default=_default_name,
     )
-    # change string of "submit" from "Submitted" to "To Be Approved"
+    # add 'draft' state, and change default to draft
     state = fields.Selection(
-        [('submit', 'To Be Approved'),
+        [('draft', 'Draft'),
+         ('submit', 'Submitted'),
          ('approve', 'Approved'),
          ('post', 'Posted'),
          ('done', 'Paid'),
          ('cancel', 'Refused')],
+        default='draft',
     )
-    submitted = fields.Boolean(
-        string='Submitted',
-        compute='_update_submitted',
-        store=True,
-        readonly=True,
-        default=False,
-        copy=False,
+    # add 'draft' state to cancel readonly for following fields
+    employee_id = fields.Many2one(
+        states={'draft': [('readonly', False)],
+                'submit': [('readonly', False)]}
+    )
+    responsible_id = fields.Many2one(
+        states={'draft': [('readonly', False)],
+                'submit': [('readonly', False)]}
+    )
+    company_id = fields.Many2one(
+        states={'draft': [('readonly', False)],
+                'submit': [('readonly', False)]}
+    )
+    currency_id = fields.Many2one(
+        states={'draft': [('readonly', False)],
+                'submit': [('readonly', False)]}
     )
     # Overwrite default field definition
     expense_line_ids = fields.One2many('hr.expense', 'sheet_id',
@@ -70,17 +81,14 @@ class HrExpenseSheet(models.Model):
 
     @api.multi
     def action_submit(self):
-        for sheet in self:
-            sheet.submitted = True
+        return self.write({'state': 'submit'})
 
     @api.multi
     def action_cancel_submission(self):
-        for sheet in self:
-            sheet.submitted = False
+        return self.write({'state': 'draft'})
 
     @api.multi
-    @api.depends('state')
-    def _update_submitted(self):
-        for sheet in self:
-            if sheet.state != 'submit':
-                sheet.submitted = False
+    def reset_expense_sheets(self):
+        # override the standard method
+        # return self.write({'state': 'submit'})
+        return self.write({'state': 'draft'})
