@@ -78,4 +78,12 @@
         </field>
     </record>
 
+    <record id="sale.action_quotations" model="ir.actions.act_window">
+        <field name="context">{
+            'hide_sale': True,
+            'default_validity_date': (context_today() + relativedelta(months=1)).strftime("%Y-%m-%d")
+        }
+        </field>
+    </record>
+
 </odoo>
