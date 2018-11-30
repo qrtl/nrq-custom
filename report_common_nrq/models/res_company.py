@@ -62,3 +62,6 @@ class Company(models.Model):
         "Company Chop Image (Alt.)",
         attachment=True,
     )
+    invoice_remarks = fields.Text(
+        string="Invoice Remarks",
+    )

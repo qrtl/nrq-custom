@@ -124,6 +124,7 @@
                         </td>
                     </tr>
                 </table>
+                <p t-if="doc.company_id.sale_remarks" t-field="doc.company_id.sale_remarks"/>
                 <t t-call="report_common_nrq.document_footer_layout"/>
             </div>
         </t>

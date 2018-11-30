@@ -450,4 +450,8 @@ msgstr "レポート用ウェブサイト(旧)"
 msgid "Website:"
 msgstr "Website:"
 
+#. module: report_common_nrq
+#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_invoice_remarks
+msgid "Invoice Remarks"
+msgstr "請求書備考"
 
