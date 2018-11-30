@@ -139,7 +139,15 @@
                                 <p>
                                     Salesperson: <span t-field="doc.user_id.name"/><br/>
                                     <t t-if="doc.validity_date">
-                                        Expiration Date: <span t-field="doc.validity_date"/>
+                                        Expiration Date:
+                                        <t t-if="doc.partner_id.lang == 'ja_JP'">
+                                            <span t-field="doc.validity_date" t-field-options="{'format':'YYYY'}"/>年
+                                            <span t-field="doc.validity_date" t-field-options="{'format':'MM'}"/>月
+                                            <span t-field="doc.validity_date" t-field-options="{'format':'dd'}"/>日<br/>
+                                        </t>
+                                        <t t-if="doc.partner_id.lang != 'ja_JP'">
+                                            <span t-field="doc.validity_date" t-field-options="{'format':'MMM dd, YYYY'}"/><br/>
+                                        </t>
                                     </t>
                                     <t t-else="">
                                         <span>Effective for one month from the date of quotation.</span>
