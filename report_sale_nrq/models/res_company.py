@@ -9,5 +9,5 @@ class Company(models.Model):
     _inherit = 'res.company'
 
     sale_remarks = fields.Text(
-        string="Sales Remark",
+        string="Sales Remarks",
     )

@@ -63,5 +63,5 @@ class Company(models.Model):
         attachment=True,
     )
     invoice_remarks = fields.Text(
-        string="Invoice Remark",
+        string="Invoice Remarks",
     )
