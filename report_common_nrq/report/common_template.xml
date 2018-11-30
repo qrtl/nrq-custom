@@ -138,7 +138,12 @@
                             <t t-if="type == 'quotation'">
                                 <p>
                                     Salesperson: <span t-field="doc.user_id.name"/><br/>
-                                    <span>Effective for one month from the date of quotation.</span>
+                                    <t t-if="doc.validity_date">
+                                        Expiration Date: <span t-field="doc.validity_date"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span>Effective for one month from the date of quotation.</span>
+                                    </t>
                                 </p>
                             </t>
                             <t t-if="type == 'purchase'">
