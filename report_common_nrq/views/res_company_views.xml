@@ -24,6 +24,9 @@
                         <field name="company_website_alt"/>
                         <field name="bank_details_alt"/>
                     </group>
+                    <group>
+                        <field name="invoice_remarks"/>
+                    </group>
                 </page>
                 <page string="Company Chop" groups="base.group_system">
                     <group>

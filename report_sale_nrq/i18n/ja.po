@@ -110,3 +110,8 @@ msgstr "quotation"
 msgid "true"
 msgstr "true"
 
+#. module: report_sale_nrq
+#: model:ir.model.fields,field_description:report_sale_nrq.field_res_company_sale_remarks
+msgid "Sales Remarks"
+msgstr "販売見積書備考"
+
