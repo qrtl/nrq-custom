@@ -415,6 +415,8 @@
                     <div style="border-bottom: 1px solid #DCDCDC;"></div>
                 </div>
             </div>
+            <p t-if="type == 'invoice' and doc.company_id.invoice_remarks"
+               t-field="doc.company_id.invoice_remarks"/>
             <div style="font-size:16px">
                 <t t-if="alt != 'true'">
                     <table style="margin-bottom:10px;">
