@@ -66,12 +66,12 @@ class HrExpenseSheet(models.Model):
     @api.multi
     def write(self, vals):
         res = super(HrExpenseSheet, self).write(vals)
-        if self.state == 'submit':
+        if self.state in ['draft', 'submit']:
             for line in self.expense_line_ids.sorted(
                     key=lambda x: (x.date, x.id)):
                 if line.number == False:
                     self._assign_number(line)
-            return res
+        return res
 
     @api.multi
     def unlink(self):

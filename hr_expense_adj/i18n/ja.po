@@ -44,7 +44,7 @@ msgstr "経費内訳等"
 #. module: hr_expense_adj
 #: model:ir.model,name:hr_expense_adj.model_hr_expense_sheet
 msgid "Expense Report"
-msgstr "経費レポート"
+msgstr "経費報告"
 
 #. module: hr_expense_adj
 #: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
@@ -102,7 +102,7 @@ msgstr "未申請"
 #. module: hr_expense_adj
 #: model:ir.ui.view,arch_db:hr_expense_adj.hr_expense_form_view_adj
 msgid "View Report"
-msgstr "レポートを表示"
+msgstr "報告を表示"
 
 #. module: hr_expense_adj
 #: selection:hr.expense.sheet,state:0
