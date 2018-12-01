@@ -9,7 +9,7 @@
 * Proposes default values in expense report summary field
 * Adds 'draft' state to expense report
     """,
-    "version": "10.0.1.4.0",
+    "version": "10.0.1.4.1",
     "category": "HR",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
