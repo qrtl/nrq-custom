@@ -12,7 +12,6 @@
     'description': """
 - Disable the search feature in web_responsive
   - Hide the search icon in the menu
-  - Disable the type and search feature
     """,
     'depends': [
         'web_responsive'
