@@ -17,6 +17,7 @@
         'web_responsive'
     ],
     'data': [
+        'views/asset.xml',
         'views/web.xml',
     ],
     'installable': True,
