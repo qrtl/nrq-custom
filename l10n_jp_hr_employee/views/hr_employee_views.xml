@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="act_hr_employee_2_hr_private_info" model="ir.actions.act_window">
+        <field name="name">Private Info</field>
+        <field name="res_model">hr.private.info</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+    </record>
+
+    <record id="view_employee_form" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(act_hr_employee_2_hr_private_info)d"
+                    class="oe_stat_button"
+                    icon="fa-book"
+                    type="action">
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='address_id']" position="before">
+                <field name="furigana"/>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="before">
+                <field name="code"/>
+                <field name="employment_type_id" widget="selection"/>
+            </xpath>
+            <!--<xpath expr="//page[@name='personal_information']" position="after">-->
+                <!--<page name="private_information" string="Private Information" groups="hr.group_hr_user">-->
+                    <!--<group>-->
+                        <!--<group string="Citizenship &amp; Other Information">-->
+                            <!--<field name="private_country_id" options='{"no_open": True, "no_create": True}'/>-->
+                            <!--&lt;!&ndash;<field name="identification_id" groups="hr.group_hr_user"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<field name="passport_id" groups="hr.group_hr_user"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<field name="bank_account_id" context="{'default_partner_id': address_home_id}"/>&ndash;&gt;-->
+                        <!--</group>-->
+                        <!--&lt;!&ndash;<group string="Contact Information">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<field name="address_home_id"&ndash;&gt;-->
+                                <!--&lt;!&ndash;context="{'show_address': 1}"&ndash;&gt;-->
+                                <!--&lt;!&ndash;options='{"always_reload": True, "highlight_first_line": True}'/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</group>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<group string="Status">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<field name="gender"/>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<field name="marital"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</group>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<group string="Birth">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<field name="birthday"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</group>&ndash;&gt;-->
+                    <!--</group>-->
+                <!--</page>-->
+            <!--</xpath>-->
+        </field>
+    </record>
+
+</odoo>

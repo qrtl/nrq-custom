@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="permanent" model="hr.employment.type">
+        <field name="name">Permanent</field>
+    </record>
+    <record id="contract" model="hr.employment.type">
+        <field name="name">Contract</field>
+    </record>
+    <record id="parttime" model="hr.employment.type">
+        <field name="name">Part-time</field>
+    </record>
+    <record id="casual" model="hr.employment.type">
+        <field name="name">Casual</field>
+    </record>
+    <record id="temp" model="hr.employment.type">
+        <field name="name">Temporary</field>
+    </record>
+
+</odoo>
