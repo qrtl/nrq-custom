@@ -15,26 +15,23 @@ class HrEmployee(models.Model):
         'hr.employment.type',
         string='Employment Type',
     )
+    # private_info_ids = fields.One2many(
+    #     'hr.private.info',
+    #     'employee_id',
+    #     string='Private Info')
     # private_info_id = fields.Many2one(
-    #     'hr.private.info', 'Product Template',
-    #     auto_join=True, index=True, ondelete="cascade", required=True)
-    private_info_ids = fields.One2many(
-        'hr.private.info',
-        'employee_id',
-        string='Private Info')
-    private_info_id = fields.Many2one(
-        'hr.private.info',
-        compute='_compute_private_info_id',
-        string='Latest Private Info',
-    )
+    #     'hr.private.info',
+    #     compute='_compute_private_info_id',
+    #     string='Latest Private Info',
+    # )
     private_info_count = fields.Integer(
         compute='_compute_private_info_count',
         string='Private Info'
     )
 
-    def _compute_private_info_id(self):
-        for info in self:
-            info.private_info_id = info.private_info_ids[:1].id
+    # def _compute_private_info_id(self):
+    #     for info in self:
+    #         info.private_info_id = info.private_info_ids[:1].id
 
     def _compute_private_info_count(self):
         private_info_data = self.env['hr.private.info'].sudo().read_group(

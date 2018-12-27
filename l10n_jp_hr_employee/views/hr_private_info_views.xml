@@ -25,6 +25,8 @@
                             <group>
                                 <group>
                                     <field name="private_country_id"/>
+                                    <field name="roman_spelling"/>
+                                    <field name="birthday"/>
                                 </group>
                             </group>
                         </page>

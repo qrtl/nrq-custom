@@ -7,6 +7,7 @@ from odoo import models, fields, api
 
 class HrPrivateInfo(models.Model):
     _name = 'hr.private.info'
+    _rec_name = 'employee_id'
 
     employee_id = fields.Many2one(
         'hr.employee',
@@ -16,4 +17,10 @@ class HrPrivateInfo(models.Model):
     private_country_id = fields.Many2one(
         'res.country',
         string='Nationality (Private)',
+    )
+    roman_spelling = fields.Char(
+        'Roman Spelling',
+    )
+    birthday = fields.Date(
+        'Birthday',
     )
