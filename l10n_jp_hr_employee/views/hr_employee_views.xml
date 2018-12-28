@@ -15,7 +15,7 @@
                 </button>
             </xpath>
             <xpath expr="//field[@name='address_id']" position="before">
-                <field name="furigana"/>
+                <field name="name_furigana"/>
             </xpath>
             <xpath expr="//field[@name='department_id']" position="before">
                 <field name="code"/>

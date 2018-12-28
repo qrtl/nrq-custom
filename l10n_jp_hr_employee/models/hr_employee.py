@@ -8,7 +8,8 @@ from odoo import models, fields, api
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    furigana = fields.Char(
+    name_furigana = fields.Char(
+        'Nme Furigana',
         required=True,
     )
     employment_type_id = fields.Many2one(
