@@ -20,5 +20,6 @@
         'data/hr_employment_type_data.xml',
         'views/hr_employee_views.xml',
         'views/hr_private_info_views.xml',
+        'views/hr_qualification_views.xml',
     ],
 }

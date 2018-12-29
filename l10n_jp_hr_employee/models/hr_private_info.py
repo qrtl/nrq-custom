@@ -99,3 +99,22 @@ class HrPrivateInfo(models.Model):
     bank_acc_holder_furigana = fields.Char(
         'Account Holder Furigana',
     )
+    school_name = fields.Char(
+        'School Name',
+    )
+    school_dept_name = fields.Char(
+        'Deartment/Course Name',
+    )
+    terminal_education = fields.Selection(
+        [('doctorate', 'Doctorate'),
+         ('master', 'Master'),
+         ('undergrad', 'Undergraduate'),
+         ('associate', 'Associate'),
+         ('highschool', 'High School')],
+        'Terminal Education',
+    )
+    qualification_ids = fields.One2many(
+        'hr.qualification',
+        'private_info_id',
+        string='Qualification',
+    )

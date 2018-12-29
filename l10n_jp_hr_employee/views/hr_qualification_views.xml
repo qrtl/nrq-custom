@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_qualification_form" model="ir.ui.view">
+        <field name="name">view.hr.qualification.form</field>
+        <field name="model">hr.qualification</field>
+        <field name="arch" type="xml">
+            <form string="Qualifications">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="year"/>
+                        <field name="month"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_qualification_tree" model="ir.ui.view">
+        <field name="name">view.hr.qualification.tree</field>
+        <field name="model">hr.qualification</field>
+        <field name="arch" type="xml">
+            <tree string="Qualifications">
+                <field name="name"/>
+                <field name="year"/>
+                <field name="month"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_qualification_search" model="ir.ui.view">
+        <field name="name">hr.qualification.search</field>
+        <field name="model">hr.qualification</field>
+        <field name="arch" type="xml">
+            <search string="Search Qualifications">
+                <field name="name"/>
+                <field name="employee_id"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

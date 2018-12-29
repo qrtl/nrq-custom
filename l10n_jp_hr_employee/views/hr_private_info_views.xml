@@ -60,6 +60,14 @@
                                     <field name="bank_acc_holder"/>
                                     <field name="bank_acc_holder_furigana"/>
                                 </group>
+                                <group name="academic_background" string="Final Academic Background">
+                                    <field name="school_name"/>
+                                    <field name="school_dept_name"/>
+                                    <field name="terminal_education"/>
+                                </group>
+                                <group name="qualification" string="Qualifications">
+                                    <field name="qualification_ids"/>
+                                </group>
                             </group>
                         </page>
                     </notebook>
