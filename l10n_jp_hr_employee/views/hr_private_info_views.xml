@@ -70,6 +70,9 @@
                                 </group>
                             </group>
                         </page>
+                        <page name="health_insurance" string="Health Insurance">
+                            <field name="dependant_ids"/>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

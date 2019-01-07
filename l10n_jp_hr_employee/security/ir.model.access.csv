@@ -5,3 +5,5 @@ access_hr_private_info_user,access_hr_private_info_user,model_hr_private_info,ba
 access_hr_private_info_manager,access_hr_private_info_manager,model_hr_private_info,hr.group_hr_manager,1,1,1,1
 access_hr_qualification_user,access_hr_qualification_user,model_hr_qualification,base.group_user,1,1,1,1
 access_hr_qualification_manager,access_hr_qualification_manager,model_hr_qualification,hr.group_hr_manager,1,1,1,1
+access_hr_dependant_user,access_hr_dependant_user,model_hr_dependant,base.group_user,1,1,1,1
+access_hr_dependant_manager,access_hr_dependant_manager,model_hr_dependant,hr.group_hr_manager,1,1,1,1

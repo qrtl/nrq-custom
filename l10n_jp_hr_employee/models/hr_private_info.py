@@ -118,3 +118,8 @@ class HrPrivateInfo(models.Model):
         'private_info_id',
         string='Qualification',
     )
+    dependant_ids = fields.One2many(
+        'hr.dependant',
+        'private_info_id',
+        string='Dependants',
+    )

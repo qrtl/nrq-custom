@@ -21,5 +21,6 @@
         'views/hr_employee_views.xml',
         'views/hr_private_info_views.xml',
         'views/hr_qualification_views.xml',
+        'views/hr_dependant_views.xml',
     ],
 }

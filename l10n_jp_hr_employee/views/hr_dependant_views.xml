@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_dependant_form" model="ir.ui.view">
+        <field name="name">view.hr.dependant.form</field>
+        <field name="model">hr.dependant</field>
+        <field name="arch" type="xml">
+            <form string="Dependants">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="dependant_categ"/>
+                        <field name="gender"/>
+                        <field name="birthday"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_dependant_tree" model="ir.ui.view">
+        <field name="name">view.hr.dependant.tree</field>
+        <field name="model">hr.dependant</field>
+        <field name="arch" type="xml">
+            <tree string="Dependants">
+                <field name="name"/>
+                <field name="dependant_categ"/>
+                <field name="birthday"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_dependant_search" model="ir.ui.view">
+        <field name="name">hr.dependant.search</field>
+        <field name="model">hr.dependant</field>
+        <field name="arch" type="xml">
+            <search string="Search Dependants">
+                <field name="name"/>
+                <field name="employee_id"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
