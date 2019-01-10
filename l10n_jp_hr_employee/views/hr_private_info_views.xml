@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="act_hr_employee_2_hr_private_info" model="ir.actions.act_window">
+        <field name="name">Private Info</field>
+        <field name="res_model">hr.private.info</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_employee_id': active_id, 'default_employee_id': active_id}</field>
+    </record>
+
+    <record id="view_hr_private_info_form" model="ir.ui.view">
+        <field name="name">view.hr.private.info.form</field>
+        <field name="model">hr.private.info</field>
+        <field name="arch" type="xml">
+            <form string="Private Info">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="name_furigana"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Information" name="information">
+                            <group>
+                                <group name="particulars" string="Personal Particulars">
+                                    <field name="private_country_id"/>
+                                    <field name="roman_spelling"/>
+                                    <field name="birthday"/>
+                                    <field name="gender" widget="radio"/>
+                                    <field name="private_phone"/>
+                                    <field name="private_email"/>
+                                    <field name="postal_code"/>
+                                    <field name="current_address"/>
+                                    <field name="address_furigana"/>
+                                    <field name="residence_cert" filename="residence_cert_filename"/>
+                                    <field name="residence_cert_filename" invisible="1"/>
+                                </group>
+                                <group name="emerg_contact" string="Emergency Contact">
+                                    <label for="emerg_contact_type"/>
+                                    <div>
+                                        <div class="o_row mr16">
+                                            <field name="emerg_contact_type"/>
+                                            <field name="emerg_contact_desc" attrs="{'invisible': [('emerg_contact_type', '!=', 'other')]}"/>
+                                        </div>
+                                    </div>
+                                    <field name="emerg_contact_name"/>
+                                    <field name="emerg_contact_postal_code"/>
+                                    <field name="emerg_contact_address"/>
+                                    <field name="emerg_contact_phone"/>
+                                    <field name="emerg_contact_sns"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group name="bank_info" string="Bank Info">
+                                    <field name="bank_id" options='{"no_open": True, "no_create": True}'/>
+                                    <field name="bank_branch"/>
+                                    <field name="bank_acc_type"/>
+                                    <field name="bank_acc_number"/>
+                                    <field name="bank_acc_holder"/>
+                                    <field name="bank_acc_holder_furigana"/>
+                                </group>
+                                <group name="academic_background" string="Final Academic Background">
+                                    <field name="school_name"/>
+                                    <field name="school_dept_name"/>
+                                    <field name="terminal_education"/>
+                                </group>
+                                <group name="qualification" string="Qualifications">
+                                    <field name="qualification_ids"/>
+                                </group>
+                                <group name="pension_info" string="Pension Info">
+                                    <field name="pension_number"/>
+                                    <field name="pension_book" filename="pension_book_filename"/>
+                                    <field name="pension_book_filename" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="health_insurance" string="Health Insurance">
+                            <field name="dependant_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_private_info_tree" model="ir.ui.view">
+        <field name="name">view.hr.private.info.tree</field>
+        <field name="model">hr.private.info</field>
+        <field name="arch" type="xml">
+            <tree string="Private Info">
+                <field name="employee_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_private_info_search" model="ir.ui.view">
+        <field name="name">hr.private.info.search</field>
+        <field name="model">hr.private.info</field>
+        <field name="arch" type="xml">
+            <search string="Search Private Info">
+                <field name="employee_id"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
