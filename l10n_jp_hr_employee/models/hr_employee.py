@@ -9,8 +9,7 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     name_furigana = fields.Char(
-        'Nme Furigana',
-        required=True,
+        'Name Furigana',
     )
     employment_type_id = fields.Many2one(
         'hr.employment.type',

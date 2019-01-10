@@ -47,9 +47,12 @@ class HrPrivateInfo(models.Model):
     address_furigana = fields.Char(
         'Address Furigana',
     )
-    residence_cert = fields.Many2many(
-        'ir.attachment',
+    # we will not use ir.attachment to store PDF for security reason
+    residence_cert = fields.Binary(
         string='Residence Certificate',
+    )
+    residence_cert_filename = fields.Char(
+        string='Residence Cert File Name',
     )
     emerg_contact_type = fields.Selection(
         [('father', 'Father'),
@@ -122,4 +125,13 @@ class HrPrivateInfo(models.Model):
         'hr.dependant',
         'private_info_id',
         string='Dependants',
+    )
+    pension_number = fields.Char(
+        'Pension Number',
+    )
+    pension_book = fields.Binary(
+        string='Pension Book',
+    )
+    pension_book_filename = fields.Char(
+        string='Pension Book File Name',
     )
