@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_form" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_private_info"
+                    class="oe_stat_button"
+                    icon="fa-user-secret"
+                    type="object">
+                    <field name="private_info_count" widget="statinfo" string="Private Info"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='address_id']" position="before">
+                <label for="family_name" string="Name"/>
+                <div>
+                    <div class="o_row mr16">
+                        <field name="family_name" placeholder="Family Name"/>
+                        <field name="given_name" placeholder="Given Name"/>
+                    </div>
+                </div>
+                <label for="furi_family_name" string="Name Furigana"/>
+                <div>
+                    <div class="o_row mr16">
+                        <field name="furi_family_name" placeholder="Family Name"/>
+                        <field name="furi_given_name" placeholder="Given Name"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="before">
+                <field name="code"/>
+                <field name="employment_type_id" widget="selection"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

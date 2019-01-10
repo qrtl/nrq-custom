@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="hr_private_info_user_rule" model="ir.rule">
+        <field name="name">My Private Info</field>
+        <field ref="model_hr_private_info" name="model_id"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="hr_private_info_manager_rule" model="ir.rule">
+        <field name="name">All Private Info</field>
+        <field ref="model_hr_private_info" name="model_id"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
+    </record>
+    <record id="hr_qualification_user_rule" model="ir.rule">
+        <field name="name">My Qualifications</field>
+        <field ref="model_hr_qualification" name="model_id"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="hr_qualification_manager_rule" model="ir.rule">
+        <field name="name">All Qualifications</field>
+        <field ref="model_hr_qualification" name="model_id"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
+    </record>
+    <record id="hr_dependant_user_rule" model="ir.rule">
+        <field name="name">My Dependants</field>
+        <field ref="model_hr_dependant" name="model_id"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <record id="hr_dependant_manager_rule" model="ir.rule">
+        <field name="name">All Dependants</field>
+        <field ref="model_hr_dependant" name="model_id"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
+    </record>
+
+</odoo>
