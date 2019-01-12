@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2018-2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api
@@ -89,7 +89,9 @@ class AccountAnalyticLine(models.Model):
         for ln in self:
             projects = ln.account_id and ln.account_id.project_ids
             ln.pj_id = projects and projects[0].id or False
-            sale_orders = self.env['sale.order'].search(
+            # use sudo() for search here - not all users have access to all
+            # the sales orders
+            sale_orders = self.env['sale.order'].sudo().search(
                 [('project_id', '=', ln.account_id.id),
                  ('state', '!=', 'cancel')])
             if len(sale_orders) == 1 and sale_orders[0].project_project_id:

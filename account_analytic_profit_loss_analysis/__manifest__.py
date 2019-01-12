@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2018-2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Analytic Account Profit and Loss Analysis",
     "summary": "",
     "description": """""",
-    "version": "10.0.1.2.0",
+    "version": "10.0.1.2.1",
     "category": "Accounting",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
