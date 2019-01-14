@@ -46,3 +46,7 @@ class HrQualification(models.Model):
          ('11', 'November'),
          ('12', 'December')]
     )
+    date_expiry = fields.Date(
+        "Expiry Date",
+    )
+    reference = fields.Char()

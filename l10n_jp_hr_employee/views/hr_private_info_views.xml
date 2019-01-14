@@ -9,6 +9,13 @@
         <field name="context">{'default_employee_id': active_id}</field>
     </record>
 
+    <record id="act_hr_private_info" model="ir.actions.act_window">
+        <field name="name">Private Info</field>
+        <field name="res_model">hr.private.info</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <record id="view_hr_private_info_form" model="ir.ui.view">
         <field name="name">view.hr.private.info.form</field>
         <field name="model">hr.private.info</field>
@@ -104,5 +111,12 @@
             </search>
         </field>
     </record>
+
+    <menuitem
+        id="menu_open_view_private_invo"
+        action="act_hr_private_info"
+        parent="hr.menu_hr_root"
+        sequence="4"
+        groups="hr.group_hr_manager"/>
 
 </odoo>

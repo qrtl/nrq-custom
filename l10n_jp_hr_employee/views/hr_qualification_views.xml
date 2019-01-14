@@ -8,9 +8,15 @@
             <form string="Qualifications">
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="year"/>
-                        <field name="month"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="year"/>
+                            <field name="month"/>
+                        </group>
+                        <group>
+                            <field name="date_expiry"/>
+                            <field name="reference"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
@@ -25,6 +31,8 @@
                 <field name="name"/>
                 <field name="year"/>
                 <field name="month"/>
+                <field name="date_expiry"/>
+                <field name="reference"/>
             </tree>
         </field>
     </record>
