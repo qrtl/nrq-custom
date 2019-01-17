@@ -135,3 +135,44 @@ class HrPrivateInfo(models.Model):
     pension_book_filename = fields.Char(
         string='Pension Book File Name',
     )
+    pension_number_unsure = fields.Boolean(
+        'Unsure about Pension Number',
+    )
+    employment_ins_number = fields.Char(
+        'Emp. Insurance Number',
+    )
+    employment_ins_number_unsure = fields.Boolean(
+        'Unsure about Emp. Insurance Number',
+    )
+    previous_employer = fields.Char(
+        'Previous Employer',
+    )
+    previous_emp_from = fields.Date(
+        'Prev. Emp. Start',
+    )
+    previous_emp_to = fields.Date(
+        'Prev. Emp. Finish',
+    )
+    employment_ins_card = fields.Binary(
+        'Emp. Insurance Card',
+    )
+    employment_ins_card_filename = fields.Char(
+        'Emp. Insurance Card File Name',
+    )
+    disability_classification = fields.Selection(
+        [('1', 'Level 1'),
+         ('2', 'Level 2'),
+         ('3', 'Level 3'),
+         ('4', 'Level 4'),
+         ('5', 'Level 5')],
+        'Disability Classification',
+    )
+    widowhood = fields.Selection(
+        [('widow', 'Widow'),
+         ('special', 'Special Widow'),
+         ('widower', 'Widower')],
+    )
+    working_student_deduction = fields.Boolean(
+        'Working Student Deduction',
+    )
+    note = fields.Text()
