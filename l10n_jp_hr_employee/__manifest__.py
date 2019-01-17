@@ -13,13 +13,15 @@
     "installable": True,
     "depends": [
         "hr",
+        "hr_contract",
     ],
     "data": [
         'security/ir.model.access.csv',
         'security/hr_security.xml',
         'data/hr_employment_type_data.xml',
-        'views/hr_employee_views.xml',
+        'data/hr_contract_data.xml',
         'views/hr_private_info_views.xml',
+        'views/hr_employee_views.xml',
         'views/hr_qualification_views.xml',
         'views/hr_dependant_views.xml',
     ],
