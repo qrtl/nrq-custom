@@ -12,6 +12,12 @@
                         <field name="dependant_categ"/>
                         <field name="gender"/>
                         <field name="birthday"/>
+                        <field name="residence_categ"/>
+                        <field name="postal_code"/>
+                        <field name="address"/>
+                        <field name="address_furigana"/>
+                        <field name="phone"/>
+                        <field name="occupation"/>
                     </group>
                 </sheet>
             </form>

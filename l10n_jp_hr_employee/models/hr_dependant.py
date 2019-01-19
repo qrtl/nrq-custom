@@ -45,3 +45,19 @@ class HrDependant(models.Model):
         required=True,
     )
     birthday = fields.Date()
+    residence_categ = fields.Selection(
+        [('together', 'Together'),
+         ('apart', 'Apart')],
+        'Residence Category',
+    )
+    postal_code = fields.Char(
+        'Postal Code',
+    )
+    address = fields.Char(
+        'Address',
+    )
+    address_furigana = fields.Char(
+        'Address Furigana',
+    )
+    phone = fields.Char()
+    occupation = fields.Char()
