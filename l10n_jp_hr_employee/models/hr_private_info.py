@@ -176,3 +176,18 @@ class HrPrivateInfo(models.Model):
         'Working Student Deduction',
     )
     note = fields.Text()
+    visa_number = fields.Char(
+        'Visa Number',
+    )
+    date_visa_expiry = fields.Date(
+        'Visa Expiry Date',
+    )
+    work_permit_number = fields.Char(
+        'Work Permit Number',
+    )
+    residence_card = fields.Binary(
+        'Residence Card',
+    )
+    residence_card_filename = fields.Char(
+        'Residence Card File Name',
+    )
