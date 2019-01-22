@@ -23,6 +23,11 @@
                         <field name="earnings"/>
                         <field name="amt_to_family"/>
                         <field name="disability_class_id" widget="selection"/>
+                        <field name="disability_note" attrs="{'invisible': [('disability_class_id', '=', False)]}"/>
+                        <field name="is_dependant_tax"/>
+                        <field name="date_dependant_enter"/>
+                        <field name="cause_dependant_enter"/>
+                        <field name="cause_dependant_enter_note" attrs="{'invisible': [('cause_dependant_enter', '=', '5_other')]}"/>
                     </group>
                 </sheet>
             </form>

@@ -94,3 +94,23 @@ class HrDependant(models.Model):
         'hr.disability.class',
         string='Disability Class',
     )
+    disability_note = fields.Char(
+        'Disability Note',
+    )
+    is_dependant_tax = fields.Boolean(
+        'Dependant in Tax Calc.',
+    )
+    date_dependant_enter = fields.Date(
+        'Date of Becoming a Dapendant',
+    )
+    cause_dependant_enter = fields.Selection(
+        [('1_employment', "Spouse's Employment"),
+         ('2_marriage', 'Marriage'),
+         ('3_left_job', 'Left Job'),
+         ('4_income_decrease', 'Income Decrease'),
+         ('5_other', 'Other')],
+        'Cuase of Becoming a Dependant',
+    )
+    cause_dependant_enter_note = fields.Char(
+        'Cause Note',
+    )

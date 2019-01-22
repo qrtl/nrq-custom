@@ -18,6 +18,11 @@ class HrPrivateInfo(models.Model):
         related='employee_id.name_furigana',
         store=True,
     )
+    code = fields.Char(
+        related='employee_id.code',
+        store=True,
+        readonly=True,
+    )
     company_id = fields.Many2one(
         'res.company',
         related='employee_id.company_id',
@@ -165,14 +170,6 @@ class HrPrivateInfo(models.Model):
     employment_ins_card_filename = fields.Char(
         'Emp. Insurance Card File Name',
     )
-    # disability_classification = fields.Selection(
-    #     [('1', 'Level 1'),
-    #      ('2', 'Level 2'),
-    #      ('3', 'Level 3'),
-    #      ('4', 'Level 4'),
-    #      ('5', 'Level 5')],
-    #     'Disability Classification',
-    # )
     disability_class_id = fields.Many2one(
         'hr.disability.class',
         string='Disability Class',

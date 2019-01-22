@@ -26,6 +26,7 @@
                         <group>
                             <field name="employee_id"/>
                             <field name="name_furigana"/>
+                            <field name="code"/>
                         </group>
                     </group>
                     <notebook>
