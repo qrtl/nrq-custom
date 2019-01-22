@@ -90,7 +90,7 @@
                                     <field name="previous_emp_to"/>
                                 </group>
                                 <group name="classification" string="Classifictions">
-                                    <field name="disability_classification"/>
+                                    <field name="disability_class_id" widget="selection"/>
                                     <field name="widowhood"/>
                                     <field name="working_student_deduction"/>
                                     <field name="note"/>

@@ -18,6 +18,11 @@
                         <field name="address_furigana"/>
                         <field name="phone"/>
                         <field name="occupation"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="income"/>
+                        <field name="earnings"/>
+                        <field name="amt_to_family"/>
+                        <field name="disability_class_id" widget="selection"/>
                     </group>
                 </sheet>
             </form>

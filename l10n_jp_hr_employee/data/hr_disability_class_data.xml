@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="level1" model="hr.disability.class">
+        <field name="name">Level 1</field>
+    </record>
+    <record id="level2" model="hr.disability.class">
+        <field name="name">Level 2</field>
+    </record>
+    <record id="level3" model="hr.disability.class">
+        <field name="name">Level 3</field>
+    </record>
+    <record id="level4" model="hr.disability.class">
+        <field name="name">Level 4</field>
+    </record>
+    <record id="level5" model="hr.disability.class">
+        <field name="name">Level 5</field>
+    </record>
+
+</odoo>

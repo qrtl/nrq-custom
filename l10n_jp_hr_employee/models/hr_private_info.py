@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api
@@ -16,6 +16,12 @@ class HrPrivateInfo(models.Model):
     )
     name_furigana = fields.Char(
         related='employee_id.name_furigana',
+        store=True,
+    )
+    company_id = fields.Many2one(
+        'res.company',
+        related='employee_id.company_id',
+        string='Company',
         store=True,
     )
     private_country_id = fields.Many2one(
@@ -159,13 +165,17 @@ class HrPrivateInfo(models.Model):
     employment_ins_card_filename = fields.Char(
         'Emp. Insurance Card File Name',
     )
-    disability_classification = fields.Selection(
-        [('1', 'Level 1'),
-         ('2', 'Level 2'),
-         ('3', 'Level 3'),
-         ('4', 'Level 4'),
-         ('5', 'Level 5')],
-        'Disability Classification',
+    # disability_classification = fields.Selection(
+    #     [('1', 'Level 1'),
+    #      ('2', 'Level 2'),
+    #      ('3', 'Level 3'),
+    #      ('4', 'Level 4'),
+    #      ('5', 'Level 5')],
+    #     'Disability Classification',
+    # )
+    disability_class_id = fields.Many2one(
+        'hr.disability.class',
+        string='Disability Class',
     )
     widowhood = fields.Selection(
         [('widow', 'Widow'),
