@@ -31,6 +31,7 @@ class HrQualification(models.Model):
     )
     year = fields.Selection(
         get_years(),
+        required=True,
     )
     month = fields.Selection(
         [('1', 'January'),
@@ -44,7 +45,8 @@ class HrQualification(models.Model):
          ('9', 'September'),
          ('10', 'October'),
          ('11', 'November'),
-         ('12', 'December')]
+         ('12', 'December')],
+        required=True,
     )
     date_expiry = fields.Date(
         "Expiry Date",
