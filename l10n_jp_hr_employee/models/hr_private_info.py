@@ -101,9 +101,6 @@ class HrPrivateInfo(models.Model):
         'Emerg. Contact Phone',
         required=True,
     )
-    emerg_contact_sns = fields.Char(
-        'Emerg. Contact SNS',
-    )
     bank_id = fields.Many2one(
         'res.bank',
         string='Bank',
@@ -162,36 +159,9 @@ class HrPrivateInfo(models.Model):
         'Pension Number',
         required=True,
     )
-    pension_book = fields.Binary(
-        string='Pension Book',
-    )
-    pension_book_filename = fields.Char(
-        string='Pension Book File Name',
-    )
-    pension_number_unsure = fields.Boolean(
-        'Unsure about Pension Number',
-    )
     employment_ins_number = fields.Char(
         'Emp. Insurance Number',
         required=True,
-    )
-    employment_ins_number_unsure = fields.Boolean(
-        'Unsure about Emp. Insurance Number',
-    )
-    previous_employer = fields.Char(
-        'Previous Employer',
-    )
-    previous_emp_from = fields.Date(
-        'Prev. Emp. Start',
-    )
-    previous_emp_to = fields.Date(
-        'Prev. Emp. Finish',
-    )
-    employment_ins_card = fields.Binary(
-        'Emp. Insurance Card',
-    )
-    employment_ins_card_filename = fields.Char(
-        'Emp. Insurance Card File Name',
     )
     disability_class_id = fields.Many2one(
         'hr.disability.class',
@@ -222,13 +192,16 @@ class HrPrivateInfo(models.Model):
         'Residence Card File Name',
     )
 
-    @api.constrains('private_phone')
-    def _check_private_phone(self):
+    @api.constrains('private_phone', 'emerg_contact_phone')
+    def _check_digit_fields(self):
         for rec in self:
+            msg = _("Only digits are allowed for %s field.")
             if rec.private_phone and not rec.private_phone.encode(
                     'utf-8').isdigit():
-                raise ValidationError(_("Only digits are allowed for the "
-                                        "Private Phone field."))
+                raise ValidationError(msg % ("Private Phone"))
+            if rec.emerg_contact_phone and not rec.emerg_contact_phone.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Emerg. Contact Phone"))
 
     @api.constrains('postal_code')
     def _check_postal_code(self):

@@ -57,7 +57,6 @@
                                     <field name="emerg_contact_postal_code"/>
                                     <field name="emerg_contact_address"/>
                                     <field name="emerg_contact_phone"/>
-                                    <field name="emerg_contact_sns"/>
                                 </group>
                                 <group name="bank_info" string="Bank Info">
                                     <field name="bank_id" options='{"no_open": True, "no_create": True}'/>
@@ -77,18 +76,9 @@
                                 </group>
                                 <group name="pension_info" string="Pension Info">
                                     <field name="pension_number"/>
-                                    <field name="pension_book" filename="pension_book_filename"/>
-                                    <field name="pension_book_filename" invisible="1"/>
-                                    <field name="pension_number_unsure"/>
                                 </group>
                                 <group name="employment_info" string="Employment Info">
                                     <field name="employment_ins_number"/>
-                                    <field name="employment_ins_card" filename="employment_ins_card_filename"/>
-                                    <field name="employment_ins_card_filename" invisible="1"/>
-                                    <field name="employment_ins_number_unsure"/>
-                                    <field name="previous_employer"/>
-                                    <field name="previous_emp_from"/>
-                                    <field name="previous_emp_to"/>
                                 </group>
                                 <group name="classification" string="Classifictions">
                                     <field name="disability_class_id" widget="selection"/>
