@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Extension to Employees for Japan",
@@ -19,6 +19,7 @@
         'security/ir.model.access.csv',
         'security/hr_security.xml',
         'data/hr_employment_type_data.xml',
+        'data/hr_disability_class_data.xml',
         'data/hr_contract_data.xml',
         'views/hr_private_info_views.xml',
         'views/hr_employee_views.xml',

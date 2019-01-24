@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api
@@ -31,6 +31,7 @@ class HrQualification(models.Model):
     )
     year = fields.Selection(
         get_years(),
+        required=True,
     )
     month = fields.Selection(
         [('1', 'January'),
@@ -44,7 +45,8 @@ class HrQualification(models.Model):
          ('9', 'September'),
          ('10', 'October'),
          ('11', 'November'),
-         ('12', 'December')]
+         ('12', 'December')],
+        required=True,
     )
     date_expiry = fields.Date(
         "Expiry Date",

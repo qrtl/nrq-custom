@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api
+import re
+
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class HrPrivateInfo(models.Model):
@@ -18,31 +21,50 @@ class HrPrivateInfo(models.Model):
         related='employee_id.name_furigana',
         store=True,
     )
+    code = fields.Char(
+        related='employee_id.code',
+        store=True,
+        readonly=True,
+    )
+    company_id = fields.Many2one(
+        'res.company',
+        related='employee_id.company_id',
+        string='Company',
+        store=True,
+    )
     private_country_id = fields.Many2one(
         'res.country',
         string='Nationality (Private)',
+        required=True,
     )
     roman_spelling = fields.Char(
         'Roman Spelling',
+        required=True,
     )
     birthday = fields.Date(
         'Birthday',
+        required=True,
     )
     gender = fields.Selection(
         [('male', 'Male'),
          ('female', 'Female')],
+        required=True,
     )
     private_phone = fields.Char(
         'Private Phone',
+        required=True,
     )
     private_email = fields.Char(
         'Private Email',
+        required=True,
     )
     postal_code = fields.Char(
         'Postal Code',
+        required=True,
     )
     current_address = fields.Char(
         'Current Address',
+        required=True,
     )
     address_furigana = fields.Char(
         'Address Furigana',
@@ -62,12 +84,14 @@ class HrPrivateInfo(models.Model):
          ('grand_mother', 'Grand Mother'),
          ('other', 'Other')],
         'Emerg. Contact Type',
+        required=True,
     )
     emerg_contact_desc = fields.Char(
         'Emerg. Contact Description',
     )
     emerg_contact_name = fields.Char(
         'Emerg. Contact Name',
+        required=True,
     )
     emerg_contact_postal_code = fields.Char(
         'Emerg. Contact Postal Code',
@@ -77,36 +101,43 @@ class HrPrivateInfo(models.Model):
     )
     emerg_contact_phone = fields.Char(
         'Emerg. Contact Phone',
-    )
-    emerg_contact_sns = fields.Char(
-        'Emerg. Contact SNS',
+        required=True,
     )
     bank_id = fields.Many2one(
         'res.bank',
         string='Bank',
+        required=True,
     )
     bank_branch = fields.Char(
         'Bank Branch',
+        required=True,
     )
     bank_acc_type = fields.Selection(
         [('savings', 'Savings'),
          ('current', 'Current')],
         'Account Type',
+        required=True,
+        default='savings',
     )
     bank_acc_number = fields.Char(
         'Account Number',
+        required=True,
     )
     bank_acc_holder = fields.Char(
         'Account Holder',
+        required=True,
     )
     bank_acc_holder_furigana = fields.Char(
         'Account Holder Furigana',
+        required=True,
     )
     school_name = fields.Char(
         'School Name',
+        required=True,
     )
     school_dept_name = fields.Char(
         'Deartment/Course Name',
+        required=True,
     )
     terminal_education = fields.Selection(
         [('doctorate', 'Doctorate'),
@@ -115,6 +146,7 @@ class HrPrivateInfo(models.Model):
          ('associate', 'Associate'),
          ('highschool', 'High School')],
         'Terminal Education',
+        required=True,
     )
     qualification_ids = fields.One2many(
         'hr.qualification',
@@ -128,44 +160,15 @@ class HrPrivateInfo(models.Model):
     )
     pension_number = fields.Char(
         'Pension Number',
-    )
-    pension_book = fields.Binary(
-        string='Pension Book',
-    )
-    pension_book_filename = fields.Char(
-        string='Pension Book File Name',
-    )
-    pension_number_unsure = fields.Boolean(
-        'Unsure about Pension Number',
+        required=True,
     )
     employment_ins_number = fields.Char(
         'Emp. Insurance Number',
+        required=True,
     )
-    employment_ins_number_unsure = fields.Boolean(
-        'Unsure about Emp. Insurance Number',
-    )
-    previous_employer = fields.Char(
-        'Previous Employer',
-    )
-    previous_emp_from = fields.Date(
-        'Prev. Emp. Start',
-    )
-    previous_emp_to = fields.Date(
-        'Prev. Emp. Finish',
-    )
-    employment_ins_card = fields.Binary(
-        'Emp. Insurance Card',
-    )
-    employment_ins_card_filename = fields.Char(
-        'Emp. Insurance Card File Name',
-    )
-    disability_classification = fields.Selection(
-        [('1', 'Level 1'),
-         ('2', 'Level 2'),
-         ('3', 'Level 3'),
-         ('4', 'Level 4'),
-         ('5', 'Level 5')],
-        'Disability Classification',
+    disability_class_id = fields.Many2one(
+        'hr.disability.class',
+        string='Disability Class',
     )
     widowhood = fields.Selection(
         [('widow', 'Widow'),
@@ -176,3 +179,64 @@ class HrPrivateInfo(models.Model):
         'Working Student Deduction',
     )
     note = fields.Text()
+    visa_number = fields.Char(
+        'Visa Number',
+    )
+    date_visa_expiry = fields.Date(
+        'Visa Expiry Date',
+    )
+    work_permit_number = fields.Char(
+        'Work Permit Number',
+    )
+    residence_card = fields.Binary(
+        'Residence Card',
+    )
+    residence_card_filename = fields.Char(
+        'Residence Card File Name',
+    )
+
+    @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
+                    'emerg_contact_postal_code', 'bank_acc_number')
+    def _check_digit_fields(self):
+        for rec in self:
+            msg = _("Only digits are allowed for %s field.")
+            if rec.private_phone and not rec.private_phone.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Private Phone"))
+            if rec.emerg_contact_phone and not rec.emerg_contact_phone.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Emerg. Contact Phone"))
+            if rec.postal_code and not rec.postal_code.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Postal Code"))
+            if rec.emerg_contact_postal_code and not \
+                    rec.emerg_contact_postal_code.encode('utf-8').isdigit():
+                raise ValidationError(msg % ("Emerg. Contact Postal Code"))
+            if rec.bank_acc_number and not rec.bank_acc_number.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Account Number"))
+
+    @api.constrains('postal_code', 'emerg_contact_postal_code',
+                    'bank_acc_number')
+    def _check_digits(self):
+        for rec in self:
+            msg = _("%s should be %s digit(s).")
+            if rec.postal_code and not len(rec.postal_code) == 7:
+                raise ValidationError(msg % ("Postal Code", "7"))
+            if rec.emerg_contact_postal_code and not len(
+                    rec.emerg_contact_postal_code) == 7:
+                raise ValidationError(msg % (
+                    "Emerg. Contact Postal Code", "7"))
+            if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
+                raise ValidationError(msg % ("Account Number", "7"))
+
+    @api.constrains('private_email')
+    def _check_email(self):
+        for rec in self:
+            msg = _("%s seems to be incorrect.")
+            if rec.private_email and not re.match(
+                    #FIXME
+                    # r"[a-zA-Z0-9._+]+@(\[?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$", rec.private_email):
+                    r"[a-zA-Z0-9._+]+@[a-zA-Z0-9.]",
+                    rec.private_email):
+                raise ValidationError(msg % ("Private Email"))

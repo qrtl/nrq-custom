@@ -12,6 +12,22 @@
                         <field name="dependant_categ"/>
                         <field name="gender"/>
                         <field name="birthday"/>
+                        <field name="residence_categ"/>
+                        <field name="postal_code"/>
+                        <field name="address"/>
+                        <field name="address_furigana"/>
+                        <field name="phone"/>
+                        <field name="occupation"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="income"/>
+                        <field name="earnings"/>
+                        <field name="amt_to_family"/>
+                        <field name="disability_class_id" widget="selection"/>
+                        <field name="disability_note" attrs="{'invisible': [('disability_class_id', '=', False)]}"/>
+                        <field name="is_dependant_tax"/>
+                        <field name="date_dependant_enter"/>
+                        <field name="cause_dependant_enter"/>
+                        <field name="cause_dependant_enter_note" attrs="{'invisible': [('cause_dependant_enter', '=', '5_other')]}"/>
                     </group>
                 </sheet>
             </form>
