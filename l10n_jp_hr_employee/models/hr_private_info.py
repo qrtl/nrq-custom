@@ -115,6 +115,7 @@ class HrPrivateInfo(models.Model):
          ('current', 'Current')],
         'Account Type',
         required=True,
+        default='savings',
     )
     bank_acc_number = fields.Char(
         'Account Number',
@@ -192,7 +193,8 @@ class HrPrivateInfo(models.Model):
         'Residence Card File Name',
     )
 
-    @api.constrains('private_phone', 'emerg_contact_phone')
+    @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
+                    'emerg_contact_postal_code', 'bank_acc_number')
     def _check_digit_fields(self):
         for rec in self:
             msg = _("Only digits are allowed for %s field.")
@@ -202,13 +204,26 @@ class HrPrivateInfo(models.Model):
             if rec.emerg_contact_phone and not rec.emerg_contact_phone.encode(
                     'utf-8').isdigit():
                 raise ValidationError(msg % ("Emerg. Contact Phone"))
+            if rec.postal_code and not rec.postal_code.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Postal Code"))
+            if rec.emerg_contact_postal_code and not \
+                    rec.emerg_contact_postal_code.encode('utf-8').isdigit():
+                raise ValidationError(msg % ("Emerg. Contact Postal Code"))
+            if rec.bank_acc_number and not rec.bank_acc_number.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Account Number"))
 
-    @api.constrains('postal_code')
-    def _check_postal_code(self):
+    @api.constrains('postal_code', 'emerg_contact_postal_code',
+                    'bank_acc_number')
+    def _check_digits(self):
         for rec in self:
-            if rec.postal_code:
-                if not rec.postal_code.encode('utf-8').isdigit():
-                    raise ValidationError(_("Only digits are allowed for the "
-                                            "Postal Code field."))
-                if not len(rec.postal_code) == 7:
-                    raise ValidationError(_("Postal Code should be 7 digits."))
+            msg = _("%s should be %s digit(s).")
+            if rec.postal_code and not len(rec.postal_code) == 7:
+                raise ValidationError(msg % ("Postal Code", "7"))
+            if rec.emerg_contact_postal_code and not len(
+                    rec.emerg_contact_postal_code) == 7:
+                raise ValidationError(msg % (
+                    "Emerg. Contact Postal Code", "7"))
+            if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
+                raise ValidationError(msg % ("Account Number", "7"))
