@@ -2,6 +2,8 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import re
+
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -227,3 +229,14 @@ class HrPrivateInfo(models.Model):
                     "Emerg. Contact Postal Code", "7"))
             if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
                 raise ValidationError(msg % ("Account Number", "7"))
+
+    @api.constrains('private_email')
+    def _check_email(self):
+        for rec in self:
+            msg = _("%s seems to be incorrect.")
+            if rec.private_email and not re.match(
+                    #FIXME
+                    # r"[a-zA-Z0-9._+]+@(\[?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$", rec.private_email):
+                    r"[a-zA-Z0-9._+]+@[a-zA-Z0-9.]",
+                    rec.private_email):
+                raise ValidationError(msg % ("Private Email"))
