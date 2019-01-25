@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!--Overwrite existing access control lists to disable the create, update and delete permissions-->
     <record id="sale.access_product_product_sale_manager" model="ir.model.access">
         <field name="perm_write">False</field>
         <field name="perm_create">False</field>
