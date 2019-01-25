@@ -3,9 +3,17 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import re
+from datetime import datetime
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+
+
+def get_years():
+    year_list = []
+    for i in range(1960, datetime.today().year + 1):
+        year_list.append((i, str(i)))
+    return year_list
 
 
 class HrPrivateInfo(models.Model):
@@ -139,14 +147,19 @@ class HrPrivateInfo(models.Model):
         'Deartment/Course Name',
         required=True,
     )
-    terminal_education = fields.Selection(
-        [('doctorate', 'Doctorate'),
-         ('master', 'Master'),
-         ('undergrad', 'Undergraduate'),
-         ('associate', 'Associate'),
-         ('highschool', 'High School')],
-        'Terminal Education',
+    school_completion = fields.Selection(
+        [('completed', 'Completed'),
+         ('unfinished', 'Unfinished'),
+         ('other', 'Other')],
+        'School Completion',
         required=True,
+    )
+    school_completion_desc = fields.Char(
+        'School Completion Description',
+    )
+    year_left_school = fields.Selection(
+        get_years(),
+        'Year of Leaving School',
     )
     qualification_ids = fields.One2many(
         'hr.qualification',
@@ -235,8 +248,7 @@ class HrPrivateInfo(models.Model):
         for rec in self:
             msg = _("%s seems to be incorrect.")
             if rec.private_email and not re.match(
-                    #FIXME
-                    # r"[a-zA-Z0-9._+]+@(\[?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$", rec.private_email):
-                    r"[a-zA-Z0-9._+]+@[a-zA-Z0-9.]",
+                    # ref: https://www.w3.org/TR/html5/forms.html#valid-e-mail-address
+                    r"^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
                     rec.private_email):
                 raise ValidationError(msg % ("Private Email"))

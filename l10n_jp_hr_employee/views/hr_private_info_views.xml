@@ -69,7 +69,9 @@
                                 <group name="academic_background" string="Final Academic Background">
                                     <field name="school_name"/>
                                     <field name="school_dept_name"/>
-                                    <field name="terminal_education"/>
+                                    <field name="school_completion"/>
+                                    <field name="school_completion_desc"/>
+                                    <field name="year_left_school"/>
                                 </group>
                                 <group name="qualification" string="Qualifications">
                                     <field name="qualification_ids"/>
