@@ -19,7 +19,6 @@
         "stock",
     ],
     "data": [
-        "security/ir.model.access.csv",
         "security/ir_model_access.xml",
     ],
 }
