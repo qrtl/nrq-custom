@@ -5,7 +5,7 @@
     "name": "Product Permission Adjustments",
     "summary": "",
     "version": "10.0.1.0.0",
-    "category": "Project",
+    "category": "Product",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
     "license": "AGPL-3",
