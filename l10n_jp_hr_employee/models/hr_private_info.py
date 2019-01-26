@@ -80,7 +80,13 @@ class HrPrivateInfo(models.Model):
         'Current Address',
         required=True,
     )
+    building = fields.Char(
+        'Apartment/Building',
+    )
     address_furigana = fields.Char(
+        'Address Furigana',
+    )
+    building_furigana = fields.Char(
         'Address Furigana',
     )
     # we will not use ir.attachment to store PDF for security reason

@@ -45,9 +45,16 @@
                                             <field name="postal_code" placeholder="Postal Code"/>
                                             <field name="address_pref" placeholder="Prefecture"/>
                                         </div>
-                                        <field name="address_street" placeholder="City and Street..." class="o_address_street"/>
+                                        <div class="o_row mr16">
+                                            <field name="address_street" placeholder="City and Street"/>
+                                            <field name="building" placeholder="Apartment/Building"/>
+                                        </div>
                                     </div>
-                                    <field name="address_furigana"/>
+                                    <label for="address_furigana"/>
+                                    <div class="o_row mr16">
+                                        <field name="address_furigana" placeholder="Furigana for City and Street"/>
+                                        <field name="building_furigana" placeholder="Furigana for Apartment/Building"/>
+                                    </div>
                                     <field name="residence_cert" filename="residence_cert_filename"/>
                                     <field name="residence_cert_filename" invisible="1"/>
                                 </group>
