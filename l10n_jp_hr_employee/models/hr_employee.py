@@ -2,6 +2,8 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import jaconv
+
 from odoo import models, fields, api
 
 
@@ -29,9 +31,9 @@ class HrEmployee(models.Model):
         string='Private Info'
     )
 
-    # def _compute_private_info_id(self):
-    #     for info in self:
-    #         info.private_info_id = info.private_info_ids[:1].id
+    @api.onchange('name_furigana')
+    def _onchange_name_furigana(self):
+        self.name_furigana = jaconv.z2h(jaconv.hira2hkata(self.name_furigana))
 
     def _compute_private_info_count(self):
         private_info_data = self.env['hr.private.info'].sudo().read_group(

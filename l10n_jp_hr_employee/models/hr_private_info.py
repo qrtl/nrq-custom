@@ -5,6 +5,8 @@
 import re
 from datetime import datetime
 
+import jaconv
+
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -207,6 +209,15 @@ class HrPrivateInfo(models.Model):
     residence_card_filename = fields.Char(
         'Residence Card File Name',
     )
+
+    @api.onchange('name_furigana')
+    def _onchange_name_furigana(self):
+        self.name_furigana = jaconv.z2h(jaconv.hira2kata(self.name_furigana))
+
+    @api.onchange('emerg_contact_name')
+    def _onchange_emerg_contact_name(self):
+        self.emerg_contact_name = jaconv.h2z(self.emerg_contact_name,
+                                             ascii=True, digit=True)
 
     @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
                     'emerg_contact_postal_code', 'bank_acc_number')
