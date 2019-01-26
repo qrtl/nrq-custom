@@ -39,8 +39,14 @@
                                     <field name="gender" widget="radio"/>
                                     <field name="private_phone"/>
                                     <field name="private_email"/>
-                                    <field name="postal_code"/>
-                                    <field name="current_address"/>
+                                    <label for="address_street"/>
+                                    <div class="o_address_format">
+                                        <div class="o_row mr16">
+                                            <field name="postal_code" placeholder="Postal Code"/>
+                                            <field name="address_pref" placeholder="Prefecture"/>
+                                        </div>
+                                        <field name="address_street" placeholder="City and Street..." class="o_address_street"/>
+                                    </div>
                                     <field name="address_furigana"/>
                                     <field name="residence_cert" filename="residence_cert_filename"/>
                                     <field name="residence_cert_filename" invisible="1"/>

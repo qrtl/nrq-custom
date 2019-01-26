@@ -72,7 +72,11 @@ class HrPrivateInfo(models.Model):
         'Postal Code',
         required=True,
     )
-    current_address = fields.Char(
+    address_pref = fields.Char(
+        'Prefecture',
+        placeholder="Prefecture",
+    )
+    address_street = fields.Char(
         'Current Address',
         required=True,
     )
