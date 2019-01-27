@@ -22,7 +22,11 @@
         <field name="arch" type="xml">
             <form string="Private Info">
                 <header>
-                    <field name="state" widget="statusbar" clickable="1"/>
+                    <button name="action_ready" type="object" attrs="{'invisible': ['|',('state','!=','draft'),('is_ready','=',True)]}" string="Get Ready to Submit" class="oe_highlight"/>
+                    <button name="action_submit" type="object" attrs="{'invisible': ['|',('state','!=','draft'),('is_ready','=',False)]}" string="Submit" class="oe_highlight"/>
+                    <button name="action_confirm" type="object" states="submit" string="Confirm" class="oe_highlight"/>
+                    <button name="action_draft" type="object" states="submit,confirm" string="Set to Draft"/>
+                    <field name="state" widget="statusbar" clickable="0"/>
                 </header>
                 <sheet>
                     <group>
@@ -44,30 +48,33 @@
                             </div>
                             <field name="code"/>
                         </group>
+                        <group>
+                            <field name="is_ready"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Information" name="information">
                             <group>
                                 <group name="particulars" string="Personal Particulars">
-                                    <field name="private_country_id"/>
+                                    <field name="private_country_id" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <label for="roman_family_name" string="Roman Spelling"/>
                                     <div>
                                         <div class="o_row mr16">
-                                            <field name="roman_family_name" placeholder="Family Name"/>
-                                            <field name="roman_given_name" placeholder="Given Name"/>
+                                            <field name="roman_family_name" placeholder="Family Name" attrs="{'required':[('is_ready','=',True)]}"/>
+                                            <field name="roman_given_name" placeholder="Given Name" attrs="{'required':[('is_ready','=',True)]}"/>
                                         </div>
                                     </div>
-                                    <field name="birthday"/>
-                                    <field name="gender" widget="radio" options="{'horizontal': true}"/>
-                                    <field name="private_phone"/>
-                                    <field name="private_email"/>
-                                    <label for="address_street"/>
+                                    <field name="birthday" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="gender" widget="radio" options="{'horizontal': true}" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="private_phone" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="private_email" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <label for="address_street" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <div class="o_address_format">
                                         <div class="o_row mr16">
-                                            <field name="postal_code" placeholder="Postal Code"/>
-                                            <field name="address_pref" placeholder="Prefecture"/>
+                                            <field name="postal_code" placeholder="Postal Code" attrs="{'required':[('is_ready','=',True)]}"/>
+                                            <field name="address_pref" placeholder="Prefecture" attrs="{'required':[('is_ready','=',True)]}"/>
                                         </div>
-                                        <field name="address_street" placeholder="City and Street" class="o_address_street"/>
+                                        <field name="address_street" placeholder="City and Street" class="o_address_street" attrs="{'required':[('is_ready','=',True)]}"/>
                                         <field name="building" placeholder="Apartment/Building" class="o_address_street"/>
                                     </div>
                                     <label for="address_furigana"/>
@@ -82,38 +89,40 @@
                                     <label for="emerg_contact_type"/>
                                     <div>
                                         <div class="o_row mr16">
-                                            <field name="emerg_contact_type"/>
-                                            <field name="emerg_contact_desc" attrs="{'invisible': [('emerg_contact_type', '!=', 'other')]}"/>
+                                            <field name="emerg_contact_type" attrs="{'required':[('is_ready','=',True)]}"/>
+                                            <field name="emerg_contact_desc" attrs="{'invisible': [('emerg_contact_type','!=','other')],'required':[('emerg_contact_type','=','other'),('is_ready','=',True)]}"/>
                                         </div>
                                     </div>
-                                    <field name="emerg_contact_name"/>
+                                    <field name="emerg_contact_name" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <field name="emerg_contact_postal_code"/>
                                     <field name="emerg_contact_address"/>
-                                    <field name="emerg_contact_phone"/>
+                                    <field name="emerg_contact_phone" attrs="{'required':[('is_ready','=',True)]}"/>
                                 </group>
                                 <group name="bank_info" string="Bank Info">
-                                    <field name="bank_id" options='{"no_open": True, "no_create": True}'/>
-                                    <field name="bank_branch"/>
-                                    <field name="bank_acc_type"/>
-                                    <field name="bank_acc_number"/>
-                                    <field name="bank_acc_holder"/>
-                                    <field name="furi_bank_acc_holder"/>
+                                    <field name="bank_id" options='{"no_open": True, "no_create": True}' attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="bank_branch" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="bank_acc_type" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="bank_acc_number" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="bank_acc_holder" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="furi_bank_acc_holder" attrs="{'required':[('is_ready','=',True)]}"/>
                                 </group>
                                 <group name="academic_background" string="Final Academic Background">
-                                    <field name="school_name"/>
-                                    <field name="school_dept_name"/>
-                                    <field name="school_completion" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="school_name" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="school_dept_name" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="school_completion" widget="radio" options="{'horizontal': true}" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <field name="school_completion_desc"/>
                                     <field name="year_left_school"/>
                                 </group>
-                                <group name="qualification" string="Qualifications">
-                                    <field name="qualification_ids"/>
-                                </group>
+                            </group>
+                            <group name="qualification" string="Qualifications">
+                                <field name="qualification_ids"/>
+                            </group>
+                            <group>
                                 <group name="pension_info" string="Pension Info">
                                     <field name="pension_number"/>
                                 </group>
                                 <group name="employment_info" string="Employment Info">
-                                    <field name="employment_ins_number"/>
+                                    <field name="employment_ins_number" attrs="{'required':[('is_ready','=',True)]}"/>
                                 </group>
                                 <group name="classification" string="Classifictions">
                                     <field name="disability_class_id" widget="selection"/>

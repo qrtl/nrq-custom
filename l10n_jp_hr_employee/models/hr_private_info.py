@@ -34,6 +34,9 @@ class HrPrivateInfo(models.Model):
         store=True,
         readonly=True,
     )
+    is_ready = fields.Boolean(
+        'Is Ready to Submit',
+    )
     family_name = fields.Char(
         related='employee_id.family_name',
         store=True,
@@ -58,13 +61,12 @@ class HrPrivateInfo(models.Model):
     company_id = fields.Many2one(
         'res.company',
         related='employee_id.company_id',
-        string='Company',
         store=True,
+        readonly=True,
     )
     private_country_id = fields.Many2one(
         'res.country',
         string='Nationality (Private)',
-        required=True,
     )
     roman_family_name = fields.Char(
         'Family Name (Roman)',
@@ -74,24 +76,19 @@ class HrPrivateInfo(models.Model):
     )
     birthday = fields.Date(
         'Birthday',
-        required=True,
     )
     gender = fields.Selection(
         [('male', 'Male'),
          ('female', 'Female')],
-        required=True,
     )
     private_phone = fields.Char(
         'Private Phone',
-        required=True,
     )
     private_email = fields.Char(
         'Private Email',
-        required=True,
     )
     postal_code = fields.Char(
         'Postal Code',
-        required=True,
     )
     address_pref = fields.Char(
         'Prefecture',
@@ -125,14 +122,12 @@ class HrPrivateInfo(models.Model):
          ('grand_mother', 'Grand Mother'),
          ('other', 'Other')],
         'Emerg. Contact Type',
-        required=True,
     )
     emerg_contact_desc = fields.Char(
         'Emerg. Contact Description',
     )
     emerg_contact_name = fields.Char(
         'Emerg. Contact Name',
-        required=True,
     )
     emerg_contact_postal_code = fields.Char(
         'Emerg. Contact Postal Code',
@@ -142,50 +137,40 @@ class HrPrivateInfo(models.Model):
     )
     emerg_contact_phone = fields.Char(
         'Emerg. Contact Phone',
-        required=True,
     )
     bank_id = fields.Many2one(
         'res.bank',
         string='Bank',
-        required=True,
     )
     bank_branch = fields.Char(
         'Bank Branch',
-        required=True,
     )
     bank_acc_type = fields.Selection(
         [('savings', 'Savings'),
          ('current', 'Current')],
         'Account Type',
-        required=True,
         default='savings',
     )
     bank_acc_number = fields.Char(
         'Account Number',
-        required=True,
     )
     bank_acc_holder = fields.Char(
         'Account Holder',
-        required=True,
     )
     furi_bank_acc_holder = fields.Char(
         'Account Holder Furigana',
-        required=True,
     )
     school_name = fields.Char(
         'School Name',
-        required=True,
     )
     school_dept_name = fields.Char(
         'Deartment/Course Name',
-        required=True,
     )
     school_completion = fields.Selection(
         [('completed', 'Completed'),
          ('unfinished', 'Unfinished'),
          ('other', 'Other')],
         'School Completion',
-        required=True,
     )
     school_completion_desc = fields.Char(
         'School Completion Description',
@@ -206,11 +191,9 @@ class HrPrivateInfo(models.Model):
     )
     pension_number = fields.Char(
         'Pension Number',
-        required=True,
     )
     employment_ins_number = fields.Char(
         'Emp. Insurance Number',
-        required=True,
     )
     disability_class_id = fields.Many2one(
         'hr.disability.class',
@@ -242,9 +225,12 @@ class HrPrivateInfo(models.Model):
     )
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('submitted', 'Submitted'),
-        ('confirmed', 'Confirmed'),
-    ], string='Status', track_visibility='onchange', default='draft')
+        ('submit', 'Submitted'),
+        ('confirm', 'Confirmed')],
+        string='Status',
+        track_visibility='onchange',
+        default='draft'
+    )
 
     _sql_constraints = [
         ('employee_id_uniq', 'unique (employee_id, company_id)',
@@ -376,3 +362,19 @@ class HrPrivateInfo(models.Model):
                     r"^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
                     rec.private_email):
                 raise ValidationError(msg % ("Private Email"))
+
+    @api.multi
+    def action_ready(self):
+        return self.write({'is_ready': True})
+
+    @api.multi
+    def action_draft(self):
+        return self.write({'state': 'draft'})
+
+    @api.multi
+    def action_submit(self):
+        return self.write({'state': 'submit'})
+
+    @api.multi
+    def action_confirm(self):
+        return self.write({'state': 'confirm'})

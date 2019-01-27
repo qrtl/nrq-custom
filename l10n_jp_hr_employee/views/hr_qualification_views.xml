@@ -16,6 +16,10 @@
                             <field name="date_expiry"/>
                             <field name="reference"/>
                         </group>
+                        <group>
+                            <field name="qualification_file" filename="qualification_file_filename"/>
+                            <field name="qualification_file_filename" invisible="1"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
@@ -26,11 +30,13 @@
         <field name="name">view.hr.qualification.tree</field>
         <field name="model">hr.qualification</field>
         <field name="arch" type="xml">
-            <tree string="Qualifications">
+            <tree string="Qualifications" editable="top">
                 <field name="name"/>
-                <field name="date_obtained"/>
+                <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'"/>
                 <field name="date_expiry"/>
                 <field name="reference"/>
+                <field name="qualification_file" filename="qualification_file_filename"/>
+                <field name="qualification_file_filename" invisible="1"/>
             </tree>
         </field>
     </record>
