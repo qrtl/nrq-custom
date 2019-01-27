@@ -24,8 +24,21 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="employee_id"/>
-                            <field name="name_furigana"/>
+                            <field name="employee_id" attrs="{'readonly': [('employee_id', '!=', False)]}"/>
+                            <label for="family_name" string="Name"/>
+                            <div>
+                                <div class="o_row mr16">
+                                    <field name="family_name" placeholder="Family Name"/>
+                                    <field name="given_name" placeholder="Given Name"/>
+                                </div>
+                            </div>
+                            <label for="furi_family_name" string="Name Furigana"/>
+                            <div>
+                                <div class="o_row mr16">
+                                    <field name="furi_family_name" placeholder="Family Name"/>
+                                    <field name="furi_given_name" placeholder="Given Name"/>
+                                </div>
+                            </div>
                             <field name="code"/>
                         </group>
                     </group>
@@ -34,9 +47,15 @@
                             <group>
                                 <group name="particulars" string="Personal Particulars">
                                     <field name="private_country_id"/>
-                                    <field name="roman_spelling"/>
+                                    <label for="roman_family_name" string="Roman Spelling"/>
+                                    <div>
+                                        <div class="o_row mr16">
+                                            <field name="roman_family_name" placeholder="Family Name"/>
+                                            <field name="roman_given_name" placeholder="Given Name"/>
+                                        </div>
+                                    </div>
                                     <field name="birthday"/>
-                                    <field name="gender" widget="radio"/>
+                                    <field name="gender" widget="radio" options="{'horizontal': true}"/>
                                     <field name="private_phone"/>
                                     <field name="private_email"/>
                                     <label for="address_street"/>
@@ -45,15 +64,13 @@
                                             <field name="postal_code" placeholder="Postal Code"/>
                                             <field name="address_pref" placeholder="Prefecture"/>
                                         </div>
-                                        <div class="o_row mr16">
-                                            <field name="address_street" placeholder="City and Street"/>
-                                            <field name="building" placeholder="Apartment/Building"/>
-                                        </div>
+                                        <field name="address_street" placeholder="City and Street" class="o_address_street"/>
+                                        <field name="building" placeholder="Apartment/Building" class="o_address_street"/>
                                     </div>
                                     <label for="address_furigana"/>
-                                    <div class="o_row mr16">
-                                        <field name="address_furigana" placeholder="Furigana for City and Street"/>
-                                        <field name="building_furigana" placeholder="Furigana for Apartment/Building"/>
+                                    <div class="o_address_format">
+                                        <field name="furi_address" placeholder="Furigana for City and Street" class="o_address_street"/>
+                                        <field name="furi_building" placeholder="Furigana for Apartment/Building" class="o_address_street"/>
                                     </div>
                                     <field name="residence_cert" filename="residence_cert_filename"/>
                                     <field name="residence_cert_filename" invisible="1"/>
@@ -77,12 +94,12 @@
                                     <field name="bank_acc_type"/>
                                     <field name="bank_acc_number"/>
                                     <field name="bank_acc_holder"/>
-                                    <field name="bank_acc_holder_furigana"/>
+                                    <field name="furi_bank_acc_holder"/>
                                 </group>
                                 <group name="academic_background" string="Final Academic Background">
                                     <field name="school_name"/>
                                     <field name="school_dept_name"/>
-                                    <field name="school_completion"/>
+                                    <field name="school_completion" widget="radio" options="{'horizontal': true}"/>
                                     <field name="school_completion_desc"/>
                                     <field name="year_left_school"/>
                                 </group>

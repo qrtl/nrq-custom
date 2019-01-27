@@ -10,30 +10,48 @@ from odoo import models, fields, api
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    name_furigana = fields.Char(
-        'Name Furigana',
+    family_name = fields.Char(
+        'Family Name',
+    )
+    given_name = fields.Char(
+        'Given Name',
+    )
+    furi_family_name = fields.Char(
+        'Family Name Furigana',
+    )
+    furi_given_name = fields.Char(
+        'Given Name Furigana',
     )
     employment_type_id = fields.Many2one(
         'hr.employment.type',
         string='Employment Type',
     )
-    # private_info_ids = fields.One2many(
-    #     'hr.private.info',
-    #     'employee_id',
-    #     string='Private Info')
-    # private_info_id = fields.Many2one(
-    #     'hr.private.info',
-    #     compute='_compute_private_info_id',
-    #     string='Latest Private Info',
-    # )
     private_info_count = fields.Integer(
         compute='_compute_private_info_count',
         string='Private Info'
     )
 
-    @api.onchange('name_furigana')
-    def _onchange_name_furigana(self):
-        self.name_furigana = jaconv.z2h(jaconv.hira2hkata(self.name_furigana))
+    @api.onchange('family_name')
+    def _onchange_family_name(self):
+        if self.family_name:
+            self.family_name = jaconv.h2z(
+                self.family_name, ascii=True, digit=True)
+
+    @api.onchange('given_name')
+    def _onchange_given_name(self):
+        if self.given_name:
+            self.given_name = jaconv.h2z(
+                self.given_name, ascii=True, digit=True)
+
+    @api.onchange('furi_family_name')
+    def _onchange_furi_family_name(self):
+        self.furi_family_name = jaconv.z2h(
+            jaconv.hira2kata(self.furi_family_name))
+
+    @api.onchange('furi_given_name')
+    def _onchange_furi_given_name(self):
+        self.furi_given_name = jaconv.z2h(
+            jaconv.hira2kata(self.furi_given_name))
 
     def _compute_private_info_count(self):
         private_info_data = self.env['hr.private.info'].sudo().read_group(

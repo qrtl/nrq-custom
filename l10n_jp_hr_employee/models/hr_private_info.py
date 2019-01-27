@@ -27,8 +27,20 @@ class HrPrivateInfo(models.Model):
         string='Employee',
         required=True,
     )
-    name_furigana = fields.Char(
-        related='employee_id.name_furigana',
+    family_name = fields.Char(
+        related='employee_id.family_name',
+        store=True,
+    )
+    given_name = fields.Char(
+        related='employee_id.given_name',
+        store=True,
+    )
+    furi_family_name = fields.Char(
+        related='employee_id.furi_family_name',
+        store=True,
+    )
+    furi_given_name = fields.Char(
+        related='employee_id.furi_given_name',
         store=True,
     )
     code = fields.Char(
@@ -47,9 +59,11 @@ class HrPrivateInfo(models.Model):
         string='Nationality (Private)',
         required=True,
     )
-    roman_spelling = fields.Char(
-        'Roman Spelling',
-        required=True,
+    roman_family_name = fields.Char(
+        'Family Name (Roman)',
+    )
+    roman_given_name = fields.Char(
+        'Given Name (Roman)',
     )
     birthday = fields.Date(
         'Birthday',
@@ -83,11 +97,11 @@ class HrPrivateInfo(models.Model):
     building = fields.Char(
         'Apartment/Building',
     )
-    address_furigana = fields.Char(
+    furi_address = fields.Char(
         'Address Furigana',
     )
-    building_furigana = fields.Char(
-        'Address Furigana',
+    furi_building = fields.Char(
+        'Apartment/Building Furigana',
     )
     # we will not use ir.attachment to store PDF for security reason
     residence_cert = fields.Binary(
@@ -147,7 +161,7 @@ class HrPrivateInfo(models.Model):
         'Account Holder',
         required=True,
     )
-    bank_acc_holder_furigana = fields.Char(
+    furi_bank_acc_holder = fields.Char(
         'Account Holder Furigana',
         required=True,
     )
@@ -220,14 +234,87 @@ class HrPrivateInfo(models.Model):
         'Residence Card File Name',
     )
 
-    @api.onchange('name_furigana')
-    def _onchange_name_furigana(self):
-        self.name_furigana = jaconv.z2h(jaconv.hira2kata(self.name_furigana))
+    @api.onchange('family_name')
+    def _onchange_family_name(self):
+        if self.family_name:
+            self.family_name = jaconv.h2z(
+                self.family_name, ascii=True, digit=True)
+
+    @api.onchange('given_name')
+    def _onchange_given_name(self):
+        if self.given_name:
+            self.given_name = jaconv.h2z(
+                self.given_name, ascii=True, digit=True)
+
+    @api.onchange('furi_family_name')
+    def _onchange_furi_family_name(self):
+        if self.furi_family_name:
+            self.furi_family_name = jaconv.z2h(
+                jaconv.hira2kata(self.furi_family_name))
+
+    @api.onchange('furi_given_name')
+    def _onchange_furi_given_name(self):
+        if self.furi_given_name:
+            self.furi_given_name = jaconv.z2h(
+                jaconv.hira2kata(self.furi_given_name))
+
+    @api.onchange('roman_family_name')
+    def _onchange_roman_family_name(self):
+        if self.roman_family_name:
+            self.roman_family_name = self.roman_family_name.upper()
+
+    @api.onchange('roman_given_name')
+    def _onchange_roman_given_name(self):
+        if self.roman_given_name:
+            self.roman_given_name = self.roman_given_name.upper()
+
+    @api.onchange('address_pref')
+    def _onchange_address_pref(self):
+        if self.address_pref:
+            self.address_pref = jaconv.h2z(
+                self.address_pref, ascii=True, digit=True)
+
+    @api.onchange('address_street')
+    def _onchange_address_street(self):
+        if self.address_street:
+            self.address_street = jaconv.h2z(
+                self.address_street, ascii=True, digit=True)
+
+    @api.onchange('building')
+    def _onchange_building(self):
+        if self.building:
+            self.building = jaconv.h2z(self.building, ascii=True, digit=True)
+
+    @api.onchange('furi_address')
+    def _onchange_furi_address(self):
+        if self.furi_address:
+            self.furi_address = jaconv.h2z(
+                jaconv.hira2kata(self.furi_address), ascii=True, digit=True)
+
+    @api.onchange('furi_building')
+    def _onchange_furi_building(self):
+        if self.furi_building:
+            self.furi_building = jaconv.h2z(
+                jaconv.hira2kata(self.furi_building), ascii=True, digit=True)
 
     @api.onchange('emerg_contact_name')
     def _onchange_emerg_contact_name(self):
-        self.emerg_contact_name = jaconv.h2z(self.emerg_contact_name,
-                                             ascii=True, digit=True)
+        if self.emerg_contact_name:
+            self.emerg_contact_name = jaconv.h2z(
+                self.emerg_contact_name, ascii=True, digit=True)
+
+    @api.onchange('bank_acc_holder')
+    def _onchange_bank_acc_holder(self):
+        if self.bank_acc_holder:
+            self.bank_acc_holder = jaconv.h2z(
+                self.bank_acc_holder, ascii=True, digit=True)
+
+    @api.onchange('furi_bank_acc_holder')
+    def _onchange_furi_bank_acc_holder(self):
+        if self.furi_bank_acc_holder:
+            # no space allowd inside the string
+            self.furi_bank_acc_holder = "".join(jaconv.z2h(
+                jaconv.hira2kata(self.furi_bank_acc_holder)).split())
 
     @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
                     'emerg_contact_postal_code', 'bank_acc_number')
