@@ -2,21 +2,15 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
+import jaconv
 
-from odoo import models, fields, api
-
-
-def get_years():
-    year_list = []
-    for i in range(1960, datetime.today().year + 1):
-        year_list.append((i, str(i)))
-    return year_list
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class HrQualification(models.Model):
     _name = 'hr.qualification'
-    _order = 'year, month'
+    _order = 'date_obtained'
 
     name = fields.Char(
         required=True,
@@ -29,26 +23,32 @@ class HrQualification(models.Model):
         related='private_info_id.employee_id',
         store=True,
     )
-    year = fields.Selection(
-        get_years(),
-        required=True,
-    )
-    month = fields.Selection(
-        [('1', 'January'),
-         ('2', 'February'),
-         ('3', 'March'),
-         ('4', 'April'),
-         ('5', 'May'),
-         ('6', 'June'),
-         ('7', 'July'),
-         ('8', 'August'),
-         ('9', 'September'),
-         ('10', 'October'),
-         ('11', 'November'),
-         ('12', 'December')],
+    date_obtained = fields.Char(
+        'Date Obtained',
         required=True,
     )
     date_expiry = fields.Date(
-        "Expiry Date",
+        'Expiry Date',
     )
     reference = fields.Char()
+
+    @api.onchange('date_obtained')
+    def _onchange_date_obtained(self):
+        if self.date_obtained:
+            self.date_obtained = jaconv.z2h(
+                self.date_obtained, ascii=True, digit=True)
+
+    @api.constrains('date_obtained')
+    def _check_date_obtained(self):
+        for rec in self:
+            msg = _("%s seems to be incorrect.")
+            if rec.date_obtained:
+                date = rec.date_obtained + '-01' \
+                    if len(rec.date_obtained) == 7 else rec.date_obtained
+                try:
+                    fields.Date.from_string(date)
+                except:
+                    raise ValidationError(msg % ("Date Obtained"))
+                if len(rec.date_obtained) not in [7, 10]:
+                    raise ValidationError("Please adjust the format to be "
+                                          "'YYYY-MM-DD' or 'YYYY-MM'.")
