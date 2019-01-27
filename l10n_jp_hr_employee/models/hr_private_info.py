@@ -21,11 +21,18 @@ def get_years():
 class HrPrivateInfo(models.Model):
     _name = 'hr.private.info'
     _rec_name = 'employee_id'
+    _inherit = ['mail.thread']
 
     employee_id = fields.Many2one(
         'hr.employee',
         string='Employee',
         required=True,
+    )
+    active = fields.Boolean(
+        track_visibility='onchange',
+        related='employee_id.active',
+        store=True,
+        readonly=True,
     )
     family_name = fields.Char(
         related='employee_id.family_name',
@@ -233,6 +240,15 @@ class HrPrivateInfo(models.Model):
     residence_card_filename = fields.Char(
         'Residence Card File Name',
     )
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('submitted', 'Submitted'),
+        ('confirmed', 'Confirmed'),
+    ], string='Status', track_visibility='onchange', default='draft')
+
+    _sql_constraints = [
+        ('employee_id_uniq', 'unique (employee_id, company_id)',
+         'Only one record is allowed per employee per company.')]
 
     @api.onchange('family_name')
     def _onchange_family_name(self):

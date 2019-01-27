@@ -21,6 +21,9 @@
         <field name="model">hr.private.info</field>
         <field name="arch" type="xml">
             <form string="Private Info">
+                <header>
+                    <field name="state" widget="statusbar" clickable="1"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -132,6 +135,10 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
             </form>
         </field>
     </record>

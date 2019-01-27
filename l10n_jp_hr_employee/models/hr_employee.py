@@ -54,7 +54,8 @@ class HrEmployee(models.Model):
             jaconv.hira2kata(self.furi_given_name))
 
     def _compute_private_info_count(self):
-        private_info_data = self.env['hr.private.info'].sudo().read_group(
+        private_info_data = self.env['hr.private.info'].sudo().with_context(
+            active_test=False).read_group(
             [('employee_id', 'in', self.ids)],
             ['employee_id'], ['employee_id'])
         result = dict((data['employee_id'][0], data['employee_id_count'])
@@ -64,8 +65,8 @@ class HrEmployee(models.Model):
 
     @api.multi
     def action_view_private_info(self):
-        private_info = self.env['hr.private.info'].search(
-            [('employee_id', '=', self.id)])
+        private_info = self.env['hr.private.info'].with_context(
+            active_test=False).search([('employee_id', '=', self.id)])
         action = self.env.ref(
             'l10n_jp_hr_employee.act_hr_employee_2_hr_private_info').read()[0]
         if len(private_info) > 1:
