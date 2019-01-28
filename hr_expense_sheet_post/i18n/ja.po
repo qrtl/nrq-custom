@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_expense_sheet_post
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-28 09:30+0000\n"
+"PO-Revision-Date: 2019-01-28 09:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_expense_sheet_post
+#: model:ir.model,name:hr_expense_sheet_post.model_hr_expense_sheet
+msgid "Expense Report"
+msgstr "経費レポート"
+
+#. module: hr_expense_sheet_post
+#: model:ir.actions.server,name:hr_expense_sheet_post.action_post_expense_sheets
+msgid "Post Expense Sheets"
+msgstr "一括記帳"
+
+#. module: hr_expense_sheet_post
+#: code:addons/hr_expense_sheet_post/models/hr_expense_sheet.py:22
+#, python-format
+msgid "Posted Expense Sheet(s)"
+msgstr "記帳済経費報告"
+
