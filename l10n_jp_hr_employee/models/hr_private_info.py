@@ -189,8 +189,11 @@ class HrPrivateInfo(models.Model):
         'private_info_id',
         string='Dependants',
     )
-    pension_number = fields.Char(
-        'Pension Number',
+    pension_code = fields.Char(
+        'Pension Number Code',
+    )
+    pension_seq = fields.Char(
+        'Pension Number Sequence',
     )
     employment_ins_number = fields.Char(
         'Emp. Insurance Number',
@@ -318,8 +321,41 @@ class HrPrivateInfo(models.Model):
             self.furi_bank_acc_holder = "".join(jaconv.z2h(
                 jaconv.hira2kata(self.furi_bank_acc_holder)).split())
 
+    @api.onchange('pension_code')
+    def _onchange_pension_code(self):
+        if self.pension_code:
+            # FIXME following part can be in a separate method
+            self.pension_code = jaconv.z2h(self.pension_code, digit=True)
+            if not self.pension_code.isdigit():
+                self.pension_code = False
+                return {
+                    'warning': {
+                        'title': "Error",
+                        'message': "Only digits are allowed."
+                    }
+                }
+
+    @api.onchange('pension_seq')
+    def _onchange_pension_seq(self):
+        if self.pension_seq:
+            self.pension_seq = jaconv.z2h(self.pension_seq, digit=True)
+            if not self.pension_seq.isdigit():
+                self.pension_seq = False
+                return {
+                    'warning': {
+                        'title': "Error",
+                        'message': "Only digits are allowed."
+                    }
+                }
+
+    @api.onchange('pension_seq')
+    def _onchange_pension_seq(self):
+        if self.pension_seq:
+            self.pension_seq = jaconv.z2h(self.pension_seq, digit=True)
+
     @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
-                    'emerg_contact_postal_code', 'bank_acc_number')
+                    'emerg_contact_postal_code', 'bank_acc_number',
+                    'pension_code', 'pension_seq')
     def _check_digit_fields(self):
         for rec in self:
             msg = _("Only digits are allowed for %s field.")
@@ -338,9 +374,14 @@ class HrPrivateInfo(models.Model):
             if rec.bank_acc_number and not rec.bank_acc_number.encode(
                     'utf-8').isdigit():
                 raise ValidationError(msg % ("Account Number"))
+            if rec.pension_code and not \
+                    rec.pension_code.encode('utf-8').isdigit() or \
+                    rec.pension_seq and not \
+                    rec.pension_seq.encode('utf-8').isdigit():
+                raise ValidationError(msg % ("Pension Number"))
 
     @api.constrains('postal_code', 'emerg_contact_postal_code',
-                    'bank_acc_number')
+                    'bank_acc_number', 'pension_code', 'pension_seq')
     def _check_digits(self):
         for rec in self:
             msg = _("%s should be %s digit(s).")
@@ -352,6 +393,10 @@ class HrPrivateInfo(models.Model):
                     "Emerg. Contact Postal Code", "7"))
             if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
                 raise ValidationError(msg % ("Account Number", "7"))
+            if rec.pension_code and not len(rec.pension_code) == 4:
+                raise ValidationError(msg % ("Pension Code", "4"))
+            if rec.pension_seq and not len(rec.pension_seq) == 6:
+                raise ValidationError(msg % ("Pension Sequence", "6"))
 
     @api.constrains('private_email')
     def _check_email(self):

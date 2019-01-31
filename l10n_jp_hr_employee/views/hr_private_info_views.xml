@@ -68,7 +68,7 @@
                                     <field name="gender" widget="radio" options="{'horizontal': true}" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <field name="private_phone" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <field name="private_email" attrs="{'required':[('is_ready','=',True)]}"/>
-                                    <label for="address_street" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <label for="address_street"/>
                                     <div class="o_address_format">
                                         <div class="o_row mr16">
                                             <field name="postal_code" placeholder="Postal Code" attrs="{'required':[('is_ready','=',True)]}"/>
@@ -119,7 +119,11 @@
                             </group>
                             <group>
                                 <group name="pension_info" string="Pension Info">
-                                    <field name="pension_number"/>
+                                    <label for="pension_code" string="Pension Number"/>
+                                    <div class="o_row mr16">
+                                        <field name="pension_code" placeholder="1234" attrs="{'required':[('is_ready','=',True)]}"/><span>-</span>
+                                        <field name="pension_seq" placeholder="123456" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    </div>
                                 </group>
                                 <group name="employment_info" string="Employment Info">
                                     <field name="employment_ins_number" attrs="{'required':[('is_ready','=',True)]}"/>
