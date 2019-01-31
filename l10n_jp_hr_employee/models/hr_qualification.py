@@ -31,6 +31,12 @@ class HrQualification(models.Model):
         'Expiry Date',
     )
     reference = fields.Char()
+    qualification_file = fields.Binary(
+        'Attachment',
+    )
+    qualification_file_filename = fields.Char(
+        'Attachment File Name',
+    )
 
     @api.onchange('date_obtained')
     def _onchange_date_obtained(self):
