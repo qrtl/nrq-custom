@@ -10,8 +10,7 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="year"/>
-                            <field name="month"/>
+                            <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'"/>
                         </group>
                         <group>
                             <field name="date_expiry"/>
@@ -29,8 +28,7 @@
         <field name="arch" type="xml">
             <tree string="Qualifications">
                 <field name="name"/>
-                <field name="year"/>
-                <field name="month"/>
+                <field name="date_obtained"/>
                 <field name="date_expiry"/>
                 <field name="reference"/>
             </tree>

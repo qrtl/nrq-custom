@@ -15,6 +15,9 @@
         "hr",
         "hr_contract",
     ],
+    'external_dependencies': {
+        'python': ['jaconv'],
+    },
     "data": [
         'security/ir.model.access.csv',
         'security/hr_security.xml',
