@@ -18,7 +18,9 @@ class AnalyticType(models.Model):
         ('sales', 'Sales'),
         ('labour', 'Labour'),
         ('outsourcing', 'Outsourcing'),
-        ('expenses', 'Expenses')],
+        ('expenses', 'Expenses'),
+        ('advances', 'Advances'),
+        ('other', 'Other')],
         string='Analytic Type',
         required=True,
     )
