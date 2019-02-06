@@ -12,4 +12,15 @@
         </field>
     </record>
 
+    <record id="view_project_parent_inherited_tree" model="ir.ui.view">
+        <field name="name">project.project.tree.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_parent.view_project_parent_inherited_tree"/>
+        <field name="arch" type="xml">
+            <field name="parent_project_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
 </odoo>
