@@ -21,5 +21,15 @@
         <field name="type">expenses</field>
         <field name="sequence">40</field>
     </record>
+    <record id="analytic_type_advances" model="analytic.type">
+        <field name="name">Advances</field>
+        <field name="type">advances</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="analytic_type_other" model="analytic.type">
+        <field name="name">Other</field>
+        <field name="type">other</field>
+        <field name="sequence">60</field>
+    </record>
 
 </odoo>
