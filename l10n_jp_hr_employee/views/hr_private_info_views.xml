@@ -119,14 +119,21 @@
                             </group>
                             <group>
                                 <group name="pension_info" string="Pension Info">
-                                    <label for="pension_code" string="Pension Number"/>
-                                    <div class="o_row mr16">
-                                        <field name="pension_code" placeholder="1234" attrs="{'required':[('is_ready','=',True)]}"/><span>-</span>
-                                        <field name="pension_seq" placeholder="123456" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <label for="pension_code" string="Pension Number" class="oe_edit_only"/>
+                                    <div class="o_row mr16 oe_edit_only">
+                                        <field name="pension_code" placeholder="9999" attrs="{'required':[('is_ready','=',True)]}"/><span>-</span>
+                                        <field name="pension_seq" placeholder="999999" attrs="{'required':[('is_ready','=',True)]}"/>
                                     </div>
+                                    <field name="pension_number" class="oe_read_only"/>
                                 </group>
                                 <group name="employment_info" string="Employment Info">
-                                    <field name="employment_ins_number" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <label for="emp_ins_number_1st" string="Emp. Insurance Number" class="oe_edit_only"/>
+                                    <div class="o_row mr16 oe_edit_only">
+                                        <field name="emp_ins_number_1st" placeholder="9999" attrs="{'required':[('is_ready','=',True)]}"/><span>-</span>
+                                        <field name="emp_ins_number_2nd" placeholder="999999" attrs="{'required':[('is_ready','=',True)]}"/><span>-</span>
+                                        <field name="emp_ins_number_3rd" placeholder="9" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    </div>
+                                    <field name="emp_ins_number" class="oe_read_only"/>
                                 </group>
                                 <group name="classification" string="Classifictions">
                                     <field name="disability_class_id" widget="selection"/>

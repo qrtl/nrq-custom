@@ -191,12 +191,30 @@ class HrPrivateInfo(models.Model):
     )
     pension_code = fields.Char(
         'Pension Number Code',
+        help="Please input '0000-000000' in case you are not sure about the "
+             "number.",
     )
     pension_seq = fields.Char(
         'Pension Number Sequence',
     )
-    employment_ins_number = fields.Char(
+    pension_number = fields.Char(
+        'Pension Number',
+        compute='_compute_pension_number',
+        store=True,
+    )
+    emp_ins_number_1st = fields.Char(
+        'Emp. Ins. Number (1st part)',
+    )
+    emp_ins_number_2nd = fields.Char(
+        'Emp. Ins. Number (2nd part)',
+    )
+    emp_ins_number_3rd = fields.Char(
+        'Emp. Ins. Number (3rd part)',
+    )
+    emp_ins_number = fields.Char(
         'Emp. Insurance Number',
+        compute='_compute_emp_ins_number',
+        store=True,
     )
     disability_class_id = fields.Many2one(
         'hr.disability.class',
@@ -321,42 +339,78 @@ class HrPrivateInfo(models.Model):
             self.furi_bank_acc_holder = "".join(jaconv.z2h(
                 jaconv.hira2kata(self.furi_bank_acc_holder)).split())
 
+    def check_digits(self, field):
+        msg = {}
+        field = jaconv.z2h(field, digit=True)
+        if not field.isdigit():
+            field = False
+            msg = {
+                'warning': {
+                    'title': "Error",
+                    'message': "Only digits are allowed."
+                }
+            }
+        return field, msg
+
     @api.onchange('pension_code')
     def _onchange_pension_code(self):
         if self.pension_code:
-            # FIXME following part can be in a separate method
-            self.pension_code = jaconv.z2h(self.pension_code, digit=True)
-            if not self.pension_code.isdigit():
-                self.pension_code = False
-                return {
-                    'warning': {
-                        'title': "Error",
-                        'message': "Only digits are allowed."
-                    }
-                }
+            self.pension_code, msg = self.check_digits(self.pension_code)
+            if not self.pension_code:
+                return msg
 
     @api.onchange('pension_seq')
     def _onchange_pension_seq(self):
         if self.pension_seq:
-            self.pension_seq = jaconv.z2h(self.pension_seq, digit=True)
-            if not self.pension_seq.isdigit():
-                self.pension_seq = False
-                return {
-                    'warning': {
-                        'title': "Error",
-                        'message': "Only digits are allowed."
-                    }
-                }
+            self.pension_seq, msg = self.check_digits(self.pension_seq)
+            if not self.pension_seq:
+                return msg
 
-    @api.onchange('pension_seq')
-    def _onchange_pension_seq(self):
-        if self.pension_seq:
-            self.pension_seq = jaconv.z2h(self.pension_seq, digit=True)
+    @api.onchange('emp_ins_number_1st')
+    def _onchange_emp_ins_number_1st(self):
+        if self.emp_ins_number_1st:
+            self.emp_ins_number_1st, msg = self.check_digits(
+                self.emp_ins_number_1st)
+            if not self.emp_ins_number_1st:
+                return msg
+
+    @api.onchange('emp_ins_number_2nd')
+    def _onchange_emp_ins_number_2nd(self):
+        if self.emp_ins_number_2nd:
+            self.emp_ins_number_2nd, msg = self.check_digits(
+                self.emp_ins_number_2nd)
+            if not self.emp_ins_number_2nd:
+                return msg
+
+    @api.onchange('emp_ins_number_3rd')
+    def _onchange_emp_ins_number_3rd(self):
+        if self.emp_ins_number_3rd:
+            self.emp_ins_number_3rd, msg = self.check_digits(
+                self.emp_ins_number_3rd)
+            if not self.emp_ins_number_3rd:
+                return msg
+
+    @api.multi
+    @api.depends('pension_code', 'pension_seq')
+    def _compute_pension_number(self):
+        for rec in self:
+            rec.pension_number = '%s' %(rec.pension_code or '') + '-' + \
+                                 '%s' %(rec.pension_seq or '')
+
+    @api.multi
+    @api.depends('emp_ins_number_1st', 'emp_ins_number_2nd',
+                 'emp_ins_number_3rd')
+    def _compute_emp_ins_number(self):
+        for rec in self:
+            rec.emp_ins_number = '%s' %(rec.emp_ins_number_1st or '') + '-' + \
+                                 '%s' %(rec.emp_ins_number_2nd or '') + '-' + \
+                                 '%s' %(rec.emp_ins_number_3rd or '')
 
     @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
                     'emerg_contact_postal_code', 'bank_acc_number',
-                    'pension_code', 'pension_seq')
-    def _check_digit_fields(self):
+                    'pension_code', 'pension_seq', 'emp_ins_number_1st',
+                    'emp_ins_number_2nd', 'emp_ins_number_3rd')
+    def _validate_digit_fields(self):
         for rec in self:
             msg = _("Only digits are allowed for %s field.")
             if rec.private_phone and not rec.private_phone.encode(
@@ -379,10 +433,18 @@ class HrPrivateInfo(models.Model):
                     rec.pension_seq and not \
                     rec.pension_seq.encode('utf-8').isdigit():
                 raise ValidationError(msg % ("Pension Number"))
+            if rec.emp_ins_number_1st and not \
+                    rec.emp_ins_number_1st.encode('utf-8').isdigit() or \
+                    rec.emp_ins_number_2nd and not \
+                    rec.emp_ins_number_2nd.encode('utf-8').isdigit() or \
+                    rec.emp_ins_number_3rd and not \
+                    rec.emp_ins_number_3rd.encode('utf-8').isdigit():
+                raise ValidationError(msg % ("Employment Insurance Number"))
 
     @api.constrains('postal_code', 'emerg_contact_postal_code',
                     'bank_acc_number', 'pension_code', 'pension_seq')
-    def _check_digits(self):
+    #FIXME add employment ins number
+    def _validate_digit_length(self):
         for rec in self:
             msg = _("%s should be %s digit(s).")
             if rec.postal_code and not len(rec.postal_code) == 7:
