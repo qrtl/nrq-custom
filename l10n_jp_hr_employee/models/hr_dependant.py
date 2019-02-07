@@ -100,7 +100,6 @@ class HrDependant(models.Model):
     income = fields.Monetary(
         help='Expected income for the coming year.',
     )
-    earnings = fields.Monetary()
     amt_to_family = fields.Monetary(
         'Amount Sent to Family',
     )

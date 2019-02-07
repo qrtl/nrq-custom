@@ -28,7 +28,6 @@
                         <field name="occupation"/>
                         <field name="currency_id" invisible="1"/>
                         <field name="income"/>
-                        <field name="earnings"/>
                         <field name="amt_to_family"/>
                         <field name="disability_class_id" widget="selection"/>
                         <field name="disability_note" attrs="{'invisible': [('disability_class_id', '=', False)]}"/>
