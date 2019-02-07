@@ -301,6 +301,21 @@ class HrPrivateInfo(models.Model):
         if self.roman_given_name:
             self.roman_given_name = self.roman_given_name.upper()
 
+    @api.onchange('private_phone')
+    def _onchange_private_phone(self):
+        if self.private_phone:
+            self.private_phone, msg = self.check_digits(self.private_phone)
+            if not self.private_phone:
+                return msg
+
+    @api.onchange('emerg_contact_phone')
+    def _onchange_emerg_contact_phone(self):
+        if self.emerg_contact_phone:
+            self.emerg_contact_phone, msg = self.check_digits(
+                self.emerg_contact_phone)
+            if not self.emerg_contact_phone:
+                return msg
+
     @api.onchange('postal_code')
     def _onchange_postal_code(self):
         if self.postal_code:

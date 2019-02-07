@@ -2,6 +2,8 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import jaconv
+
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -77,9 +79,10 @@ class HrDependant(models.Model):
         store=True,
     )
     residence_categ = fields.Selection(
-        [('together', 'Together'),
-         ('apart', 'Apart')],
+        [('together', 'Living Together'),
+         ('separate', 'Living Separately')],
         'Residence Category',
+        required=True,
     )
     postal_code = fields.Char(
         'Postal Code',
@@ -87,7 +90,7 @@ class HrDependant(models.Model):
     address = fields.Char(
         'Address',
     )
-    address_furigana = fields.Char(
+    furi_address = fields.Char(
         'Address Furigana',
     )
     phone = fields.Char()
@@ -128,17 +131,42 @@ class HrDependant(models.Model):
         'Cause Note',
     )
 
+
+    @api.onchange('phone')
+    def _onchange_phone(self):
+        if self.phone:
+            self.phone, msg = self.env['hr.private.info'].check_digits(
+                self.phone)
+            if not self.phone:
+                return msg
+
+    @api.onchange('postal_code')
+    def _onchange_postal_code(self):
+        if self.postal_code:
+            self.postal_code, msg = self.env['hr.private.info'].check_digits(
+                self.postal_code)
+            if not self.postal_code:
+                return msg
+
+    @api.onchange('furi_address')
+    def _onchange_furi_address(self):
+        if self.furi_address:
+            self.furi_address = jaconv.h2z(
+                jaconv.hira2kata(self.furi_address), ascii=True, digit=True)
+
     @api.onchange('pension_code')
     def _onchange_pension_code(self):
         if self.pension_code:
-            self.pension_code, msg = self.env['hr.private.info'].check_digits(self.pension_code)
+            self.pension_code, msg = self.env['hr.private.info'].check_digits(
+                self.pension_code)
             if not self.pension_code:
                 return msg
 
     @api.onchange('pension_seq')
     def _onchange_pension_seq(self):
         if self.pension_seq:
-            self.pension_seq, msg = self.env['hr.private.info'].check_digits(self.pension_seq)
+            self.pension_seq, msg = self.env['hr.private.info'].check_digits(
+                self.pension_seq)
             if not self.pension_seq:
                 return msg
 
@@ -149,20 +177,27 @@ class HrDependant(models.Model):
             rec.pension_number = '%s' %(rec.pension_code or '') + '-' + \
                                  '%s' %(rec.pension_seq or '')
 
-    @api.constrains('pension_code', 'pension_seq')
+    @api.constrains('postal_code', 'phone', 'pension_code', 'pension_seq')
     def _validate_digit_fields(self):
         for rec in self:
             msg = _("Only digits are allowed for %s field.")
+            if rec.postal_code and not rec.postal_code.encode(
+                    'utf-8').isdigit():
+                raise ValidationError(msg % ("Postal Code"))
+            if rec.phone and not rec.phone.encode('utf-8').isdigit():
+                raise ValidationError(msg % ("Phone"))
             if rec.pension_code and not \
                     rec.pension_code.encode('utf-8').isdigit() or \
                     rec.pension_seq and not \
                     rec.pension_seq.encode('utf-8').isdigit():
                 raise ValidationError(msg % ("Pension Number"))
 
-    @api.constrains('pension_code', 'pension_seq')
+    @api.constrains('postal_code', 'pension_code', 'pension_seq')
     def _validate_digit_length(self):
         for rec in self:
             msg = _("%s should be %s digit(s).")
+            if rec.postal_code and not len(rec.postal_code) == 7:
+                raise ValidationError(msg % ("Postal Code", "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
                 raise ValidationError(msg % (
                     "The first section of Pension Number", "4"))
