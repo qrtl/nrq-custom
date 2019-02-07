@@ -442,8 +442,9 @@ class HrPrivateInfo(models.Model):
                 raise ValidationError(msg % ("Employment Insurance Number"))
 
     @api.constrains('postal_code', 'emerg_contact_postal_code',
-                    'bank_acc_number', 'pension_code', 'pension_seq')
-    #FIXME add employment ins number
+                    'bank_acc_number', 'pension_code', 'pension_seq',
+                    'emp_ins_number_1st', 'emp_ins_number_2nd',
+                    'emp_ins_number_3rd')
     def _validate_digit_length(self):
         for rec in self:
             msg = _("%s should be %s digit(s).")
@@ -456,9 +457,20 @@ class HrPrivateInfo(models.Model):
             if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
                 raise ValidationError(msg % ("Account Number", "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
-                raise ValidationError(msg % ("Pension Code", "4"))
+                raise ValidationError(msg % (
+                    "The first section of Pension Number", "4"))
             if rec.pension_seq and not len(rec.pension_seq) == 6:
-                raise ValidationError(msg % ("Pension Sequence", "6"))
+                raise ValidationError(msg % (
+                    "The second section of Pension Number", "6"))
+            if rec.emp_ins_number_1st and not len(rec.emp_ins_number_1st) == 4:
+                raise ValidationError(msg % (
+                    "The first section of Employment Insurance Number", "4"))
+            if rec.emp_ins_number_2nd and not len(rec.emp_ins_number_2nd) == 6:
+                raise ValidationError(msg % (
+                    "The second section of Employment Insurance Number", "6"))
+            if rec.emp_ins_number_3rd and not len(rec.emp_ins_number_3rd) == 1:
+                raise ValidationError(msg % (
+                    "The third section of Employment Insurance Number", "1"))
 
     @api.constrains('private_email')
     def _check_email(self):
