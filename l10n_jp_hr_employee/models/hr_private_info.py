@@ -138,9 +138,8 @@ class HrPrivateInfo(models.Model):
     emerg_contact_phone = fields.Char(
         'Emerg. Contact Phone',
     )
-    bank_id = fields.Many2one(
-        'res.bank',
-        string='Bank',
+    bank_name = fields.Char(
+        'Bank Name',
     )
     bank_branch = fields.Char(
         'Bank Branch',

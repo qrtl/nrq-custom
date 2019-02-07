@@ -99,7 +99,7 @@
                                     <field name="emerg_contact_phone" attrs="{'required':[('is_ready','=',True)]}"/>
                                 </group>
                                 <group name="bank_info" string="Bank Info">
-                                    <field name="bank_id" options='{"no_open": True, "no_create": True}' attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="bank_name" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <field name="bank_branch" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <field name="bank_acc_type" attrs="{'required':[('is_ready','=',True)]}"/>
                                     <field name="bank_acc_number" attrs="{'required':[('is_ready','=',True)]}"/>
