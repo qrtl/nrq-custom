@@ -216,10 +216,6 @@ class HrPrivateInfo(models.Model):
         compute='_compute_emp_ins_number',
         store=True,
     )
-    disability_class_id = fields.Many2one(
-        'hr.disability.class',
-        string='Disability Class',
-    )
     widowhood = fields.Selection(
         [('widow', 'Widow'),
          ('special', 'Special Widow'),
