@@ -12,6 +12,14 @@
                         <field name="dependant_categ"/>
                         <field name="gender"/>
                         <field name="birthday"/>
+                        <group name="pension_info" string="Pension Info">
+                            <label for="pension_code" string="Pension Number" class="oe_edit_only"/>
+                            <div class="o_row mr16 oe_edit_only">
+                                <field name="pension_code" placeholder="9999"/><span>-</span>
+                                <field name="pension_seq" placeholder="999999"/>
+                            </div>
+                            <field name="pension_number" class="oe_read_only"/>
+                        </group>
                         <field name="residence_categ"/>
                         <field name="postal_code"/>
                         <field name="address"/>

@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class HrDependant(models.Model):
@@ -62,6 +63,19 @@ class HrDependant(models.Model):
         required=True,
     )
     birthday = fields.Date()
+    pension_code = fields.Char(
+        'Pension Number Code',
+        help="Please input '0000-000000' in case you are not sure about the "
+             "number.",
+    )
+    pension_seq = fields.Char(
+        'Pension Number Sequence',
+    )
+    pension_number = fields.Char(
+        'Pension Number',
+        compute='_compute_pension_number',
+        store=True,
+    )
     residence_categ = fields.Selection(
         [('together', 'Together'),
          ('apart', 'Apart')],
@@ -114,3 +128,45 @@ class HrDependant(models.Model):
     cause_dependant_enter_note = fields.Char(
         'Cause Note',
     )
+
+    @api.onchange('pension_code')
+    def _onchange_pension_code(self):
+        if self.pension_code:
+            self.pension_code, msg = self.env['hr.private.info'].check_digits(self.pension_code)
+            if not self.pension_code:
+                return msg
+
+    @api.onchange('pension_seq')
+    def _onchange_pension_seq(self):
+        if self.pension_seq:
+            self.pension_seq, msg = self.env['hr.private.info'].check_digits(self.pension_seq)
+            if not self.pension_seq:
+                return msg
+
+    @api.multi
+    @api.depends('pension_code', 'pension_seq')
+    def _compute_pension_number(self):
+        for rec in self:
+            rec.pension_number = '%s' %(rec.pension_code or '') + '-' + \
+                                 '%s' %(rec.pension_seq or '')
+
+    @api.constrains('pension_code', 'pension_seq')
+    def _validate_digit_fields(self):
+        for rec in self:
+            msg = _("Only digits are allowed for %s field.")
+            if rec.pension_code and not \
+                    rec.pension_code.encode('utf-8').isdigit() or \
+                    rec.pension_seq and not \
+                    rec.pension_seq.encode('utf-8').isdigit():
+                raise ValidationError(msg % ("Pension Number"))
+
+    @api.constrains('pension_code', 'pension_seq')
+    def _validate_digit_length(self):
+        for rec in self:
+            msg = _("%s should be %s digit(s).")
+            if rec.pension_code and not len(rec.pension_code) == 4:
+                raise ValidationError(msg % (
+                    "The first section of Pension Number", "4"))
+            if rec.pension_seq and not len(rec.pension_seq) == 6:
+                raise ValidationError(msg % (
+                    "The second section of Pension Number", "6"))

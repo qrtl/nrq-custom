@@ -203,6 +203,8 @@ class HrPrivateInfo(models.Model):
     )
     emp_ins_number_1st = fields.Char(
         'Emp. Ins. Number (1st part)',
+        help="Please input '0000-000000-0' in case you are not sure about the "
+             "number.",
     )
     emp_ins_number_2nd = fields.Char(
         'Emp. Ins. Number (2nd part)',
