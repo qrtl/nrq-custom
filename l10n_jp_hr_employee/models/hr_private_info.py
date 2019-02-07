@@ -173,7 +173,7 @@ class HrPrivateInfo(models.Model):
         'School Completion',
     )
     school_completion_desc = fields.Char(
-        'School Completion Description',
+        'Note (School Completion)',
     )
     year_left_school = fields.Selection(
         get_years(),
@@ -257,6 +257,19 @@ class HrPrivateInfo(models.Model):
         ('employee_id_uniq', 'unique (employee_id, company_id)',
          'Only one record is allowed per employee per company.')]
 
+    def check_digits(self, field):
+        msg = {}
+        field = jaconv.z2h(field, ascii=True, digit=True).replace("-", "")
+        if not field.isdigit():
+            field = False
+            msg = {
+                'warning': {
+                    'title': "Error",
+                    'message': "Only digits are allowed."
+                }
+            }
+        return field, msg
+
     @api.onchange('family_name')
     def _onchange_family_name(self):
         if self.family_name:
@@ -290,6 +303,21 @@ class HrPrivateInfo(models.Model):
     def _onchange_roman_given_name(self):
         if self.roman_given_name:
             self.roman_given_name = self.roman_given_name.upper()
+
+    @api.onchange('postal_code')
+    def _onchange_postal_code(self):
+        if self.postal_code:
+            self.postal_code, msg = self.check_digits(self.postal_code)
+            if not self.postal_code:
+                return msg
+
+    @api.onchange('emerg_contact_postal_code')
+    def _onchange_emerg_contact_postal_code(self):
+        if self.emerg_contact_postal_code:
+            self.emerg_contact_postal_code, msg = self.check_digits(
+                self.emerg_contact_postal_code)
+            if not self.emerg_contact_postal_code:
+                return msg
 
     @api.onchange('address_pref')
     def _onchange_address_pref(self):
@@ -338,19 +366,6 @@ class HrPrivateInfo(models.Model):
             # no space allowd inside the string
             self.furi_bank_acc_holder = "".join(jaconv.z2h(
                 jaconv.hira2kata(self.furi_bank_acc_holder)).split())
-
-    def check_digits(self, field):
-        msg = {}
-        field = jaconv.z2h(field, digit=True)
-        if not field.isdigit():
-            field = False
-            msg = {
-                'warning': {
-                    'title': "Error",
-                    'message': "Only digits are allowed."
-                }
-            }
-        return field, msg
 
     @api.onchange('pension_code')
     def _onchange_pension_code(self):
