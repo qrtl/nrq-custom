@@ -56,7 +56,7 @@
                         <page string="Information" name="information">
                             <group>
                                 <group name="particulars" string="Personal Particulars">
-                                    <field name="private_country_id" attrs="{'required':[('is_ready','=',True)]}"/>
+                                    <field name="private_country_id" attrs="{'required':[('is_ready','=',True)]}" options="{'no_create':True, 'no_open':True}"/>
                                     <label for="roman_family_name" string="Roman Spelling"/>
                                     <div>
                                         <div class="o_row mr16">
