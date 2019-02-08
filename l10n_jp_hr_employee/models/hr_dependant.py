@@ -125,7 +125,7 @@ class HrDependant(models.Model):
          ('3_left_job', 'Left Job'),
          ('4_income_decrease', 'Income Decrease'),
          ('5_other', 'Other')],
-        'Cuase of Becoming a Dependant',
+        'Cause of Becoming a Dependant',
     )
     cause_dependant_enter_note = fields.Char(
         'Cause Note',

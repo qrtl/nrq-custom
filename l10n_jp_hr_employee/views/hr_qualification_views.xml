@@ -10,7 +10,7 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'"/>
+                            <field name="date_obtained" placeholder="'YYYY-MM-DD' or 'YYYY-MM'"/>
                         </group>
                         <group>
                             <field name="date_expiry"/>
