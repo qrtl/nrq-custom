@@ -587,7 +587,7 @@ msgstr "名称"
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_employee_form
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "Name Furigana"
-msgstr "名前(カナ)"
+msgstr "名前(ｶﾅ)"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_private_country_id
