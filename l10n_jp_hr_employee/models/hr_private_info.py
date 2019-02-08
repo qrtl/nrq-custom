@@ -138,9 +138,8 @@ class HrPrivateInfo(models.Model):
     emerg_contact_phone = fields.Char(
         'Emerg. Contact Phone',
     )
-    bank_id = fields.Many2one(
-        'res.bank',
-        string='Bank',
+    bank_name = fields.Char(
+        'Bank Name',
     )
     bank_branch = fields.Char(
         'Bank Branch',
@@ -173,7 +172,7 @@ class HrPrivateInfo(models.Model):
         'School Completion',
     )
     school_completion_desc = fields.Char(
-        'School Completion Description',
+        'Note (School Completion)',
     )
     year_left_school = fields.Selection(
         get_years(),
@@ -204,6 +203,8 @@ class HrPrivateInfo(models.Model):
     )
     emp_ins_number_1st = fields.Char(
         'Emp. Ins. Number (1st part)',
+        help="Please input '0000-000000-0' in case you are not sure about the "
+             "number.",
     )
     emp_ins_number_2nd = fields.Char(
         'Emp. Ins. Number (2nd part)',
@@ -215,10 +216,6 @@ class HrPrivateInfo(models.Model):
         'Emp. Insurance Number',
         compute='_compute_emp_ins_number',
         store=True,
-    )
-    disability_class_id = fields.Many2one(
-        'hr.disability.class',
-        string='Disability Class',
     )
     widowhood = fields.Selection(
         [('widow', 'Widow'),
@@ -257,6 +254,19 @@ class HrPrivateInfo(models.Model):
         ('employee_id_uniq', 'unique (employee_id, company_id)',
          'Only one record is allowed per employee per company.')]
 
+    def check_digits(self, field):
+        msg = {}
+        field = jaconv.z2h(field, ascii=True, digit=True).replace("-", "")
+        if not field.isdigit():
+            field = False
+            msg = {
+                'warning': {
+                    'title': "Error",
+                    'message': "Only digits are allowed."
+                }
+            }
+        return field, msg
+
     @api.onchange('family_name')
     def _onchange_family_name(self):
         if self.family_name:
@@ -290,6 +300,36 @@ class HrPrivateInfo(models.Model):
     def _onchange_roman_given_name(self):
         if self.roman_given_name:
             self.roman_given_name = self.roman_given_name.upper()
+
+    @api.onchange('private_phone')
+    def _onchange_private_phone(self):
+        if self.private_phone:
+            self.private_phone, msg = self.check_digits(self.private_phone)
+            if not self.private_phone:
+                return msg
+
+    @api.onchange('emerg_contact_phone')
+    def _onchange_emerg_contact_phone(self):
+        if self.emerg_contact_phone:
+            self.emerg_contact_phone, msg = self.check_digits(
+                self.emerg_contact_phone)
+            if not self.emerg_contact_phone:
+                return msg
+
+    @api.onchange('postal_code')
+    def _onchange_postal_code(self):
+        if self.postal_code:
+            self.postal_code, msg = self.check_digits(self.postal_code)
+            if not self.postal_code:
+                return msg
+
+    @api.onchange('emerg_contact_postal_code')
+    def _onchange_emerg_contact_postal_code(self):
+        if self.emerg_contact_postal_code:
+            self.emerg_contact_postal_code, msg = self.check_digits(
+                self.emerg_contact_postal_code)
+            if not self.emerg_contact_postal_code:
+                return msg
 
     @api.onchange('address_pref')
     def _onchange_address_pref(self):
@@ -338,19 +378,6 @@ class HrPrivateInfo(models.Model):
             # no space allowd inside the string
             self.furi_bank_acc_holder = "".join(jaconv.z2h(
                 jaconv.hira2kata(self.furi_bank_acc_holder)).split())
-
-    def check_digits(self, field):
-        msg = {}
-        field = jaconv.z2h(field, digit=True)
-        if not field.isdigit():
-            field = False
-            msg = {
-                'warning': {
-                    'title': "Error",
-                    'message': "Only digits are allowed."
-                }
-            }
-        return field, msg
 
     @api.onchange('pension_code')
     def _onchange_pension_code(self):
@@ -442,8 +469,9 @@ class HrPrivateInfo(models.Model):
                 raise ValidationError(msg % ("Employment Insurance Number"))
 
     @api.constrains('postal_code', 'emerg_contact_postal_code',
-                    'bank_acc_number', 'pension_code', 'pension_seq')
-    #FIXME add employment ins number
+                    'bank_acc_number', 'pension_code', 'pension_seq',
+                    'emp_ins_number_1st', 'emp_ins_number_2nd',
+                    'emp_ins_number_3rd')
     def _validate_digit_length(self):
         for rec in self:
             msg = _("%s should be %s digit(s).")
@@ -456,9 +484,20 @@ class HrPrivateInfo(models.Model):
             if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
                 raise ValidationError(msg % ("Account Number", "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
-                raise ValidationError(msg % ("Pension Code", "4"))
+                raise ValidationError(msg % (
+                    "The first section of Pension Number", "4"))
             if rec.pension_seq and not len(rec.pension_seq) == 6:
-                raise ValidationError(msg % ("Pension Sequence", "6"))
+                raise ValidationError(msg % (
+                    "The second section of Pension Number", "6"))
+            if rec.emp_ins_number_1st and not len(rec.emp_ins_number_1st) == 4:
+                raise ValidationError(msg % (
+                    "The first section of Employment Insurance Number", "4"))
+            if rec.emp_ins_number_2nd and not len(rec.emp_ins_number_2nd) == 6:
+                raise ValidationError(msg % (
+                    "The second section of Employment Insurance Number", "6"))
+            if rec.emp_ins_number_3rd and not len(rec.emp_ins_number_3rd) == 1:
+                raise ValidationError(msg % (
+                    "The third section of Employment Insurance Number", "1"))
 
     @api.constrains('private_email')
     def _check_email(self):
