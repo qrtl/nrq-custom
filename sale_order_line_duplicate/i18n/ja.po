@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-06 06:29+0000\n"
-"PO-Revision-Date: 2019-02-06 06:29+0000\n"
+"POT-Creation-Date: 2019-02-13 07:39+0000\n"
+"PO-Revision-Date: 2019-02-13 07:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,16 @@ msgstr ""
 
 #. module: sale_order_line_duplicate
 #: model:ir.ui.view,arch_db:sale_order_line_duplicate.view_order_form
-msgid "Duplicate Order Lines"
-msgstr "受注明細複製"
+msgid "Duplicate Order Line"
+msgstr "明細コピー"
 
 #. module: sale_order_line_duplicate
 #: model:ir.model,name:sale_order_line_duplicate.model_sale_order
 msgid "Sales Order"
 msgstr "受注"
+
+#. module: sale_order_line_duplicate
+#: model:ir.model,name:sale_order_line_duplicate.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "受注明細"
 
