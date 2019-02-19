@@ -28,8 +28,9 @@
             <xpath expr="//tree/field[@name='name']" position="after">
                 <field name="reference" string="Reference"/>
             </xpath>
-            <xpath expr="//tree/field[@name='tax_ids']" position="attributes">
-                <attribute name="invisible">True</attribute>
+            <xpath expr="//tree/field[@name='tax_ids']" position="replace"/>
+            <xpath expr="//tree/field[@name='analytic_account_id']" position="after">
+                <field name="tax_ids" widget="many2many_tags"/>
             </xpath>
             <xpath expr="//tree/field[@name='total_amount']" position="after">
                 <field name="description"/>

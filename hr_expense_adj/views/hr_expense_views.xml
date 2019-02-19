@@ -18,6 +18,9 @@
             <xpath expr="//field[@name='name']" position="after">
                 <field name="reference" string="Reference"/>
             </xpath>
+            <xpath expr="//field[@name='total_amount']" position="before">
+                <field name="tax_ids" widget="many2many_tags"/>
+            </xpath>
             <xpath expr="//field[@name='total_amount']" position="after">
                 <field name="description"/>
             </xpath>
