@@ -68,6 +68,9 @@ class HrPrivateInfo(models.Model):
         'res.country',
         string='Nationality (Private)',
     )
+    private_country_code = fields.Char(
+        related='private_country_id.code',
+    )
     roman_family_name = fields.Char(
         'Family Name (Roman)',
     )
@@ -115,7 +118,8 @@ class HrPrivateInfo(models.Model):
         string='Residence Cert File Name',
     )
     emerg_contact_type = fields.Selection(
-        [('father', 'Father'),
+        [('spouse', 'Spouse'),
+         ('father', 'Father'),
          ('mother', 'Mother'),
          ('child', 'Child'),
          ('grand_father', 'Grand Father'),
@@ -152,9 +156,8 @@ class HrPrivateInfo(models.Model):
     )
     bank_acc_number = fields.Char(
         'Account Number',
-    )
-    bank_acc_holder = fields.Char(
-        'Account Holder',
+        help='For Japan Post Bank, please remove the \'1\' in the end '
+             'of the account number',
     )
     furi_bank_acc_holder = fields.Char(
         'Account Holder Furigana',
@@ -217,14 +220,6 @@ class HrPrivateInfo(models.Model):
         compute='_compute_emp_ins_number',
         store=True,
     )
-    widowhood = fields.Selection(
-        [('widow', 'Widow'),
-         ('special', 'Special Widow'),
-         ('widower', 'Widower')],
-    )
-    working_student_deduction = fields.Boolean(
-        'Working Student Deduction',
-    )
     note = fields.Text()
     visa_number = fields.Char(
         'Visa Number',
@@ -267,6 +262,19 @@ class HrPrivateInfo(models.Model):
             }
         return field, msg
 
+    def check_alphabets(self, field):
+        msg = {}
+        field = jaconv.z2h(field, ascii=True, digit=True).upper()
+        if re.compile(r'^[a-zA-Z]+$').match(field) is None:
+            field = False
+            msg = {
+                'warning': {
+                    'title': "Error",
+                    'message': "Only alphabets are allowed."
+                }
+            }
+        return field, msg
+
     @api.onchange('family_name')
     def _onchange_family_name(self):
         if self.family_name:
@@ -294,12 +302,18 @@ class HrPrivateInfo(models.Model):
     @api.onchange('roman_family_name')
     def _onchange_roman_family_name(self):
         if self.roman_family_name:
-            self.roman_family_name = self.roman_family_name.upper()
+            self.roman_family_name, msg = self.check_alphabets(
+                self.roman_family_name)
+            if not self.roman_family_name:
+                return msg
 
     @api.onchange('roman_given_name')
     def _onchange_roman_given_name(self):
         if self.roman_given_name:
-            self.roman_given_name = self.roman_given_name.upper()
+            self.roman_given_name, msg = self.check_alphabets(
+                self.roman_given_name)
+            if not self.roman_given_name:
+                return msg
 
     @api.onchange('private_phone')
     def _onchange_private_phone(self):
@@ -307,6 +321,12 @@ class HrPrivateInfo(models.Model):
             self.private_phone, msg = self.check_digits(self.private_phone)
             if not self.private_phone:
                 return msg
+
+    @api.onchange('private_email')
+    def _onchange_private_email(self):
+        if self.private_email:
+            self.private_email = jaconv.z2h(self.private_email, ascii=True,
+                                            digit=True)
 
     @api.onchange('emerg_contact_phone')
     def _onchange_emerg_contact_phone(self):
@@ -365,12 +385,6 @@ class HrPrivateInfo(models.Model):
         if self.emerg_contact_name:
             self.emerg_contact_name = jaconv.h2z(
                 self.emerg_contact_name, ascii=True, digit=True)
-
-    @api.onchange('bank_acc_holder')
-    def _onchange_bank_acc_holder(self):
-        if self.bank_acc_holder:
-            self.bank_acc_holder = jaconv.h2z(
-                self.bank_acc_holder, ascii=True, digit=True)
 
     @api.onchange('furi_bank_acc_holder')
     def _onchange_furi_bank_acc_holder(self):
