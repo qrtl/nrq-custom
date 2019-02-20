@@ -28,7 +28,7 @@ class HrQualification(models.Model):
         required=True,
     )
     date_expiry = fields.Date(
-        'Expiry Date',
+        'Valid Until',
     )
     reference = fields.Char()
     qualification_file = fields.Binary(
@@ -42,19 +42,19 @@ class HrQualification(models.Model):
     def _onchange_date_obtained(self):
         if self.date_obtained:
             self.date_obtained = jaconv.z2h(
-                self.date_obtained, ascii=True, digit=True)
+                self.date_obtained.replace('-', '/'), ascii=True, digit=True)
 
     @api.constrains('date_obtained')
     def _check_date_obtained(self):
         for rec in self:
             msg = _("%s seems to be incorrect.")
             if rec.date_obtained:
-                date = rec.date_obtained + '-01' \
+                date = rec.date_obtained + '/01' \
                     if len(rec.date_obtained) == 7 else rec.date_obtained
                 try:
-                    fields.Date.from_string(date)
+                    fields.Date.from_string(date.replace('/', '-'))
                 except:
-                    raise ValidationError(msg % ("Date Obtained"))
+                    raise ValidationError(msg % _("Date Obtained"))
                 if len(rec.date_obtained) not in [7, 10]:
-                    raise ValidationError("Please adjust the format to be "
-                                          "'YYYY/MM/DD' or 'YYYY/MM'.")
+                    raise ValidationError(_("Please adjust the format to be "
+                                          "'YYYY/MM/DD' or 'YYYY/MM'."))

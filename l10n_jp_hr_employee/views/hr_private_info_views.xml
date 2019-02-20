@@ -147,7 +147,7 @@
                                 <field name="note" attrs="{'readonly':[('state','=','confirm')]}"/>
                             </group>
                         </page>
-                        <page name="dependent_information" string="Dependent Information">
+                        <page name="dependant_information" string="Dependant Information">
                             <field name="dependant_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
                         </page>
                     </notebook>

@@ -151,7 +151,7 @@ class HrPrivateInfo(models.Model):
     bank_acc_type = fields.Selection(
         [('savings', 'Savings'),
          ('current', 'Current')],
-        'Account Type',
+        'Bank Account Type',
         default='savings',
     )
     bank_acc_number = fields.Char(
@@ -256,8 +256,8 @@ class HrPrivateInfo(models.Model):
             field = False
             msg = {
                 'warning': {
-                    'title': "Error",
-                    'message': "Only digits are allowed."
+                    'title': _("Error"),
+                    'message': _("Only digits are allowed.")
                 }
             }
         return field, msg
@@ -269,8 +269,8 @@ class HrPrivateInfo(models.Model):
             field = False
             msg = {
                 'warning': {
-                    'title': "Error",
-                    'message': "Only alphabets are allowed."
+                    'title': _("Error"),
+                    'message': _("Only Roman alphabets are allowed.")
                 }
             }
         return field, msg
@@ -456,31 +456,31 @@ class HrPrivateInfo(models.Model):
             msg = _("Only digits are allowed for %s field.")
             if rec.private_phone and not rec.private_phone.encode(
                     'utf-8').isdigit():
-                raise ValidationError(msg % ("Private Phone"))
+                raise ValidationError(msg % _("Private Phone"))
             if rec.emerg_contact_phone and not rec.emerg_contact_phone.encode(
                     'utf-8').isdigit():
-                raise ValidationError(msg % ("Emerg. Contact Phone"))
+                raise ValidationError(msg % _("Emerg. Contact Phone"))
             if rec.postal_code and not rec.postal_code.encode(
                     'utf-8').isdigit():
-                raise ValidationError(msg % ("Postal Code"))
+                raise ValidationError(msg % _("Postal Code"))
             if rec.emerg_contact_postal_code and not \
                     rec.emerg_contact_postal_code.encode('utf-8').isdigit():
-                raise ValidationError(msg % ("Emerg. Contact Postal Code"))
+                raise ValidationError(msg % _("Emerg. Contact Postal Code"))
             if rec.bank_acc_number and not rec.bank_acc_number.encode(
                     'utf-8').isdigit():
-                raise ValidationError(msg % ("Account Number"))
+                raise ValidationError(msg % _("Account Number"))
             if rec.pension_code and not \
                     rec.pension_code.encode('utf-8').isdigit() or \
                     rec.pension_seq and not \
                     rec.pension_seq.encode('utf-8').isdigit():
-                raise ValidationError(msg % ("Pension Number"))
+                raise ValidationError(msg % _("Pension Number"))
             if rec.emp_ins_number_1st and not \
                     rec.emp_ins_number_1st.encode('utf-8').isdigit() or \
                     rec.emp_ins_number_2nd and not \
                     rec.emp_ins_number_2nd.encode('utf-8').isdigit() or \
                     rec.emp_ins_number_3rd and not \
                     rec.emp_ins_number_3rd.encode('utf-8').isdigit():
-                raise ValidationError(msg % ("Employment Insurance Number"))
+                raise ValidationError(msg % _("Employment Insurance Number"))
 
     @api.constrains('postal_code', 'emerg_contact_postal_code',
                     'bank_acc_number', 'pension_code', 'pension_seq',
@@ -490,27 +490,27 @@ class HrPrivateInfo(models.Model):
         for rec in self:
             msg = _("%s should be %s digit(s).")
             if rec.postal_code and not len(rec.postal_code) == 7:
-                raise ValidationError(msg % ("Postal Code", "7"))
+                raise ValidationError(msg % _("Postal Code", "7"))
             if rec.emerg_contact_postal_code and not len(
                     rec.emerg_contact_postal_code) == 7:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "Emerg. Contact Postal Code", "7"))
             if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
-                raise ValidationError(msg % ("Account Number", "7"))
+                raise ValidationError(msg % _("Account Number", "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The first section of Pension Number", "4"))
             if rec.pension_seq and not len(rec.pension_seq) == 6:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The second section of Pension Number", "6"))
             if rec.emp_ins_number_1st and not len(rec.emp_ins_number_1st) == 4:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The first section of Employment Insurance Number", "4"))
             if rec.emp_ins_number_2nd and not len(rec.emp_ins_number_2nd) == 6:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The second section of Employment Insurance Number", "6"))
             if rec.emp_ins_number_3rd and not len(rec.emp_ins_number_3rd) == 1:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The third section of Employment Insurance Number", "1"))
 
     @api.constrains('private_email')

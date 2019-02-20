@@ -1,8 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hr_employment_type_user,access_hr_employment_type_user,model_hr_employment_type,base.group_user,1,0,0,0
 access_hr_employment_type_erp_manager,access_hr_employment_type_erp_manager,model_hr_employment_type,base.group_erp_manager,1,1,1,1
-access_hr_disability_class_user,access_hr_disability_class_user,model_hr_disability_class,base.group_user,1,0,0,0
-access_hr_disability_class_erp_manager,access_hr_disability_class_erp_manager,model_hr_disability_class,base.group_erp_manager,1,1,1,1
 access_hr_private_info_user,access_hr_private_info_user,model_hr_private_info,base.group_user,1,1,1,0
 access_hr_private_info_manager,access_hr_private_info_manager,model_hr_private_info,hr.group_hr_manager,1,1,1,1
 access_hr_qualification_user,access_hr_qualification_user,model_hr_qualification,base.group_user,1,1,1,1

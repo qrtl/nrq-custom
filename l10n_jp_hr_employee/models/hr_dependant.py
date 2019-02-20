@@ -24,6 +24,7 @@ class HrDependant(models.Model):
         return currency_id
 
     name = fields.Char(
+        string='Dependant Name',
         required=True,
     )
     private_info_id = fields.Many2one(
@@ -88,7 +89,7 @@ class HrDependant(models.Model):
         'Postal Code',
     )
     address = fields.Char(
-        'Address',
+        'Residential Address',
     )
     furi_address = fields.Char(
         'Address Furigana',
@@ -97,8 +98,8 @@ class HrDependant(models.Model):
     occupation = fields.Selection(
         [('unemployed', 'Unemployed'),
          ('part_time', 'Part Time Worker'),
-         ('pensioners', 'Pensioner'),
-         ('junior', 'Junior High School Student or below'),
+         ('pensioner', 'Pensioner'),
+         ('junior', 'Junior High or Below'),
          ('high_school', 'High School Student'),
          ('college', 'College Student'),
          ('other', 'Other')],
@@ -119,12 +120,12 @@ class HrDependant(models.Model):
         'Amount Sent to Family',
     )
     amt_to_family_confirm_doc = fields.Binary(
-        'Amount Sent to Family Confirm Document',
+        'Proof of Amount Sent to Family',
         help='Please prepare a passbook copy etc. which can confirm the '
              'amount sent to family',
     )
     amt_to_family_confirm_doc_filename = fields.Char(
-        string='Amount Sent to Family Confirm Document Name',
+        string='Proof of Amount Sent to Family File Name',
     )
     disability_class = fields.Selection(
         [('normal', "Normal"),
@@ -214,26 +215,26 @@ class HrDependant(models.Model):
             msg = _("Only digits are allowed for %s field.")
             if rec.postal_code and not rec.postal_code.encode(
                     'utf-8').isdigit():
-                raise ValidationError(msg % ("Postal Code"))
+                raise ValidationError(msg % _("Postal Code"))
             if rec.phone and not rec.phone.encode('utf-8').isdigit():
-                raise ValidationError(msg % ("Phone"))
+                raise ValidationError(msg % _("Phone"))
             if rec.pension_code and not \
                     rec.pension_code.encode('utf-8').isdigit() or \
                     rec.pension_seq and not \
                     rec.pension_seq.encode('utf-8').isdigit():
-                raise ValidationError(msg % ("Pension Number"))
+                raise ValidationError(msg % _("Pension Number"))
 
     @api.constrains('postal_code', 'pension_code', 'pension_seq')
     def _validate_digit_length(self):
         for rec in self:
             msg = _("%s should be %s digit(s).")
             if rec.postal_code and not len(rec.postal_code) == 7:
-                raise ValidationError(msg % ("Postal Code", "7"))
+                raise ValidationError(msg % _("Postal Code", "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The first section of Pension Number", "4"))
             if rec.pension_seq and not len(rec.pension_seq) == 6:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The second section of Pension Number", "6"))
 
     @api.onchange('name')
