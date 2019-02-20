@@ -22,7 +22,6 @@
         'security/ir.model.access.csv',
         'security/hr_security.xml',
         'data/hr_employment_type_data.xml',
-        'data/hr_disability_class_data.xml',
         'data/hr_contract_data.xml',
         'views/hr_private_info_views.xml',
         'views/hr_employee_views.xml',

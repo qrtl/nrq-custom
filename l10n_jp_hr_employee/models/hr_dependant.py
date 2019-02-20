@@ -24,6 +24,7 @@ class HrDependant(models.Model):
         return currency_id
 
     name = fields.Char(
+        string='Dependant Name',
         required=True,
     )
     private_info_id = fields.Many2one(
@@ -88,13 +89,25 @@ class HrDependant(models.Model):
         'Postal Code',
     )
     address = fields.Char(
-        'Address',
+        'Residential Address',
     )
     furi_address = fields.Char(
         'Address Furigana',
     )
     phone = fields.Char()
-    occupation = fields.Char()
+    occupation = fields.Selection(
+        [('unemployed', 'Unemployed'),
+         ('part_time', 'Part Time Worker'),
+         ('pensioner', 'Pensioner'),
+         ('junior', 'Junior High or Below'),
+         ('high_school', 'High School Student'),
+         ('college', 'College Student'),
+         ('other', 'Other')],
+        'Occupation',
+    )
+    occupation_desc = fields.Char(
+        'Occupation Description',
+    )
     currency_id = fields.Many2one(
         'res.currency',
         string='Currency',
@@ -106,8 +119,17 @@ class HrDependant(models.Model):
     amt_to_family = fields.Monetary(
         'Amount Sent to Family',
     )
-    disability_class_id = fields.Many2one(
-        'hr.disability.class',
+    amt_to_family_confirm_doc = fields.Binary(
+        'Proof of Amount Sent to Family',
+        help='Please prepare a passbook copy etc. which can confirm the '
+             'amount sent to family',
+    )
+    amt_to_family_confirm_doc_filename = fields.Char(
+        string='Proof of Amount Sent to Family File Name',
+    )
+    disability_class = fields.Selection(
+        [('normal', "Normal"),
+         ('special', 'Special')],
         string='Disability Class',
     )
     disability_note = fields.Char(
@@ -129,6 +151,16 @@ class HrDependant(models.Model):
     )
     cause_dependant_enter_note = fields.Char(
         'Cause Note',
+    )
+    widowhood = fields.Selection(
+        [('widow', 'Widow'),
+         ('special', 'Special Widow'),
+         ('widower', 'Widower')],
+        help="Input if applicable",
+    )
+    working_student_deduction = fields.Boolean(
+        'Working Student Deduction',
+        help="Input if applicable",
     )
 
 
@@ -183,24 +215,29 @@ class HrDependant(models.Model):
             msg = _("Only digits are allowed for %s field.")
             if rec.postal_code and not rec.postal_code.encode(
                     'utf-8').isdigit():
-                raise ValidationError(msg % ("Postal Code"))
+                raise ValidationError(msg % _("Postal Code"))
             if rec.phone and not rec.phone.encode('utf-8').isdigit():
-                raise ValidationError(msg % ("Phone"))
+                raise ValidationError(msg % _("Phone"))
             if rec.pension_code and not \
                     rec.pension_code.encode('utf-8').isdigit() or \
                     rec.pension_seq and not \
                     rec.pension_seq.encode('utf-8').isdigit():
-                raise ValidationError(msg % ("Pension Number"))
+                raise ValidationError(msg % _("Pension Number"))
 
     @api.constrains('postal_code', 'pension_code', 'pension_seq')
     def _validate_digit_length(self):
         for rec in self:
             msg = _("%s should be %s digit(s).")
             if rec.postal_code and not len(rec.postal_code) == 7:
-                raise ValidationError(msg % ("Postal Code", "7"))
+                raise ValidationError(msg % _("Postal Code", "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The first section of Pension Number", "4"))
             if rec.pension_seq and not len(rec.pension_seq) == 6:
-                raise ValidationError(msg % (
+                raise ValidationError(msg % _(
                     "The second section of Pension Number", "6"))
+
+    @api.onchange('name')
+    def _onchange_name(self):
+        if self.name:
+            self.name = jaconv.z2h(jaconv.hira2kata(self.name))

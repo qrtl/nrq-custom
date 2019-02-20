@@ -22,6 +22,7 @@
                                 <field name="pension_seq" placeholder="999999"/>
                             </div>
                             <field name="pension_number" class="oe_read_only"/>
+                            <field name="phone"/>
                         </group>
                     </group>
                     <group>
@@ -30,24 +31,36 @@
                             <field name="postal_code" attrs="{'invisible':[('residence_categ','=','together')]}"/>
                             <field name="address" attrs="{'invisible':[('residence_categ','=','together')]}"/>
                             <field name="furi_address" attrs="{'invisible':[('residence_categ','=','together')]}"/>
-                            <field name="phone"/>
                         </group>
                         <group>
-                            <field name="occupation"/>
+                            <label for="occupation"/>
+                            <div>
+                                <div class="o_row mr16">
+                                    <field name="occupation"/>
+                                    <field name="occupation_desc" attrs="{'invisible': [('occupation','!=','other')]}"/>
+                                    <field name="occupation_desc" placeholder="Year" attrs="{'invisible': [('occupation','!=','college')]}"/>
+                                </div>
+                            </div>
                             <field name="currency_id" invisible="1"/>
                             <field name="income"/>
-                            <field name="amt_to_family"/>
+                            <field name="amt_to_family" attrs="{'invisible': [('residence_categ','!=','separate')]}"/>
+                            <field name="amt_to_family_confirm_doc" filename="amt_to_family_confirm_doc_filename" attrs="{'invisible': [('residence_categ','!=','separate')]}"/>
+                            <field name="amt_to_family_confirm_doc_filename" invisible="1"/>
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="disability_class_id" widget="selection"/>
-                            <field name="disability_note" attrs="{'invisible': [('disability_class_id', '=', False)]}"/>
+                            <field name="disability_class"/>
+                            <field name="disability_note" attrs="{'invisible': [('disability_class', '=', False)]}"/>
                         </group>
                         <group>
                             <field name="date_dependant_enter"/>
                             <field name="cause_dependant_enter"/>
                             <field name="cause_dependant_enter_note" attrs="{'invisible': [('cause_dependant_enter', '!=', '5_other')]}"/>
+                        </group>
+                        <group>
+                            <field name="widowhood"/>
+                            <field name="working_student_deduction"/>
                         </group>
                     </group>
                 </sheet>

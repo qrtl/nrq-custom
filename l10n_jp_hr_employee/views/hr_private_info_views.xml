@@ -57,6 +57,7 @@
                             <group>
                                 <group name="particulars" string="Personal Particulars">
                                     <field name="private_country_id" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}" options="{'no_create':True, 'no_open':True}"/>
+                                    <field name="private_country_code" invisible="1"/>
                                     <label for="roman_family_name" string="Roman Spelling"/>
                                     <div>
                                         <div class="o_row mr16">
@@ -66,12 +67,12 @@
                                     </div>
                                     <field name="birthday" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
                                     <field name="gender" widget="radio" options="{'horizontal': true}" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
-                                    <field name="private_phone" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
+                                    <field name="private_phone" placeholder="Remove hyphen" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
                                     <field name="private_email" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
                                     <label for="address_street"/>
                                     <div class="o_address_format">
                                         <div class="o_row mr16">
-                                            <field name="postal_code" placeholder="Postal Code" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
+                                            <field name="postal_code" placeholder="Postal Code (Remove hyphen)" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
                                             <field name="address_pref" placeholder="Prefecture" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
                                         </div>
                                         <field name="address_street" placeholder="City and Street" class="o_address_street" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','=','confirm')]}"/>
@@ -103,7 +104,6 @@
                                     <field name="bank_branch" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="bank_acc_type" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="bank_acc_number" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','!=','draft')]}"/>
-                                    <field name="bank_acc_holder" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="furi_bank_acc_holder" attrs="{'required':[('is_ready','=',True)],'readonly':[('state','!=','draft')]}"/>
                                 </group>
                                 <group name="academic_background" string="Final Academic Background">
@@ -135,11 +135,7 @@
                                     </div>
                                     <field name="emp_ins_number" class="oe_read_only"/>
                                 </group>
-                                <group name="classification" string="Classifictions">
-                                    <field name="widowhood" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="working_student_deduction" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                </group>
-                                <group name="visa_info" string="Visa Info">
+                                <group name="visa_info" string="Visa Info" attrs="{'invisible':[('private_country_code','=','JP')]}">
                                     <field name="visa_number" attrs="{'readonly':[('state','=','confirm')]}"/>
                                     <field name="date_visa_expiry" attrs="{'readonly':[('state','=','confirm')]}"/>
                                     <field name="work_permit_number" attrs="{'readonly':[('state','=','confirm')]}"/>
@@ -151,7 +147,7 @@
                                 <field name="note" attrs="{'readonly':[('state','=','confirm')]}"/>
                             </group>
                         </page>
-                        <page name="health_insurance" string="Health Insurance">
+                        <page name="dependant_information" string="Dependant Information">
                             <field name="dependant_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
                         </page>
                     </notebook>
