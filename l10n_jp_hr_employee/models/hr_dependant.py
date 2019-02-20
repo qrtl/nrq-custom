@@ -94,7 +94,19 @@ class HrDependant(models.Model):
         'Address Furigana',
     )
     phone = fields.Char()
-    occupation = fields.Char()
+    occupation = fields.Selection(
+        [('unemployed', 'Unemployed'),
+         ('part_time', 'Part Time Worker'),
+         ('pensioners', 'Pensioner'),
+         ('junior', 'Junior High School Student or below'),
+         ('high_school', 'High School Student'),
+         ('college', 'College Student'),
+         ('other', 'Other')],
+        'Occupation',
+    )
+    occupation_desc = fields.Char(
+        'Occupation Description',
+    )
     currency_id = fields.Many2one(
         'res.currency',
         string='Currency',
@@ -105,6 +117,14 @@ class HrDependant(models.Model):
     )
     amt_to_family = fields.Monetary(
         'Amount Sent to Family',
+    )
+    amt_to_family_confirm_doc = fields.Binary(
+        'Amount Sent to Family Confirm Document',
+        help='Please prepare a passbook copy etc. which can confirm the '
+             'amount sent to family',
+    )
+    amt_to_family_confirm_doc_filename = fields.Char(
+        string='Amount Sent to Family Confirm Document Name',
     )
     disability_class_id = fields.Many2one(
         'hr.disability.class',
@@ -129,6 +149,16 @@ class HrDependant(models.Model):
     )
     cause_dependant_enter_note = fields.Char(
         'Cause Note',
+    )
+    widowhood = fields.Selection(
+        [('widow', 'Widow'),
+         ('special', 'Special Widow'),
+         ('widower', 'Widower')],
+        help="Input if applicable",
+    )
+    working_student_deduction = fields.Boolean(
+        'Working Student Deduction',
+        help="Input if applicable",
     )
 
 
@@ -204,3 +234,8 @@ class HrDependant(models.Model):
             if rec.pension_seq and not len(rec.pension_seq) == 6:
                 raise ValidationError(msg % (
                     "The second section of Pension Number", "6"))
+
+    @api.onchange('name')
+    def _onchange_name(self):
+        if self.name:
+            self.name = jaconv.z2h(jaconv.hira2kata(self.name))
