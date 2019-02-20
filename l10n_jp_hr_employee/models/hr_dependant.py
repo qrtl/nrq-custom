@@ -126,8 +126,9 @@ class HrDependant(models.Model):
     amt_to_family_confirm_doc_filename = fields.Char(
         string='Amount Sent to Family Confirm Document Name',
     )
-    disability_class_id = fields.Many2one(
-        'hr.disability.class',
+    disability_class = fields.Selection(
+        [('normal', "Normal"),
+         ('special', 'Special')],
         string='Disability Class',
     )
     disability_note = fields.Char(

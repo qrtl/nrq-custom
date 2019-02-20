@@ -50,8 +50,8 @@
                     </group>
                     <group>
                         <group>
-                            <field name="disability_class_id" widget="selection"/>
-                            <field name="disability_note" attrs="{'invisible': [('disability_class_id', '=', False)]}"/>
+                            <field name="disability_class"/>
+                            <field name="disability_note" attrs="{'invisible': [('disability_class', '=', False)]}"/>
                         </group>
                         <group>
                             <field name="date_dependant_enter"/>
