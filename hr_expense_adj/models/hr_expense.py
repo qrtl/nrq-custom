@@ -41,6 +41,10 @@ class HrExpense(models.Model):
         compute='_compute_account_id',
         store=True,
     )
+    date = fields.Date(
+        default=False,
+        copy=False,
+    )
 
     # override the standard method
     @api.onchange('product_id')
