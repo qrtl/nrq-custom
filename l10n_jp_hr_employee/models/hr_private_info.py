@@ -523,10 +523,6 @@ class HrPrivateInfo(models.Model):
                     rec.private_email):
                 raise ValidationError(msg % ("Private Email"))
 
-    # @api.multi
-    # def action_temp_save(self):
-    #     return self.write({'temp_save': True})
-
     @api.multi
     def action_draft(self):
         return self.write({'state': 'draft'})
