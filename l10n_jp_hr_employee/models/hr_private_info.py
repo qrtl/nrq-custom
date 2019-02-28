@@ -34,8 +34,8 @@ class HrPrivateInfo(models.Model):
         store=True,
         readonly=True,
     )
-    is_ready = fields.Boolean(
-        'Is Ready to Submit',
+    temp_save = fields.Boolean(
+        'Temporary Save',
     )
     family_name = fields.Char(
         related='employee_id.family_name',
@@ -431,6 +431,12 @@ class HrPrivateInfo(models.Model):
             if not self.emp_ins_number_3rd:
                 return msg
 
+    @api.onchange('emerg_contact_address')
+    def _onchange_emerg_contact_address(self):
+        if self.emerg_contact_address:
+            self.emerg_contact_address = jaconv.h2z(
+                self.emerg_contact_address, ascii=True, digit=True)
+
     @api.multi
     @api.depends('pension_code', 'pension_seq')
     def _compute_pension_number(self):
@@ -490,28 +496,28 @@ class HrPrivateInfo(models.Model):
         for rec in self:
             msg = _("%s should be %s digit(s).")
             if rec.postal_code and not len(rec.postal_code) == 7:
-                raise ValidationError(msg % _("Postal Code", "7"))
+                raise ValidationError(msg % (_("Postal Code"), "7"))
             if rec.emerg_contact_postal_code and not len(
                     rec.emerg_contact_postal_code) == 7:
-                raise ValidationError(msg % _(
-                    "Emerg. Contact Postal Code", "7"))
+                raise ValidationError(msg % (_(
+                    "Emerg. Contact Postal Code"), "7"))
             if rec.bank_acc_number and not len(rec.bank_acc_number) == 7:
-                raise ValidationError(msg % _("Account Number", "7"))
+                raise ValidationError(msg % (_("Account Number"), "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
-                raise ValidationError(msg % _(
-                    "The first section of Pension Number", "4"))
+                raise ValidationError(msg % (_(
+                    "The first section of Pension Number"), "4"))
             if rec.pension_seq and not len(rec.pension_seq) == 6:
-                raise ValidationError(msg % _(
-                    "The second section of Pension Number", "6"))
+                raise ValidationError(msg % (_(
+                    "The second section of Pension Number"), "6"))
             if rec.emp_ins_number_1st and not len(rec.emp_ins_number_1st) == 4:
-                raise ValidationError(msg % _(
-                    "The first section of Employment Insurance Number", "4"))
+                raise ValidationError(msg % (_(
+                    "The first section of Employment Insurance Number"), "4"))
             if rec.emp_ins_number_2nd and not len(rec.emp_ins_number_2nd) == 6:
-                raise ValidationError(msg % _(
-                    "The second section of Employment Insurance Number", "6"))
+                raise ValidationError(msg % (_(
+                    "The second section of Employment Insurance Number"), "6"))
             if rec.emp_ins_number_3rd and not len(rec.emp_ins_number_3rd) == 1:
-                raise ValidationError(msg % _(
-                    "The third section of Employment Insurance Number", "1"))
+                raise ValidationError(msg % (_(
+                    "The third section of Employment Insurance Number"), "1"))
 
     @api.constrains('private_email')
     def _check_email(self):
@@ -524,10 +530,6 @@ class HrPrivateInfo(models.Model):
                 raise ValidationError(msg % ("Private Email"))
 
     @api.multi
-    def action_ready(self):
-        return self.write({'is_ready': True})
-
-    @api.multi
     def action_draft(self):
         return self.write({'state': 'draft'})
 
@@ -538,3 +540,64 @@ class HrPrivateInfo(models.Model):
     @api.multi
     def action_confirm(self):
         return self.write({'state': 'confirm'})
+
+    @api.model
+    def create(self, vals):
+        res = super(HrPrivateInfo, self).create(vals)
+        users = self.env.ref(
+            'l10n_jp_hr_employee.group_employee_private_info').users
+        if users:
+            res.message_subscribe_users(user_ids=users.ids)
+        return res
+
+    @api.multi
+    def write(self, vals):
+        if 'state' in vals and vals['state'] == 'submit':
+            self.send_ready_notification_email()
+        return super(HrPrivateInfo, self).write(vals)
+
+    @api.multi
+    def send_ready_notification_email(self):
+        self.ensure_one()
+        email_act = self.action_ready_notification_email_send()
+        if email_act and email_act.get('context'):
+            email_ctx = email_act['context']
+            self.with_context(email_ctx).message_post_with_template(
+                email_ctx.get('default_template_id'))
+        return True
+
+    @api.multi
+    def action_ready_notification_email_send(self):
+        self.ensure_one()
+        ir_model_data = self.env['ir.model.data']
+        try:
+            template_id = ir_model_data.get_object_reference(
+                'l10n_jp_hr_employee',
+                'private_info_submit_notification_email')[1]
+        except ValueError:
+            template_id = False
+        try:
+            compose_form_id = ir_model_data.get_object_reference(
+                'mail',
+                'email_compose_message_wizard_form')[1]
+        except ValueError:
+            compose_form_id = False
+        ctx = dict()
+        ctx.update({
+            'default_model': 'hr.private.info',
+            'default_res_id': self.ids[0],
+            'default_use_template': bool(template_id),
+            'default_template_id': template_id,
+            'default_composition_mode': 'comment',
+            'user_name': self.env.user.name,
+        })
+        return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(compose_form_id, 'form')],
+            'view_id': compose_form_id,
+            'target': 'new',
+            'context': ctx,
+        }

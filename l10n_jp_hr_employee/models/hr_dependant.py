@@ -27,6 +27,10 @@ class HrDependant(models.Model):
         string='Dependant Name',
         required=True,
     )
+    furi_name = fields.Char(
+        string='Dependant Name (Furi)',
+        required=True,
+    )
     private_info_id = fields.Many2one(
         'hr.private.info',
         string='Private Info',
@@ -65,7 +69,9 @@ class HrDependant(models.Model):
          ('female', 'Female')],
         required=True,
     )
-    birthday = fields.Date()
+    birthday = fields.Date(
+        required=True,
+    )
     pension_code = fields.Char(
         'Pension Number Code',
         help="Please input '0000-000000' in case you are not sure about the "
@@ -115,6 +121,7 @@ class HrDependant(models.Model):
     )
     income = fields.Monetary(
         help='Expected income for the coming year.',
+        required=True,
     )
     amt_to_family = fields.Monetary(
         'Amount Sent to Family',
@@ -140,6 +147,8 @@ class HrDependant(models.Model):
     )
     date_dependant_enter = fields.Date(
         'Date of Becoming a Dapendant',
+        help='Input the date of joining the company in case the dependant '
+             'enters the dependency due to that reason ',
     )
     cause_dependant_enter = fields.Selection(
         [('1_employment', "Spouse's Employment"),
@@ -161,6 +170,16 @@ class HrDependant(models.Model):
     working_student_deduction = fields.Boolean(
         'Working Student Deduction',
         help="Input if applicable",
+    )
+    inactive = fields.Boolean(
+        'Inactive',
+        default=False,
+    )
+    inactive_date = fields.Date(
+        'Inactive Date',
+    )
+    inactive_reason = fields.Char(
+        'Inactive Reason',
     )
 
 
