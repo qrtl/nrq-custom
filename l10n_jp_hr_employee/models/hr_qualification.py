@@ -14,6 +14,7 @@ class HrQualification(models.Model):
 
     name = fields.Char(
         required=True,
+        help='e.g. CISA',
     )
     private_info_id = fields.Many2one(
         'hr.private.info',

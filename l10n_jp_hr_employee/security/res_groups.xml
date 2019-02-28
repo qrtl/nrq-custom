@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="res.groups" id="group_employee_private_info">
+        <field name="name">Employee Private Information Notify</field>
+    </record>
+</odoo>

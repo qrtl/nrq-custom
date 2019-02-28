@@ -9,7 +9,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="name" string=""/>
                             <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'"/>
                         </group>
                         <group>
