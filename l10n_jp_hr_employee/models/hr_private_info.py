@@ -431,6 +431,12 @@ class HrPrivateInfo(models.Model):
             if not self.emp_ins_number_3rd:
                 return msg
 
+    @api.onchange('emerg_contact_address')
+    def _onchange_emerg_contact_address(self):
+        if self.emerg_contact_address:
+            self.emerg_contact_address = jaconv.h2z(
+                self.emerg_contact_address, ascii=True, digit=True)
+
     @api.multi
     @api.depends('pension_code', 'pension_seq')
     def _compute_pension_number(self):
