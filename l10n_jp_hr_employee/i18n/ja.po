@@ -245,6 +245,16 @@ msgid "Current Address"
 msgstr "現在住所"
 
 #. module: l10n_jp_hr_employee
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
+msgid "Street"
+msgstr "市区町名番地"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
+msgid "Street (Furi)"
+msgstr "市区町名番地フリガナ"
+
+#. module: l10n_jp_hr_employee
 #: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:58
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_date_obtained
 #, python-format

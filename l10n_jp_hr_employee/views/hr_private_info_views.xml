@@ -75,9 +75,9 @@
                                             <field name="address_pref" placeholder="Tokyo" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
                                         </div>
                                     </div>
-                                    <field name="address_street" placeholder="千代田区一番町１０－２２" class="o_address_street" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
+                                    <field name="address_street" string="Street" placeholder="千代田区一番町１０－２２" class="o_address_street" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
                                     <field name="building" placeholder="千代田一番町郵便局" class="o_address_street" attrs="{'readonly':[('state','!=','draft')]}"/>
-                                    <field name="furi_address" placeholder="チヨダク イチバンチョウ１０－２２" class="o_address_street" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="furi_address" string="Street (Furi)" placeholder="チヨダク イチバンチョウ１０－２２" class="o_address_street" attrs="{'readonly':[('state','!=','draft')]}"/>
                                     <field name="furi_building" placeholder="チヨダイチバンチョウユウビンキョク" class="o_address_street" attrs="{'readonly':[('state','!=','draft')]}"/>
                                     <field name="residence_cert" filename="residence_cert_filename" attrs="{'readonly':[('state','!=','draft')]}"/>
                                     <field name="residence_cert_filename" invisible="1"/>
