@@ -90,7 +90,7 @@
                                             <field name="emerg_contact_desc" attrs="{'invisible': [('emerg_contact_type','!=','other')],'required':[('emerg_contact_type','=','other'),('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                         </div>
                                     </div>
-                                    <field name="emerg_contact_name" placeholder="山田　〇〇" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="emerg_contact_name" placeholder="山田　○○" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="emerg_contact_postal_code" placeholder="Remove hyphen" attrs="{'readonly':[('state','=','confirm')]}"/>
                                     <field name="emerg_contact_address" placeholder="Full-width Character" attrs="{'readonly':[('state','=','confirm')]}"/>
                                     <field name="emerg_contact_phone" placeholder="Remove hyphen" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
@@ -103,7 +103,7 @@
                                     <field name="furi_bank_acc_holder" placeholder="ﾔﾏﾀﾞﾀﾛｳ" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                 </group>
                                 <group name="academic_background" string="Final Academic Background">
-                                    <field name="school_name" placeholder="〇〇大学" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="school_name" placeholder="○○大学" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="school_dept_name" placeholder="○○学部○○○学科" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="school_completion" widget="radio" options="{'horizontal': true}" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="school_completion_desc" placeholder="○○大学在学中、等あれば" attrs="{'readonly':[('state','=','confirm')]}"/>
@@ -111,11 +111,27 @@
                                 </group>
                             </group>
                             <group name="qualification" string="Qualifications">
-                                <field name="qualification_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                <label for="qualification_ids"/>
+                                <div>
+                                    <div>
+                                        <field name="qualification_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                        <table class="o_list_view table">
+                                            <tbody>
+                                              <tr>
+                                                  <td>例)CISA　　　</td>
+                                                  <td>2018/03/01　　　　</td>
+                                                  <td>2019/02/28　　　　　　　</td>
+                                                  <td>1234567　　　　　　　</td>
+                                                  <td style="color: transparent;">添付</td>
+                                                  <td class="o_list_record_delete"></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </group>
                             <group>
                                 <group name="pension_info" string="Pension Info">
-                                    <label for="pension_code" string="Pension Number" class="oe_edit_only"/>
+                                    <label for="pension_code" string="Pension Number (?)" class="oe_edit_only"/>
                                     <div class="o_row mr16 oe_edit_only">
                                         <field name="pension_code" placeholder="9999" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/><span>-</span>
                                         <field name="pension_seq" placeholder="999999" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
@@ -123,7 +139,7 @@
                                     <field name="pension_number" class="oe_read_only"/>
                                 </group>
                                 <group name="employment_info" string="Employment Info">
-                                    <label for="emp_ins_number_1st" string="Emp. Insurance Number" class="oe_edit_only"/>
+                                    <label for="emp_ins_number_1st" string="Emp. Insurance Number (?)" class="oe_edit_only"/>
                                     <div class="o_row mr16 oe_edit_only">
                                         <field name="emp_ins_number_1st" placeholder="9999" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/><span>-</span>
                                         <field name="emp_ins_number_2nd" placeholder="999999" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/><span>-</span>
@@ -132,10 +148,10 @@
                                     <field name="emp_ins_number" class="oe_read_only"/>
                                 </group>
                                 <group name="visa_info" string="Visa Info" attrs="{'invisible':[('private_country_code','=','JP')]}">
-                                    <field name="visa_number" placeholder="A1234567" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="date_visa_expiry" placeholder="2025/01/01" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="work_permit_number" placeholder="12-345678" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="residence_card" filename="residence_card_filename" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                    <field name="visa_number" placeholder="A1234567" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
+                                    <field name="date_visa_expiry" placeholder="2025/01/01" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
+                                    <field name="work_permit_number" placeholder="12-345678" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
+                                    <field name="residence_card" filename="residence_card_filename" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
                                     <field name="residence_card_filename" invisible="1"/>
                                 </group>
                             </group>

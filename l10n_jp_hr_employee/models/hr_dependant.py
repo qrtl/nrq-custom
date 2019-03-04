@@ -146,7 +146,7 @@ class HrDependant(models.Model):
         'Dependant in Tax Calc.',
     )
     date_dependant_enter = fields.Date(
-        'Date of Becoming a Dapendant',
+        'Date of Becoming a Dependant',
         help='Input the date of joining the company in case the dependant '
              'enters the dependency due to that reason ',
     )
@@ -259,4 +259,9 @@ class HrDependant(models.Model):
     @api.onchange('name')
     def _onchange_name(self):
         if self.name:
-            self.name = jaconv.z2h(jaconv.hira2kata(self.name))
+            self.name = jaconv.h2z(self.name, ascii=True, digit=True)
+
+    @api.onchange('furi_name')
+    def _onchange_furi_name(self):
+        if self.furi_name:
+            self.furi_name = jaconv.z2h(jaconv.hira2kata(self.furi_name))

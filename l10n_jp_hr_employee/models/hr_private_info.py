@@ -99,7 +99,6 @@ class HrPrivateInfo(models.Model):
     )
     address_street = fields.Char(
         'Current Address',
-        required=True,
     )
     building = fields.Char(
         'Apartment/Building',
