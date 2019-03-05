@@ -115,17 +115,7 @@
                                 <div>
                                     <div>
                                         <field name="qualification_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                        <table class="o_list_view table">
-                                            <tbody>
-                                              <tr>
-                                                  <td>例)CISA　　　</td>
-                                                  <td>2018/03/01　　　　</td>
-                                                  <td>2019/02/28　　　　　　　</td>
-                                                  <td>1234567　　　　　　　</td>
-                                                  <td style="color: transparent;">添付</td>
-                                                  <td class="o_list_record_delete"></td></tr>
-                                            </tbody>
-                                        </table>
+                                        <div>E.g. Name: CISA, Date Obtained: 2018/03/01, Valid Until: 2019/02/28, Reference: 1234567</div>
                                     </div>
                                 </div>
                             </group>
