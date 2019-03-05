@@ -1188,5 +1188,7 @@ msgstr "hr.private.info"
 msgid "hr.qualification"
 msgstr "hr.qualification"
 
-
-
+#. module: l10n_jp_hr_employee
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
+msgid "E.g. Name: CISA, Date Obtained: 2018/03/01, Valid Until: 2019/02/28, Reference: 1234567"
+msgstr "例) 名称: CISA  取得日: 2018/03/01  有効期限: 2019/02/28  参照: 1234567"

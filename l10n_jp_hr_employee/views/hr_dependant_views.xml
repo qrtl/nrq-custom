@@ -9,9 +9,6 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="inactive"/>
-                            <field name="inactive_date" attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
-                            <field name="inactive_reason" attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
                             <field name="name" placeholder="山田 太郎"/>
                             <field name="furi_name" placeholder="ﾔﾏﾀﾞ ﾀﾛｳ"/>
                             <field name="dependant_categ"/>
@@ -65,6 +62,11 @@
                         <group>
                             <field name="widowhood"/>
                             <field name="working_student_deduction"/>
+                        </group>
+                        <group>
+                            <field name="inactive"/>
+                            <field name="inactive_date" attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
+                            <field name="inactive_reason" attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
                         </group>
                     </group>
                 </sheet>
