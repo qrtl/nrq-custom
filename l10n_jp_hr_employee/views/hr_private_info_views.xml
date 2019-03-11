@@ -168,6 +168,7 @@
         <field name="arch" type="xml">
             <tree string="Private Info">
                 <field name="employee_id"/>
+                <field name="code"/>
             </tree>
         </field>
     </record>
@@ -178,6 +179,7 @@
         <field name="arch" type="xml">
             <search string="Search Private Info">
                 <field name="employee_id"/>
+                <field name="code"/>
             </search>
         </field>
     </record>
