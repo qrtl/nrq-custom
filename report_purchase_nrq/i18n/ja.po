@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-23 15:13+0000\n"
-"PO-Revision-Date: 2018-02-23 15:13+0000\n"
+"POT-Creation-Date: 2019-03-19 08:22+0000\n"
+"PO-Revision-Date: 2019-03-19 08:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,6 +29,11 @@ msgstr "<strong>合計金額</strong>"
 #: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_document
 msgid "Date Req."
 msgstr "納期"
+
+#. module: report_purchase_nrq
+#: model:ir.model.fields,field_description:report_purchase_nrq.field_purchase_order_display_tax
+msgid "Display Tax"
+msgstr "税を表示"
 
 #. module: report_purchase_nrq
 #: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_document
