@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016-2017 Quartile Limited
+# Copyright 2016-2019 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import api, fields, models
@@ -7,6 +7,10 @@ from odoo import api, fields, models
 
 class PurchasePrint(models.Model):
     _inherit = 'purchase.order'
+
+    display_tax = fields.Boolean(
+        'Display Tax',
+    )
 
     @api.multi
     def print_quotation(self):
