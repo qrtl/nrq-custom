@@ -156,3 +156,9 @@ msgstr "稟議番号とは『決裁番号』のことで『文書番号』では
 #: model:ir.model.fields,field_description:hr_expense.field_hr_expense_reference
 msgid "Bill Reference"
 msgstr "稟議番号"
+
+#. module: hr_expense_adj
+#: code:addons/hr_expense_adj/models/hr_expense.py:98
+#, python-format
+msgid "Expense date needs to be set within the project period."
+msgstr "経費の日がプロジェクト期間内に設定くだいさい。"

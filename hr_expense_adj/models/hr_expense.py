@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017-2018 Quartile Limited
+# Copyright 2017-2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
 
 
 class HrExpense(models.Model):
@@ -84,3 +85,15 @@ class HrExpense(models.Model):
                 'expense']
             if account:
                 exp.account_id = account
+
+    @api.constrains('date', 'analytic_account_id')
+    def _validate_analytic_date(self):
+        for rec in self:
+            projects = rec.analytic_account_id.with_context(
+                active_test=False).mapped('project_ids')
+            if projects:
+                if projects[0].date_start and rec.date < projects[
+                    0].date_start or projects[0].date and rec.date > projects[\
+                        0].date:
+                    raise ValidationError(_('Expense date needs to be set '
+                                            'within the project period.'))
