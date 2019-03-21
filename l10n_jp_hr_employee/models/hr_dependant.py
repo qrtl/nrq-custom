@@ -248,13 +248,13 @@ class HrDependant(models.Model):
         for rec in self:
             msg = _("%s should be %s digit(s).")
             if rec.postal_code and not len(rec.postal_code) == 7:
-                raise ValidationError(msg % _("Postal Code", "7"))
+                raise ValidationError(msg % (_("Postal Code"), "7"))
             if rec.pension_code and not len(rec.pension_code) == 4:
-                raise ValidationError(msg % _(
-                    "The first section of Pension Number", "4"))
+                raise ValidationError(msg % (_(
+                    "The first section of Pension Number"), "4"))
             if rec.pension_seq and not len(rec.pension_seq) == 6:
-                raise ValidationError(msg % _(
-                    "The second section of Pension Number", "6"))
+                raise ValidationError(msg % (_(
+                    "The second section of Pension Number"), "6"))
 
     @api.onchange('name')
     def _onchange_name(self):
