@@ -161,4 +161,4 @@ msgstr "稟議番号"
 #: code:addons/hr_expense_adj/models/hr_expense.py:98
 #, python-format
 msgid "Expense date needs to be set within the project period."
-msgstr "経費の日がプロジェクト期間内に設定くだいさい。"
+msgstr "経費の日付はプロジェクト期間内でなければなりません。"
