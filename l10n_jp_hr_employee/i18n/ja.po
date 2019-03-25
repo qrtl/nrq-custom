@@ -273,8 +273,8 @@ msgstr "被扶養者区分"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
-msgid "Dependant Information"
-msgstr "被扶養者情報"
+msgid "Dependant Information (Social Insurance)"
+msgstr "被扶養者情報(社会保険)"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_name
@@ -873,6 +873,11 @@ msgstr "個人電話"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_amt_to_family_confirm_doc
 msgid "Proof of Amount Sent to Family"
 msgstr "仕送額確認"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_dependant_form
+msgid "Proof of Amount Sent to Family (?)"
+msgstr "仕送額確認 (?)"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_amt_to_family_confirm_doc_filename

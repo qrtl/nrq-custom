@@ -160,7 +160,7 @@
                                 <field name="note" attrs="{'readonly':[('state','=','confirm')]}"/>
                             </group>
                         </page>
-                        <page name="dependant_information" string="Dependant Information">
+                        <page name="dependant_information" string="Dependant Information (Social Insurance)">
                             <field name="dependant_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
                         </page>
                     </notebook>
