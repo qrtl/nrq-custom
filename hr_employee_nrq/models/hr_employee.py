@@ -10,6 +10,7 @@ from datetime import datetime
 
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
+    _order = 'code, name'
 
     date_of_joining = fields.Date(
         'Date of Joining'
