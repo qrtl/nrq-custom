@@ -19,9 +19,9 @@
         'python': ['jaconv'],
     },
     "data": [
+        'security/res_groups.xml',
         'security/ir.model.access.csv',
         'security/hr_security.xml',
-        'security/res_groups.xml',
         'data/hr_employment_type_data.xml',
         'data/hr_contract_data.xml',
         'data/mail_template_data.xml',

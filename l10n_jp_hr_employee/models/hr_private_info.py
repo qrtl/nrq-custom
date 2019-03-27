@@ -22,6 +22,7 @@ class HrPrivateInfo(models.Model):
     _name = 'hr.private.info'
     _rec_name = 'employee_id'
     _inherit = ['mail.thread']
+    _order = 'code, employee_id'
 
     employee_id = fields.Many2one(
         'hr.employee',

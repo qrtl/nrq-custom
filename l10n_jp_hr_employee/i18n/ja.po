@@ -401,6 +401,11 @@ msgid "Employee"
 msgstr "従業員"
 
 #. module: l10n_jp_hr_employee
+#: model:res.groups,name:l10n_jp_hr_employee.group_employee_private_info_manage
+msgid "Employee Private Information Manage"
+msgstr "個人情報管理"
+
+#. module: l10n_jp_hr_employee
 #: model:res.groups,name:l10n_jp_hr_employee.group_employee_private_info
 msgid "Employee Private Information Notify"
 msgstr "個人情報提出通知"
