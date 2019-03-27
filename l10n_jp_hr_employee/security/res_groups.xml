@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <record model="res.groups" id="group_employee_private_info">
         <field name="name">Employee Private Information Notify</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
     </record>
+
+    <record model="res.groups" id="group_employee_private_info_manage">
+        <field name="name">Employee Private Information Manage</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+    </record>
+
 </odoo>
