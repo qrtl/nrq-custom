@@ -91,7 +91,7 @@ class HrExpense(models.Model):
         for rec in self:
             projects = rec.analytic_account_id.with_context(
                 active_test=False).sudo().mapped('project_ids')
-            if projects:
+            if projects and rec.date:
                 if projects[0].date_start and rec.date < projects[
                     0].date_start or projects[0].date and rec.date > projects[\
                         0].date:
