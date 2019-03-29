@@ -7,10 +7,10 @@
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
-                <button name="action_view_private_info"
-                    class="oe_stat_button"
-                    icon="fa-user-secret"
-                    type="object">
+                <button name="action_view_private_info" class="oe_stat_button"
+                        icon="fa-user-secret" type="object"
+                        attrs="{'invisible':[('private_info_visible', '!=', True)]}">
+                    <field name="private_info_visible" invisible="1"/>
                     <field name="private_info_count" widget="statinfo" string="Private Info"/>
                 </button>
             </xpath>
