@@ -30,6 +30,10 @@ class HrEmployee(models.Model):
         compute='_compute_private_info_count',
         string='Private Info'
     )
+    private_info_visible = fields.Boolean(
+        compute='_compute_private_info_visible',
+        string='Private Information Visibility',
+    )
 
     @api.onchange('family_name')
     def _onchange_family_name(self):
@@ -79,3 +83,13 @@ class HrEmployee(models.Model):
         else:
             action = {'type': 'ir.actions.act_window_close'}
         return action
+
+    @api.multi
+    def _compute_private_info_visible(self):
+        for employee in self:
+            employee.private_info_visible = True \
+                if employee.user_id == self.env.user or \
+                   self.env.user.has_group(
+                       'l10n_jp_hr_employee.group_employee_private_info_manage')\
+                else False
+
