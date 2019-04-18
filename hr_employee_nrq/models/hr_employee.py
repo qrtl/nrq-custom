@@ -18,6 +18,10 @@ class HrEmployee(models.Model):
     year_enrolled = fields.Char(
         compute='_get_year_enrolled'
     )
+    employee_info_visible = fields.Boolean(
+        compute='_compute_employee_info_visible',
+        string='Employee Information Visibility',
+    )
 
     @api.multi
     def _get_year_enrolled(self):
@@ -31,3 +35,10 @@ class HrEmployee(models.Model):
                 employee.year_enrolled = _("%s Year %s Month(s)") % (
                     difference.years or '0', difference.months or '0'
                 )
+
+    @api.multi
+    def _compute_employee_info_visible(self):
+        for employee in self:
+            employee.employee_info_visible = True \
+                if employee.user_id == self.env.user or \
+                   self.env.user.has_group('hr.group_hr_user') else False
