@@ -33,6 +33,19 @@
             <xpath expr="//field[@name='calendar_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <field name="employee_info_visible" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="attributes">
+                <attribute name="groups"/>
+            </xpath>
+            <xpath expr="//button[@name='toggle_active']" position="attributes">
+                <attribute name="groups">hr.group_hr_user</attribute>
+            </xpath>
+            <xpath expr="//page[@groups='hr.group_hr_user'][2]" position="attributes">
+                <attribute name="groups"/>
+                <attribute name="attrs">{'invisible':[('employee_info_visible', '!=', True)]}</attribute>
+            </xpath>
         </field>
     </record>
 
@@ -46,6 +59,18 @@
             </xpath>
             <xpath expr="//page[3]//group[2]" position="attributes">
                 <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_sheet_employee_extd_form" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_employee_extd_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@groups='hr_timesheet.group_hr_timesheet_user']" position="attributes">
+                <attribute name="groups"/>
+                <attribute name="attrs">{'invisible':[('employee_info_visible', '!=', True)]}</attribute>
             </xpath>
         </field>
     </record>

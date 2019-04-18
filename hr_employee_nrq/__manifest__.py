@@ -15,6 +15,7 @@
         "hr",
         "hr_contract",
         "hr_holidays",
+        "hr_timesheet_sheet",
     ],
     "data": [
         'views/hr_employee_views.xml',
