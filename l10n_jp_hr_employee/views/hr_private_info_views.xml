@@ -45,15 +45,15 @@
                             <label for="family_name" string="Name (Family Name / Given Name)"/>
                             <div>
                                 <div class="o_row mr16">
-                                    <field name="family_name" placeholder="山田" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="given_name" placeholder="太郎" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                    <field name="family_name" placeholder="山田" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="given_name" placeholder="太郎" attrs="{'readonly':[('state','!=','draft')]}"/>
                                 </div>
                             </div>
                             <label for="furi_family_name" string="Name Furigana (Family Name / Given Name)"/>
                             <div>
                                 <div class="o_row mr16">
-                                    <field name="furi_family_name" placeholder="ﾔﾏﾀﾞ" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="furi_given_name" placeholder="ﾀﾛｳ" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                    <field name="furi_family_name" placeholder="ﾔﾏﾀﾞ" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="furi_given_name" placeholder="ﾀﾛｳ" attrs="{'readonly':[('state','!=','draft')]}"/>
                                 </div>
                             </div>
                             <field name="code"/>
@@ -66,27 +66,27 @@
                         <page string="Information" name="information">
                             <group>
                                 <group name="particulars" string="Personal Particulars">
-                                    <field name="private_country_id" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}" options="{'no_create':True, 'no_open':True}"/>
+                                    <field name="private_country_id" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}" options="{'no_create':True, 'no_open':True}"/>
                                     <field name="private_country_code" invisible="1"/>
                                     <label for="roman_family_name" string="Roman Spelling"/>
                                     <div>
                                         <div class="o_row mr16">
-                                            <field name="roman_family_name" placeholder="YAMADA" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
-                                            <field name="roman_given_name" placeholder="TAROU" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
+                                            <field name="roman_family_name" placeholder="YAMADA" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                            <field name="roman_given_name" placeholder="TAROU" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                         </div>
                                     </div>
-                                    <field name="birthday" placeholder="2005/03/01" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
-                                    <field name="gender" widget="radio" options="{'horizontal': true}" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
-                                    <field name="private_phone" placeholder="Remove hyphen" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
-                                    <field name="private_email" placeholder="Lowercase letters" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
+                                    <field name="birthday" placeholder="2005/03/01" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="gender" widget="radio" options="{'horizontal': true}" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="private_phone" placeholder="Remove hyphen" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="private_email" placeholder="Lowercase letters" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <label for="address_street" string="Address (Post Code / State)"/>
                                     <div class="o_address_format">
                                         <div class="o_row mr16">
-                                            <field name="postal_code" placeholder="1020082" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
-                                            <field name="address_pref" placeholder="Tokyo" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
+                                            <field name="postal_code" placeholder="1020082" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                            <field name="address_pref" placeholder="Tokyo" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                         </div>
                                     </div>
-                                    <field name="address_street" string="Street" placeholder="千代田区一番町１０－２２" class="o_address_street" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','=','confirm')]}"/>
+                                    <field name="address_street" string="Street" placeholder="千代田区一番町１０－２２" class="o_address_street" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="building" placeholder="千代田一番町郵便局" class="o_address_street" attrs="{'readonly':[('state','!=','draft')]}"/>
                                     <field name="furi_address" string="Street (Furi)" placeholder="チヨダク イチバンチョウ１０－２２" class="o_address_street" attrs="{'readonly':[('state','!=','draft')]}"/>
                                     <field name="furi_building" placeholder="チヨダイチバンチョウユウビンキョク" class="o_address_street" attrs="{'readonly':[('state','!=','draft')]}"/>
@@ -102,8 +102,8 @@
                                         </div>
                                     </div>
                                     <field name="emerg_contact_name" placeholder="山田　○○" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
-                                    <field name="emerg_contact_postal_code" placeholder="Remove hyphen" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="emerg_contact_address" placeholder="Full-width Character" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                    <field name="emerg_contact_postal_code" placeholder="Remove hyphen" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="emerg_contact_address" placeholder="Full-width Character" attrs="{'readonly':[('state','!=','draft')]}"/>
                                     <field name="emerg_contact_phone" placeholder="Remove hyphen" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                 </group>
                                 <group name="bank_info" string="Bank Info">
@@ -117,15 +117,15 @@
                                     <field name="school_name" placeholder="○○大学" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="school_dept_name" placeholder="○○学部○○○学科" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="school_completion" widget="radio" options="{'horizontal': true}" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
-                                    <field name="school_completion_desc" placeholder="○○大学在学中、等あれば" attrs="{'readonly':[('state','=','confirm')]}"/>
-                                    <field name="year_left_school" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                    <field name="school_completion_desc" placeholder="○○大学在学中、等あれば" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                    <field name="year_left_school" attrs="{'readonly':[('state','!=','draft')]}"/>
                                 </group>
                             </group>
                             <group name="qualification" string="Qualifications">
                                 <label for="qualification_ids"/>
                                 <div>
                                     <div>
-                                        <field name="qualification_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                        <field name="qualification_ids" attrs="{'readonly':[('state','!=','draft')]}"/>
                                         <div>E.g. Name: CISA, Date Obtained: 2018/03/01, Valid Until: 2019/02/28, Reference: 1234567</div>
                                     </div>
                                 </div>
@@ -149,19 +149,19 @@
                                     <field name="emp_ins_number" class="oe_read_only"/>
                                 </group>
                                 <group name="visa_info" string="Visa Info" attrs="{'invisible':[('private_country_code','=','JP')]}">
-                                    <field name="visa_number" placeholder="A1234567" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
-                                    <field name="date_visa_expiry" placeholder="2025/01/01" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
-                                    <field name="work_permit_number" placeholder="12-345678" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
-                                    <field name="residence_card" filename="residence_card_filename" attrs="{'readonly':[('state','=','confirm')], 'required':[('private_country_code','!=','JP')]}"/>
+                                    <field name="visa_number" placeholder="A1234567" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
+                                    <field name="date_visa_expiry" placeholder="2025/01/01" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
+                                    <field name="work_permit_number" placeholder="12-345678" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
+                                    <field name="residence_card" filename="residence_card_filename" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
                                     <field name="residence_card_filename" invisible="1"/>
                                 </group>
                             </group>
                             <group>
-                                <field name="note" attrs="{'readonly':[('state','=','confirm')]}"/>
+                                <field name="note" attrs="{'readonly':[('state','!=','draft')]}"/>
                             </group>
                         </page>
                         <page name="dependant_information" string="Dependant Information (Social Insurance)">
-                            <field name="dependant_ids" attrs="{'readonly':[('state','=','confirm')]}"/>
+                            <field name="dependant_ids" attrs="{'readonly':[('state','!=','draft')]}"/>
                         </page>
                     </notebook>
                 </sheet>
