@@ -181,6 +181,15 @@ class HrDependant(models.Model):
     inactive_reason = fields.Char(
         'Inactive Reason',
     )
+    appointment_letter_doc = fields.Binary(
+        'Letter of Appointment',
+    )
+    appointment_letter_doc_filename = fields.Char(
+        string='Letter of Appointment File Name',
+    )
+    appointment_letter_url = fields.Char(
+        related='private_info_id.employee_id.company_id.appointment_letter_url',
+    )
 
 
     @api.onchange('phone')
