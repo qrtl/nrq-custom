@@ -92,4 +92,3 @@ class HrEmployee(models.Model):
                    self.env.user.has_group(
                        'l10n_jp_hr_employee.group_employee_private_info_manage')\
                 else False
-

@@ -317,6 +317,11 @@ msgid "Display Name"
 msgstr "表示名"
 
 #. module: l10n_jp_hr_employee
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_dependant_form
+msgid "Download Link"
+msgstr "ダウンロードリンク"
+
+#. module: l10n_jp_hr_employee
 #: selection:hr.private.info,state:0
 msgid "Draft"
 msgstr "ドラフト"
@@ -629,6 +634,22 @@ msgstr "最終更新日"
 #: selection:hr.dependant,cause_dependant_enter:0
 msgid "Left Job"
 msgstr "離職"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_appointment_letter_doc
+msgid "Letter of Appointment"
+msgstr "委任状"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_appointment_letter_url
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_res_company_appointment_letter_url
+msgid "Letter of Appointment (Dependant)"
+msgstr "委任状 (被扶養者)"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_appointment_letter_doc_filename
+msgid "Letter of Appointment File Name"
+msgstr "委任状ファイル名"
 
 #. module: l10n_jp_hr_employee
 #: selection:hr.dependant,residence_categ:0
@@ -1197,3 +1218,4 @@ msgstr "hr.qualification"
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "E.g. Name: CISA, Date Obtained: 2018/03/01, Valid Until: 2019/02/28, Reference: 1234567"
 msgstr "例) 名称: CISA  取得日: 2018/03/01  有効期限: 2019/02/28  参照: 1234567"
+
