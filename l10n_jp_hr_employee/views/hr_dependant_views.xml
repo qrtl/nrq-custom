@@ -8,6 +8,20 @@
             <form string="Dependants">
                 <sheet>
                     <group>
+                        <div class="o_row mr16">
+                            <span>
+                                ※扶養の加入、除外の際は都度、委任状が必要です。internalサイト→入社手続→委任状をダウンロードして記名押印の上この申請書に添付して下さい。<br/>
+                                （複数名の同時加入・除外の場合は一枚で構いません）<br/>
+                            </span>
+                        </div>
+                    </group>
+                    <group>
+                        <label for="appointment_letter_url" string="Download Link"/>
+                        <div>
+                            <field name="appointment_letter_url" readonly="1" widget="url"/>
+                        </div>
+                    </group>
+                    <group>
                         <group>
                             <field name="name" placeholder="山田 太郎"/>
                             <field name="furi_name" placeholder="ﾔﾏﾀﾞ ﾀﾛｳ"/>
@@ -67,6 +81,8 @@
                             <field name="inactive"/>
                             <field name="inactive_date" attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
                             <field name="inactive_reason" attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
+                            <field name="appointment_letter_doc" filename="appointment_letter_doc_filename"/>
+                            <field name="appointment_letter_doc_filename" invisible="1"/>
                         </group>
                     </group>
                 </sheet>
