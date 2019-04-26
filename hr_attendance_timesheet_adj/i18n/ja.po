@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-16 10:51+0000\n"
-"PO-Revision-Date: 2018-05-16 10:51+0000\n"
+"POT-Creation-Date: 2019-04-26 05:51+0000\n"
+"PO-Revision-Date: 2019-04-26 05:51+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgid "Attendance"
 msgstr "勤怠"
 
 #. module: hr_attendance_timesheet_adj
-#: code:addons/hr_attendance_timesheet_adj/models/hr_timesheet_sheet_sheet.py:31
+#: code:addons/hr_attendance_timesheet_adj/models/hr_timesheet_sheet_sheet.py:37
 #: model:ir.model.fields,field_description:hr_attendance_timesheet_adj.field_hr_timesheet_sheet_sheet_total_attendances_worked_hours
 #, python-format
 msgid "Attendances"
@@ -61,4 +61,8 @@ msgstr "マニュアル更新"
 msgid "hr.attendance.reason"
 msgstr "hr.attendance.reason"
 
+#. module: hr_attendance_timesheet_adj
+#: model:ir.model.fields,field_description:hr_attendance_timesheet_adj.field_hr_timesheet_sheet_sheet_code
+msgid "Code"
+msgstr "コード"
 
