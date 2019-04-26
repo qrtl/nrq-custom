@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2018-2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api
@@ -12,6 +12,12 @@ class HrTimesheetSheet(models.Model):
     total_attendances_worked_hours = fields.Float(
         compute='_compute_total_attendances_worked_hours',
         string="Total Attendances Worked Hours",
+    )
+    code = fields.Char(
+        related='employee_id.code',
+        string='Code',
+        store=True,
+        readonly=True,
     )
 
     @api.multi
