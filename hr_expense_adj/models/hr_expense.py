@@ -46,6 +46,12 @@ class HrExpense(models.Model):
         default=False,
         copy=False,
     )
+    code = fields.Char(
+        related='employee_id.code',
+        string='Code',
+        store=True,
+        readonly=True,
+    )
 
     # override the standard method
     @api.onchange('product_id')
