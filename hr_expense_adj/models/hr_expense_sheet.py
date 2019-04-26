@@ -49,6 +49,12 @@ class HrExpenseSheet(models.Model):
                                        states={'done': [('readonly', True)],
                                                'post': [('readonly', True)]},
                                        copy=False)
+    code = fields.Char(
+        related='employee_id.code',
+        string='Code',
+        store=True,
+        readonly=True,
+    )
 
     def _assign_number(self, line):
         context = {'ir_sequence_date': line.date}
