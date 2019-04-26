@@ -49,13 +49,15 @@ class HrEmployee(models.Model):
 
     @api.onchange('furi_family_name')
     def _onchange_furi_family_name(self):
-        self.furi_family_name = jaconv.z2h(
-            jaconv.hira2kata(self.furi_family_name))
+        if self.furi_family_name:
+            self.furi_family_name = jaconv.z2h(
+                jaconv.hira2kata(self.furi_family_name))
 
     @api.onchange('furi_given_name')
     def _onchange_furi_given_name(self):
-        self.furi_given_name = jaconv.z2h(
-            jaconv.hira2kata(self.furi_given_name))
+        if self.furi_given_name:
+            self.furi_given_name = jaconv.z2h(
+                jaconv.hira2kata(self.furi_given_name))
 
     def _compute_private_info_count(self):
         private_info_data = self.env['hr.private.info'].sudo().with_context(
