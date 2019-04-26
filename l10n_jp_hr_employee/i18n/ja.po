@@ -633,7 +633,7 @@ msgstr "最終更新日"
 #. module: l10n_jp_hr_employee
 #: selection:hr.dependant,cause_dependant_enter:0
 msgid "Left Job"
-msgstr "離職"
+msgstr "被扶養者の離職"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_appointment_letter_doc
@@ -1023,7 +1023,7 @@ msgstr "配偶者"
 #. module: l10n_jp_hr_employee
 #: selection:hr.dependant,cause_dependant_enter:0
 msgid "Spouse's Employment"
-msgstr "配偶者の雇用"
+msgstr "入社"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_state
