@@ -23,6 +23,8 @@
                     </group>
                     <group>
                         <group>
+                            <field name="private_info_id" invisible='1'/>
+                            <field name="employee_id" invisible='1'/>
                             <field name="name" placeholder="山田 太郎"/>
                             <field name="furi_name" placeholder="ﾔﾏﾀﾞ ﾀﾛｳ"/>
                             <field name="dependant_categ"/>
