@@ -100,6 +100,19 @@
         </t>
     </template>
 
+    <template id="common_header_layout" inherit_id="report_common_nrq.common_header_layout">
+        <xpath expr="//tr[@t-if='doc.amount_total']//t[4]" position="replace">
+            <t t-if="type == 'quotation' and doc.show_tax == False or type == 'purchase' and doc.display_tax == False">
+                <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_untaxed"/>
+            </t>
+        </xpath>
+        <xpath expr="//tr[@t-if='doc.amount_total']//t[5]" position="replace">
+            <t t-if="type not in ('quotation', 'purchase') or (type == 'quotation' and doc.show_tax == True) or (type == 'purchase' and doc.display_tax == True)">
+                <span style="position:relative; left:40px; font-size:30px" t-field="doc.amount_total"/>
+            </t>
+        </xpath>
+    </template>
+
     <template id="report_purchaseorder">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
