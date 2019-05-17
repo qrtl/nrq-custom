@@ -190,6 +190,7 @@ class HrDependant(models.Model):
     appointment_letter_url = fields.Char(
         related='private_info_id.employee_id.company_id.appointment_letter_url',
         default=lambda self: self._default_url(),
+        readonly=True,
     )
 
     @api.onchange('phone')
