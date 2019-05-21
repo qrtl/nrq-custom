@@ -22,6 +22,9 @@ class L10nJpHrEmployee(common.TransactionCase):
         })
 
     def test_01_create_dependant_information(self):
+        # AccessError was rasied before adding "readonly=True" to
+        # appointment_letter_url during creation. Here we test the creation
+        # of hr.dependant with demo user
         private_info = self.env['hr.private.info'].sudo(self.test_user.id).create({
             'employee_id': self.test_employee.id,
         })
