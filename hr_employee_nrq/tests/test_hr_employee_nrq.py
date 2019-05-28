@@ -29,7 +29,11 @@ class HrEmployeeNrq(common.TransactionCase):
             login="em",
             password="em",
             email="emmanager@yourcompany.example.com",
-            groups_id=[(6, 0, [self.env.ref('hr.group_hr_manager').id])]
+            groups_id=[(6, 0, [
+                self.env.ref(
+                    'l10n_jp_hr_employee.group_employee_private_info_manage').id,
+                self.env.ref('hr.group_hr_manager').id
+            ])]
         ))
 
     def test_00_officer_access_active_employee(self):
