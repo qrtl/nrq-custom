@@ -16,6 +16,7 @@
         "hr_contract",
         "hr_holidays",
         "hr_timesheet_sheet",
+        "l10n_jp_hr_employee",
     ],
     "data": [
         'security/hr_security.xml',
