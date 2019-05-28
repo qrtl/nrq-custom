@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="hr_employee_user_rule" model="ir.rule">
+        <field name="name">Employee Active Records Only</field>
+        <field ref="model_hr_employee" name="model_id"/>
+        <field name="domain_force">[('active','=',True)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="hr_employee_manager_rule" model="ir.rule">
+        <field name="name">All Employee Records</field>
+        <field ref="model_hr_employee" name="model_id"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
+    </record>
+    
+</odoo>

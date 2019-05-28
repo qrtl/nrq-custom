@@ -18,6 +18,7 @@
         "hr_timesheet_sheet",
     ],
     "data": [
+        'security/hr_security.xml',
         'views/hr_employee_views.xml',
     ],
 }
