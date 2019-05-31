@@ -29,7 +29,7 @@
         <field name="inherit_id" ref="auditlog.view_auditlog_log_search"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='model_id']" position="after">
-                <field name="log_category" readonly="1"/>
+                <field name="log_category"/>
             </xpath>
             <xpath expr="//group" position="inside">
                 <filter name="group_by_log_category"
