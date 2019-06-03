@@ -11,6 +11,8 @@ class AuditlogLog(models.Model):
     log_category = fields.Selection([
         ('state_update', 'Submitted/Set back to Draft'),
         ('fields_update', 'Fields Update'),
+        ('create', 'Record Created'),
+        ('unlink', 'Record Unlinked'),
         ('other', 'N/A')],
         string='Log Category',
         compute='_get_log_category',
@@ -25,3 +27,7 @@ class AuditlogLog(models.Model):
             if log.method == 'write' and log.line_ids:
                 log.log_category = 'state_update' if log.line_ids.filtered(
                     lambda r: r.field_name == 'state') else 'fields_update'
+            elif log.method == 'create':
+                log.log_category = 'create'
+            elif log.method == 'unlink':
+                log.log_category = 'unlink'
