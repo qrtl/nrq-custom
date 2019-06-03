@@ -31,7 +31,7 @@ class TestAuditlogExtNrq(common.TransactionCase):
             ('method', '=', 'create'),
             ('res_id', '=', self.translation_record.id),
         ], limit=1, order='id desc')
-        self.assertEqual(log.log_category, 'other')
+        self.assertEqual(log.log_category, 'create')
 
     def test_01_update_record_with_state(self):
         self.translation_record.update({
@@ -62,4 +62,4 @@ class TestAuditlogExtNrq(common.TransactionCase):
             ('method', '=', 'unlink'),
             ('res_id', '=', self.translation_record.id),
         ], limit=1, order='id desc')
-        self.assertEqual(log.log_category, 'other')
+        self.assertEqual(log.log_category, 'unlink')
