@@ -13,7 +13,6 @@ class HrHolidays(models.Model):
         """ User can reset a leave request if it is its own leave request
             or if he is an Hr Manager.
         """
-        print "Overwrite"
         user = self.env.user
         group_hr_manager = self.env.ref('hr_holidays.group_hr_holidays_manager')
         for holiday in self:
@@ -68,7 +67,6 @@ class HrHolidays(models.Model):
 
     @api.multi
     def _create_resource_leave(self):
-        print "_create_resource_leave"
         """ This method will create entry in resource calendar leave object at the time of holidays validated """
         for leave in self:
             self.env['resource.calendar.leaves'].create({
