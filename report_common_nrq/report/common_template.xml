@@ -21,7 +21,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <t t-if="type == 'invoice'">
+                                <t t-if="type in ('invoice', 'invoice_copy')">
                                     <span>Please find our invoice details as follows.</span>
                                 </t>
                                 <t t-if="type == 'deliverynote'">
@@ -37,7 +37,7 @@
                         </tr>
                         <tr t-if="doc.amount_total">
                             <td>
-                                <t t-if="type in ('invoice', 'deliverynote')">Total Invoiced: </t>
+                                <t t-if="type in ('invoice', 'deliverynote', 'invoice_copy')">Total Invoiced: </t>
                                 <t t-if="type == 'quotation'">Quotation Amount: </t>
                                 <t t-if="type == 'purchase'">Total Amount: </t>
                                 <t t-if="type == 'quotation' and doc.show_tax == False">
@@ -132,6 +132,15 @@
                                         <td/>
                                         <td/>
                                         <td/>
+                                    </tr>
+                                </table>
+                            </t>
+                            <t t-if="type == 'invoice_copy'">
+                                <table class="table" style="border: none;">
+                                    <tr height="70">
+                                        <td style="border: none !important;"/>
+                                        <td style="border: none !important;"/>
+                                        <td style="border: none !important;"/>
                                     </tr>
                                 </table>
                             </t>
@@ -391,7 +400,7 @@
     </template>
 
     <template id="document_footer_layout">
-        <t t-if="type in ('invoice', 'acceptance', 'deliverynote')">
+        <t t-if="type in ('invoice', 'acceptance', 'deliverynote', 'invoice_copy')">
             <p t-if="doc.comment">
                 <span t-field="doc.comment"/>
             </p>
@@ -409,13 +418,13 @@
         <p t-if="doc.payment_term_id">
             <span t-field="doc.payment_term_id.note"/>
         </p>
-        <t t-if="type in ('invoice', 'deliverynote')">
+        <t t-if="type in ('invoice', 'deliverynote', 'invoice_copy')">
             <div class="row zero_min_height" style="margin-top:20px; margin-bottom:10px;">
                 <div class="col-xs-12">
                     <div style="border-bottom: 1px solid #DCDCDC;"></div>
                 </div>
             </div>
-            <p t-if="type == 'invoice' and doc.company_id.invoice_remarks"
+            <p t-if="type in ('invoice', 'invoice_copy') and doc.company_id.invoice_remarks"
                t-field="doc.company_id.invoice_remarks"/>
             <div style="font-size:16px">
                 <t t-if="alt != 'true'">
@@ -486,7 +495,7 @@
                     </td>
                     <td width="5%" ></td>
                     <td width="35%">
-                        <t t-if="type in ('invoice', 'deliverynote')">
+                        <t t-if="type in ('invoice', 'deliverynote', 'invoice_copy')">
                             <table>
                                 <tr>
                                     <td style="width:120;">Invoice Date: </td>
@@ -570,7 +579,7 @@
                 <tr style="border-top:hidden;">
                     <td width="60%">
                         <div style="font-size:35px">
-                            <t t-if="type == 'invoice'">
+                            <t t-if="type in ('invoice', 'invoice_copy')">
                                 <span t-if="doc.type == 'out_invoice' and (doc.state == 'open' or doc.state == 'paid')">Invoice</span>
                                 <span t-if="doc.type == 'out_invoice' and doc.state == 'proforma2'">PRO-FORMA</span>
                                 <span t-if="doc.type == 'out_invoice' and doc.state == 'draft'">Draft Invoice</span>
@@ -578,6 +587,7 @@
                                 <span t-if="doc.type == 'out_refund'">Refund</span>
                                 <span t-if="doc.type == 'in_refund'">Vendor Refund</span>
                                 <span t-if="doc.type == 'in_invoice'">Vendor Bill</span>
+                                <span t-if="type == 'invoice_copy'">(Copy)</span>
                             </t>
                             <t t-if="type == 'acceptance'">
                                 <span>Acceptance</span>
