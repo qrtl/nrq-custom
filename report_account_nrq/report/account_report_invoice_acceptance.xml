@@ -13,6 +13,18 @@
         </t>
     </template>
 
+    <template id="report_invoice_copy_document_nrq">
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+        <t t-call="report_common_nrq.external_layout_nrq">
+            <div class="page">
+                <t t-set="type">invoice_copy</t>
+                <t t-call="report_common_nrq.common_header_layout"/>
+                <t t-call="report_common_nrq.invoice_table_layout"/>
+                <t t-call="report_common_nrq.document_footer_layout"/>
+            </div>
+        </t>
+    </template>
+
     <template id="report_acceptance_document_nrq">
         <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
         <t t-call="report_common_nrq.external_layout_nrq">
@@ -29,6 +41,7 @@
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="report_account_nrq.report_invoice_document_nrq" t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_invoice_copy_document_nrq" t-lang="doc.partner_id.lang"/>
                 <t t-call="report_account_nrq.report_acceptance_document_nrq" t-lang="doc.partner_id.lang"/>
                 <t t-if="doc.delivery_note" t-call="report_account_nrq.report_deliverynote_document_nrq" t-lang="doc.partner_id.lang"/>
             </t>
@@ -40,6 +53,7 @@
             <t t-set="alt">true</t>
             <t t-foreach="docs" t-as="doc">
                 <t t-call="report_account_nrq.report_invoice_document_nrq" t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_invoice_copy_document_nrq" t-lang="doc.partner_id.lang"/>
                 <t t-call="report_account_nrq.report_acceptance_document_nrq" t-lang="doc.partner_id.lang"/>
                 <t t-if="doc.delivery_note" t-call="report_account_nrq.report_deliverynote_document_nrq" t-lang="doc.partner_id.lang"/>
             </t>
