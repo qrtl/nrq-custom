@@ -126,7 +126,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <t t-if="type in ('invoice', 'deliveryoder')">
+                            <t t-if="type == 'invoice_copy'">
                                 <table class="table table-bordered">
                                     <tr height="70">
                                         <td/>
@@ -135,7 +135,7 @@
                                     </tr>
                                 </table>
                             </t>
-                            <t t-if="type == 'invoice_copy'">
+                            <t t-if="type in ('invoice', 'deliveryoder')">
                                 <table class="table" style="border: none;">
                                     <tr height="70">
                                         <td style="border: none !important;"/>
