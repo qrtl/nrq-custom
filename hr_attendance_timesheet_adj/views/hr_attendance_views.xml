@@ -22,6 +22,7 @@
             <xpath expr="//field[@name='check_out']" position="after">
                 <field name="worked_hours" widget="float_time"/>
                 <field name="update_manually" class="oe_read_only"/>
+                <field name="update_manually_reason"/>
                 <field name="state" invisible="True"/>
             </xpath>
         </field>
