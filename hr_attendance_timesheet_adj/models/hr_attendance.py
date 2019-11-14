@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-# Copyright 2018 Quartile Limited
+# Copyright 2018-2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import datetime
 from pytz import timezone
 import pytz
 
-from odoo import api, fields, models
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 
 
@@ -17,10 +18,19 @@ class HrAttendance(models.Model):
         string='Updated Manually',
         default=False,
     )
+    update_manually_reason = fields.Char(
+        string='Updated Manually Reason',
+    )
     state = fields.Selection(
         related='sheet_id.state',
         readonly=True,
     )
+
+    @api.constrains('update_manually', 'update_manually_reason')
+    def _check_update_manually(self):
+        if not self.update_manually_reason:
+            raise ValidationError(
+                _('Please enter the reason of updating the attendance record.'))
 
     @api.onchange('employee_id', 'check_in', 'check_out')
     def _onchange_update_manually(self):
