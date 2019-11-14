@@ -28,7 +28,7 @@ class HrAttendance(models.Model):
 
     @api.constrains('update_manually', 'update_manually_reason')
     def _check_update_manually(self):
-        if not self.update_manually_reason:
+        if self.update_manually and not self.update_manually_reason:
             raise ValidationError(
                 _('Please enter the reason of updating the attendance record.'))
 
