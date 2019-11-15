@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-12 07:05+0000\n"
-"PO-Revision-Date: 2019-11-12 07:05+0000\n"
+"POT-Creation-Date: 2019-11-15 10:08+0000\n"
+"PO-Revision-Date: 2019-11-15 10:08+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -46,10 +46,20 @@ msgid "Code"
 msgstr "コード"
 
 #. module: hr_attendance_timesheet_adj
-#: code:addons/hr_attendance_timesheet_adj/models/hr_attendance.py:33
+#: selection:hr.attendance,update_manually_reason:0
+msgid "Forgot to checkin/checkout"
+msgstr "チェックイン/アウトをし忘れた"
+
+#. module: hr_attendance_timesheet_adj
+#: selection:hr.attendance,update_manually_reason:0
+msgid "Other"
+msgstr "その他"
+
+#. module: hr_attendance_timesheet_adj
+#: code:addons/hr_attendance_timesheet_adj/models/hr_attendance.py:40
 #, python-format
-msgid "Please enter the reason of updating the attendance record."
-msgstr "マニュアル更新原因を入力してください。"
+msgid "Please fill in the reason of updating the attendance record."
+msgstr "マニュアル修正理由を入力してください。"
 
 #. module: hr_attendance_timesheet_adj
 #: model:ir.model.fields,field_description:hr_attendance_timesheet_adj.field_hr_attendance_state
@@ -69,5 +79,10 @@ msgstr "マニュアル更新"
 #. module: hr_attendance_timesheet_adj
 #: model:ir.model.fields,field_description:hr_attendance_timesheet_adj.field_hr_attendance_update_manually_reason
 msgid "Updated Manually Reason"
-msgstr "マニュアル更新原因"
+msgstr "マニュアル修正理由"
+
+#. module: hr_attendance_timesheet_adj
+#: model:ir.model.fields,field_description:hr_attendance_timesheet_adj.field_hr_attendance_update_manually_reason_desc
+msgid "Updated Manually Reason Description"
+msgstr "マニュアル修正理由"
 
