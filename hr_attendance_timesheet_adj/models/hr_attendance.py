@@ -18,8 +18,12 @@ class HrAttendance(models.Model):
         string='Updated Manually',
         default=False,
     )
-    update_manually_reason = fields.Char(
+    update_manually_reason = fields.Selection(
+        [('forgot', 'Forgot to checkin/checkout'), ('other', 'Other')],
         string='Updated Manually Reason',
+    )
+    update_manually_reason_desc = fields.Char(
+        string='Updated Manually Reason Description',
     )
     state = fields.Selection(
         related='sheet_id.state',
@@ -28,9 +32,12 @@ class HrAttendance(models.Model):
 
     @api.constrains('update_manually', 'update_manually_reason')
     def _check_update_manually(self):
-        if self.update_manually and not self.update_manually_reason:
+        if self.update_manually and (
+                not self.update_manually_reason or
+                self.update_manually_reason == 'other' and not
+                self.update_manually_reason_desc):
             raise ValidationError(
-                _('Please enter the reason of updating the attendance record.'))
+                _('Please fill in the reason of updating the attendance record.'))
 
     @api.onchange('employee_id', 'check_in', 'check_out')
     def _onchange_update_manually(self):
