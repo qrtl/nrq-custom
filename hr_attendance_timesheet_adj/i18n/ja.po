@@ -85,4 +85,3 @@ msgstr "マニュアル修正理由"
 #: model:ir.model.fields,field_description:hr_attendance_timesheet_adj.field_hr_attendance_update_manually_reason_desc
 msgid "Updated Manually Reason Description"
 msgstr "マニュアル修正理由"
-

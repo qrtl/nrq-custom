@@ -30,4 +30,3 @@ msgstr "一括記帳"
 #, python-format
 msgid "Posted Expense Sheet(s)"
 msgstr "記帳済経費報告"
-

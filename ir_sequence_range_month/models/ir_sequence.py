@@ -2,10 +2,10 @@
 # Copyright 2017 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from datetime import datetime, timedelta
 import calendar
+from datetime import datetime, timedelta
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class IrSequence(models.Model):

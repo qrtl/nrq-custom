@@ -2,9 +2,10 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
-from odoo.addons.hr_holidays.models.hr_holidays import HOURS_PER_DAY
 from datetime import timedelta
+
+from odoo import _, api, fields, models
+from odoo.addons.hr_holidays.models.hr_holidays import HOURS_PER_DAY
 
 
 class HrHolidays(models.Model):

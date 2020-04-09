@@ -55,7 +55,7 @@
         <field name="perm_create">False</field>
         <field name="perm_unlink">False</field>
     </record>
-    
+
     <record id="stock.access_product_template_stock_manager" model="ir.model.access">
         <field name="perm_write">False</field>
         <field name="perm_create">False</field>

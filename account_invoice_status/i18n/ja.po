@@ -40,5 +40,3 @@ msgstr "検証準備済"
 #: model:ir.ui.view,arch_db:account_invoice_status.invoice_form
 msgid "Validate"
 msgstr "検証"
-
-

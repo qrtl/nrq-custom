@@ -2,7 +2,7 @@
 # Copyright 2016-2017 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import api, models, fields
+from odoo import api, fields, models
 
 
 class AccountInvoice(models.Model):

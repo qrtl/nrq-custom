@@ -102,5 +102,3 @@ msgstr "仕入先請求書明細"
 #: model:ir.ui.view,arch_db:account_invoice_line_view_nrq.supplier_invoice_line_tree
 msgid "Vendor"
 msgstr "仕入先"
-
-

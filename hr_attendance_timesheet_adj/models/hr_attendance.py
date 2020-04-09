@@ -3,12 +3,13 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import datetime
-from pytz import timezone
-import pytz
 
-from odoo import models, fields, api, _
+import pytz
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
+from odoo.tools import (DEFAULT_SERVER_DATE_FORMAT,
+                        DEFAULT_SERVER_DATETIME_FORMAT)
+from pytz import timezone
 
 
 class HrAttendance(models.Model):

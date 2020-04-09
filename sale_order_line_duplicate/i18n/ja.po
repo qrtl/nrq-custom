@@ -29,4 +29,3 @@ msgstr "受注"
 #: model:ir.model,name:sale_order_line_duplicate.model_sale_order_line
 msgid "Sales Order Line"
 msgstr "受注明細"
-

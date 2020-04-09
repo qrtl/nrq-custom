@@ -42,5 +42,3 @@ msgstr "発注明細"
 #: model:ir.model.fields,field_description:purchase_order_sale_order_nrq.field_purchase_order_sale_ids
 msgid "Related Sales Order(s)"
 msgstr "関連販売オーダ"
-
-

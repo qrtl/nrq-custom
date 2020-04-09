@@ -2,10 +2,11 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
-from dateutil.relativedelta import relativedelta
 from datetime import datetime
+
+from dateutil.relativedelta import relativedelta
+from odoo import _, api, fields, models
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class HrEmployee(models.Model):

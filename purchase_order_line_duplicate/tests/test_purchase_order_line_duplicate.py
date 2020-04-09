@@ -4,9 +4,9 @@
 
 from datetime import datetime
 
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
-from odoo.tests import common
 from odoo.exceptions import ValidationError
+from odoo.tests import common
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class PurchaseOrderLineDuplicate(common.TransactionCase):
