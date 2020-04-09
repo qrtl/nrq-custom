@@ -7,7 +7,8 @@
         <field name="arch" type="xml">
             <tree string="Invoice Lines" create="0" edit="0">
                 <field name="invoice_id"/>
-                <field name="partner_id" groups="base.group_user" string="Customer"/>
+                <field name="partner_id" groups="base.group_user"
+                       string="Customer"/>
                 <field name="product_id"/>
                 <field name="name"/>
                 <field name="account_id"/>
@@ -27,7 +28,8 @@
         <field name="arch" type="xml">
             <tree string="Invoice Lines" create="0" edit="0">
                 <field name="invoice_id"/>
-                <field name="partner_id" groups="base.group_user" string="Vendor"/>
+                <field name="partner_id" groups="base.group_user"
+                       string="Vendor"/>
                 <field name="product_id"/>
                 <field name="name"/>
                 <field name="account_id"/>
@@ -51,19 +53,24 @@
                 <field name="account_analytic_id"/>
                 <field name="product_id"/>
                 <separator/>
-                <filter name="draft" string="Draft" domain="[('state','in',('draft', 'proforma'))]"/>
-                <filter name="open" string="Open" domain="[('state','=','open')]"/>
-                <filter name="paid" string="Paid" domain="[('state','=','paid')]"/>
+                <filter name="draft" string="Draft"
+                        domain="[('state','in',('draft', 'proforma'))]"/>
+                <filter name="open" string="Open"
+                        domain="[('state','=','open')]"/>
+                <filter name="paid" string="Paid"
+                        domain="[('state','=','paid')]"/>
                 <separator/>
                 <group expand="0" string="Group By">
                     <filter name="invoice" string="Invoice"
                             context="{'group_by':'invoice_id'}"/>
-                    <filter name="group_by_partner_id" string="Partner" context="{'group_by':'commercial_partner_id'}"/>
+                    <filter name="group_by_partner_id" string="Partner"
+                            context="{'group_by':'commercial_partner_id'}"/>
                     <filter name="account" string="Analytic Account"
                             context="{'group_by':'account_id'}"/>
-                    <filter name="status" string="Status" context="{'group_by':'state'}"/>
+                    <filter name="status" string="Status"
+                            context="{'group_by':'state'}"/>
                 </group>
-           </search>
+            </search>
         </field>
     </record>
 
@@ -73,7 +80,9 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree</field>
         <field name="view_id" ref="supplier_invoice_line_tree"/>
-        <field name="domain">[('invoice_id.type','in',('in_invoice', 'in_refund'))]</field>
+        <field name="domain">[('invoice_id.type','in',('in_invoice',
+            'in_refund'))]
+        </field>
         <field name="search_view_id" ref="view_account_invoice_line_filter"/>
     </record>
 
@@ -83,7 +92,9 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree</field>
         <field name="view_id" ref="customer_invoice_line_tree"/>
-        <field name="domain">[('invoice_id.type','in',('out_invoice', 'out_refund'))]</field>
+        <field name="domain">[('invoice_id.type','in',('out_invoice',
+            'out_refund'))]
+        </field>
         <field name="search_view_id" ref="view_account_invoice_line_filter"/>
     </record>
 

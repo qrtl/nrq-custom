@@ -34,7 +34,8 @@ class SaleOrder(models.Model):
             for quote in self:
                 if vals['state'] == "cancel":
                     vals['approval'] = False
-                elif (quote.state == "draft" and quote.approval) or vals['state'] in ["sale", "done"]:
+                elif (quote.state == "draft" and quote.approval) or vals[
+                    'state'] in ["sale", "done"]:
                     vals['approval'] = True
                 elif quote.state != "draft":
                     vals['approval'] = False

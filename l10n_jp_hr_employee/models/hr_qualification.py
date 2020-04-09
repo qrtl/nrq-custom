@@ -57,4 +57,4 @@ class HrQualification(models.Model):
                     raise ValidationError(msg % _("Date Obtained"))
                 if len(rec.date_obtained) not in [7, 10]:
                     raise ValidationError(_("Please adjust the format to be "
-                                          "'YYYY/MM/DD' or 'YYYY/MM'."))
+                                            "'YYYY/MM/DD' or 'YYYY/MM'."))

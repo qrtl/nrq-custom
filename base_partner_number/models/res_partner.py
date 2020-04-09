@@ -2,7 +2,7 @@
 # Copyright 2016 Rooms For (Hong Kong) Limited T/A OSCG
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -24,7 +24,7 @@ class ResPartner(models.Model):
     def create(self, vals):
         if all(k in vals for k in ('is_company', 'parent_id')):
             if vals['is_company'] or (not vals['is_company'] \
-                                              and not vals['parent_id']):
+                                      and not vals['parent_id']):
                 partner_no = self.env['ir.sequence'].next_by_code(
                     'res.partner')
                 vals.update({'partner_no': partner_no})

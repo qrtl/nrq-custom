@@ -11,7 +11,8 @@
             </xpath>
             <xpath expr="//field[@name='address_home_id']" position="replace"/>
             <xpath expr="//field[@name='work_phone']" position="after">
-                <field name="address_home_id" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
+                <field name="address_home_id" context="{'show_address': 1}"
+                       options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
             </xpath>
             <xpath expr="//field[@name='address_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -39,12 +40,16 @@
             <xpath expr="//div[@name='button_box']" position="attributes">
                 <attribute name="groups"/>
             </xpath>
-            <xpath expr="//button[@name='toggle_active']" position="attributes">
+            <xpath expr="//button[@name='toggle_active']"
+                   position="attributes">
                 <attribute name="groups">hr.group_hr_user</attribute>
             </xpath>
-            <xpath expr="//page[@groups='hr.group_hr_user'][2]" position="attributes">
+            <xpath expr="//page[@groups='hr.group_hr_user'][2]"
+                   position="attributes">
                 <attribute name="groups"/>
-                <attribute name="attrs">{'invisible':[('employee_info_visible', '!=', True)]}</attribute>
+                <attribute name="attrs">{'invisible':[('employee_info_visible',
+                    '!=', True)]}
+                </attribute>
             </xpath>
         </field>
     </record>
@@ -66,11 +71,15 @@
     <record id="hr_timesheet_sheet_employee_extd_form" model="ir.ui.view">
         <field name="name">hr.employee.form</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_employee_extd_form"/>
+        <field name="inherit_id"
+               ref="hr_timesheet_sheet.hr_timesheet_sheet_employee_extd_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@groups='hr_timesheet.group_hr_timesheet_user']" position="attributes">
+            <xpath expr="//button[@groups='hr_timesheet.group_hr_timesheet_user']"
+                   position="attributes">
                 <attribute name="groups"/>
-                <attribute name="attrs">{'invisible':[('employee_info_visible', '!=', True)]}</attribute>
+                <attribute name="attrs">{'invisible':[('employee_info_visible',
+                    '!=', True)]}
+                </attribute>
             </xpath>
         </field>
     </record>
@@ -78,7 +87,8 @@
     <record id="view_employee_form_leave_inherit" model="ir.ui.view">
         <field name="name">hr.employee.form</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr_holidays.view_employee_form_leave_inherit"/>
+        <field name="inherit_id"
+               ref="hr_holidays.view_employee_form_leave_inherit"/>
         <field name="arch" type="xml">
             <xpath expr="//page[3]//group[2]" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -91,7 +101,8 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='oe_kanban_details']//field[@name='name']" position="before">
+            <xpath expr="//div[@class='oe_kanban_details']//field[@name='name']"
+                   position="before">
                 <field name="code"/>
             </xpath>
         </field>

@@ -2,7 +2,8 @@
 <odoo>
 
     <template id="report_invoice_document_nrq">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+        <t t-set="doc"
+           t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
         <t t-call="report_common_nrq.external_layout_nrq">
             <div class="page">
                 <t t-set="type">invoice</t>
@@ -14,7 +15,8 @@
     </template>
 
     <template id="report_invoice_copy_document_nrq">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+        <t t-set="doc"
+           t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
         <t t-call="report_common_nrq.external_layout_nrq">
             <div class="page">
                 <t t-set="type">invoice_copy</t>
@@ -26,7 +28,8 @@
     </template>
 
     <template id="report_acceptance_document_nrq">
-        <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+        <t t-set="doc"
+           t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
         <t t-call="report_common_nrq.external_layout_nrq">
             <div class="page">
                 <t t-set="type">acceptance</t>
@@ -40,10 +43,15 @@
     <template id="report_invoice_acceptance">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
-                <t t-call="report_account_nrq.report_invoice_document_nrq" t-lang="doc.partner_id.lang"/>
-                <t t-call="report_account_nrq.report_invoice_copy_document_nrq" t-lang="doc.partner_id.lang"/>
-                <t t-call="report_account_nrq.report_acceptance_document_nrq" t-lang="doc.partner_id.lang"/>
-                <t t-if="doc.delivery_note" t-call="report_account_nrq.report_deliverynote_document_nrq" t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_invoice_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_invoice_copy_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_acceptance_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
+                <t t-if="doc.delivery_note"
+                   t-call="report_account_nrq.report_deliverynote_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
             </t>
         </t>
     </template>
@@ -52,40 +60,45 @@
         <t t-call="report.html_container">
             <t t-set="alt">true</t>
             <t t-foreach="docs" t-as="doc">
-                <t t-call="report_account_nrq.report_invoice_document_nrq" t-lang="doc.partner_id.lang"/>
-                <t t-call="report_account_nrq.report_invoice_copy_document_nrq" t-lang="doc.partner_id.lang"/>
-                <t t-call="report_account_nrq.report_acceptance_document_nrq" t-lang="doc.partner_id.lang"/>
-                <t t-if="doc.delivery_note" t-call="report_account_nrq.report_deliverynote_document_nrq" t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_invoice_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_invoice_copy_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
+                <t t-call="report_account_nrq.report_acceptance_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
+                <t t-if="doc.delivery_note"
+                   t-call="report_account_nrq.report_deliverynote_document_nrq"
+                   t-lang="doc.partner_id.lang"/>
             </t>
         </t>
     </template>
 
     <report
-        id="report_account_invoice_acceptance"
-        model="account.invoice"
-        string="Invoice"
-        report_type="qweb-pdf"
-        name="report_account_nrq.report_invoice_acceptance"
-        file="report_account_nrq.report_invoice_acceptance"
-        attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
+            id="report_account_invoice_acceptance"
+            model="account.invoice"
+            string="Invoice"
+            report_type="qweb-pdf"
+            name="report_account_nrq.report_invoice_acceptance"
+            file="report_account_nrq.report_invoice_acceptance"
+            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
 
     <report
-        id="report_account_invoice_acceptance_alt"
-        model="account.invoice"
-        string="Invoice (Alt.)"
-        report_type="qweb-pdf"
-        name="report_account_nrq.report_invoice_acceptance_alt"
-        file="report_account_nrq.report_invoice_acceptance_alt"
-        attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
+            id="report_account_invoice_acceptance_alt"
+            model="account.invoice"
+            string="Invoice (Alt.)"
+            report_type="qweb-pdf"
+            name="report_account_nrq.report_invoice_acceptance_alt"
+            file="report_account_nrq.report_invoice_acceptance_alt"
+            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
 
     <report
-        id="account.account_invoices"
-        model="account.invoice"
-        string="Invoices"
-        report_type="qweb-pdf"
-        menu="False"
-        name="account.report_invoice"
-        file="account.report_invoice"
-        attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
+            id="account.account_invoices"
+            model="account.invoice"
+            string="Invoices"
+            report_type="qweb-pdf"
+            menu="False"
+            name="account.report_invoice"
+            file="account.report_invoice"
+            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
 
 </odoo>

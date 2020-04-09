@@ -64,7 +64,7 @@ class HrEmployee(models.Model):
             [('employee_id', 'in', self.ids)],
             ['employee_id'], ['employee_id'])
         result = {data['employee_id'][0]: data['employee_id_count']
-                      for data in private_info_data}
+                  for data in private_info_data}
         for employee in self:
             employee.private_info_count = result.get(employee.id, 0)
 
@@ -91,5 +91,5 @@ class HrEmployee(models.Model):
             employee.private_info_visible = True \
                 if employee.user_id == self.env.user or \
                    self.env.user.has_group(
-                       'l10n_jp_hr_employee.group_employee_private_info_manage')\
+                       'l10n_jp_hr_employee.group_employee_private_info_manage') \
                 else False

@@ -440,17 +440,17 @@ class HrPrivateInfo(models.Model):
     @api.depends('pension_code', 'pension_seq')
     def _compute_pension_number(self):
         for rec in self:
-            rec.pension_number = '%s' %(rec.pension_code or '') + '-' + \
-                                 '%s' %(rec.pension_seq or '')
+            rec.pension_number = '%s' % (rec.pension_code or '') + '-' + \
+                                 '%s' % (rec.pension_seq or '')
 
     @api.multi
     @api.depends('emp_ins_number_1st', 'emp_ins_number_2nd',
                  'emp_ins_number_3rd')
     def _compute_emp_ins_number(self):
         for rec in self:
-            rec.emp_ins_number = '%s' %(rec.emp_ins_number_1st or '') + '-' + \
-                                 '%s' %(rec.emp_ins_number_2nd or '') + '-' + \
-                                 '%s' %(rec.emp_ins_number_3rd or '')
+            rec.emp_ins_number = '%s' % (rec.emp_ins_number_1st or '') + '-' + \
+                                 '%s' % (rec.emp_ins_number_2nd or '') + '-' + \
+                                 '%s' % (rec.emp_ins_number_3rd or '')
 
     @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
                     'emerg_contact_postal_code', 'bank_acc_number',

@@ -24,7 +24,6 @@ class AccountInvoice(models.Model):
                 'open': [('readonly', False)]}
     )
 
-
     @api.multi
     @api.depends('state')
     def _update_ready_to_validate(self):

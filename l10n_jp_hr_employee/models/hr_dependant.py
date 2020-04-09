@@ -38,7 +38,7 @@ class HrDependant(models.Model):
         related='private_info_id.employee_id',
         store=True,
     )
-    company_id=fields.Many2one(
+    company_id = fields.Many2one(
         'res.company',
         related='private_info_id.company_id',
         string='Company',
@@ -234,8 +234,8 @@ class HrDependant(models.Model):
     @api.depends('pension_code', 'pension_seq')
     def _compute_pension_number(self):
         for rec in self:
-            rec.pension_number = '%s' %(rec.pension_code or '') + '-' + \
-                                 '%s' %(rec.pension_seq or '')
+            rec.pension_number = '%s' % (rec.pension_code or '') + '-' + \
+                                 '%s' % (rec.pension_seq or '')
 
     @api.constrains('postal_code', 'phone', 'pension_code', 'pension_seq')
     def _validate_digit_fields(self):

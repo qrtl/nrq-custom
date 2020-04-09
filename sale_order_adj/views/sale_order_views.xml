@@ -70,7 +70,8 @@
     <record id="account_analyticview_order_form" model="ir.ui.view">
         <field name="name">sale.order.form</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="account_analytic_profit_loss_analysis.view_order_form"/>
+        <field name="inherit_id"
+               ref="account_analytic_profit_loss_analysis.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='parent_project_id']" position="after">
                 <field name="gross_profit_margin"/>
@@ -81,8 +82,9 @@
     <record id="sale.action_quotations" model="ir.actions.act_window">
         <field name="context">{
             'hide_sale': True,
-            'default_validity_date': (context_today() + relativedelta(months=1)).strftime("%Y-%m-%d")
-        }
+            'default_validity_date': (context_today() +
+            relativedelta(months=1)).strftime("%Y-%m-%d")
+            }
         </field>
     </record>
 

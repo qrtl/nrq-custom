@@ -17,7 +17,8 @@ class HrHolidays(models.Model):
             or if he is an Hr Manager.
         """
         user = self.env.user
-        group_hr_manager = self.env.ref('hr_holidays.group_hr_holidays_manager')
+        group_hr_manager = self.env.ref(
+            'hr_holidays.group_hr_holidays_manager')
         for holiday in self:
             # QTL Modify
             # Added sudo() to access employee's field
@@ -30,7 +31,9 @@ class HrHolidays(models.Model):
         for leave in self:
             # QTL Modify
             # Add sudo() to access employee's field
-            res.append((leave.id, _("%s on %s : %.2f day(s)") % (leave.employee_id.sudo().name or leave.category_id.name, leave.holiday_status_id.name, leave.number_of_days_temp)))
+            res.append((leave.id, _("%s on %s : %.2f day(s)") % (
+                leave.employee_id.sudo().name or leave.category_id.name,
+                leave.holiday_status_id.name, leave.number_of_days_temp)))
         return res
 
     @api.onchange('date_from')
@@ -43,14 +46,16 @@ class HrHolidays(models.Model):
 
         # No date_to set so far: automatically compute one 8 hours later
         if date_from and not date_to:
-            date_to_with_delta = fields.Datetime.from_string(date_from) + timedelta(hours=HOURS_PER_DAY)
+            date_to_with_delta = fields.Datetime.from_string(
+                date_from) + timedelta(hours=HOURS_PER_DAY)
             self.date_to = str(date_to_with_delta)
 
         # Compute and update the number of days
         if (date_to and date_from) and (date_from <= date_to):
             # QTL Modify
             # Added sudo() to call _get_number_of_days
-            self.number_of_days_temp = self.sudo()._get_number_of_days(date_from, date_to, self.employee_id.id)
+            self.number_of_days_temp = self.sudo()._get_number_of_days(
+                date_from, date_to, self.employee_id.id)
         else:
             self.number_of_days_temp = 0
 
@@ -64,7 +69,8 @@ class HrHolidays(models.Model):
         if (date_to and date_from) and (date_from <= date_to):
             # QTL Modify
             # Added sudo() to call _get_number_of_days
-            self.number_of_days_temp = self.sudo()._get_number_of_days(date_from, date_to, self.employee_id.id)
+            self.number_of_days_temp = self.sudo()._get_number_of_days(
+                date_from, date_to, self.employee_id.id)
         else:
             self.number_of_days_temp = 0
 

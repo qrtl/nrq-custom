@@ -42,13 +42,16 @@ class HrEmployeeNrq(common.TransactionCase):
             login="hm",
             password="hm",
             email="homanager@yourcompany.example.com",
-            groups_id=[(6, 0, [self.env.ref('hr_holidays.group_hr_holidays_manager').id])]
+            groups_id=[(6, 0, [
+                self.env.ref('hr_holidays.group_hr_holidays_manager').id])]
         ))
         # Create hr holiday record
         self.hr_holidays = self.env['hr.holidays'].create(dict(
             employee_id=self.test_employee.id,
             name="Test Holiday Record",
-            holiday_status_id=self.env['hr.holidays.status'].search([('limit', '=', False)])[0].id,
+            holiday_status_id=
+            self.env['hr.holidays.status'].search([('limit', '=', False)])[
+                0].id,
             type='add',
             holiday_type='employee',
             number_of_days_temp=1
