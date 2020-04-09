@@ -38,14 +38,14 @@ repos:
     rev: "1.19.1"
     hooks:
       - id: prettier
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v6.8.0
-    hooks:
-      - id: eslint
-        verbose: true
-        args:
-          - --color
-          - --fix
+#  - repo: https://github.com/pre-commit/mirrors-eslint
+#    rev: v6.8.0
+#    hooks:
+#      - id: eslint
+#        verbose: true
+#        args:
+#          - --color
+#          - --fix
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
     hooks:
