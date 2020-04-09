@@ -62,8 +62,9 @@ class SaleOrder(models.Model):
     @api.multi
     def _compute_approval_availability(self):
         for quote in self:
-            quote.approval_availability = (quote.user_id != quote.env.user) \
-                                          or quote.self_approval_permission
+            quote.approval_availability = \
+                (quote.user_id != quote.env.user) \
+                or quote.self_approval_permission
 
     @api.multi
     def send_track_notification_email(self, field, old_value, new_value):

@@ -90,6 +90,6 @@ class HrEmployee(models.Model):
         for employee in self:
             employee.private_info_visible = True \
                 if employee.user_id == self.env.user\
-                or self.env.user.has_group(
-                       'l10n_jp_hr_employee.group_employee_private_info_manage'
-                   ) else False
+                or self.env.user.has_group('l10n_jp_hr_employee.'
+                                           'group_employee_private_info_manage'
+                                           ) else False
