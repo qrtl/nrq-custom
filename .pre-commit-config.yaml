@@ -96,4 +96,3 @@ repos:
         files: \.(bowerrc|jshintrc|json)$
       - id: check-yaml
       - id: debug-statements
-      - id: requirements-txt-fixer
