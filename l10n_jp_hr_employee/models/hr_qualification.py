@@ -53,7 +53,7 @@ class HrQualification(models.Model):
                     if len(rec.date_obtained) == 7 else rec.date_obtained
                 try:
                     fields.Date.from_string(date.replace('/', '-'))
-                except:
+                except Exception:
                     raise ValidationError(msg % _("Date Obtained"))
                 if len(rec.date_obtained) not in [7, 10]:
                     raise ValidationError(_("Please adjust the format to be "

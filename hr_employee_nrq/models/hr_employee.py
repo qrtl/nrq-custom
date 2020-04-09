@@ -40,6 +40,7 @@ class HrEmployee(models.Model):
     @api.multi
     def _compute_employee_info_visible(self):
         for employee in self:
-            employee.employee_info_visible = True \
+            employee.employee_info_visible = True\
                 if employee.user_id == self.env.user or \
-                   self.env.user.has_group('hr.group_hr_user') else False
+                self.env.user.has_group('hr.group_hr_user')\
+                else False

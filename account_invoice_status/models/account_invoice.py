@@ -29,7 +29,7 @@ class AccountInvoice(models.Model):
     def _update_ready_to_validate(self):
         for inv in self:
             if inv.state != 'draft':
-                inv.ready_to_validate == False
+                inv.ready_to_validate = False
 
     @api.multi
     def action_invoice_ok(self):

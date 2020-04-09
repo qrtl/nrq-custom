@@ -448,9 +448,10 @@ class HrPrivateInfo(models.Model):
                  'emp_ins_number_3rd')
     def _compute_emp_ins_number(self):
         for rec in self:
-            rec.emp_ins_number = '%s' % (rec.emp_ins_number_1st or '') + '-' + \
-                                 '%s' % (rec.emp_ins_number_2nd or '') + '-' + \
-                                 '%s' % (rec.emp_ins_number_3rd or '')
+            rec.emp_ins_number = '%s' % (
+                    rec.emp_ins_number_1st or '') + '-' + \
+                                 '%s' % (rec.emp_ins_number_2nd or '') + '-'\
+                                 + '%s' % (rec.emp_ins_number_3rd or '')
 
     @api.constrains('private_phone', 'emerg_contact_phone', 'postal_code',
                     'emerg_contact_postal_code', 'bank_acc_number',
@@ -522,10 +523,11 @@ class HrPrivateInfo(models.Model):
     def _check_email(self):
         for rec in self:
             msg = _("%s seems to be incorrect.")
-            if rec.private_email and not re.match(
-                    # ref: https://www.w3.org/TR/html5/forms.html#valid-e-mail-address
-                    r"^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
-                    rec.private_email):
+            # ref: https://www.w3.org/TR/html5/forms.html#valid-e-mail-address
+            match = r"^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]" \
+                    r"+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+            if rec.private_email and \
+                    not re.match(match, rec.private_email):
                 raise ValidationError(msg % ("Private Email"))
 
     @api.multi

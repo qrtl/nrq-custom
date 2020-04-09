@@ -99,7 +99,7 @@ class HrExpense(models.Model):
                 active_test=False).sudo().mapped('project_ids')
             if projects and rec.date:
                 if projects[0].date_start and rec.date < projects[
-                    0].date_start or projects[0].date and rec.date > projects[ \
-                        0].date:
+                    0].date_start or projects[0].date and\
+                        rec.date > projects[0].date:
                     raise ValidationError(_('Expense date needs to be set '
                                             'within the project period.'))

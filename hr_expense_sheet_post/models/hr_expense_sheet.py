@@ -21,8 +21,7 @@ class HrExpenseSheet(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Posted Expense Sheet(s)'),
             'res_model': 'hr.expense.sheet',
-            'view_mode': 'form',
-            'view_mode': 'tree',
+            'view_mode': 'tree,form',
             'domain': [('id', 'in', posted_sheets_ids)],
             'target': 'current'
         }

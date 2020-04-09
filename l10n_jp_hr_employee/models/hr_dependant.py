@@ -17,7 +17,7 @@ class HrDependant(models.Model):
         try:
             currency_id = Currency.get_object_reference(
                 'base', 'JPY')[1]
-        except:
+        except Exception:
             currency_recs = Currency.search([('name', 'like', _('JPY'))])
             currency_id = currency_recs[0].id if currency_recs else False
         return currency_id
@@ -186,11 +186,13 @@ class HrDependant(models.Model):
     appointment_letter_doc_filename = fields.Char(
         string='Letter of Appointment File Name',
     )
-    appointment_letter_url = fields.Char(
-        related='private_info_id.employee_id.company_id.appointment_letter_url',
-        default=lambda self: self._default_url(),
-        readonly=True,
-    )
+    appointment_letter_url = \
+        fields.Char(
+            related='private_info_id.employee_id.'
+                    'company_id.appointment_letter_url',
+            default=lambda self: self._default_url(),
+            readonly=True,
+        )
 
     @api.onchange('phone')
     def _onchange_phone(self):

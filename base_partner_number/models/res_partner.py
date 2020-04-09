@@ -23,7 +23,7 @@ class ResPartner(models.Model):
     @api.model
     def create(self, vals):
         if all(k in vals for k in ('is_company', 'parent_id')):
-            if vals['is_company'] or (not vals['is_company'] \
+            if vals['is_company'] or (not vals['is_company']
                                       and not vals['parent_id']):
                 partner_no = self.env['ir.sequence'].next_by_code(
                     'res.partner')

@@ -75,7 +75,7 @@ class HrExpenseSheet(models.Model):
         if self.state in ['draft', 'submit']:
             for line in self.expense_line_ids.sorted(
                     key=lambda x: (x.date, x.id)):
-                if line.number == False:
+                if not line.number:
                     self._assign_number(line)
         return res
 

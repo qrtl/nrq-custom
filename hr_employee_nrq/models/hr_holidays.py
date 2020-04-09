@@ -22,7 +22,8 @@ class HrHolidays(models.Model):
         for holiday in self:
             # QTL Modify
             # Added sudo() to access employee's field
-            if group_hr_manager in user.groups_id or holiday.employee_id and holiday.employee_id.sudo().user_id == user:
+            if group_hr_manager in user.groups_id or holiday.employee_id and\
+                    holiday.employee_id.sudo().user_id == user:
                 holiday.can_reset = True
 
     @api.multi
@@ -38,7 +39,8 @@ class HrHolidays(models.Model):
 
     @api.onchange('date_from')
     def _onchange_date_from(self):
-        """ If there are no date set for date_to, automatically set one 8 hours later than
+        """ If there are no date set for date_to,
+            automatically set one 8 hours later than
             the date_from. Also update the number_of_days.
         """
         date_from = self.date_from
@@ -76,7 +78,8 @@ class HrHolidays(models.Model):
 
     @api.multi
     def _create_resource_leave(self):
-        """ This method will create entry in resource calendar leave object at the time of holidays validated """
+        """ This method will create entry in resource calendar leave object
+        at the time of holidays validated """
         for leave in self:
             self.env['resource.calendar.leaves'].create({
                 'name': leave.name,
@@ -86,6 +89,7 @@ class HrHolidays(models.Model):
                 # QTL Modify
                 # Add sudo() to access employee's field
                 'resource_id': leave.employee_id.sudo().resource_id.id,
-                'calendar_id': leave.employee_id.sudo().resource_id.calendar_id.id
+                'calendar_id':
+                    leave.employee_id.sudo().resource_id.calendar_id.id
             })
         return True
