@@ -96,11 +96,4 @@ repos:
         files: \.(bowerrc|jshintrc|json)$
       - id: check-yaml
       - id: debug-statements
-      #      - id: name-tests-test
-      #        exclude: tests/test_helpers.py
       - id: requirements-txt-fixer
-  #  - repo: https://github.com/asottile/reorder_python_imports.git
-  #    rev: v1.9.0
-  #    hooks:
-  #    - id: reorder-python-imports
-  #      language_version: python2.7
