@@ -3,8 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import jaconv
-
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -18,7 +17,7 @@ class HrDependant(models.Model):
         try:
             currency_id = Currency.get_object_reference(
                 'base', 'JPY')[1]
-        except:
+        except Exception:
             currency_recs = Currency.search([('name', 'like', _('JPY'))])
             currency_id = currency_recs[0].id if currency_recs else False
         return currency_id
@@ -39,7 +38,7 @@ class HrDependant(models.Model):
         related='private_info_id.employee_id',
         store=True,
     )
-    company_id=fields.Many2one(
+    company_id = fields.Many2one(
         'res.company',
         related='private_info_id.company_id',
         string='Company',
@@ -187,11 +186,13 @@ class HrDependant(models.Model):
     appointment_letter_doc_filename = fields.Char(
         string='Letter of Appointment File Name',
     )
-    appointment_letter_url = fields.Char(
-        related='private_info_id.employee_id.company_id.appointment_letter_url',
-        default=lambda self: self._default_url(),
-        readonly=True,
-    )
+    appointment_letter_url = \
+        fields.Char(
+            related='private_info_id.employee_id.'
+                    'company_id.appointment_letter_url',
+            default=lambda self: self._default_url(),
+            readonly=True,
+        )
 
     @api.onchange('phone')
     def _onchange_phone(self):
@@ -235,8 +236,8 @@ class HrDependant(models.Model):
     @api.depends('pension_code', 'pension_seq')
     def _compute_pension_number(self):
         for rec in self:
-            rec.pension_number = '%s' %(rec.pension_code or '') + '-' + \
-                                 '%s' %(rec.pension_seq or '')
+            rec.pension_number = '%s' % (rec.pension_code or '') + '-' + \
+                                 '%s' % (rec.pension_seq or '')
 
     @api.constrains('postal_code', 'phone', 'pension_code', 'pension_seq')
     def _validate_digit_fields(self):

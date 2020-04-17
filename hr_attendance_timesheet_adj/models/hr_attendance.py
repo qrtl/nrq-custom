@@ -3,12 +3,12 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import datetime
-from pytz import timezone
-import pytz
 
-from odoo import models, fields, api, _
+import pytz
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
+from pytz import timezone
 
 
 class HrAttendance(models.Model):
@@ -37,7 +37,8 @@ class HrAttendance(models.Model):
                 self.update_manually_reason == 'other' and not
                 self.update_manually_reason_desc):
             raise ValidationError(
-                _('Please fill in the reason of updating the attendance record.'))
+                _('Please fill in the reason of'
+                  ' updating the attendance record.'))
 
     @api.onchange('employee_id', 'check_in', 'check_out')
     def _onchange_update_manually(self):
@@ -71,10 +72,10 @@ class HrAttendance(models.Model):
                 ts.employee_id.user_id.partner_id.tz or 'utc')
             local_date_from_dt = local_tz.localize(datetime.strptime(
                 ts.date_from, DEFAULT_SERVER_DATE_FORMAT)).replace(
-                    hour=0, minute=0, second=0)
+                hour=0, minute=0, second=0)
             local_date_to_dt = local_tz.localize(datetime.strptime(
                 ts.date_to, DEFAULT_SERVER_DATE_FORMAT)).replace(
-                    hour=23, minute=59, second=59)
+                hour=23, minute=59, second=59)
             utc_date_from_dt = local_date_from_dt.astimezone(
                 pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
             utc_date_to_dt = local_date_to_dt.astimezone(pytz.utc).strftime(

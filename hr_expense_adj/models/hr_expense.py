@@ -2,8 +2,8 @@
 # Copyright 2017-2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class HrExpense(models.Model):
@@ -99,7 +99,7 @@ class HrExpense(models.Model):
                 active_test=False).sudo().mapped('project_ids')
             if projects and rec.date:
                 if projects[0].date_start and rec.date < projects[
-                    0].date_start or projects[0].date and rec.date > projects[\
-                        0].date:
+                    0].date_start or projects[0].date and\
+                        rec.date > projects[0].date:
                     raise ValidationError(_('Expense date needs to be set '
                                             'within the project period.'))

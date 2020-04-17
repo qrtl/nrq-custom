@@ -10,7 +10,8 @@ class TestAuditlogExtNrq(common.TransactionCase):
 
     def setUp(self):
         super(TestAuditlogExtNrq, self).setUp()
-        self.translation_model_id = self.env.ref('base.model_ir_translation').id
+        self.translation_model_id = self.env.ref(
+            'base.model_ir_translation').id
         self.translation_rule = self.env['auditlog.rule'].create({
             'name': 'Test rule for translation',
             'model_id': self.translation_model_id,

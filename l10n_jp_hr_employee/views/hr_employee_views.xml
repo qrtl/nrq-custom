@@ -11,7 +11,8 @@
                         icon="fa-user-secret" type="object"
                         attrs="{'invisible':[('private_info_visible', '!=', True)]}">
                     <field name="private_info_visible" invisible="1"/>
-                    <field name="private_info_count" widget="statinfo" string="Private Info"/>
+                    <field name="private_info_count" widget="statinfo"
+                           string="Private Info"/>
                 </button>
             </xpath>
             <xpath expr="//field[@name='address_id']" position="before">
@@ -25,8 +26,10 @@
                 <label for="furi_family_name" string="Name Furigana"/>
                 <div>
                     <div class="o_row mr16">
-                        <field name="furi_family_name" placeholder="Family Name"/>
-                        <field name="furi_given_name" placeholder="Given Name"/>
+                        <field name="furi_family_name"
+                               placeholder="Family Name"/>
+                        <field name="furi_given_name"
+                               placeholder="Given Name"/>
                     </div>
                 </div>
             </xpath>

@@ -8,16 +8,24 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='employee_id']"
                    position="attributes">
-                <attribute name="groups">hr_attendance.group_hr_attendance_user</attribute>
-                <attribute name="attrs">{'readonly': [('state', 'in', ('confirm', 'done'))]}</attribute>
+                <attribute name="groups">
+                    hr_attendance.group_hr_attendance_user
+                </attribute>
+                <attribute name="attrs">{'readonly': [('state', 'in',
+                    ('confirm', 'done'))]}
+                </attribute>
             </xpath>
             <xpath expr="//field[@name='check_in']"
                    position="attributes">
-                <attribute name="attrs">{'readonly': [('state', 'in', ('confirm', 'done'))]}</attribute>
+                <attribute name="attrs">{'readonly': [('state', 'in',
+                    ('confirm', 'done'))]}
+                </attribute>
             </xpath>
             <xpath expr="//field[@name='check_out']"
                    position="attributes">
-                <attribute name="attrs">{'readonly': [('state', 'in', ('confirm', 'done'))]}</attribute>
+                <attribute name="attrs">{'readonly': [('state', 'in',
+                    ('confirm', 'done'))]}
+                </attribute>
             </xpath>
             <xpath expr="//field[@name='check_out']" position="after">
                 <field name="worked_hours" widget="float_time"/>
@@ -25,8 +33,10 @@
                 <label for="update_manually_reason"/>
                 <div>
                     <div class="o_row mr16">
-                        <field name="update_manually_reason" attrs="{'readonly': [('state', 'in', ('confirm', 'done'))]}"/>
-                        <field name="update_manually_reason_desc" attrs="{'required':[('update_manually_reason', '=', 'other')], 'invisible':[('update_manually_reason', '!=', 'other')], 'readonly': [('state', 'in', ('confirm', 'done'))]}"/>
+                        <field name="update_manually_reason"
+                               attrs="{'readonly': [('state', 'in', ('confirm', 'done'))]}"/>
+                        <field name="update_manually_reason_desc"
+                               attrs="{'required':[('update_manually_reason', '=', 'other')], 'invisible':[('update_manually_reason', '!=', 'other')], 'readonly': [('state', 'in', ('confirm', 'done'))]}"/>
                     </div>
                 </div>
                 <field name="state" invisible="True"/>
@@ -41,7 +51,9 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='employee_id']"
                    position="attributes">
-                <attribute name="groups">hr_attendance.group_hr_attendance_user</attribute>
+                <attribute name="groups">
+                    hr_attendance.group_hr_attendance_user
+                </attribute>
             </xpath>
             <xpath expr="//field[@name='check_out']" position="after">
                 <field name="worked_hours" widget="float_time"/>

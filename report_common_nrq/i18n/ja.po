@@ -454,4 +454,3 @@ msgstr "Website:"
 #: model:ir.model.fields,field_description:report_common_nrq.field_res_company_invoice_remarks
 msgid "Invoice Remarks"
 msgstr "請求書備考"
-
