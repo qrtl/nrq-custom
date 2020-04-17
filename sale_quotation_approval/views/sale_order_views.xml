@@ -5,14 +5,27 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='action_confirm' and @states='draft']" position="replace"/>
-            <xpath expr="//button[@name='action_confirm' and @states='sent']" position="replace"/>
+            <xpath expr="//button[@name='action_confirm' and @states='draft']"
+                   position="replace"/>
+            <xpath expr="//button[@name='action_confirm' and @states='sent']"
+                   position="replace"/>
             <xpath expr="//button[@name='print_quotation']" position="after">
                 <button name="action_approve" type="object"
-                        attrs="{'invisible':['|', '|', ('approval','=',True), ('state', 'in', ['sale', 'cancel', 'done']), ('approval_availability', '=', False)]}" string="Approve" class="oe_highlight" groups="sales_team.group_sale_manager"/>
-                <button name="action_confirm" attrs="{'invisible': ['|', ('approval','=', False), ('state', '!=', 'sent')]}" string="Confirm Sale" class="btn-primary o_sale_confirm" type="object"/>
-                <button name="action_confirm" attrs="{'invisible': ['|', ('approval','=', False), ('state', '!=', 'draft')]}" string="Confirm Sale" class="o_sale_confirm" type="object"/>
-                <button name="action_cancel_approval" type="object" attrs="{'invisible':['|',('approval','=',False), ('state', 'in', ['sale', 'cancel', 'done'])]}" string="Cancel Approval" groups="sales_team.group_sale_manager"/>
+                        attrs="{'invisible':['|', '|', ('approval','=',True), ('state', 'in', ['sale', 'cancel', 'done']), ('approval_availability', '=', False)]}"
+                        string="Approve" class="oe_highlight"
+                        groups="sales_team.group_sale_manager"/>
+                <button name="action_confirm"
+                        attrs="{'invisible': ['|', ('approval','=', False), ('state', '!=', 'sent')]}"
+                        string="Confirm Sale"
+                        class="btn-primary o_sale_confirm" type="object"/>
+                <button name="action_confirm"
+                        attrs="{'invisible': ['|', ('approval','=', False), ('state', '!=', 'draft')]}"
+                        string="Confirm Sale" class="o_sale_confirm"
+                        type="object"/>
+                <button name="action_cancel_approval" type="object"
+                        attrs="{'invisible':['|',('approval','=',False), ('state', 'in', ['sale', 'cancel', 'done'])]}"
+                        string="Cancel Approval"
+                        groups="sales_team.group_sale_manager"/>
             </xpath>
             <xpath expr="//field[@name='date_order']" position="before">
                 <label for="approval" string="Approved"/>
@@ -23,7 +36,9 @@
                 </div>
             </xpath>
             <xpath expr="//field[@name='order_line']" position="attributes">
-                <attribute name="attrs">{'readonly':['|', ('approval', '=', True), ('state', 'in', ('done','cancel'))]}</attribute>
+                <attribute name="attrs">{'readonly':['|', ('approval', '=',
+                    True), ('state', 'in', ('done','cancel'))]}
+                </attribute>
             </xpath>
             <xpath expr="//field[@name='related_project_id']"
                    position="after">
@@ -52,10 +67,12 @@
     <record id="sale_order_view_search_inherit_quotation" model="ir.ui.view">
         <field name="name">sale.order.search.inherit.quotation</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name="inherit_id"
+               ref="sale.sale_order_view_search_inherit_quotation"/>
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='draft']" position="before">
-                <filter name="approval" string="Approved" domain="[('approval','=',True)]"/>
+                <filter name="approval" string="Approved"
+                        domain="[('approval','=',True)]"/>
             </xpath>
         </field>
     </record>

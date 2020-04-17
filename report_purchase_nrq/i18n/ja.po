@@ -90,4 +90,3 @@ msgstr "purchase"
 #: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_alt
 msgid "true"
 msgstr "true"
-

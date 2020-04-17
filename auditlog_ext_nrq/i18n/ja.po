@@ -40,4 +40,3 @@ msgstr "レコード削除"
 #: selection:auditlog.log,log_category:0
 msgid "Submitted/Set back to Draft"
 msgstr "申請・ドラフト"
-

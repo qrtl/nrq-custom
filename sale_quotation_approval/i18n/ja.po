@@ -102,5 +102,3 @@ msgstr "受注"
 #: model:ir.model.fields,field_description:sale_quotation_approval.field_sale_order_self_approval_permission
 msgid "Self-approval Permission"
 msgstr "自己承認許可"
-
-

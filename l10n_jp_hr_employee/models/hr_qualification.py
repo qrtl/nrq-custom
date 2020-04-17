@@ -3,8 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import jaconv
-
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -54,8 +53,8 @@ class HrQualification(models.Model):
                     if len(rec.date_obtained) == 7 else rec.date_obtained
                 try:
                     fields.Date.from_string(date.replace('/', '-'))
-                except:
+                except Exception:
                     raise ValidationError(msg % _("Date Obtained"))
                 if len(rec.date_obtained) not in [7, 10]:
                     raise ValidationError(_("Please adjust the format to be "
-                                          "'YYYY/MM/DD' or 'YYYY/MM'."))
+                                            "'YYYY/MM/DD' or 'YYYY/MM'."))

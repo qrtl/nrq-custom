@@ -3,7 +3,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests import common
-from odoo.exceptions import ValidationError
 
 
 class L10nJpHrEmployee(common.TransactionCase):
@@ -25,9 +24,8 @@ class L10nJpHrEmployee(common.TransactionCase):
         # AccessError was rasied before adding "readonly=True" to
         # appointment_letter_url during creation. Here we test the creation
         # of hr.dependant with demo user
-        private_info = self.env['hr.private.info'].sudo(self.test_user.id).create({
-            'employee_id': self.test_employee.id,
-        })
+        private_info = self.env['hr.private.info'].sudo(
+            self.test_user.id).create({'employee_id': self.test_employee.id})
         self.env['hr.dependant'].sudo(self.test_user.id).create({
             'private_info_id': private_info.id,
             'employee_id': self.test_employee.id,

@@ -2,7 +2,7 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
+from odoo import _, api, models
 
 
 class HrExpenseSheet(models.Model):
@@ -21,8 +21,7 @@ class HrExpenseSheet(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Posted Expense Sheet(s)'),
             'res_model': 'hr.expense.sheet',
-            'view_mode': 'form',
-            'view_mode': 'tree',
+            'view_mode': 'tree,form',
             'domain': [('id', 'in', posted_sheets_ids)],
             'target': 'current'
         }

@@ -168,4 +168,3 @@ msgstr "経費の日付はプロジェクト期間内でなければなりませ
 #: model:ir.model.fields,field_description:hr_expense_adj.field_hr_expense_sheet_code
 msgid "Code"
 msgstr "コード"
-
