@@ -24,4 +24,3 @@ msgstr "明細コピー"
 #: model:ir.model,name:purchase_order_line_duplicate.model_purchase_order_line
 msgid "Purchase Order Line"
 msgstr "発注明細"
-

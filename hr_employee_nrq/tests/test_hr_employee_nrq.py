@@ -2,8 +2,8 @@
 # Copyright 2019 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo.tests import common
 from odoo.exceptions import AccessError
+from odoo.tests import common
 
 
 class HrEmployeeNrq(common.TransactionCase):
@@ -31,10 +31,10 @@ class HrEmployeeNrq(common.TransactionCase):
             email="emmanager@yourcompany.example.com",
             groups_id=[(6, 0, [
                 self.env.ref(
-                    'l10n_jp_hr_employee.group_employee_private_info_manage').id,
-                self.env.ref('hr.group_hr_manager').id
-            ])]
-        ))
+                    'l10n_jp_hr_employee.'
+                    'group_employee_private_info_manage').id,
+                self.env.ref('hr.group_hr_manager').id])])
+        )
         # Create hr holiday manager user
         self.holiday_manager_user = self.env['res.users'].create(dict(
             name="Holiday Manager",
@@ -42,13 +42,15 @@ class HrEmployeeNrq(common.TransactionCase):
             login="hm",
             password="hm",
             email="homanager@yourcompany.example.com",
-            groups_id=[(6, 0, [self.env.ref('hr_holidays.group_hr_holidays_manager').id])]
+            groups_id=[(6, 0, [
+                self.env.ref('hr_holidays.group_hr_holidays_manager').id])]
         ))
         # Create hr holiday record
         self.hr_holidays = self.env['hr.holidays'].create(dict(
             employee_id=self.test_employee.id,
             name="Test Holiday Record",
-            holiday_status_id=self.env['hr.holidays.status'].search([('limit', '=', False)])[0].id,
+            holiday_status_id=self.env['hr.holidays.status'].search(
+                [('limit', '=', False)])[0].id,
             type='add',
             holiday_type='employee',
             number_of_days_temp=1

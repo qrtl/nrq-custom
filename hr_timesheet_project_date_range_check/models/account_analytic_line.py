@@ -2,7 +2,7 @@
 # Copyright 2018 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
+from odoo import _, api, models
 from odoo.exceptions import ValidationError
 
 
@@ -15,7 +15,7 @@ class AccountAnalyticLine(models.Model):
         if self.project_id:
             if self.project_id.date_start and self.date < \
                     self.project_id.date_start or self.project_id.date and \
-                            self.date > self.project_id.date:
+                    self.date > self.project_id.date:
                 raise ValidationError(_(
                     'You cannot have an entry that the date is out of the '
                     'project date range'))

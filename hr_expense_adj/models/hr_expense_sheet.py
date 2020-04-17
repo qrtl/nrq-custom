@@ -2,7 +2,7 @@
 # Copyright 2017-2018 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class HrExpenseSheet(models.Model):
@@ -75,7 +75,7 @@ class HrExpenseSheet(models.Model):
         if self.state in ['draft', 'submit']:
             for line in self.expense_line_ids.sorted(
                     key=lambda x: (x.date, x.id)):
-                if line.number == False:
+                if not line.number:
                     self._assign_number(line)
         return res
 

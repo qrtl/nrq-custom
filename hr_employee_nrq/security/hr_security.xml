@@ -17,5 +17,5 @@
             (4, ref('l10n_jp_hr_employee.group_employee_private_info_manage'))
         ]"/>
     </record>
-    
+
 </odoo>

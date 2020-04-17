@@ -2,7 +2,7 @@
 # Copyright 2016-2017 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import api, models, fields
+from odoo import api, fields, models
 
 
 class AccountInvoice(models.Model):
@@ -24,13 +24,12 @@ class AccountInvoice(models.Model):
                 'open': [('readonly', False)]}
     )
 
-
     @api.multi
     @api.depends('state')
     def _update_ready_to_validate(self):
         for inv in self:
             if inv.state != 'draft':
-                inv.ready_to_validate == False
+                inv.ready_to_validate = False
 
     @api.multi
     def action_invoice_ok(self):

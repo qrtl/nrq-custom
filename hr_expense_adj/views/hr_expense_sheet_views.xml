@@ -7,13 +7,19 @@
         <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="attributes">
-                <attribute name="statusbar_visible">draft,submit,approve,post,done</attribute>
+                <attribute name="statusbar_visible">
+                    draft,submit,approve,post,done
+                </attribute>
             </xpath>
-            <xpath expr="//button[@name='approve_expense_sheets']" position="before">
-                <button name="action_submit" type="object" states="draft" string="Submit" class="oe_highlight"/>
-                <button name="action_cancel_submission" type="object" states="submit" string="Cancel Submission"/>
+            <xpath expr="//button[@name='approve_expense_sheets']"
+                   position="before">
+                <button name="action_submit" type="object" states="draft"
+                        string="Submit" class="oe_highlight"/>
+                <button name="action_cancel_submission" type="object"
+                        states="submit" string="Cancel Submission"/>
             </xpath>
-            <xpath expr="//button[@name='reset_expense_sheets']" position="attributes">
+            <xpath expr="//button[@name='reset_expense_sheets']"
+                   position="attributes">
                 <attribute name="string">Set to Draft</attribute>
             </xpath>
             <xpath expr="//tree" position="attributes">
@@ -29,7 +35,8 @@
                 <field name="reference" string="Reference"/>
             </xpath>
             <xpath expr="//tree/field[@name='tax_ids']" position="replace"/>
-            <xpath expr="//tree/field[@name='analytic_account_id']" position="after">
+            <xpath expr="//tree/field[@name='analytic_account_id']"
+                   position="after">
                 <field name="tax_ids" widget="many2many_tags"/>
             </xpath>
             <xpath expr="//tree/field[@name='total_amount']" position="before">
@@ -56,10 +63,12 @@
     <record id="view_hr_expense_sheet_filter" model="ir.ui.view">
         <field name="name">hr.expense.sheet.filter</field>
         <field name="model">hr.expense.sheet</field>
-        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_filter"/>
+        <field name="inherit_id"
+               ref="hr_expense.view_hr_expense_sheet_filter"/>
         <field name="arch" type="xml">
             <xpath expr="filter[@name='submitted']" position="before">
-                <filter domain="[('state', '=', 'draft')]" string="To Submit" name="draft" help="Draft Expenses"/>
+                <filter domain="[('state', '=', 'draft')]" string="To Submit"
+                        name="draft" help="Draft Expenses"/>
             </xpath>
         </field>
     </record>

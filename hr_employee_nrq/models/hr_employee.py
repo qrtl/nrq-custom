@@ -2,10 +2,11 @@
 # Copyright 2019 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import models, fields, api, _
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
-from dateutil.relativedelta import relativedelta
 from datetime import datetime
+
+from dateutil.relativedelta import relativedelta
+from odoo import _, api, fields, models
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class HrEmployee(models.Model):
@@ -43,7 +44,7 @@ class HrEmployee(models.Model):
     @api.multi
     def _compute_employee_info_visible(self):
         for employee in self:
-            employee.employee_info_visible = True \
+            employee.employee_info_visible = True\
                 if employee.user_id == self.env.user or \
                 self.env.user.has_group('hr.group_hr_user')\
                 else False

@@ -2,7 +2,7 @@
 # Copyright 2017-2018 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
 
 
 class SaleOrder(models.Model):
@@ -34,7 +34,8 @@ class SaleOrder(models.Model):
             for quote in self:
                 if vals['state'] == "cancel":
                     vals['approval'] = False
-                elif (quote.state == "draft" and quote.approval) or vals['state'] in ["sale", "done"]:
+                elif (quote.state == "draft" and quote.approval) or\
+                        vals['state'] in ["sale", "done"]:
                     vals['approval'] = True
                 elif quote.state != "draft":
                     vals['approval'] = False
@@ -61,8 +62,9 @@ class SaleOrder(models.Model):
     @api.multi
     def _compute_approval_availability(self):
         for quote in self:
-            quote.approval_availability = (quote.user_id != quote.env.user) \
-                                          or quote.self_approval_permission
+            quote.approval_availability = \
+                (quote.user_id != quote.env.user) \
+                or quote.self_approval_permission
 
     @api.multi
     def send_track_notification_email(self, field, old_value, new_value):
