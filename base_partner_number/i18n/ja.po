@@ -29,4 +29,3 @@ msgstr "取引先番号"
 #: sql_constraint:res.partner:0
 msgid "Partner number must be unique."
 msgstr "取引先番号は一意でなければなりません。"
-

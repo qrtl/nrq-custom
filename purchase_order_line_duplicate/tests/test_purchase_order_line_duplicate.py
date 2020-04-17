@@ -4,9 +4,8 @@
 
 from datetime import datetime
 
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.tests import common
-from odoo.exceptions import ValidationError
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class PurchaseOrderLineDuplicate(common.TransactionCase):
@@ -28,7 +27,8 @@ class PurchaseOrderLineDuplicate(common.TransactionCase):
             'product_qty': 5.0,
             'product_uom': self.product_id.uom_po_id.id,
             'price_unit': 500.0,
-            'date_planned': datetime.today().strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+            'date_planned': datetime.today().strftime(
+                DEFAULT_SERVER_DATETIME_FORMAT),
             'order_id': po.id,
         }
         po_line = self.env['purchase.order.line'].create(po_line_vals)

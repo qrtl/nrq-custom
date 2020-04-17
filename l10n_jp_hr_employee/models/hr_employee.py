@@ -3,8 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import jaconv
-
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class HrEmployee(models.Model):
@@ -64,8 +63,8 @@ class HrEmployee(models.Model):
             active_test=False).read_group(
             [('employee_id', 'in', self.ids)],
             ['employee_id'], ['employee_id'])
-        result = dict((data['employee_id'][0], data['employee_id_count'])
-                      for data in private_info_data)
+        result = {data['employee_id'][0]: data['employee_id_count']
+                  for data in private_info_data}
         for employee in self:
             employee.private_info_count = result.get(employee.id, 0)
 
@@ -90,7 +89,7 @@ class HrEmployee(models.Model):
     def _compute_private_info_visible(self):
         for employee in self:
             employee.private_info_visible = True \
-                if employee.user_id == self.env.user or \
-                   self.env.user.has_group(
-                       'l10n_jp_hr_employee.group_employee_private_info_manage')\
-                else False
+                if employee.user_id == self.env.user\
+                or self.env.user.has_group('l10n_jp_hr_employee.'
+                                           'group_employee_private_info_manage'
+                                           ) else False

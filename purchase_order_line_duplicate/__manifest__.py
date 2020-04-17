@@ -5,7 +5,7 @@
     "name": "Duplicate Purchase Order Lines",
     "summary": "",
     "description": """
-- Add "Duplicate Purchase Lines" button to sale order form view that will 
+- Add "Duplicate Purchase Lines" button to sale order form view that will
 duplicate specific order line in the purchase order.
     """,
     "version": "10.0.1.0.0",

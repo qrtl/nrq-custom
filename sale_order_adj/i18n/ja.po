@@ -29,5 +29,3 @@ msgstr "プロジェクトマネジャ"
 #: model:ir.model,name:sale_order_adj.model_sale_order
 msgid "Sales Order"
 msgstr "受注"
-
-
