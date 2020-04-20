@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="hr_timesheet_sheet_form" model="ir.ui.view">
+    <record id="hr_timesheet_sheet_inherit_form" model="ir.ui.view">
         <field name="name">hr.timesheet.sheet.form</field>
         <field name="model">hr_timesheet_sheet.sheet</field>
         <field name="inherit_id"
@@ -24,11 +24,7 @@
                     </div>
                 </button>
             </xpath>
-<!--            <xpath expr="//page[3]/group" position="replace">-->
-<!--            </xpath>-->
-<!--            <xpath expr="//page[3]/field" position="replace">-->
-<!--            </xpath>-->
-            <xpath expr="//page[3]" position="attributes">
+            <xpath expr="//page[3]" position="replace">
                 <attribute name="invisible">True</attribute>
             </xpath>
             <xpath expr="//page[1]" position="inside">
