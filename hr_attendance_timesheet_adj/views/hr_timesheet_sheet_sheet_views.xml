@@ -24,7 +24,12 @@
                     </div>
                 </button>
             </xpath>
-            <xpath expr="//page[3]" position="replace">
+            <xpath expr="//page[3]/group" position="replace">
+            </xpath>
+            <xpath expr="//page[3]/field" position="replace">
+            </xpath>
+            <xpath expr="//page[3]" position="attributes">
+                <attribute name="invisible">True</attribute>
             </xpath>
             <xpath expr="//page[1]" position="inside">
                 <group>
