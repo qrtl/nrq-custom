@@ -14,8 +14,8 @@
     'depends': [
         'hr_attendance',
         'hr_timesheet_attendance',
-        'hr_timesheet_sheet',
-        'account_analytic_profit_loss_analysis' 
+        'account_analytic_profit_loss_analysis',
+        'hr_timesheet_sheet'
     ],
     'data': [
         'security/base_security.xml',
