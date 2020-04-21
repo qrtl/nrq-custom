@@ -15,6 +15,7 @@
         'hr_attendance',
         'hr_timesheet_attendance',
         'hr_timesheet_sheet',
+        'account_analytic_profit_loss_analysis' 
     ],
     'data': [
         'security/base_security.xml',
