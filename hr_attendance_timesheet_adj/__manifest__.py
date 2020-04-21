@@ -14,7 +14,6 @@
     'depends': [
         'hr_attendance',
         'hr_timesheet_attendance',
-        'account_analytic_profit_loss_analysis',
         'hr_timesheet_sheet'
     ],
     'data': [
