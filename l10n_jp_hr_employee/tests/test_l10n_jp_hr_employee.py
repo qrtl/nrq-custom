@@ -16,10 +16,11 @@ class L10nJpHrEmployee(common.TransactionCase):
         self.test_employee = self.env.ref('hr.employee_qdp')
 
     def test_00_create_edit_private_information(self):
-        private_info = self.env['hr.private.info'].sudo(self.test_user.id).create({
+        private_info = self.env['hr.private.info']
+        test_private_info = private_info.sudo(self.test_user.id).create({
             'employee_id': self.test_employee.id,
         })
-        private_info.sudo(self.test_user.id).update({
+        test_private_info.sudo(self.test_user.id).update({
             'family_name': '山田',
             'given_name': '太郎',
             'roman_family_name': 'YAMADA',
