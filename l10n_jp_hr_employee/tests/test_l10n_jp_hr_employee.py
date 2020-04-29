@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2019 Quartile Limited
+# Copyright 2019-2020 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests import common
@@ -15,9 +15,15 @@ class L10nJpHrEmployee(common.TransactionCase):
         # Employee record that linked to Demo user
         self.test_employee = self.env.ref('hr.employee_qdp')
 
-    def test_00_create_private_information(self):
-        self.env['hr.private.info'].sudo(self.test_user.id).create({
+    def test_00_create_edit_private_information(self):
+        private_info = self.env['hr.private.info'].sudo(self.test_user.id).create({
             'employee_id': self.test_employee.id,
+        })
+        private_info.sudo(self.test_user.id).update({
+            'family_name': '山田',
+            'given_name': '太郎',
+            'roman_family_name': 'YAMADA',
+            'roman_given_name': 'TAROU',
         })
 
     def test_01_create_dependant_information(self):
