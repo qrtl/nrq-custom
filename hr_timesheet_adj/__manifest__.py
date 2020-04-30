@@ -7,7 +7,7 @@
     "description": """
 * Add ondelete attributes to task and project fields in analytic line.
     """,
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.3.1",
     "category": "HR",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
