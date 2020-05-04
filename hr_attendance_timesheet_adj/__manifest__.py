@@ -6,7 +6,7 @@
     'summary': '',
     'description': '''
     ''',
-    'version': '10.0.1.3.0',
+    'version': '10.0.1.3.1',
     'category': 'HR',
     'website': 'https://www.quartile.co/',
     'author': 'Quartile Limited',
