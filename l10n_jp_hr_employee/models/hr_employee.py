@@ -33,6 +33,12 @@ class HrEmployee(models.Model):
         compute='_compute_private_info_visible',
         string='Private Information Visibility',
     )
+    qualification_ids = fields.One2many(
+        'hr.qualification',
+        'employee_id',
+        string='Qualification',
+        readonly=True
+    )
 
     @api.onchange('family_name')
     def _onchange_family_name(self):
