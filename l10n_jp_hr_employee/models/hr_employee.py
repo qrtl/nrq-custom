@@ -36,8 +36,12 @@ class HrEmployee(models.Model):
     qualification_ids = fields.One2many(
         'hr.qualification',
         'employee_id',
-        string='Qualification',
+        string='Qualifications',
         readonly=True
+    )
+    qualification_names = fields.Text(
+        compute='_compute_qualification_names',
+        string="Qualification Names",
     )
 
     @api.onchange('family_name')
@@ -99,3 +103,8 @@ class HrEmployee(models.Model):
                 or self.env.user.has_group('l10n_jp_hr_employee.'
                                            'group_employee_private_info_manage'
                                            ) else False
+
+    @api.multi
+    def _compute_qualification_names(self):
+        for employee in self:
+            employee.qualification_names = '\n'.join(employee.sudo().qualification_ids.mapped('display_name'))

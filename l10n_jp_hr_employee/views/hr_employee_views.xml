@@ -34,8 +34,8 @@
                 </div>
             </xpath>
             <xpath expr="//page[@name='public']/group" position="after">
-                <group string="Qualification">
-                    <field name="qualification_ids" string="Acquired Qualification" widget="many2many_tags"/>
+                <group string="Qualifications">
+                    <field name="qualification_names" string="Acquired Qualifications"/>
                 </group>
             </xpath>
             <xpath expr="//field[@name='department_id']" position="before">

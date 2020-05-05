@@ -123,8 +123,8 @@ msgstr "アパート/ビルフリガナ"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_employee_form
-msgid "Acquired Qualification"
-msgstr "持ち資格"
+msgid "Acquired Qualifications"
+msgstr "取得済資格"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_qualification_file
@@ -918,11 +918,12 @@ msgstr "仕送額確認ファイル名"
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employee_qualification_ids
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_qualification_ids
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_employee_form
 msgid "Qualification"
 msgstr "資格"
 
 #. module: l10n_jp_hr_employee
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employee_qualification_ids
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_employee_form
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_qualification_form
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_qualification_tree
