@@ -14,6 +14,8 @@ class L10nJpHrEmployee(common.TransactionCase):
         self.test_user = self.env.ref('base.user_demo')
         # Employee record that linked to Demo user
         self.test_employee = self.env.ref('hr.employee_qdp')
+        # Make sure test_user does not have officer group
+        self.assertFalse(self.test_user.has_group("hr.group_hr_user"))
 
     def test_00_create_edit_private_information(self):
         private_info = self.env['hr.private.info']
