@@ -107,4 +107,6 @@ class HrEmployee(models.Model):
     @api.multi
     def _compute_qualification_names(self):
         for employee in self:
-            employee.qualification_names = '\n'.join(employee.sudo().qualification_ids.mapped('display_name'))
+            qualification_ids = employee.sudo().qualification_ids
+            employee.qualification_names = '\n'.join(
+                qualification_ids.mapped('display_name'))
