@@ -33,16 +33,6 @@ class HrEmployee(models.Model):
         compute='_compute_private_info_visible',
         string='Private Information Visibility',
     )
-    qualification_ids = fields.One2many(
-        'hr.qualification',
-        'employee_id',
-        string='Qualifications',
-        readonly=True
-    )
-    qualification_names = fields.Text(
-        compute='_compute_qualification_names',
-        string="Qualification Names",
-    )
 
     @api.onchange('family_name')
     def _onchange_family_name(self):
@@ -103,10 +93,3 @@ class HrEmployee(models.Model):
                 or self.env.user.has_group('l10n_jp_hr_employee.'
                                            'group_employee_private_info_manage'
                                            ) else False
-
-    @api.multi
-    def _compute_qualification_names(self):
-        for employee in self:
-            qualification_ids = employee.sudo().qualification_ids
-            employee.qualification_names = '\n'.join(
-                qualification_ids.mapped('display_name'))
