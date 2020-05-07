@@ -22,6 +22,11 @@ msgid "%s Year %s Month(s)"
 msgstr "%s年%sヶ月"
 
 #. module: hr_employee_nrq
+#: model:ir.ui.view,arch_db:hr_employee_nrq.view_employee_form
+msgid "Acquired Qualifications"
+msgstr "取得済資格"
+
+#. module: hr_employee_nrq
 #: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_date_of_joining
 msgid "Date of Joining"
 msgstr "入社年月日"
@@ -30,6 +35,11 @@ msgstr "入社年月日"
 #: model:ir.model,name:hr_employee_nrq.model_hr_employee
 msgid "Employee"
 msgstr "従業員"
+
+#. module: hr_employee_nrq
+#: model:ir.ui.view,arch_db:hr_employee_nrq.view_employee_form
+msgid "Qualifications"
+msgstr "資格"
 
 #. module: hr_employee_nrq
 #: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_year_enrolled
