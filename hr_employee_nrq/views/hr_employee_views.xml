@@ -46,6 +46,11 @@
                 <attribute name="groups"/>
                 <attribute name="attrs">{'invisible':[('employee_info_visible', '!=', True)]}</attribute>
             </xpath>
+            <xpath expr="//page[@name='public']/group" position="after">
+                <group string="Qualifications">
+                    <field name="qualification_names" string="Acquired Qualifications"/>
+                </group>
+            </xpath>
         </field>
     </record>
 
