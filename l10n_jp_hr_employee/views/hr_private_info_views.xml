@@ -285,6 +285,10 @@
                                     <field name="residence_card_filename"
                                            invisible="1"/>
                                 </group>
+                                <group name="retirement_info" string="Retirement Info" groups="hr.group_hr_manager">
+                                    <field name="retirement_date"/>
+                                    <field name="retirement_reason"/>
+                                </group>
                             </group>
                             <group>
                                 <field name="note"
