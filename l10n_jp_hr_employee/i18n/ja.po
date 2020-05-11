@@ -964,19 +964,19 @@ msgid "Residential Address"
 msgstr "住所"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_retirement_date
-msgid "Retirement Date"
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_resignation_date
+msgid "Resignation Date"
 msgstr "退職日"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
-msgid "Retirement Info"
+msgid "Resignation Info"
 msgstr "退職情報"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_retirement_reason
-msgid "Retirement Reason"
-msgstr "退職原因"
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_resignation_reason
+msgid "Resignation Reason"
+msgstr "退職事由"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form

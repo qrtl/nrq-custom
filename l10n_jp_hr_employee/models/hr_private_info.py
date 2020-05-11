@@ -235,11 +235,11 @@ class HrPrivateInfo(models.Model):
     residence_card_filename = fields.Char(
         'Residence Card File Name',
     )
-    retirement_date = fields.Date(
-        'Retirement Date',
+    resignation_date = fields.Date(
+        'Resignation Date',
     )
-    retirement_reason = fields.Char(
-        'Retirement Reason',
+    resignation_reason = fields.Char(
+        'Resignation Reason',
     )
     state = fields.Selection([
         ('draft', 'Draft'),
