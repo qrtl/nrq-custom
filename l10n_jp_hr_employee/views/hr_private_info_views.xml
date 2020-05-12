@@ -155,6 +155,10 @@
                                     <field name="residence_card" filename="residence_card_filename" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
                                     <field name="residence_card_filename" invisible="1"/>
                                 </group>
+                                <group name="resignation_info" string="Resignation Info" groups="hr.group_hr_manager">
+                                    <field name="resignation_date"/>
+                                    <field name="resignation_reason"/>
+                                </group>
                             </group>
                             <group>
                                 <field name="note" attrs="{'readonly':[('state','!=','draft')]}"/>

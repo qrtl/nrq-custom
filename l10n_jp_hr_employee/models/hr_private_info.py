@@ -236,6 +236,12 @@ class HrPrivateInfo(models.Model):
     residence_card_filename = fields.Char(
         'Residence Card File Name',
     )
+    resignation_date = fields.Date(
+        'Resignation Date',
+    )
+    resignation_reason = fields.Char(
+        'Resignation Reason',
+    )
     state = fields.Selection([
         ('draft', 'Draft'),
         ('submit', 'Submitted'),
