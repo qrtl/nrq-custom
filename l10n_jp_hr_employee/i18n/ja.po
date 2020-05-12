@@ -966,7 +966,7 @@ msgstr "住所"
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_resignation_date
 msgid "Resignation Date"
-msgstr "退職日"
+msgstr "退職年月日"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
