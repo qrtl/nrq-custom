@@ -357,7 +357,6 @@ class AuditlogRule(models.Model):
                 'http_request_id': http_request_model.current_http_request(),
                 'http_session_id': http_session_model.current_http_session(),
             }
-
             vals.update(additional_log_values or {})
             log = log_model.create(vals)
             diff = DictDiffer(
