@@ -40,15 +40,13 @@ class AuditlogLogLine(models.Model):
 
     @api.model
     def create(self, vals):
-        field_id = self.env['ir.model.fields'].browse(vals.get('field_id'))
-        if (vals.get('new_value_text') or vals.get('old_value_text')) and\
-                field_id and field_id.name in ['check_in', 'check_out']:
+        if vals.get('new_value_text') or vals.get('old_value_text'):
             old_value_text, new_value_text = vals.get(
                 'old_value_text'), vals.get('new_value_text')
             user_id = self.env['res.users'].browse(request.uid)
             tz = user_id.partner_id.tz
             timezone = pytz.timezone(tz or 'UTC')
-            if new_value_text:
+            try:
                 new_value_text = pytz.UTC.localize(fields.Datetime.from_string(
                     new_value_text))
                 new_value_text = new_value_text.replace(
@@ -57,7 +55,9 @@ class AuditlogLogLine(models.Model):
                     'new_value_text': new_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
-            if old_value_text:
+            except Exception:
+                pass
+            try:
                 old_value_text = pytz.UTC.localize(fields.Datetime.from_string(
                     old_value_text))
                 old_value_text = old_value_text.replace(
@@ -66,4 +66,6 @@ class AuditlogLogLine(models.Model):
                     'old_value_text': old_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
+            except Exception:
+                pass
         return super(AuditlogLogLine, self).create(vals)
