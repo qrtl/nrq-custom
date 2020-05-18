@@ -16,7 +16,7 @@
         'hr_public_holidays',
     ],
     'data': [
-        'views/hr_employee_views.xml',
+        'views/hr_timesheet_view.xml',
     ],
     'application': False,
     'installable': True,
