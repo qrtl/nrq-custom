@@ -2,8 +2,8 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import pytz
-from odoo.http import request
 from odoo import api, fields, models
+from odoo.http import request
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
@@ -41,7 +41,8 @@ class AuditlogLogLine(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('new_value_text') or vals.get('old_value_text'):
-            old_value_text, new_value_text = vals.get('old_value_text'), vals.get('new_value_text')
+            old_value_text, new_value_text = vals.get(
+                'old_value_text'), vals.get('new_value_text')
             user_id = self.env['res.users'].browse(request.uid)
             tz = user_id.partner_id.tz
             timezone = pytz.timezone(tz or 'UTC')
@@ -54,7 +55,7 @@ class AuditlogLogLine(models.Model):
                     'new_value_text': new_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
-            except:
+            except ValueError:
                 pass
             try:
                 old_value_text = pytz.UTC.localize(fields.Datetime.from_string(
@@ -65,14 +66,15 @@ class AuditlogLogLine(models.Model):
                     'old_value_text': old_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
-            except:
+            except ValueError:
                 pass
         return super(AuditlogLogLine, self).create(vals)
 
     @api.multi
     def write(self, vals):
         if vals.get('new_value_text') or vals.get('old_value_text'):
-            old_value_text, new_value_text = vals.get('old_value_text'), vals.get('new_value_text')
+            old_value_text, new_value_text = vals.get(
+                'old_value_text'), vals.get('new_value_text')
             user_id = self.env['res.users'].browse(request.uid)
             tz = user_id.partner_id.tz
             timezone = pytz.timezone(tz or 'UTC')
@@ -85,7 +87,7 @@ class AuditlogLogLine(models.Model):
                     'new_value_text': new_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
-            except:
+            except ValueError:
                 pass
             try:
                 old_value_text = pytz.UTC.localize(fields.Datetime.from_string(
@@ -96,6 +98,6 @@ class AuditlogLogLine(models.Model):
                     'old_value_text': old_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
-            except:
+            except ValueError:
                 pass
         return super(AuditlogLogLine, self).write(vals)
