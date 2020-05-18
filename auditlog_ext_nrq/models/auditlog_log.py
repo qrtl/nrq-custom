@@ -40,7 +40,9 @@ class AuditlogLogLine(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('new_value_text') or vals.get('old_value_text'):
+        log_id = self.env['auditlog.log'].browse(vals.get('log_id'))
+        if (vals.get('new_value_text') or vals.get('old_value_text')) and\
+                log_id and log_id.model_id.name == 'hr.attendance':
             old_value_text, new_value_text = vals.get(
                 'old_value_text'), vals.get('new_value_text')
             user_id = self.env['res.users'].browse(request.uid)
@@ -55,7 +57,7 @@ class AuditlogLogLine(models.Model):
                     'new_value_text': new_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
-            except ValueError:
+            except Exception:
                 pass
             try:
                 old_value_text = pytz.UTC.localize(fields.Datetime.from_string(
@@ -66,38 +68,6 @@ class AuditlogLogLine(models.Model):
                     'old_value_text': old_value_text.strftime(
                         DEFAULT_SERVER_DATETIME_FORMAT)
                 })
-            except ValueError:
+            except Exception:
                 pass
         return super(AuditlogLogLine, self).create(vals)
-
-    @api.multi
-    def write(self, vals):
-        if vals.get('new_value_text') or vals.get('old_value_text'):
-            old_value_text, new_value_text = vals.get(
-                'old_value_text'), vals.get('new_value_text')
-            user_id = self.env['res.users'].browse(request.uid)
-            tz = user_id.partner_id.tz
-            timezone = pytz.timezone(tz or 'UTC')
-            try:
-                new_value_text = pytz.UTC.localize(fields.Datetime.from_string(
-                    new_value_text))
-                new_value_text = new_value_text.replace(
-                    tzinfo=pytz.timezone('UTC')).astimezone(timezone)
-                vals.update({
-                    'new_value_text': new_value_text.strftime(
-                        DEFAULT_SERVER_DATETIME_FORMAT)
-                })
-            except ValueError:
-                pass
-            try:
-                old_value_text = pytz.UTC.localize(fields.Datetime.from_string(
-                    old_value_text))
-                old_value_text = old_value_text.replace(
-                    tzinfo=pytz.timezone('UTC')).astimezone(timezone)
-                vals.update({
-                    'old_value_text': old_value_text.strftime(
-                        DEFAULT_SERVER_DATETIME_FORMAT)
-                })
-            except ValueError:
-                pass
-        return super(AuditlogLogLine, self).write(vals)
