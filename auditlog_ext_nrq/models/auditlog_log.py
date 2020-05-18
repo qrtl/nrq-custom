@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
+import pytz
+from odoo.http import request
 from odoo import api, fields, models
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class AuditlogLog(models.Model):
@@ -31,3 +33,69 @@ class AuditlogLog(models.Model):
                 log.log_category = 'create'
             elif log.method == 'unlink':
                 log.log_category = 'unlink'
+
+
+class AuditlogLogLine(models.Model):
+    _inherit = 'auditlog.log.line'
+
+    @api.model
+    def create(self, vals):
+        if vals.get('new_value_text') or vals.get('old_value_text'):
+            old_value_text, new_value_text = vals.get('old_value_text'), vals.get('new_value_text')
+            user_id = self.env['res.users'].browse(request.uid)
+            tz = user_id.partner_id.tz
+            timezone = pytz.timezone(tz or 'UTC')
+            try:
+                new_value_text = pytz.UTC.localize(fields.Datetime.from_string(
+                    new_value_text))
+                new_value_text = new_value_text.replace(
+                    tzinfo=pytz.timezone('UTC')).astimezone(timezone)
+                vals.update({
+                    'new_value_text': new_value_text.strftime(
+                        DEFAULT_SERVER_DATETIME_FORMAT)
+                })
+            except:
+                pass
+            try:
+                old_value_text = pytz.UTC.localize(fields.Datetime.from_string(
+                    old_value_text))
+                old_value_text = old_value_text.replace(
+                    tzinfo=pytz.timezone('UTC')).astimezone(timezone)
+                vals.update({
+                    'old_value_text': old_value_text.strftime(
+                        DEFAULT_SERVER_DATETIME_FORMAT)
+                })
+            except:
+                pass
+        return super(AuditlogLogLine, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        if vals.get('new_value_text') or vals.get('old_value_text'):
+            old_value_text, new_value_text = vals.get('old_value_text'), vals.get('new_value_text')
+            user_id = self.env['res.users'].browse(request.uid)
+            tz = user_id.partner_id.tz
+            timezone = pytz.timezone(tz or 'UTC')
+            try:
+                new_value_text = pytz.UTC.localize(fields.Datetime.from_string(
+                    new_value_text))
+                new_value_text = new_value_text.replace(
+                    tzinfo=pytz.timezone('UTC')).astimezone(timezone)
+                vals.update({
+                    'new_value_text': new_value_text.strftime(
+                        DEFAULT_SERVER_DATETIME_FORMAT)
+                })
+            except:
+                pass
+            try:
+                old_value_text = pytz.UTC.localize(fields.Datetime.from_string(
+                    old_value_text))
+                old_value_text = old_value_text.replace(
+                    tzinfo=pytz.timezone('UTC')).astimezone(timezone)
+                vals.update({
+                    'old_value_text': old_value_text.strftime(
+                        DEFAULT_SERVER_DATETIME_FORMAT)
+                })
+            except:
+                pass
+        return super(AuditlogLogLine, self).write(vals)
