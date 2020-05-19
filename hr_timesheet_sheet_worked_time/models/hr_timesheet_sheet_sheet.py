@@ -34,8 +34,8 @@ class HrTimesheetSheet(models.Model):
             for line in public_holidays.mapped('line_ids'):
                 public_holiday = \
                     sheet.employee_id.calendar_id.attendance_ids.filtered(
-                        lambda x: x.date_from == line.date or
-                        x.date_to == line.date)
+                        lambda attendance: attendance.date_from == line.date or
+                                           attendance.date_to == line.date)
                 if public_holiday:
                     for attendance in public_holiday:
                         holiday_hours += \
