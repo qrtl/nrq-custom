@@ -4,6 +4,10 @@
 {
     'name': "Audit Log Extension NRQ",
     'version': "10.0.1.0.1",
+    "description": """
+       Allows to user can check the audit log entry based
+        on user timezone only for datetime field.
+    """,
     'license': 'AGPL-3',
     'author': 'Quartile Limited',
     'website': 'http://www.quartile.co/',
