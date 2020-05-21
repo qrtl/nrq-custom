@@ -12,7 +12,7 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
-        <record model="ir.rule" id="ir_values_default_rule_admin">
+        <record model="ir.rule" id="ir_values_system_rule">
             <field name="name">Defaults: alter all values</field>
             <field name="model_id" ref="base.model_ir_values"/>
             <field name="domain_force">[(1,'=',1)]</field>
