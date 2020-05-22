@@ -4,6 +4,7 @@
 
 from datetime import datetime
 from odoo import models, fields, api
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class HrTimesheetSheet(models.Model):
@@ -20,28 +21,40 @@ class HrTimesheetSheet(models.Model):
     overtime_hours = fields.Float(
         compute='_compute_overtime_hours',
         string="Overtime Hours",
-        store=False
+    )
+    holiday_hours = fields.Float(
+        compute='_compute_holiday_hours',
+        string="Holiday Hours",
     )
 
-    @api.depends('standard_work_hours')
-    def _compute_expected_work_hours(self):
+    @api.depends(
+        'employee_id.calendar_id',
+        'employee_id.calendar_id.attendance_ids',
+        'employee_id.calendar_id.attendance_ids.dayofweek'
+    )
+    def _compute_holiday_hours(self):
         for sheet in self:
-            public_holidays = self.env['hr.holidays.public'].search(
-                [('year', '=', datetime.now().year),
-                 ('country_id', '=', self.user_id.partner_id.country_id.id)]
+            public_holidays = self.env['hr.holidays.public.line'].search(
+                [
+                    ('date', '>=', sheet.date_from),
+                    ('date', '<=', sheet.date_to),
+                    ('year_id.year', '=', datetime.now().year),
+                    ('year_id.country_id', '=', self.user_id.partner_id.country_id.id)
+                ]
             )
             holiday_hours = 0.0
-            for line in public_holidays.mapped('line_ids'):
-                public_holiday = \
-                    sheet.employee_id.calendar_id.attendance_ids.filtered(
-                        lambda attendance: attendance.date_from == line.date or
-                                           attendance.date_to == line.date)
-                if public_holiday:
-                    for attendance in public_holiday:
-                        holiday_hours += \
-                            attendance.hour_from - attendance.hour_to
-            sheet.expected_work_hours = \
-                self.standard_work_hours - abs(holiday_hours)
+            for line in public_holidays:
+                public_holiday = datetime.strptime(str(line.date), DEFAULT_SERVER_DATE_FORMAT)
+                attendance_ids = sheet.employee_id.calendar_id.attendance_ids.filtered(
+                    lambda attendance: int(attendance.dayofweek) == public_holiday.weekday())
+                for attendance in attendance_ids:
+                    holiday_hours += \
+                        attendance.hour_from - attendance.hour_to
+            sheet.holiday_hours = abs(holiday_hours)
+
+    @api.depends('standard_work_hours', 'holiday_hours')
+    def _compute_expected_work_hours(self):
+        self.expected_work_hours = self.standard_work_hours - self.holiday_hours
 
     @api.depends('expected_work_hours', 'total_timesheet')
     def _compute_overtime_hours(self):
@@ -49,17 +62,19 @@ class HrTimesheetSheet(models.Model):
 
     @api.depends(
         'employee_id.calendar_id',
-        'employee_id.calendar_id.attendance_ids'
+        'employee_id.calendar_id.attendance_ids',
+        'employee_id.calendar_id.attendance_ids.dayofweek'
     )
     def _compute_standard_work_hours(self):
         for sheet in self:
-            if sheet.employee_id and sheet.employee_id.calendar_id:
-                total_time = 0.0
-                attendance_ids = \
-                    sheet.employee_id.calendar_id.attendance_ids.filtered(
-                        lambda x: (
-                            (x.date_from <= self.date_to and
-                             x.date_to >= self.date_from)))
-                for attendance in attendance_ids:
-                    total_time += attendance.hour_from - attendance.hour_to
-                sheet.standard_work_hours = abs(total_time)
+            start_date = datetime.strptime(str(
+                self.date_from), DEFAULT_SERVER_DATE_FORMAT)
+            end_date = datetime.strptime(str(
+                self.date_to), DEFAULT_SERVER_DATE_FORMAT)
+            attendance_ids = sheet.employee_id.calendar_id.attendance_ids.filtered(
+                lambda attendance: int(
+                    attendance.dayofweek) in range(start_date.weekday(), end_date.weekday()))
+            total_time = 0.0
+            for attendance in attendance_ids:
+                total_time += attendance.hour_from - attendance.hour_to
+            sheet.standard_work_hours = abs(total_time)

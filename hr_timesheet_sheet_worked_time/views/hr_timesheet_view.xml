@@ -10,6 +10,7 @@
                    position="before">
                 <field name="standard_work_hours" invisible="1"/>
                 <field name="expected_work_hours"/>
+                <field name="holiday_hours" invisible="1"/>
                 <field name="overtime_hours"/>
             </xpath>
         </field>
