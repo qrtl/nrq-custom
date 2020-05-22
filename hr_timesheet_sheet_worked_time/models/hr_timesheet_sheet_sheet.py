@@ -39,14 +39,17 @@ class HrTimesheetSheet(models.Model):
                     ('date', '>=', sheet.date_from),
                     ('date', '<=', sheet.date_to),
                     ('year_id.year', '=', datetime.now().year),
-                    ('year_id.country_id', '=', self.user_id.partner_id.country_id.id)
+                    ('year_id.country_id', '=',
+                     self.user_id.partner_id.country_id.id)
                 ]
             )
             holiday_hours = 0.0
             for line in public_holidays:
-                public_holiday = datetime.strptime(str(line.date), DEFAULT_SERVER_DATE_FORMAT)
+                public_holiday = datetime.strptime(str(line.date),
+                                                   DEFAULT_SERVER_DATE_FORMAT)
                 attendance_ids = sheet.employee_id.calendar_id.attendance_ids.filtered(
-                    lambda attendance: int(attendance.dayofweek) == public_holiday.weekday())
+                    lambda attendance: int(
+                        attendance.dayofweek) == public_holiday.weekday())
                 for attendance in attendance_ids:
                     holiday_hours += \
                         attendance.hour_from - attendance.hour_to
@@ -73,7 +76,8 @@ class HrTimesheetSheet(models.Model):
                 self.date_to), DEFAULT_SERVER_DATE_FORMAT)
             attendance_ids = sheet.employee_id.calendar_id.attendance_ids.filtered(
                 lambda attendance: int(
-                    attendance.dayofweek) in range(start_date.weekday(), end_date.weekday()))
+                    attendance.dayofweek) in range(start_date.weekday(),
+                                                   end_date.weekday()))
             total_time = 0.0
             for attendance in attendance_ids:
                 total_time += attendance.hour_from - attendance.hour_to
