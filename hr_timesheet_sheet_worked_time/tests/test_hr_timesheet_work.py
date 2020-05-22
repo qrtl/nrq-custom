@@ -37,7 +37,6 @@ class TestHrTimesheetSheet(common.TransactionCase):
                          "The Standard Hours did not match the with value")
 
         # Create holidays
-        print("time.strftime('%Y')", time.strftime('%Y'))
         holiday2 = self.holiday_model.create({
             'year': time.strftime('%Y'),
             'country_id': self.test_employee.user_id.partner_id.country_id.id
