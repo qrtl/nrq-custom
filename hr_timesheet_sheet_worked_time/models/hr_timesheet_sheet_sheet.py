@@ -2,7 +2,7 @@
 # Copyright 2020 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
+from datetime import datetime,timedelta
 from odoo import models, fields, api
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
@@ -34,19 +34,21 @@ class HrTimesheetSheet(models.Model):
     )
     def _compute_holiday_hours(self):
         for sheet in self:
-            public_holidays = self.env['hr.holidays.public.line'].search(
+            today_date = fields.Datetime.to_string(datetime.now().date())
+            date_to = sheet.date_to
+            if sheet.date_to > today_date:
+                date_to = today_date
+            public_holiday_line_ids = self.env[
+                'hr.holidays.public.line'].search(
                 [
-                    ('date', '>=', sheet.date_from),
-                    ('date', '<=', sheet.date_to),
+                    ('date', '>', self.date_from),
+                    ('date', '<', date_to),
                     ('year_id.year', '=', datetime.now().year),
-                    ('year_id.country_id', '=',
-                     self.user_id.partner_id.country_id.id)
-                ]
-            )
+                ])
             holiday_hours = 0.0
-            for line in public_holidays:
-                public_holiday = datetime.strptime(str(line.date),
-                                                   DEFAULT_SERVER_DATE_FORMAT)
+            for line in public_holiday_line_ids:
+                public_holiday = datetime.strptime(
+                    str(line.date), DEFAULT_SERVER_DATE_FORMAT)
                 attendance_ids = sheet.employee_id.calendar_id.attendance_ids.filtered(
                     lambda attendance: int(
                         attendance.dayofweek) == public_holiday.weekday())
@@ -70,15 +72,23 @@ class HrTimesheetSheet(models.Model):
     )
     def _compute_standard_work_hours(self):
         for sheet in self:
-            start_date = datetime.strptime(str(
-                self.date_from), DEFAULT_SERVER_DATE_FORMAT)
-            end_date = datetime.strptime(str(
-                self.date_to), DEFAULT_SERVER_DATE_FORMAT)
-            attendance_ids = sheet.employee_id.calendar_id.attendance_ids.filtered(
-                lambda attendance: int(
-                    attendance.dayofweek) in range(start_date.weekday(),
-                                                   end_date.weekday()))
-            total_time = 0.0
-            for attendance in attendance_ids:
-                total_time += attendance.hour_from - attendance.hour_to
-            sheet.standard_work_hours = abs(total_time)
+            today_date = fields.Datetime.to_string(datetime.now().date())
+            if sheet.date_from < today_date < sheet.date_to or sheet.date_to < today_date:
+                start_date = datetime.strptime(str(
+                    self.date_from), DEFAULT_SERVER_DATE_FORMAT).date()
+                end_date = datetime.strptime(str(
+                    self.date_to), DEFAULT_SERVER_DATE_FORMAT).date()
+                day_count = (datetime.now().date() - start_date).days
+                if sheet.date_to < today_date:
+                    day_count = (end_date - start_date).days
+                total_time = 0.0
+                for single_date in (
+                        start_date + timedelta(n)
+                        for n in range(day_count + 1)):
+                    attendance_ids = \
+                        sheet.employee_id.calendar_id.attendance_ids.filtered(
+                            lambda attendance: int(
+                            attendance.dayofweek) == single_date.weekday())
+                    for attendance in attendance_ids:
+                        total_time += attendance.hour_from - attendance.hour_to
+                sheet.standard_work_hours = abs(total_time)

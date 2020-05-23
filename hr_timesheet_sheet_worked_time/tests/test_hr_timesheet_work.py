@@ -76,4 +76,4 @@ class TestHrTimesheetSheet(common.TransactionCase):
             self.test_timesheet_sheet.overtime_hours,
             self.test_timesheet_sheet.total_timesheet -
             self.test_timesheet_sheet.expected_work_hours,
-            "The Overtime Hours did not match the wtih value")
+            "The Overtime Hours did not match the with value")
