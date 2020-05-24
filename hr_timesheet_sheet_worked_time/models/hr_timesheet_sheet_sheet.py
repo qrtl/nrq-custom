@@ -2,7 +2,7 @@
 # Copyright 2020 Quartile Limited
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 from odoo import models, fields, api
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 
@@ -73,7 +73,8 @@ class HrTimesheetSheet(models.Model):
     def _compute_standard_work_hours(self):
         for sheet in self:
             today_date = fields.Datetime.to_string(datetime.now().date())
-            if sheet.date_from < today_date < sheet.date_to or sheet.date_to < today_date:
+            if sheet.date_from < today_date < sheet.date_to\
+                    or sheet.date_to < today_date:
                 date_from = datetime.strptime(str(
                     self.date_from), DEFAULT_SERVER_DATE_FORMAT).date()
                 date_to = datetime.strptime(str(
@@ -88,7 +89,7 @@ class HrTimesheetSheet(models.Model):
                     attendance_ids = \
                         sheet.employee_id.calendar_id.attendance_ids.filtered(
                             lambda attendance: int(
-                            attendance.dayofweek) == single_date.weekday())
+                                attendance.dayofweek) == single_date.weekday())
                     for attendance in attendance_ids:
                         total_time += attendance.hour_from - attendance.hour_to
                 sheet.standard_work_hours = abs(total_time)
