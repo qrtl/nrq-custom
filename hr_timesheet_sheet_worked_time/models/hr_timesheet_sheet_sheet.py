@@ -74,16 +74,16 @@ class HrTimesheetSheet(models.Model):
         for sheet in self:
             today_date = fields.Datetime.to_string(datetime.now().date())
             if sheet.date_from < today_date < sheet.date_to or sheet.date_to < today_date:
-                start_date = datetime.strptime(str(
+                date_from = datetime.strptime(str(
                     self.date_from), DEFAULT_SERVER_DATE_FORMAT).date()
-                end_date = datetime.strptime(str(
+                date_to = datetime.strptime(str(
                     self.date_to), DEFAULT_SERVER_DATE_FORMAT).date()
-                day_count = (datetime.now().date() - start_date).days
+                day_count = (datetime.now().date() - date_from).days
                 if sheet.date_to < today_date:
-                    day_count = (end_date - start_date).days
+                    day_count = (date_to - date_from).days
                 total_time = 0.0
                 for single_date in (
-                        start_date + timedelta(n)
+                        date_from + timedelta(n)
                         for n in range(day_count + 1)):
                     attendance_ids = \
                         sheet.employee_id.calendar_id.attendance_ids.filtered(
