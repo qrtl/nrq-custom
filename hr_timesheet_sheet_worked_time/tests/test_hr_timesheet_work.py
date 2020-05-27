@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import time
 from odoo.tests import common

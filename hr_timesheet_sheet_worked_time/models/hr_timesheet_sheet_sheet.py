@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from datetime import datetime, timedelta
 from odoo import models, fields, api
@@ -41,7 +41,7 @@ class HrTimesheetSheet(models.Model):
             public_holiday_line_ids = self.env[
                 'hr.holidays.public.line'].search(
                 [
-                    ('date', '>', self.date_from),
+                    ('date', '>', sheet.date_from),
                     ('date', '<', date_to),
                     ('year_id.year', '=', datetime.now().year),
                 ])
@@ -76,9 +76,9 @@ class HrTimesheetSheet(models.Model):
             if sheet.date_from < today_date < sheet.date_to\
                     or sheet.date_to < today_date:
                 date_from = datetime.strptime(str(
-                    self.date_from), DEFAULT_SERVER_DATE_FORMAT).date()
+                    sheet.date_from), DEFAULT_SERVER_DATE_FORMAT).date()
                 date_to = datetime.strptime(str(
-                    self.date_to), DEFAULT_SERVER_DATE_FORMAT).date()
+                    sheet.date_to), DEFAULT_SERVER_DATE_FORMAT).date()
                 day_count = (datetime.now().date() - date_from).days
                 if sheet.date_to < today_date:
                     day_count = (date_to - date_from).days
