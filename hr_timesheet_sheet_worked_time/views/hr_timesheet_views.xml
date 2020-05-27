@@ -35,7 +35,7 @@
         <field name="arch" type="xml">
             <filter name="to_approve" position="after">
                 <field name="overtime_hours"/>
-                <filter name="overtime_hours" string="Overtime Hours" domain="[('overtime_hours','&gt;',0)]"/>
+                <filter name="overtime_hours" string="Overtime Hours" domain="[('overtime_hours','&gt;=',0)]"/>
             </filter>
         </field>
     </record>

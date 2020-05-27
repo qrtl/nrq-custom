@@ -13,20 +13,25 @@ class HrTimesheetSheet(models.Model):
     standard_work_hours = fields.Float(
         compute='_compute_standard_work_hours',
         string="Standard Work Hours",
+        store=True
     )
     expected_work_hours = fields.Float(
         compute='_compute_expected_work_hours',
         string="Expected Work Hours",
+        store=True
     )
     overtime_hours = fields.Float(
         compute='_compute_overtime_hours',
         string="Overtime Hours",
+        store=True
     )
     holiday_hours = fields.Float(
         compute='_compute_holiday_hours',
         string="Holiday Hours",
+        store=True
     )
 
+    @api.multi
     @api.depends(
         'employee_id.calendar_id',
         'employee_id.calendar_id.attendance_ids',
@@ -41,8 +46,8 @@ class HrTimesheetSheet(models.Model):
             public_holiday_line_ids = self.env[
                 'hr.holidays.public.line'].search(
                 [
-                    ('date', '>', sheet.date_from),
-                    ('date', '<', date_to),
+                    ('date', '>=', sheet.date_from),
+                    ('date', '<=', date_to),
                     ('year_id.year', '=', datetime.now().year),
                 ])
             holiday_hours = 0.0
@@ -54,19 +59,22 @@ class HrTimesheetSheet(models.Model):
                         attendance.dayofweek) == public_holiday.weekday())
                 for attendance in attendance_ids:
                     holiday_hours += \
-                        attendance.hour_from - attendance.hour_to
-            sheet.holiday_hours = abs(holiday_hours)
+                        attendance.hour_to - attendance.hour_from
+            sheet.holiday_hours = holiday_hours
 
+    @api.multi
     @api.depends('standard_work_hours', 'holiday_hours')
     def _compute_expected_work_hours(self):
         for sheet in self:
             sheet.expected_work_hours = sheet.standard_work_hours - sheet.holiday_hours
 
+    @api.multi
     @api.depends('expected_work_hours', 'total_timesheet')
     def _compute_overtime_hours(self):
         for sheet in self:
             sheet.overtime_hours = sheet.total_timesheet - sheet.expected_work_hours
 
+    @api.multi
     @api.depends(
         'employee_id.calendar_id',
         'employee_id.calendar_id.attendance_ids',
@@ -91,5 +99,5 @@ class HrTimesheetSheet(models.Model):
                         lambda attendance: int(
                             attendance.dayofweek) == single_date.weekday())
                 for attendance in attendance_ids:
-                    total_time += attendance.hour_from - attendance.hour_to
-            sheet.standard_work_hours = abs(total_time)
+                    total_time += attendance.hour_to - attendance.hour_from
+            sheet.standard_work_hours = total_time
