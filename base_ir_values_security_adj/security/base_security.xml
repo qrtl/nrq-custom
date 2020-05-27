@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-
 <odoo>
     <delete model="ir.rule" id="base.ir_values_default_rule"/>
 
