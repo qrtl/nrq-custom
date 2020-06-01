@@ -285,6 +285,10 @@
                                     <field name="residence_card_filename"
                                            invisible="1"/>
                                 </group>
+                                <group name="resignation_info" string="Resignation Info" groups="hr.group_hr_manager">
+                                    <field name="resignation_date"/>
+                                    <field name="resignation_reason"/>
+                                </group>
                             </group>
                             <group>
                                 <field name="note"

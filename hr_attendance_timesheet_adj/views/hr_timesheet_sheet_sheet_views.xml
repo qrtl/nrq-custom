@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="hr_timesheet_sheet_form" model="ir.ui.view">
+    <record id="hr_timesheet_sheet_inherit_form" model="ir.ui.view">
         <field name="name">hr.timesheet.sheet.form</field>
         <field name="model">hr_timesheet_sheet.sheet</field>
         <field name="inherit_id"
@@ -16,13 +16,27 @@
                 <button type="object" name="action_attendance_list"
                         class="oe_stat_button" icon="fa-users">
                     <div class="o_form_field o_stat_info">
-                        <span class="o_stat_value">
-                            <field name="total_attendances_worked_hours"
-                                   widget="float_time"/>
-                        </span>
                         <span class="o_stat_text">Attendances</span>
                     </div>
                 </button>
+            </xpath>
+            <xpath expr="//page[3]" position="replace">
+            </xpath>
+            <xpath expr="//page[1]" position="inside">
+                <group>
+                    <group groups="hr.group_hr_attendance">
+                        <field name="total_attendance" widget="float_time"/>
+                        <field name="total_difference" widget="float_time"/>
+                    </group>
+                </group>
+                <field name="period_ids">
+                    <tree decoration-danger="total_difference&lt;0.1" decoration-info="total_difference&gt;=0.1" string="Period">
+                        <field name="name"/>
+                        <field name="total_attendance" widget="float_time" sum="Attendances"/>
+                        <field name="total_timesheet" widget="float_time" sum="Timesheets"/>
+                        <field name="total_difference" widget="float_time" sum="Differences"/>
+                    </tree>
+                </field>
             </xpath>
         </field>
     </record>

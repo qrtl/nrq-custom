@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2019 Quartile Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from datetime import datetime
 
@@ -23,6 +23,10 @@ class HrEmployee(models.Model):
         compute='_compute_employee_info_visible',
         string='Employee Information Visibility',
     )
+    qualification_names = fields.Text(
+        compute='_compute_qualification_names',
+        string="Qualification Names",
+    )
 
     @api.multi
     def _get_year_enrolled(self):
@@ -44,3 +48,12 @@ class HrEmployee(models.Model):
                 if employee.user_id == self.env.user or \
                 self.env.user.has_group('hr.group_hr_user')\
                 else False
+
+    @api.multi
+    def _compute_qualification_names(self):
+        for employee in self:
+            qualification_ids = self.env['hr.qualification'].sudo().search([
+                ('employee_id', '=', employee.id)
+            ])
+            employee.qualification_names = '\n'.join(
+                qualification_ids.mapped('display_name'))
