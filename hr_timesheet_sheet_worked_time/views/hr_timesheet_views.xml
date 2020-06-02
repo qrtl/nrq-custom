@@ -27,16 +27,4 @@
             </xpath>
         </field>
     </record>
-
-    <record id="view_hr_timesheet_sheet_filter" model="ir.ui.view">
-        <field name="name">hr.timesheet.sheet.tree</field>
-        <field name="model">hr_timesheet_sheet.sheet</field>
-        <field name="inherit_id" ref="hr_timesheet_sheet.view_hr_timesheet_sheet_filter"/>
-        <field name="arch" type="xml">
-            <filter name="to_approve" position="after">
-                <field name="overtime_hours"/>
-                <filter name="overtime_hours" string="Overtime Hours" domain="[('overtime_hours','&gt;=',0)]"/>
-            </filter>
-        </field>
-    </record>
 </odoo>

@@ -13,22 +13,18 @@ class HrTimesheetSheet(models.Model):
     standard_work_hours = fields.Float(
         compute='_compute_standard_work_hours',
         string="Standard Work Hours",
-        store=True
     )
     expected_work_hours = fields.Float(
         compute='_compute_expected_work_hours',
         string="Expected Work Hours",
-        store=True
     )
     overtime_hours = fields.Float(
         compute='_compute_overtime_hours',
         string="Overtime Hours",
-        store=True
     )
     holiday_hours = fields.Float(
         compute='_compute_holiday_hours',
         string="Holiday Hours",
-        store=True
     )
 
     @api.multi
