@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Trobz
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+<record id="public_holidays_next_year_wizard_view" model="ir.ui.view">
+    <field name="name">Create Next Year Public Holidays</field>
+    <field name="model">public.holidays.next.year.wizard</field>
+    <field name="arch" type="xml">
+        <form string="Create Next Year Public Holidays">
+            <sheet>
+                <div>
+                        Use this wizard to create public holidays based on the 
+                        existing ones.<br/>
+                        Only the last templates of each country 
+                        will be taken into account (If you select templates 
+                        from 2012 and 2015 of the same country; '
+                        only the templates from 2015 will be taken into 
+                        account).
+                </div>
+                
+                <notebook>
+                    <page name="defaults" string="Defaults">
+                        <div>     
+                        By default, the most recent public holidays 
+                        for each country are used as template to create  
+                        public holidays for the year following the templates.
+                        <br/><br/>
+                        Should you want to modify the public holidays to be
+                        created, e.g for public holidays having variable date,
+                        please use the optional pane.
+                        </div>
+                    </page>
+                    <page name="manual" string="Manual">
+                        <div>
+                        The fields below are here to manually handle the creation
+                        of public holidays.
+                        Select first the template to be used to create next year's
+                        public holidays.
+                        You can define the target year in which you want to create
+                        the holidays, but default value is the year following the
+                        template's year.
+                        The public holidays to be created are then displayed to
+                        allow you modification of the date in case of public
+                        holidays having a variable date (highlighted in red).
+                        </div>
+                        <group>
+                            <field name="template_ids" />
+                            <field name="year" />
+                            <field name="public_holidays_next_year_day_ids">
+                                <tree decoration-danger="variable" decoration-info="not variable" editable="1" create="false" >
+                                    <field name="template_id" />
+                                    <field name="name" />
+                                    <field name="variable" />
+                                    <field name="last_date" />
+                                    <field name="next_date" />
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+                
+            </sheet>
+            <footer>
+                <button name="create_public_holidays" string="Create" type="object" class="btn-primary"/>
+                <button string="Cancel" class="btn-default" special="cancel" />
+            </footer>
+        </form>
+    </field>
+</record>
+
+<record id="action_create_next_year_public_holidays" model="ir.actions.act_window">
+    <field name="name">Create Next Year Public Holidays</field>
+    <field name="res_model">public.holidays.next.year.wizard</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+<menuitem action="action_create_next_year_public_holidays"
+          id="menu_create_next_year_public_holidays"
+          parent="menu_hr_public_holidays"
+          groups="hr_holidays.group_hr_holidays_manager"
+          sequence="30"/>
+
+
+</odoo>
