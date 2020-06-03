@@ -19,8 +19,9 @@ class AuditlogLogLine(models.Model):
                 new_value_text = pytz.UTC.localize(
                     fields.Datetime.from_string(new_value_text))
                 new_value_text =\
-                    fields.Datetime.to_string(new_value_text.replace(
-                    tzinfo=pytz.timezone('UTC')).astimezone(timezone))
+                    fields.Datetime.to_string(
+                        new_value_text.replace(
+                            tzinfo=pytz.timezone('UTC')).astimezone(timezone))
                 vals.update({
                     'new_value_text': new_value_text
                 })
@@ -30,8 +31,9 @@ class AuditlogLogLine(models.Model):
                 old_value_text = pytz.UTC.localize(
                     fields.Datetime.from_string(old_value_text))
                 old_value_text =\
-                    fields.Datetime.to_string(old_value_text.replace(
-                    tzinfo=pytz.timezone('UTC')).astimezone(timezone))
+                    fields.Datetime.to_string(
+                        old_value_text.replace(
+                            tzinfo=pytz.timezone('UTC')).astimezone(timezone))
                 vals.update({
                     'old_value_text': old_value_text
                 })
