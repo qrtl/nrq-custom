@@ -1,0 +1,43 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_timesheet_sheet_work_hours_summary
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-03 09:03+0000\n"
+"PO-Revision-Date: 2020-06-03 09:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_timesheet_sheet_work_hours_summary
+#: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_expected_work_hours
+msgid "Expected Working Hours"
+msgstr "想定労働時間"
+
+#. module: hr_timesheet_sheet_work_hours_summary
+#: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_holiday_hours
+msgid "Holiday Hours"
+msgstr "休日/祝日時間"
+
+#. module: hr_timesheet_sheet_work_hours_summary
+#: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_overtime_hours
+#: model:ir.ui.view,arch_db:hr_timesheet_sheet_work_hours_summary.view_hr_timesheet_sheet_filter
+msgid "Overtime Working Hours"
+msgstr "残業時間"
+
+#. module: hr_timesheet_sheet_work_hours_summary
+#: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_standard_work_hours
+msgid "Standard Working Hours"
+msgstr "標準労働時間"
+
+#. module: hr_timesheet_sheet_work_hours_summary
+#: model:ir.model,name:hr_timesheet_sheet_work_hours_summary.model_hr_timesheet_sheet_sheet
+msgid "Timesheet"
+msgstr "タイムシート"
+
