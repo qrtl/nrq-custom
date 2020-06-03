@@ -17,7 +17,7 @@ Audit Log Extension NRQ
     :target: https://github.com/qrtl/nrq-custom/tree/10.0/auditlog_ext_nrq
     :alt: qrtl/nrq-custom
 
-|badge1| |badge2| |badge3| 
+|badge1| |badge2| |badge3|
 
 This modules does the following:
   * Allows to user can check the audit log entry based on user timezone only for datetime field.
