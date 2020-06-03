@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import time
 from odoo.tests import common
@@ -71,9 +71,9 @@ class TestHrTimesheetSheet(common.TransactionCase):
                 'product_id': self.browse_ref('product.product_product_1').id,
             })]})
 
-        # Check Overtime Hours
+        # Check Overtime Working Hours
         self.assertEqual(
             self.test_timesheet_sheet.overtime_hours,
             self.test_timesheet_sheet.total_timesheet -
             self.test_timesheet_sheet.expected_work_hours,
-            "The Overtime Hours did not match the with value")
+            "The Overtime Working Hours did not match the with value")

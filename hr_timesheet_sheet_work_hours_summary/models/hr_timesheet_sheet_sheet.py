@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import datetime, timedelta
 from odoo import models, fields, api
@@ -12,15 +12,15 @@ class HrTimesheetSheet(models.Model):
 
     standard_work_hours = fields.Float(
         compute='_compute_standard_work_hours',
-        string="Standard Work Hours",
+        string="Standard Working Hours",
     )
     expected_work_hours = fields.Float(
         compute='_compute_expected_work_hours',
-        string="Expected Work Hours",
+        string="Expected Working Hours",
     )
     overtime_hours = fields.Float(
         compute='_compute_overtime_hours',
-        string="Overtime Hours",
+        string="Overtime Working Hours",
     )
     holiday_hours = fields.Float(
         compute='_compute_holiday_hours',
@@ -28,11 +28,6 @@ class HrTimesheetSheet(models.Model):
     )
 
     @api.multi
-    @api.depends(
-        'employee_id.calendar_id',
-        'employee_id.calendar_id.attendance_ids',
-        'employee_id.calendar_id.attendance_ids.dayofweek'
-    )
     def _compute_holiday_hours(self):
         for sheet in self:
             today_date = fields.Datetime.to_string(datetime.now().date())
@@ -59,23 +54,16 @@ class HrTimesheetSheet(models.Model):
             sheet.holiday_hours = holiday_hours
 
     @api.multi
-    @api.depends('standard_work_hours', 'holiday_hours')
     def _compute_expected_work_hours(self):
         for sheet in self:
             sheet.expected_work_hours = sheet.standard_work_hours - sheet.holiday_hours
 
     @api.multi
-    @api.depends('expected_work_hours', 'total_timesheet')
     def _compute_overtime_hours(self):
         for sheet in self:
             sheet.overtime_hours = sheet.total_timesheet - sheet.expected_work_hours
 
     @api.multi
-    @api.depends(
-        'employee_id.calendar_id',
-        'employee_id.calendar_id.attendance_ids',
-        'employee_id.calendar_id.attendance_ids.dayofweek'
-    )
     def _compute_standard_work_hours(self):
         for sheet in self:
             today_date = fields.Datetime.to_string(datetime.now().date())

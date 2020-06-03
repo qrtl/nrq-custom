@@ -15,7 +15,6 @@
             </xpath>
         </field>
     </record>
-
     <record id="hr_timesheet_sheet_tree_simplified" model="ir.ui.view">
         <field name="name">hr.timesheet.sheet.tree</field>
         <field name="model">hr_timesheet_sheet.sheet</field>
