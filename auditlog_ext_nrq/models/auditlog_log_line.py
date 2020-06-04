@@ -13,7 +13,7 @@ class AuditlogLogLine(models.Model):
         if vals.get('new_value_text') or vals.get('old_value_text'):
             old_value_text, new_value_text = vals.get(
                 'old_value_text'), vals.get('new_value_text')
-            tz = self.env['res.users'].sudo().browse(SUPERUSER_ID).tz
+            tz = self.env['res.users'].sudo().browse(SUPERUSER_ID).tz or 'UTC'
             try:
                 new_value_text = fields.Datetime.to_string(
                     fields.Datetime.context_timestamp(
