@@ -245,8 +245,6 @@ class AuditlogRule(models.Model):
             if not isinstance(result2, list):
                 result2 = [result]
             read_values = dict((d['id'], d) for d in result2)
-            # Old API
-
             # If the call came from auditlog itself, skip logging:
             # avoid logs on `read` produced by auditlog during internal
             # processing: read data of relevant records, 'ir.model',
