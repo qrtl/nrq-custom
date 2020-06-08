@@ -6,6 +6,31 @@ from odoo.tests.common import TransactionCase
 
 class TestAuditlog(object):
 
+    def test_read_users(self):
+        auditlog_log = self.env['auditlog.log']
+        users_model_id = self.env.ref('base.model_res_users').id
+        self.env['auditlog.rule'].create({
+            'name': 'Test Rule for Users',
+            'model_id': users_model_id,
+            'log_read': True,
+            'log_create': True,
+            'log_write': True,
+            'log_unlink': True,
+            'state': 'subscribed',
+            'log_type': 'full',
+        })
+        users = self.env['res.users'].search([])
+        context = dict(self.env.context)
+        context.update({'auditlog_disabled': True})
+        self.demo_user = self.env.ref('base.user_demo')
+        self.env = self.env(context=context)
+        users.sudo(self.demo_user).read()[0]
+        self.assertTrue(auditlog_log.search([
+            ('model_id', '=', users_model_id),
+            ('method', '=', 'read'),
+            ('res_id', '=', self.demo_user.id),
+        ])[0].ensure_one())
+
     def test_LogCreation(self):
         """First test, caching some data."""
         auditlog_log = self.env['auditlog.log']

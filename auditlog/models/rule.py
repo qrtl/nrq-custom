@@ -253,7 +253,7 @@ class AuditlogRule(models.Model):
                 return result
             self = self.with_context(auditlog_disabled=True)
             rule_model = self.env['auditlog.rule']
-            rule_model.create_logs(
+            rule_model.sudo().create_logs(
                 self.env.uid, self._name, self.ids,
                 'read', read_values, None, {'log_type': log_type})
             return result
