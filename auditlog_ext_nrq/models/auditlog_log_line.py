@@ -15,7 +15,7 @@ class AuditlogLogLine(models.Model):
                     self.with_context(tz=tz),
                     fields.Datetime.from_string(value)))
             return value
-        except:
+        except Exception:
             return value
 
     @api.model
