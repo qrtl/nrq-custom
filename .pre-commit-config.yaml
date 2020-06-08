@@ -30,8 +30,7 @@ exclude: |
   project_parent/|
   web_export_view/|
   web_responsive/|
-  base_technical_features/|
-  hr_public_holidays/
+  base_technical_features/
 default_language_version:
   python: python2.7
 repos:
