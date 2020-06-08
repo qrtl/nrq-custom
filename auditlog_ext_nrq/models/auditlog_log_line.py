@@ -21,10 +21,15 @@ class AuditlogLogLine(models.Model):
     @api.model
     def create(self, vals):
         tz = self.env['res.users'].sudo().browse(SUPERUSER_ID).tz or 'UTC'
-        if vals.get('old_value_text'):
-            vals.update({'old_value_text': self.convert_time_to_users_timezone(
-                vals.get('old_value_text'), tz)})
-        if vals.get('new_value_text'):
-            vals.update({'new_value_text': self.convert_time_to_users_timezone(
-                vals.get('new_value_text'), tz)})
+        for field in ["old_value_text", "new_value_text"]:
+            val = vals.get(field)
+            if val:
+                try:
+                    converted_time = fields.Datetime.to_string(
+                        fields.Datetime.context_timestamp(
+                            self.with_context(tz=tz),
+                            fields.Datetime.from_string(val)))                    
+                    vals.update({field: converted_time})
+                except Exception:
+                    pass
         return super(AuditlogLogLine, self).create(vals)
