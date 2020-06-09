@@ -73,7 +73,8 @@
         <field name="inherit_id" ref="account_analytic_profit_loss_analysis.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='parent_project_id']" position="after">
-                <field name="gross_profit_margin"/>
+                <field name="gross_profit_margin" class="oe_read_only"/>
+                <field name="gross_profit_margin_input" class="oe_edit_only"/>
             </xpath>
         </field>
     </record>
