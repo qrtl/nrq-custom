@@ -18,7 +18,7 @@ msgstr ""
 #. module: hr_timesheet_sheet_work_hours_summary
 #: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_expected_work_hours
 msgid "Expected Working Hours"
-msgstr "想定労働時間"
+msgstr "所定労働時間"
 
 #. module: hr_timesheet_sheet_work_hours_summary
 #: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_holiday_hours
@@ -40,4 +40,9 @@ msgstr "標準労働時間"
 #: model:ir.model,name:hr_timesheet_sheet_work_hours_summary.model_hr_timesheet_sheet_sheet
 msgid "Timesheet"
 msgstr "タイムシート"
+
+#. module: hr_timesheet_sheet_work_hours_summary
+#: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_timesheet_expected_work_hours
+msgid "Timesheet Expected Working Hours"
+msgstr "月間の所定労働時間"
 
