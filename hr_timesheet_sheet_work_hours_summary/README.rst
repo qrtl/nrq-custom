@@ -17,7 +17,7 @@ Timesheet Working Hours Summary
     :target: https://github.com/qrtl/nrq-custom/tree/10.0/hr_timesheet_sheet_work_hours_summary
     :alt: qrtl/nrq-custom
 
-|badge1| |badge2| |badge3| 
+|badge1| |badge2| |badge3|
 
 This module does the following:
 
