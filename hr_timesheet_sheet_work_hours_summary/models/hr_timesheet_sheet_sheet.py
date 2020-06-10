@@ -35,27 +35,33 @@ class HrTimesheetSheet(models.Model):
     @api.multi
     def _compute_holiday_hours(self):
         for sheet in self:
-            sheet.holiday_hours = sheet.get_holiday_hours(fields.Datetime.to_string(datetime.now().date()))
+            sheet.holiday_hours = sheet.get_holiday_hours(
+                fields.Datetime.to_string(datetime.now().date()))
 
     @api.multi
     def _compute_expected_work_hours(self):
         for sheet in self:
-            sheet.expected_work_hours = sheet.standard_work_hours - sheet.holiday_hours
+            sheet.expected_work_hours = sheet.standard_work_hours - \
+                sheet.holiday_hours
 
     @api.multi
     def _compute_timesheet_expected_work_hours(self):
         for sheet in self:
-            sheet.timesheet_expected_work_hours = sheet.get_standard_work_hours(sheet.date_to) - sheet.get_holiday_hours(sheet.date_to)
+            sheet.timesheet_expected_work_hours = \
+                sheet.get_standard_work_hours(sheet.date_to) - \
+                sheet.get_holiday_hours(sheet.date_to)
 
     @api.multi
     def _compute_overtime_hours(self):
         for sheet in self:
-            sheet.overtime_hours = sheet.total_timesheet - sheet.expected_work_hours
+            sheet.overtime_hours = sheet.total_timesheet - \
+                sheet.expected_work_hours
 
     @api.multi
     def _compute_standard_work_hours(self):
         for sheet in self:
-            sheet.standard_work_hours = sheet.get_standard_work_hours(datetime.now().date())
+            sheet.standard_work_hours = sheet.get_standard_work_hours(
+                datetime.now().date())
 
     def get_holiday_hours(self, date):
         date_to = date if self.date_to > date else self.date_to
@@ -68,9 +74,10 @@ class HrTimesheetSheet(models.Model):
         for line in public_holiday_line_ids:
             public_holiday = datetime.strptime(
                 str(line.date), DEFAULT_SERVER_DATE_FORMAT)
-            attendance_ids = self.employee_id.calendar_id.attendance_ids.filtered(
-                lambda attendance: int(
-                    attendance.dayofweek) == public_holiday.weekday())
+            attendance_ids = self.employee_id.calendar_id.attendance_ids.\
+                filtered(
+                    lambda attendance: int(attendance.dayofweek) ==
+                    public_holiday.weekday())
             for attendance in attendance_ids:
                 holiday_hours += \
                     attendance.hour_to - attendance.hour_from
@@ -82,7 +89,8 @@ class HrTimesheetSheet(models.Model):
             self.date_from), DEFAULT_SERVER_DATE_FORMAT).date()
         date_to = datetime.strptime(str(
             self.date_to), DEFAULT_SERVER_DATE_FORMAT).date()
-        day_count = (date_to - date_from).days if date_to < date else (date - date_from).days
+        day_count = (date_to - date_from).days if date_to < date else (
+            date - date_from).days
         total_time = 0.0
         for single_date in (
                 date_from + timedelta(n)
