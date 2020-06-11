@@ -10,9 +10,9 @@ Timesheet Working Hours Summary
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
-    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
-    :alt: License: LGPL-3
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fnrq--custom-lightgray.png?logo=github
     :target: https://github.com/qrtl/nrq-custom/tree/10.0/hr_timesheet_sheet_work_hours_summary
     :alt: qrtl/nrq-custom
@@ -22,6 +22,7 @@ Timesheet Working Hours Summary
 This module does the following:
 
 * Employee check the expected hours within Timesheet Period.
+* Employee check the Total expected hours till Timesheet Period.
 * Employee can check their overtime hours within Timesheet Period.
 
 **Table of contents**
