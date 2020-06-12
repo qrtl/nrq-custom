@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 from odoo import fields
 from odoo.tests import common
@@ -69,42 +70,49 @@ class TestAuditlogExtNrq(common.TransactionCase):
         self.assertEqual(log.log_category, 'unlink')
 
     def test_04_create_vals(self):
-        self.cron_model_id = self.env.ref('base.model_ir_cron').id
-        self.cron_model_rule = self.env['auditlog.rule'].create({
-            'name': 'Test rule for Schedular',
-            'model_id': self.cron_model_id,
-            'log_read': False,
-            'log_create': False,
-            'log_write': True,
-            'log_unlink': False,
-            'state': 'subscribed',
-            'log_type': 'full',
-        })
-        self.test_user = self.env.user.copy()
+        """
+            Test old value text,new value text with datetime field data
+            Test old value text,new value text without datetime field data
+        """
         tz = 'Japan'
+        self.test_user = self.env.user.copy()
         self.env.user.write({'tz': tz})
-        current_time = datetime.now()
-        audit_log_record = self.env.ref('auditlog.ir_cron_auditlog_autovacuum')
-        old_value_text = audit_log_record.nextcall
-        audit_log_record.sudo(self.test_user).write({'nextcall': current_time})
-        new_value_text = audit_log_record.nextcall
-        log = self.env['auditlog.log'].search([
-            ('model_id', '=', self.cron_model_id),
-            ('method', '=', 'write'),
-            ('res_id', '=', audit_log_record.id),
-        ])
+        old_value_text = datetime.now() - relativedelta(months=1)
+        new_value_text = datetime.now()
+        field_id = self.env.ref('base.field_ir_cron_nextcall')
+        audit_log_line = self.env['auditlog.log.line']
+        audit_log_line_01 = \
+            audit_log_line.sudo(self.test_user).create({
+                'field_id': field_id.id,
+                'old_value_text': fields.Datetime.to_string(old_value_text),
+                'new_value_text': fields.Datetime.to_string(new_value_text)
+            })
         old_value_text = fields.Datetime.context_timestamp(
-            log.with_context(tz=tz),
-            fields.Datetime.from_string(old_value_text))
+            audit_log_line.with_context(tz=tz),
+            old_value_text)
         old_value_text = fields.Datetime.to_string(old_value_text)
         new_value_text = fields.Datetime.context_timestamp(
-            log.with_context(tz=tz),
-            fields.Datetime.from_string(new_value_text))
+            audit_log_line.with_context(tz=tz),
+            new_value_text)
         new_value_text = fields.Datetime.to_string(new_value_text)
-        line = log.line_ids[0]
 
-        # Check the old value updated with superuser timezone.
-        self.assertEqual(line.old_value_text, old_value_text)
+        # Check the old value data updated based on superuser timezone.
+        self.assertEqual(audit_log_line_01.old_value_text, old_value_text)
 
-        # Check the new value updated with superuser timezone.
-        self.assertEqual(line.new_value_text, new_value_text)
+        # Check the new value data updated based on superuser timezone.
+        self.assertEqual(audit_log_line_01.new_value_text, new_value_text)
+
+        old_value_text = 'Test Name'
+        new_value_text = 'Updated Test Name'
+        field_id = self.env.ref('base.field_ir_cron_name')
+        audit_log_line_02 = \
+            audit_log_line.sudo(self.test_user).create({
+                'field_id': field_id.id,
+                'old_value_text': old_value_text,
+                'new_value_text': new_value_text
+            })
+        # Check the old value data without datetime data, Exception Case.
+        self.assertEqual(audit_log_line_02.old_value_text, old_value_text)
+
+        # Check the new value data without datetime data, Exception Case.
+        self.assertEqual(audit_log_line_02.new_value_text, new_value_text)
