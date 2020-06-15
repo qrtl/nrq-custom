@@ -44,4 +44,4 @@ msgstr "タイムシート"
 #. module: hr_timesheet_sheet_work_hours_summary
 #: model:ir.model.fields,field_description:hr_timesheet_sheet_work_hours_summary.field_hr_timesheet_sheet_sheet_timesheet_expected_work_hours
 msgid "Timesheet Expected Working Hours"
-msgstr "月間の所定労働時間"
+msgstr "月間所定労働時間"
