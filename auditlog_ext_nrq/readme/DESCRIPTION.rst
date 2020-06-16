@@ -1,2 +1,2 @@
 This modules does the following:
-  * Allows to user can check the audit log entry based on user timezone only for datetime field.
+  * Converts old_value_text and new_value_text to superuser's timezone when the value comes from a datetime field.
