@@ -36,4 +36,3 @@ msgstr "受注"
 #, python-format
 msgid "The gross_profit_margin must be a number."
 msgstr "粗利率（予定）には数値のみで入力してください。"
-

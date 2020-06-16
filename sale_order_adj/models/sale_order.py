@@ -2,7 +2,7 @@
 # Copyright 2018-2020 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -25,6 +25,7 @@ class SaleOrder(models.Model):
     def _onchange_gross_profit_margin_input(self):
         if self.gross_profit_margin_input:
             try:
-                self.gross_profit_margin = float(self.gross_profit_margin_input)
+                self.gross_profit_margin = float(
+                    self.gross_profit_margin_input)
             except Exception:
                 raise UserError(_("The gross_profit_margin must be a number."))
