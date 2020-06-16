@@ -4,6 +4,7 @@
 
 import time
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 from odoo.tests import common
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
@@ -16,14 +17,16 @@ class TestHrTimesheetSheet(common.TransactionCase):
         self.holiday_model = self.env["hr.holidays.public"]
         self.holiday_model_line = self.env["hr.holidays.public.line"]
         self.timesheet_sheet = self.env['hr_timesheet_sheet.sheet']
-        self.test_employee = self.browse_ref('hr.employee_qdp')
+        self.test_employee = self.env.ref('hr.employee_qdp')
+        self.test_user = self.env.ref('base.user_demo')
+        self.test_user.groups_id = [(6, 0, [self.env.ref('base.group_user').id, self.env.ref('hr.group_hr_attendance').id])]
         self.resource_id = self.env.ref('resource.timesheet_group1')
         self.test_timesheet_sheet = self.timesheet_sheet.create({
             'date_from': self.timesheet_sheet._default_date_from(),
             'date_to': self.timesheet_sheet._default_date_to(),
             'name': 'Gilles Gravie',
             'state': 'new',
-            'user_id': self.browse_ref('base.user_demo').id,
+            'user_id': self.test_user.id,
             'employee_id': self.test_employee.id,
         })
 
@@ -124,3 +127,21 @@ class TestHrTimesheetSheet(common.TransactionCase):
             self.test_timesheet_sheet.timesheet_expected_work_hours,
             standard_work_hours - holiday_hours,
             "The Overtime Working Hours did not match the with value")
+
+    def test_create_timesheet_sheet(self):
+        test_timesheet_sheet = self.timesheet_sheet.sudo(self.test_user.id).create({
+            'date_from': (datetime.today() + relativedelta(months=+2, day=1, days=-1)).strftime('%Y-%m-%d'),
+            'date_to': (datetime.today() + relativedelta(months=+2, day=1, days=-1)).strftime('%Y-%m-%d'),
+            'name': 'Gilles Gravie',
+            'state': 'new',
+            'user_id': self.test_user.id,
+            'employee_id': self.test_employee.id,
+        })
+
+    def test_employee_access_fields(self):
+        self.test_timesheet_sheet.employee_id.write({
+            'calendar_id': self.resource_id.id
+        })
+        self.test_timesheet_sheet.sudo(self.test_user.id).read(
+            ['standard_work_hours', 'expected_work_hours', 'timesheet_expected_work_hours', 'overtime_hours', 'holiday_hours']
+        )
