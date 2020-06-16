@@ -70,10 +70,8 @@ class TestAuditlogExtNrq(common.TransactionCase):
             Test old value text,new value text with datetime field data
             Test old value text,new value text without datetime field data
         """
-        tz = 'Japan'
-
-        # Default timezone for super user is Europe/Brussels so change to Japan
-        self.env.user.write({'tz': tz})
+        # Japan is 9 hours ahead of UTC.
+        self.env["res.users"].browse(SUPERUSER_ID).write({"tz": "Japan"})
 
         field_id = self.env.ref('base.field_ir_cron_nextcall')
         audit_log_line = self.env['auditlog.log.line']
