@@ -2,10 +2,6 @@
 # Copyright 2019 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-
-from odoo import fields
 from odoo.tests import common
 
 
@@ -75,38 +71,32 @@ class TestAuditlogExtNrq(common.TransactionCase):
             Test old value text,new value text without datetime field data
         """
         tz = 'Japan'
-        self.test_user = self.env.user.copy()
+
+        # Default timezone for super user is Europe/Brussels so change to Japan
         self.env.user.write({'tz': tz})
-        old_value_text = datetime.now() - relativedelta(months=1)
-        new_value_text = datetime.now()
+
         field_id = self.env.ref('base.field_ir_cron_nextcall')
         audit_log_line = self.env['auditlog.log.line']
         audit_log_line_01 = \
-            audit_log_line.sudo(self.test_user).create({
+            audit_log_line.sudo().create({
                 'field_id': field_id.id,
-                'old_value_text': fields.Datetime.to_string(old_value_text),
-                'new_value_text': fields.Datetime.to_string(new_value_text)
+                'old_value_text': "2020-01-01 01:00:00",
+                'new_value_text': "2020-01-02 01:00:00"
             })
-        old_value_text = fields.Datetime.context_timestamp(
-            audit_log_line.with_context(tz=tz),
-            old_value_text)
-        old_value_text = fields.Datetime.to_string(old_value_text)
-        new_value_text = fields.Datetime.context_timestamp(
-            audit_log_line.with_context(tz=tz),
-            new_value_text)
-        new_value_text = fields.Datetime.to_string(new_value_text)
 
         # Check the old value data updated based on superuser timezone.
-        self.assertEqual(audit_log_line_01.old_value_text, old_value_text)
+        self.assertEqual(
+            audit_log_line_01.old_value_text, "2020-01-01 10:00:00")
 
         # Check the new value data updated based on superuser timezone.
-        self.assertEqual(audit_log_line_01.new_value_text, new_value_text)
+        self.assertEqual(
+            audit_log_line_01.new_value_text, "2020-01-02 10:00:00")
 
         old_value_text = 'Test Name'
         new_value_text = 'Updated Test Name'
         field_id = self.env.ref('base.field_ir_cron_name')
         audit_log_line_02 = \
-            audit_log_line.sudo(self.test_user).create({
+            audit_log_line.sudo().create({
                 'field_id': field_id.id,
                 'old_value_text': old_value_text,
                 'new_value_text': new_value_text
