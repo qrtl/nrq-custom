@@ -14,6 +14,7 @@
         'hr_timesheet_attendance',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/hr_timesheet_sheet_sheet_views.xml',
     ],
     'application': False,
