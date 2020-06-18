@@ -82,10 +82,10 @@ class TestAuditlog(object):
     def test_read_users(self):
         """Fourth Test with Demo Users, Caching Demo User Read Data"""
         auditlog_log = self.env['auditlog.log']
-        users_model_id = self.env.ref('base.model_res_users').id
+        partner_model_id = self.env.ref('base.model_res_partner').id
         self.env['auditlog.rule'].create({
-            'name': 'Test Rule for Users',
-            'model_id': users_model_id,
+            'name': 'Test Rule for Partners',
+            'model_id': partner_model_id,
             'log_read': True,
             'log_create': True,
             'log_write': True,
@@ -93,16 +93,14 @@ class TestAuditlog(object):
             'state': 'subscribed',
             'log_type': 'full',
         })
-        users = self.env['res.users'].search([])
         context = dict(self.env.context)
         context.update({'auditlog_disabled': True})
         self.demo_user = self.env.ref('base.user_demo')
-        self.env = self.env(context=context)
-        users.sudo(self.demo_user).read()[0]
+        self.demo_user.partner_id.read([0])
         self.assertTrue(auditlog_log.search([
-            ('model_id', '=', users_model_id),
+            ('model_id', '=', partner_model_id),
             ('method', '=', 'read'),
-            ('res_id', '=', self.demo_user.id),
+            ('res_id', '=', self.demo_user.partner_id.id),
         ])[0].ensure_one())
 
 
