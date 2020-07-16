@@ -67,11 +67,10 @@ class HrEmployeeNrq(common.TransactionCase):
         self.test_employee.sudo(self.manager_user.id).read()
 
     def test_02_officer_access_inactive_employee(self):
-        with self.assertRaises(AccessError):
-            self.test_employee.sudo().update({
-                'active': False,
-            })
-            self.test_employee.sudo(self.officer_user.id).read()
+        self.test_employee.sudo().update({
+            'active': False,
+        })
+        self.test_employee.sudo(self.officer_user.id).read()
 
     def test_03_manager_access_inactive_employee(self):
         self.test_employee.sudo().update({
