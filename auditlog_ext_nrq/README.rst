@@ -10,17 +10,17 @@ Audit Log Extension NRQ
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
-    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
-    :alt: License: LGPL-3
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-qrtl%2Fnrq--custom-lightgray.png?logo=github
     :target: https://github.com/qrtl/nrq-custom/tree/10.0/auditlog_ext_nrq
     :alt: qrtl/nrq-custom
 
-|badge1| |badge2| |badge3| 
+|badge1| |badge2| |badge3|
 
 This modules does the following:
-  * Allows to user can check the audit log entry based on user timezone only for datetime field.
+  * Converts old_value_text and new_value_text to superuser's timezone when the value comes from a datetime field.
 
 **Table of contents**
 

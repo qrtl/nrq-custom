@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import SUPERUSER_ID, api, fields, models
 
 
 class AuditlogLogLine(models.Model):
@@ -10,27 +10,16 @@ class AuditlogLogLine(models.Model):
 
     @api.model
     def create(self, vals):
-        if vals.get('new_value_text') or vals.get('old_value_text'):
-            old_value_text, new_value_text = vals.get(
-                'old_value_text'), vals.get('new_value_text')
-            try:
-                new_value_text =\
-                    fields.Datetime.to_string(
+        tz = self.env['res.users'].sudo().browse(SUPERUSER_ID).tz or 'UTC'
+        for field in ["old_value_text", "new_value_text"]:
+            val = vals.get(field)
+            if val:
+                try:
+                    converted_time = fields.Datetime.to_string(
                         fields.Datetime.context_timestamp(
-                            self, fields.Datetime.from_string(new_value_text)))
-                vals.update({
-                    'new_value_text': new_value_text
-                })
-            except Exception:
-                pass
-            try:
-                old_value_text =\
-                    fields.Datetime.to_string(
-                        fields.Datetime.context_timestamp(
-                            self, fields.Datetime.from_string(old_value_text)))
-                vals.update({
-                    'old_value_text': old_value_text
-                })
-            except Exception:
-                pass
+                            self.with_context(tz=tz),
+                            fields.Datetime.from_string(val)))
+                    vals.update({field: converted_time})
+                except Exception:
+                    pass
         return super(AuditlogLogLine, self).create(vals)

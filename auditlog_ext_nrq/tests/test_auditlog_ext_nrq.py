@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Copyright 2019 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo import SUPERUSER_ID
 from odoo.tests import common
 
 
@@ -64,3 +65,43 @@ class TestAuditlogExtNrq(common.TransactionCase):
             ('res_id', '=', self.translation_record.id),
         ], limit=1, order='id desc')
         self.assertEqual(log.log_category, 'unlink')
+
+    def test_04_create_vals(self):
+        """
+            Test old value text,new value text with datetime field data
+            Test old value text,new value text without datetime field data
+        """
+        # Japan is 9 hours ahead of UTC.
+        self.env["res.users"].browse(SUPERUSER_ID).write({"tz": "Japan"})
+
+        field_id = self.env.ref('base.field_ir_cron_nextcall')
+        audit_log_line = self.env['auditlog.log.line']
+        audit_log_line_01 = \
+            audit_log_line.sudo().create({
+                'field_id': field_id.id,
+                'old_value_text': "2020-01-01 01:00:00",
+                'new_value_text': "2020-01-02 01:00:00"
+            })
+
+        # Check the old value data updated based on superuser timezone.
+        self.assertEqual(
+            audit_log_line_01.old_value_text, "2020-01-01 10:00:00")
+
+        # Check the new value data updated based on superuser timezone.
+        self.assertEqual(
+            audit_log_line_01.new_value_text, "2020-01-02 10:00:00")
+
+        old_value_text = 'Test Name'
+        new_value_text = 'Updated Test Name'
+        field_id = self.env.ref('base.field_ir_cron_name')
+        audit_log_line_02 = \
+            audit_log_line.sudo().create({
+                'field_id': field_id.id,
+                'old_value_text': old_value_text,
+                'new_value_text': new_value_text
+            })
+        # Check the old value data without datetime data, Exception Case.
+        self.assertEqual(audit_log_line_02.old_value_text, old_value_text)
+
+        # Check the new value data without datetime data, Exception Case.
+        self.assertEqual(audit_log_line_02.new_value_text, new_value_text)
