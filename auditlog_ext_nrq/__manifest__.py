@@ -3,8 +3,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     'name': "Audit Log Extension NRQ",
-    'version': "10.0.1.0.0",
-    'name': "Audit Log Extension NRQ",
     'version': "10.0.1.0.2",
     'license': 'AGPL-3',
     'author': 'Quartile Limited',
