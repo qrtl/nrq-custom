@@ -32,7 +32,8 @@ exclude: |
   web_responsive/|
   base_technical_features/|
   hr_public_holidays/|
-  hr_holidays_notify_employee_manager/
+  hr_holidays_notify_employee_manager/|
+  hr_holidays_settings/
 default_language_version:
   python: python2.7
 repos:
