@@ -44,7 +44,7 @@
             <xpath expr="//field[@name='number_of_days_temp']/.." position="inside">
                 <!-- QRTL Add: Add help text to remind users if they want to take half day off -->
                 <br/>
-                <p>* Please make a manual adjustment to "days" in case requesting for half-day leave.</p>
+                <p>* Please make a manual adjustment to "days" in case requesting for a half-day leave.</p>
             </xpath>
         </field>
     </record>
