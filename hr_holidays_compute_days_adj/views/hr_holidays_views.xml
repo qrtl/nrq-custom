@@ -44,9 +44,14 @@
             <xpath expr="//field[@name='number_of_days_temp']/.." position="inside">
                 <!-- QRTL Add: Add help text to remind users if they want to take half day off -->
                 <br/>
-                <p>※ Please make manual adjustments to "days" in case requesting for half-day leave.</p>
+                <p>* Please make a manual adjustment to "days" in case requesting for half-day leave.</p>
             </xpath>
         </field>
+    </record>
+
+    <!-- QRTL Edit: Remove the group settings hence all employees can edit the days field -->
+    <record id="hr_holidays_compute_days.edit_holiday_new_manager" model="ir.ui.view">
+        <field name="groups_id" eval="[(5, 0, 0)]"/>
     </record>
 
 </odoo>

@@ -22,5 +22,5 @@ msgstr "休暇"
 
 #. module: hr_holidays_compute_days_adj
 #: model:ir.ui.view,arch_db:hr_holidays_compute_days_adj.edit_holiday_new
-msgid "※ Please make manual adjustments to \"days\" in case requesting for half-day leave."
+msgid "* Please make a manual adjustment to "days" in case requesting for half-day leave."
 msgstr "※ 半日休暇の場合は日数を調整してください。"
