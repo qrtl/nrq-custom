@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="user_activity_view_tree">
+        <field name="name">user.activity.log.tree</field>
+        <field name="model">user.activity.log</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="model"/>
+            <field name="res_id"/>
+            <field name="method"/>
+            <field name="create_date"/>
+            <field name="user_id"/>
+            <button name="open_record" string="Open Record" type="object" class="oe_title"
+                    icon="fa-arrow-right"/>
+        </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="user_activity_view_form">
+        <field name="name">user.activity.log.form</field>
+        <field name="model">user.activity.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="open_record" string="Open Record" type="object" class="oe_title" icon="fa-arrow-right"/>
+                </header>
+                <sheet>
+                <group cols="4">
+                    <field name="name"/>
+                    <field name="model"/>
+                    <field name="method"/>
+                    <field name="res_id"/>
+                    <field name="create_date"/>
+                    <field name="user_id"/>
+                </group>
+                <notebook>
+                    <page string="Log Activity">
+                        <field name="log_details" nolabel="1"/>
+                    </page>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="user_activity_view_search">
+        <field name="name">user.activity.log.search</field>
+        <field name="model">user.activity.log</field>
+        <field name="arch" type="xml">
+            <search string="Logs">
+                <field name="model"/>
+                <field name="method"/>
+                <field name="user_id"/>
+                <filter string="Records Operations" name="record_operations" domain="[('method','in', ('read', 'write', 'create', 'unlink'))]"/>
+                <group expand="0" string="Group By...">
+                    <filter name="group_by_user_id"
+                        string="User"
+                        domain="[]" context="{'group_by':'user_id'}"/>
+                    <filter name="group_by_model_id"
+                        string="Model"
+                        domain="[]" context="{'group_by':'model_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_user_activity">
+        <field name="name">User Activity Log(s)</field>
+        <field name="res_model">user.activity.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_deafult_record_operations': 1}</field>
+    </record>
+
+    <menuitem action="action_user_activity" id="menu_action_user_activity" parent="base.menu_users" sequence="10"/>
+</odoo>

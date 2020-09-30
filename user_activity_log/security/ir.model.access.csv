@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user_activity_log_user,access_user_activity_log_user,model_user_activity_log,base.group_system,1,0,0,0
