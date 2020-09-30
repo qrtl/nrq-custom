@@ -2,8 +2,10 @@
 # Copyright 2020 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api
-import json, ast
+import json
+
+from odoo import api, fields, models
+from werkzeug.urls import url_encode
 
 
 class UserActivityLog(models.Model):
@@ -16,7 +18,7 @@ class UserActivityLog(models.Model):
     user_id = fields.Many2one("res.users", "User")
     method = fields.Char('Method')
     log_details = fields.Text("Log Details")
-    
+
     @api.multi
     def compute_record_name(self):
         for log in self:
@@ -24,7 +26,7 @@ class UserActivityLog(models.Model):
                 try:
                     record = self.env[log.model].sudo().browse(log.res_id)
                     log.name = record.name_get()[0][1]
-                except Exception as e:
+                except Exception:
                     pass
 
     @api.model
@@ -35,21 +37,22 @@ class UserActivityLog(models.Model):
     def create_activity_log(self, model, method, recs, args):
         user = self.env.user
         if user.track_user_activity and self._name != model._name:
+            argments = json.dumps(args, ensure_ascii=False, encoding='utf8')
             for rec in recs:
-                record = self.sudo().create({
+                self.sudo().create({
                     'model': model._name,
                     'method': method,
                     'user_id': user.id,
                     'res_id': rec.id,
-                    'log_details': json.dumps(args, ensure_ascii=False, encoding='utf8')
+                    'log_details': argments
                 })
             else:
-                record = self.sudo().create({
+                self.sudo().create({
                     'model': model._name,
                     'method': method,
                     'user_id': user.id,
                     'res_id': False,
-                    'log_details': json.dumps(args, ensure_ascii=False, encoding='utf8')
+                    'log_details': argments
                 })
 
     @api.multi

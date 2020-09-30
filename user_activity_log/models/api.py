@@ -3,12 +3,14 @@
 # # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
+
 from odoo import api
-from odoo.api import call_kw_model, call_kw_multi, split_context
+from odoo.api import split_context
 
 _logger = logging.getLogger(__name__)
 
 call_kw_org = api.call_kw
+
 
 def call_kw(model, name, args, kwargs):
     res = call_kw_org(model, name, args, kwargs)
@@ -22,8 +24,10 @@ def call_kw(model, name, args, kwargs):
         recs = model.browse(ids)
     method_args = split_context(method, method_args, kwargs)
     if recs or method_args:
-        model.env['user.activity.log'].create_activity_log(model, name, recs, method_args)
+        model.env['user.activity.log'].create_activity_log(
+            model, name, recs, method_args)
     return res
+
 
 _logger.info('monkey patching api.call_kw')
 api.call_kw = call_kw
