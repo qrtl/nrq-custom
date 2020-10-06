@@ -15,5 +15,5 @@
         'views/res_users_views.xml',
     ],
     'installable': True,
-    'application': True
+    'application': False,
 }
