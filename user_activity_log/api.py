@@ -14,7 +14,8 @@ call_kw_org = api.call_kw
 
 def call_kw(model, name, args, kwargs):
     res = call_kw_org(model, name, args, kwargs)
-    if model.env.user.track_user_activity and 'user.activity.log' != model._name:
+    user = model.env.user
+    if user.track_user_activity and 'user.activity.log' != model._name:
         method_args = args
         # Borrow the original logic to identify the ids and args
         # https://github.com/odoo/odoo/blob/e66e2e2fe4a7c748278c3bb71c2fe10ad36e1245/odoo/api.py#L668-L689
