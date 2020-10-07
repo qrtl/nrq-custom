@@ -7,8 +7,14 @@
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
                 <field name="track_user_activity" invisible="1" />
-                <button name="toggle_track_user_activity" type="object" class="oe_stat_button" icon="fa-eye" string="Track Activity" attrs="{'invisible': [('track_user_activity', '!=', True)]}"/>
-                <button name="toggle_track_user_activity" type="object" class="oe_stat_button" icon="fa-eye" string="Untrack Activity" attrs="{'invisible': [('track_user_activity', '=', True)]}"/>
+                <button name="toggle_track_user_activity" type="object" class="oe_stat_button" icon="fa-eye">
+                    <field name="track_user_activity" widget="boolean_button" options="{'terminology': {
+                        'string_true': 'Tracking',
+                        'hover_true': 'Untrack',
+                        'string_false': 'Not Tracking',
+                        'hover_false': 'Track',
+                        }}" />
+                </button>
             </xpath>
         </field>
     </record>

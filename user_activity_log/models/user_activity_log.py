@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 Quartile Limited
-# Copyright AktivSoftware
+# Copyright Aktiv Software
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import logging
 import json
+from datetime import datetime, timedelta
 
 from odoo import api, fields, models
 from werkzeug.urls import url_encode
+
+_logger = logging.getLogger(__name__)
 
 
 class UserActivityLog(models.Model):
@@ -37,24 +41,23 @@ class UserActivityLog(models.Model):
     @api.model
     def create_activity_log(self, model, method, recs, args):
         user = self.env.user
-        if user.track_user_activity and self._name != model._name:
-            argments = json.dumps(args, ensure_ascii=False, encoding='utf8')
-            for rec in recs:
-                self.sudo().create({
-                    'model': model._name,
-                    'method': method,
-                    'user_id': user.id,
-                    'res_id': rec.id,
-                    'log_details': argments
-                })
-            else:
-                self.sudo().create({
-                    'model': model._name,
-                    'method': method,
-                    'user_id': user.id,
-                    'res_id': False,
-                    'log_details': argments
-                })
+        argments = json.dumps(args, ensure_ascii=False, encoding='utf8')
+        for rec in recs:
+            self.sudo().create({
+                'model': model._name,
+                'method': method,
+                'user_id': user.id,
+                'res_id': rec.id,
+                'log_details': argments
+            })
+        else:
+            self.sudo().create({
+                'model': model._name,
+                'method': method,
+                'user_id': user.id,
+                'res_id': False,
+                'log_details': argments
+            })
 
     @api.multi
     def open_record(self):
@@ -72,3 +75,19 @@ class UserActivityLog(models.Model):
                     'target_type': 'public',
                     'res_id': record.id,
                 }
+
+    @api.model
+    def autovacuum(self, days):
+        """Delete all logs older than ``days``.
+        Called from a cron.
+        """
+        days = (days > 0) and int(days) or 0
+        deadline = datetime.now() - timedelta(days=days)
+        records = self.search(
+            [('create_date', '<=', fields.Datetime.to_string(deadline))])
+        nb_records = len(records)
+        records.unlink()
+        _logger.info(
+            "AUTOVACUUM - %s 'user.activity.log' records deleted",
+            nb_records)
+        return True

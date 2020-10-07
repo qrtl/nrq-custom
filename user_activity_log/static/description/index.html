@@ -372,19 +372,34 @@ ul.auto-toc {
 <ul class="simple">
 <li>Allows to track specific user’s operations.</li>
 </ul>
+<p>This module was developed taking the ideas from user_recent_log module by Aktive Software.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#bug-tracker" id="id1">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="id2">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="id3">Authors</a></li>
-<li><a class="reference internal" href="#maintainers" id="id4">Maintainers</a></li>
+<li><a class="reference internal" href="#installation" id="id1">Installation</a></li>
+<li><a class="reference internal" href="#usage" id="id2">Usage</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="id3">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="id4">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="id5">Authors</a></li>
+<li><a class="reference internal" href="#maintainers" id="id6">Maintainers</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="section" id="installation">
+<h1><a class="toc-backref" href="#id1">Installation</a></h1>
+<p>Besides installing this module, you need to add it to your addons, and load it as a server-wide module.</p>
+<p>This can be done with the server_wide_modules parameter in /etc/odoo.conf or with the –load command-line parameter
+Please put this module before the web module as core api method will be monkey patched.</p>
+<p>server_wide_modules = “use_activity_log,web”</p>
+</div>
+<div class="section" id="usage">
+<h1><a class="toc-backref" href="#id2">Usage</a></h1>
+<p>For user you wish to track their activities, open the user form and click the “Track” button.
+A new menu “User Activity Log(s)” is added under the Settings &gt; Technical &gt; Security.</p>
+</div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#id1">Bug Tracker</a></h1>
+<h1><a class="toc-backref" href="#id3">Bug Tracker</a></h1>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/qrtl/nrq-custom/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
@@ -392,15 +407,16 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#id2">Credits</a></h1>
+<h1><a class="toc-backref" href="#id4">Credits</a></h1>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#id3">Authors</a></h2>
+<h2><a class="toc-backref" href="#id5">Authors</a></h2>
 <ul class="simple">
 <li>Quartile Limited</li>
+<li>Aktiv Software</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#id4">Maintainers</a></h2>
+<h2><a class="toc-backref" href="#id6">Maintainers</a></h2>
 <p>This module is part of the <a class="reference external" href="https://github.com/qrtl/nrq-custom/tree/12.0/user_activity_log">qrtl/nrq-custom</a> project on GitHub.</p>
 <p>You are welcome to contribute.</p>
 </div>

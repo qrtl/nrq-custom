@@ -53,7 +53,7 @@
                 <field name="model"/>
                 <field name="method"/>
                 <field name="user_id"/>
-                <filter string="Records Operations" name="record_operations" domain="[('method','in', ('read', 'write', 'create', 'unlink'))]"/>
+                <filter string="CRUD Operations" name="record_operations" domain="[('method','in', ('read', 'write', 'create', 'unlink'))]"/>
                 <group expand="0" string="Group By...">
                     <filter name="group_by_user_id"
                         string="User"
@@ -70,8 +70,8 @@
         <field name="name">User Activity Log(s)</field>
         <field name="res_model">user.activity.log</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{'search_deafult_record_operations': 1}</field>
+        <field name="context">{'search_default_record_operations': 1}</field>
     </record>
 
-    <menuitem action="action_user_activity" id="menu_action_user_activity" parent="base.menu_users" sequence="10"/>
+    <menuitem action="action_user_activity" id="menu_action_user_activity" parent="base.menu_security" sequence="10"/>
 </odoo>
