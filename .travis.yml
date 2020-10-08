@@ -1,4 +1,9 @@
 language: python
+branches:
+  only:
+  - 10.0
+  - /^st.*$/
+
 cache:
   directories:
     - $HOME/.cache/pip
