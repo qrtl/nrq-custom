@@ -17,7 +17,7 @@ User Activity Log
     :target: https://github.com/qrtl/nrq-custom/tree/12.0/user_activity_log
     :alt: qrtl/nrq-custom
 
-|badge1| |badge2| |badge3| 
+|badge1| |badge2| |badge3|
 
 This module does the following:
 
