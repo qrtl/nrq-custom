@@ -17,7 +17,7 @@ User Activity Log
     :target: https://github.com/qrtl/nrq-custom/tree/12.0/user_activity_log
     :alt: qrtl/nrq-custom
 
-|badge1| |badge2| |badge3|
+|badge1| |badge2| |badge3| 
 
 This module does the following:
 
@@ -38,13 +38,14 @@ Besides installing this module, you need to add it to your addons, and load it a
 This can be done with the server_wide_modules parameter in /etc/odoo.conf or with the --load command-line parameter
 Please put this module before the web module as core api method will be monkey patched.
 
-server_wide_modules = "use_activity_log,web"
+server_wide_modules = "user_activity_log,web"
 
 Usage
 =====
 
 For user you wish to track their activities, open the user form and click the "Track" button.
 A new menu "User Activity Log(s)" is added under the Settings > Technical > Security.
+A scheduled action exists to delete logs older than 6 months (180 days) automatically but is not enabled by default. To activate it and/or change the delay, go to Settings > Technical > Automation > Scheduled Actions and edit the "Auto-vacuum User Activity Logs" entry.
 
 Bug Tracker
 ===========
