@@ -15,10 +15,6 @@
     "license": "AGPL-3",
     "application": False,
     "installable": True,
-    "depends": [
-        "account",
-    ],
-    "data": [
-        "views/account_analytic_line_views.xml",
-    ],
+    "depends": ["account"],
+    "data": ["views/account_analytic_line_views.xml"],
 }
