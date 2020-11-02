@@ -226,9 +226,6 @@ class HrPrivateInfo(models.Model):
     date_visa_expiry = fields.Date(
         'Visa Expiry Date',
     )
-    work_permit_number = fields.Char(
-        'Work Permit Number',
-    )
     residence_card = fields.Binary(
         'Residence Card',
     )
