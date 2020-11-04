@@ -14,7 +14,6 @@ exclude: |
   # Exclude .travis.yml
   (^\.travis\.yml$)|
   # For v10.0 and before, exclude all oca modules
-  account_analytic_nrq/|
   account_analytic_profit_loss_analysis/|
   account_analytic_required/|
   account_invoice_line_view_nrq/|
