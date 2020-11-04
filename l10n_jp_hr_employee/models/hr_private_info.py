@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2019 Quartile Limited
+# Copyright 2019-2020 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import re
@@ -225,9 +225,6 @@ class HrPrivateInfo(models.Model):
     )
     date_visa_expiry = fields.Date(
         'Visa Expiry Date',
-    )
-    work_permit_number = fields.Char(
-        'Work Permit Number',
     )
     residence_card = fields.Binary(
         'Residence Card',

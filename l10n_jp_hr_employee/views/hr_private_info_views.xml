@@ -187,7 +187,6 @@
                                            placeholder="神保町支店"
                                            attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="bank_acc_type"
-                                           placeholder="Savings"
                                            attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                     <field name="bank_acc_number"
                                            placeholder="1234567"
@@ -275,9 +274,6 @@
                                            attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
                                     <field name="date_visa_expiry"
                                            placeholder="2025/01/01"
-                                           attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
-                                    <field name="work_permit_number"
-                                           placeholder="12-345678"
                                            attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
                                     <field name="residence_card"
                                            filename="residence_card_filename"

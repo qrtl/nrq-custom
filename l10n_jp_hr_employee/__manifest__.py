@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright 2019 Quartile Limited
+# Copyright 2019-2020 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Extension to Employees for Japan",
     "description": """
     """,
-    "version": "10.0.1.2.0",
+    "version": "10.0.1.3.0",
     "category": "Localization",
     "website": "https://www.quartile.co/",
     "author": "Quartile Limited",
