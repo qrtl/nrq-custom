@@ -107,11 +107,20 @@
                                     <field name="emerg_contact_phone" placeholder="Remove hyphen" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                 </group>
                                 <group name="bank_info" string="Bank Info">
-                                    <field name="bank_name" placeholder="三井住友銀行" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
-                                    <field name="bank_branch" placeholder="神保町支店" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
-                                    <field name="bank_acc_type" placeholder="Savings" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
-                                    <field name="bank_acc_number" placeholder="1234567" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
-                                    <field name="furi_bank_acc_holder" placeholder="ﾔﾏﾀﾞﾀﾛｳ" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="bank_name"
+                                           placeholder="三井住友銀行"
+                                           attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="bank_branch"
+                                           placeholder="神保町支店"
+                                           attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="bank_acc_type"
+                                           attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="bank_acc_number"
+                                           placeholder="1234567"
+                                           attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
+                                    <field name="furi_bank_acc_holder"
+                                           placeholder="ﾔﾏﾀﾞﾀﾛｳ"
+                                           attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
                                 </group>
                                 <group name="academic_background" string="Final Academic Background">
                                     <field name="school_name" placeholder="○○大学" attrs="{'required':[('temp_save','=',False)],'readonly':[('state','!=','draft')]}"/>
@@ -148,12 +157,19 @@
                                     </div>
                                     <field name="emp_ins_number" class="oe_read_only"/>
                                 </group>
-                                <group name="visa_info" string="Visa Info" attrs="{'invisible':[('private_country_code','=','JP')]}">
-                                    <field name="visa_number" placeholder="A1234567" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
-                                    <field name="date_visa_expiry" placeholder="2025/01/01" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
-                                    <field name="work_permit_number" placeholder="12-345678" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
-                                    <field name="residence_card" filename="residence_card_filename" attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
-                                    <field name="residence_card_filename" invisible="1"/>
+                                <group name="visa_info" string="Visa Info"
+                                       attrs="{'invisible':[('private_country_code','=','JP')]}">
+                                    <field name="visa_number"
+                                           placeholder="A1234567"
+                                           attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
+                                    <field name="date_visa_expiry"
+                                           placeholder="2025/01/01"
+                                           attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
+                                    <field name="residence_card"
+                                           filename="residence_card_filename"
+                                           attrs="{'readonly':[('state','!=','draft')], 'required':[('private_country_code','!=','JP'), ('temp_save','=',False)]}"/>
+                                    <field name="residence_card_filename"
+                                           invisible="1"/>
                                 </group>
                                 <group name="resignation_info" string="Resignation Info" groups="hr.group_hr_manager">
                                     <field name="resignation_date"/>
