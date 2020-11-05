@@ -6,13 +6,13 @@ from odoo import api, fields, models
 
 
 class SaleOrder(models.Model):
-    _inherit = 'sale.order'
+    _inherit = "sale.order"
 
     parent_project_id = fields.Many2one(
-        'project.project',
-        string='Parent Project',
+        "project.project",
+        string="Parent Project",
         readonly=True,
-        states={'draft': [('readonly', False)]},
+        states={"draft": [("readonly", False)]},
     )
 
     @api.multi
@@ -20,6 +20,5 @@ class SaleOrder(models.Model):
         super(SaleOrder, self).action_confirm()
         for order in self:
             if order.project_project_id:
-                order.project_project_id.parent_project_id = \
-                    order.parent_project_id
+                order.project_project_id.parent_project_id = order.parent_project_id
         return True
