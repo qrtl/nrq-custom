@@ -22,7 +22,7 @@ class AccountAnalyticLine(models.Model):
         "project.project",
         string="Related Project",
         compute="_compute_pj_id",
-        _inverse_="_set_account_id",
+        inverse="_inverse_set_account_id",
         store=True,
     )
     parent_project_id = fields.Many2one(
@@ -90,7 +90,7 @@ class AccountAnalyticLine(models.Model):
                 ln.sale_id = sale_orders[0].id
 
     @api.multi
-    def _set_account_id(self):
+    def _inverse_set_account_id(self):
         for line in self:
             line.account_id = line.pj_id.analytic_account_id.id
 
