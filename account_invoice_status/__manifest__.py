@@ -15,18 +15,9 @@
     "post_init_hook": "",
     "post_load": "",
     "uninstall_hook": "",
-    "external_dependencies": {
-        "python": [],
-        "bin": [],
-    },
-    "depends": [
-        "account",
-    ],
-    "data": [
-        'views/account_invoice_view.xml'
-    ],
-    "demo": [
-    ],
-    "qweb": [
-    ]
+    "external_dependencies": {"python": [], "bin": []},
+    "depends": ["account"],
+    "data": ["views/account_invoice_view.xml"],
+    "demo": [],
+    "qweb": [],
 }
