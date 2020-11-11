@@ -8,7 +8,4 @@ from openerp import fields, models
 class AccountAccount(models.Model):
     _inherit = "account.account"
 
-    analytic_type_id = fields.Many2one(
-        'analytic.type',
-        string='Analytic Type'
-    )
+    analytic_type_id = fields.Many2one("analytic.type", string="Analytic Type")
