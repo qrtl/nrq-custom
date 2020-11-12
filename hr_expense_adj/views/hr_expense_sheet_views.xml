@@ -39,6 +39,10 @@
                    position="after">
                 <field name="tax_ids" widget="many2many_tags"/>
             </xpath>
+            <xpath expr="//tree/field[@name='total_amount']" position="before">
+                <field name="unit_amount"/>
+                <field name="quantity"/>
+            </xpath>
             <xpath expr="//tree/field[@name='total_amount']" position="after">
                 <field name="description"/>
             </xpath>
