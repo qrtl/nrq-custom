@@ -18,7 +18,6 @@ exclude: |
   account_invoice_line_view_nrq/|
   account_type_menu/|
   auditlog/|
-  auditlog_ext_nrq/|
   auth_signup_nrq/|
   auto_backup/|
   base_export_manager/|
