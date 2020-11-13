@@ -10,6 +10,9 @@
                     expr="//button[@name='action_invoice_open']"
                     position="attributes"
                 >
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_invoice_cancel']" position="before">
                     <attribute name="invisible" />
                     <button
                         name="action_invoice_ok"
