@@ -17,13 +17,13 @@ class AuditlogLog(models.Model):
             ("other", "N/A"),
         ],
         string="Log Category",
-        compute="_compute_get_log_category",
+        compute="_compute_log_category",
         store=True,
     )
 
     @api.multi
     @api.depends("line_ids")
-    def _compute_get_log_category(self):
+    def _compute_log_category(self):
         for log in self:
             log.log_category = "other"
             if log.method == "write" and log.line_ids:
