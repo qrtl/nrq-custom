@@ -11,10 +11,6 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": [
-        "auth_signup",
-    ],
-    "data": [
-        'views/res_users_views.xml',
-    ],
+    "depends": ["auth_signup"],
+    "data": ["views/res_users_views.xml"],
 }

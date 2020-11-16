@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_timesheet_sheet_filter" model="ir.ui.view">
+        <field name="name">hr_timesheet_sheet.sheet.filter</field>
+        <field name="model">hr_timesheet_sheet.sheet</field>
+        <field name="inherit_id" ref="hr_timesheet_sheet.view_hr_timesheet_sheet_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <filter 
+                    name="subject_to_approve" 
+                    string="Subject to approve" 
+                    domain="[('employee_id.parent_id.user_id','=', uid)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="act_hr_timesheet_sheet_form" model="ir.actions.act_window">
+        <field name="context">{'search_default_subject_to_approve':1}</field>
+    </record>
+</odoo>
