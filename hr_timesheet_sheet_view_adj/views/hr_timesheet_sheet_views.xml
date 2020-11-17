@@ -18,8 +18,8 @@
         </field>
     </record>
 
-        <record id="hr_timesheet_sheet.act_hr_timesheet_sheet_form" model="ir.actions.act_window">
-            <field name="context">{'search_default_to_approve':1,'search_default_subject_to_approve':1}</field>
-        </record>
+    <record id="hr_timesheet_sheet.act_hr_timesheet_sheet_form" model="ir.actions.act_window">
+        <field name="context">{'search_default_to_approve':1,'search_default_subject_to_approve':1}</field>
+    </record>
 
 </odoo>
