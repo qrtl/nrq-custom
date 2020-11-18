@@ -17,7 +17,7 @@ Base Ir Values Security Adjustment
     :target: https://github.com/qrtl/nrq-custom/tree/10.0/base_ir_values_security_adj
     :alt: qrtl/nrq-custom
 
-|badge1| |badge2| |badge3|
+|badge1| |badge2| |badge3| 
 
 This modules does the following:
   * Add "Employee" group to the "Defaults: alter personal values only" (XML ID: base.ir_values_default_rule)
