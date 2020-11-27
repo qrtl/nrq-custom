@@ -20,7 +20,10 @@ Base Ir Values Security Adjustment
 |badge1| |badge2| |badge3| 
 
 This modules does the following:
-  * Add "Employee" group to the "Defaults: alter personal values only" (XML ID: base.ir_values_default_rule)  to restrict "Employee" group user to set default value for "Only you"
+  * Adds "Employee" group to the "Defaults: alter personal values only" (XML ID: base.ir_values_default_rule).
+  * Adds a new record rule "Defaults: alter all values" to which "Admin / Settings" group is assigned.
+
+Without these adjustments, no one would be able to create user-defined defaults that were applicable for all users.
 
 **Table of contents**
 
