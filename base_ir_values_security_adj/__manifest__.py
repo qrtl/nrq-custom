@@ -10,6 +10,5 @@
     "category": "Tools",
     "depends": ["base"],
     "data": ["security/base_security.xml"],
-    "application": True,
     "installable": True,
 }
