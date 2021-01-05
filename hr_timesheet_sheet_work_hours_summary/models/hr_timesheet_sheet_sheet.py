@@ -68,7 +68,6 @@ class HrTimesheetSheet(models.Model):
         public_holiday_line_ids = self.env['hr.holidays.public.line'].search([
             ('date', '>=', self.date_from),
             ('date', '<=', date_to),
-            ('year_id.year', '=', datetime.now().year),
         ])
         holiday_hours = 0.0
         for line in public_holiday_line_ids:
