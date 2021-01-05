@@ -66,7 +66,7 @@ class HrTimesheetSheet(models.Model):
     def get_holiday_hours(self, date):
         date_to = date if self.date_to > date else self.date_to
         from_year = fields.Date.from_string(self.date_from).year
-        to_year = fields.Date.from_string(self.date_to).year
+        to_year = fields.Date.from_string(date_to).year
         public_holiday_line_ids = self.env['hr.holidays.public.line'].search([
             ('date', '>=', self.date_from),
             ('date', '<=', date_to),
