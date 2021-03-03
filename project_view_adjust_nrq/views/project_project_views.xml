@@ -1,34 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="edit_project" model="ir.ui.view">
         <field name="name">edit.project</field>
         <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
             <xpath expr="//notebook/page/group[1]" position="after">
                 <group>
-                    <field name="date_start"/>
-                    <field name="date"/>
+                    <field name="date_start" />
+                    <field name="date" />
                 </group>
             </xpath>
         </field>
     </record>
-
     <record id="view_project_tree" model="ir.ui.view">
         <field name="name">view.project.tree</field>
         <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.view_project"/>
+        <field name="inherit_id" ref="project.view_project" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="date_start"/>
-                <field name="date"/>
+                <field name="date_start" />
+                <field name="date" />
             </xpath>
         </field>
     </record>
-
     <record id="project.open_view_project_all" model="ir.actions.act_window">
         <field name="view_mode">tree,kanban,form</field>
     </record>
-
 </odoo>
