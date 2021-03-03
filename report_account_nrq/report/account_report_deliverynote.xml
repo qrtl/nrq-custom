@@ -1,66 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <template id="report_deliverynote_document_nrq">
-        <t t-set="doc"
-           t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+        <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
         <t t-call="report_common_nrq.external_layout_nrq">
             <div class="page">
                 <t t-set="type">deliverynote</t>
-                <t t-call="report_common_nrq.common_header_layout"/>
-                <t t-call="report_common_nrq.invoice_table_layout"/>
-                <t t-call="report_common_nrq.document_footer_layout"/>
+                <t t-call="report_common_nrq.common_header_layout" />
+                <t t-call="report_common_nrq.invoice_table_layout" />
+                <t t-call="report_common_nrq.document_footer_layout" />
             </div>
         </t>
     </template>
-
     <template id="report_deliverynote">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
                 <div class="row">
-                    <t t-call="report_account_nrq.report_deliverynote_document_nrq"
-                       t-lang="doc.partner_id.lang"/>
+                    <t
+                        t-call="report_account_nrq.report_deliverynote_document_nrq"
+                        t-lang="doc.partner_id.lang"
+                    />
                 </div>
             </t>
         </t>
     </template>
-
     <template id="report_deliverynote_alt">
         <t t-call="report.html_container">
             <t t-set="alt">true</t>
             <t t-foreach="docs" t-as="doc">
                 <div class="row">
-                    <t t-call="report_account_nrq.report_deliverynote_document_nrq"
-                       t-lang="doc.partner_id.lang"/>
+                    <t
+                        t-call="report_account_nrq.report_deliverynote_document_nrq"
+                        t-lang="doc.partner_id.lang"
+                    />
                 </div>
             </t>
         </t>
     </template>
-
     <report
-            id="report_delivery_note"
-            model="account.invoice"
-            string="Delivery Note"
-            name="report_account_nrq.report_deliverynote"
-            file="report_account_nrq.report_deliverynote"
-            report_type="qweb-pdf"/>
-
+        id="report_delivery_note"
+        model="account.invoice"
+        string="Delivery Note"
+        name="report_account_nrq.report_deliverynote"
+        file="report_account_nrq.report_deliverynote"
+        report_type="qweb-pdf"
+    />
     <report
-            id="report_delivery_note_alt"
-            model="account.invoice"
-            string="Delivery Note (Alt.)"
-            name="report_account_nrq.report_deliverynote_alt"
-            file="report_account_nrq.report_deliverynote_alt"
-            report_type="qweb-pdf"/>
-
+        id="report_delivery_note_alt"
+        model="account.invoice"
+        string="Delivery Note (Alt.)"
+        name="report_account_nrq.report_deliverynote_alt"
+        file="report_account_nrq.report_deliverynote_alt"
+        report_type="qweb-pdf"
+    />
     <report
-            id="account.account_invoice_action_report_duplicate"
-            model="account.invoice"
-            string="Duplicates"
-            report_type="qweb-pdf"
-            menu="False"
-            name="account.account_invoice_report_duplicate_main"
-            file="account.report_invoice_duplicate"
-            attachment_use="False"/>
-
+        id="account.account_invoice_action_report_duplicate"
+        model="account.invoice"
+        string="Duplicates"
+        report_type="qweb-pdf"
+        menu="False"
+        name="account.account_invoice_report_duplicate_main"
+        file="account.report_invoice_duplicate"
+        attachment_use="False"
+    />
 </odoo>
