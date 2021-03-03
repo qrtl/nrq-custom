@@ -11,14 +11,6 @@
     "license": "AGPL-3",
     "application": False,
     "installable": True,
-    "depends": [
-        "hr_expense",
-        "hr_timesheet",
-        "purchase",
-        "sale",
-        "stock",
-    ],
-    "data": [
-        "security/ir_model_access.xml",
-    ],
+    "depends": ["hr_expense", "hr_timesheet", "purchase", "sale", "stock"],
+    "data": ["security/ir_model_access.xml"],
 }
