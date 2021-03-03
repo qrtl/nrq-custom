@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_hr_dependant_form" model="ir.ui.view">
         <field name="name">view.hr.dependant.form</field>
         <field name="model">hr.dependant</field>
@@ -11,140 +10,184 @@
                         <div class="o_row mr16">
                             <span>
                                 ※扶養の加入、除外の際は都度、委任状が必要です。internalサイト→入社手続→委任状をダウンロードして記名押印の上この申請書に添付して下さい。
-                                <br/>
+                                <br />
                                 （複数名の同時加入・除外の場合は一枚で構いません）
-                                <br/>
+                                <br />
                             </span>
                         </div>
                     </group>
                     <group>
-                        <label for="appointment_letter_url"
-                               string="Download Link"/>
+                        <label for="appointment_letter_url" string="Download Link" />
                         <div>
-                            <field name="appointment_letter_url" readonly="1"
-                                   widget="url"/>
+                            <field
+                                name="appointment_letter_url"
+                                readonly="1"
+                                widget="url"
+                            />
                         </div>
                     </group>
                     <group>
                         <group>
-                            <field name="private_info_id" invisible='1'/>
-                            <field name="employee_id" invisible='1'/>
-                            <field name="name" placeholder="山田 太郎"/>
-                            <field name="furi_name" placeholder="ﾔﾏﾀﾞ ﾀﾛｳ"/>
-                            <field name="dependant_categ"/>
-                            <field name="gender" widget="radio"
-                                   options="{'horizontal': true}"/>
-                            <field name="birthday" placeholder="2005/03/01"/>
-                            <field name="is_dependant_tax"/>
+                            <field name="private_info_id" invisible='1' />
+                            <field name="employee_id" invisible='1' />
+                            <field name="name" placeholder="山田 太郎" />
+                            <field name="furi_name" placeholder="ﾔﾏﾀﾞ ﾀﾛｳ" />
+                            <field name="dependant_categ" />
+                            <field
+                                name="gender"
+                                widget="radio"
+                                options="{'horizontal': true}"
+                            />
+                            <field name="birthday" placeholder="2005/03/01" />
+                            <field name="is_dependant_tax" />
                         </group>
-                        <group attrs="{'invisible':[('dependant_categ','!=','01_spouse')]}">
-                            <label for="pension_code"
-                                   string="Pension Number (?)"
-                                   class="oe_edit_only"/>
+                        <group
+                            attrs="{'invisible':[('dependant_categ','!=','01_spouse')]}"
+                        >
+                            <label
+                                for="pension_code"
+                                string="Pension Number (?)"
+                                class="oe_edit_only"
+                            />
                             <div class="o_row mr16 oe_edit_only">
-                                <field name="pension_code" placeholder="9999"
-                                       attrs="{'required': [('dependant_categ', '=', '01_spouse')]}"/>
+                                <field
+                                    name="pension_code"
+                                    placeholder="9999"
+                                    attrs="{'required': [('dependant_categ', '=', '01_spouse')]}"
+                                />
                                 <span>-</span>
-                                <field name="pension_seq" placeholder="999999"
-                                       attrs="{'required': [('dependant_categ', '=', '01_spouse')]}"/>
+                                <field
+                                    name="pension_seq"
+                                    placeholder="999999"
+                                    attrs="{'required': [('dependant_categ', '=', '01_spouse')]}"
+                                />
                             </div>
-                            <field name="pension_number" class="oe_read_only"/>
-                            <field name="phone" placeholder="Remove hyphen"/>
+                            <field name="pension_number" class="oe_read_only" />
+                            <field name="phone" placeholder="Remove hyphen" />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="residence_categ"/>
-                            <field name="postal_code"
-                                   placeholder="Remove hyphen"
-                                   attrs="{'invisible':[('residence_categ','=','together')]}"/>
-                            <field name="address" placeholder="千代田区一番町１０－２２"
-                                   attrs="{'invisible':[('residence_categ','=','together')], 'required': [('residence_categ', '=', 'separate')]}"/>
-                            <field name="furi_address"
-                                   placeholder="チヨダイチバンチョウユウビンキョク"
-                                   attrs="{'invisible':[('residence_categ','=','together')], 'required': [('residence_categ', '=', 'separate')]}"/>
+                            <field name="residence_categ" />
+                            <field
+                                name="postal_code"
+                                placeholder="Remove hyphen"
+                                attrs="{'invisible':[('residence_categ','=','together')]}"
+                            />
+                            <field
+                                name="address"
+                                placeholder="千代田区一番町１０－２２"
+                                attrs="{'invisible':[('residence_categ','=','together')], 'required': [('residence_categ', '=', 'separate')]}"
+                            />
+                            <field
+                                name="furi_address"
+                                placeholder="チヨダイチバンチョウユウビンキョク"
+                                attrs="{'invisible':[('residence_categ','=','together')], 'required': [('residence_categ', '=', 'separate')]}"
+                            />
                         </group>
                         <group>
-                            <label for="occupation"/>
+                            <label for="occupation" />
                             <div>
                                 <div class="o_row mr16">
-                                    <field name="occupation"/>
-                                    <field name="occupation_desc"
-                                           attrs="{'invisible': [('occupation','!=','other')]}"/>
-                                    <field name="occupation_desc"
-                                           placeholder="Year"
-                                           attrs="{'invisible': [('occupation','!=','college')]}"/>
+                                    <field name="occupation" />
+                                    <field
+                                        name="occupation_desc"
+                                        attrs="{'invisible': [('occupation','!=','other')]}"
+                                    />
+                                    <field
+                                        name="occupation_desc"
+                                        placeholder="Year"
+                                        attrs="{'invisible': [('occupation','!=','college')]}"
+                                    />
                                 </div>
                             </div>
-                            <field name="currency_id" invisible="1"/>
-                            <field name="income" placeholder="¥5,000,000"/>
-                            <field name="amt_to_family" placeholder="¥50,000"
-                                   attrs="{'invisible': [('residence_categ','!=','separate')], 'required': [('residence_categ', '=', 'separate')]}"/>
-                            <field name="amt_to_family_confirm_doc"
-                                   string="Proof of Amount Sent to Family (?)"
-                                   filename="amt_to_family_confirm_doc_filename"
-                                   attrs="{'invisible': [('residence_categ','!=','separate')]}"/>
-                            <field name="amt_to_family_confirm_doc_filename"
-                                   invisible="1"/>
+                            <field name="currency_id" invisible="1" />
+                            <field name="income" placeholder="¥5,000,000" />
+                            <field
+                                name="amt_to_family"
+                                placeholder="¥50,000"
+                                attrs="{'invisible': [('residence_categ','!=','separate')], 'required': [('residence_categ', '=', 'separate')]}"
+                            />
+                            <field
+                                name="amt_to_family_confirm_doc"
+                                string="Proof of Amount Sent to Family (?)"
+                                filename="amt_to_family_confirm_doc_filename"
+                                attrs="{'invisible': [('residence_categ','!=','separate')]}"
+                            />
+                            <field
+                                name="amt_to_family_confirm_doc_filename"
+                                invisible="1"
+                            />
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="disability_class"/>
-                            <field name="disability_note"
-                                   attrs="{'invisible': [('disability_class', '=', False)]}"/>
+                            <field name="disability_class" />
+                            <field
+                                name="disability_note"
+                                attrs="{'invisible': [('disability_class', '=', False)]}"
+                            />
                         </group>
                         <group>
-                            <field name="date_dependant_enter"
-                                   string="Date of Becoming a Dependant (?)"
-                                   placeholder="2019/01/01"/>
-                            <field name="cause_dependant_enter"/>
-                            <field name="cause_dependant_enter_note"
-                                   attrs="{'invisible': [('cause_dependant_enter', '!=', '5_other')]}"/>
+                            <field
+                                name="date_dependant_enter"
+                                string="Date of Becoming a Dependant (?)"
+                                placeholder="2019/01/01"
+                            />
+                            <field name="cause_dependant_enter" />
+                            <field
+                                name="cause_dependant_enter_note"
+                                attrs="{'invisible': [('cause_dependant_enter', '!=', '5_other')]}"
+                            />
                         </group>
                         <group>
-                            <field name="widowhood"/>
-                            <field name="working_student_deduction"/>
+                            <field name="widowhood" />
+                            <field name="working_student_deduction" />
                         </group>
                         <group>
-                            <field name="inactive"/>
-                            <field name="inactive_date"
-                                   attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
-                            <field name="inactive_reason"
-                                   attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"/>
-                            <field name="appointment_letter_doc"
-                                   filename="appointment_letter_doc_filename"/>
-                            <field name="appointment_letter_doc_filename"
-                                   invisible="1"/>
+                            <field name="inactive" />
+                            <field
+                                name="inactive_date"
+                                attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"
+                            />
+                            <field
+                                name="inactive_reason"
+                                attrs="{'invisible':[('inactive','=',False)], 'required': [('inactive', '=', True)]}"
+                            />
+                            <field
+                                name="appointment_letter_doc"
+                                filename="appointment_letter_doc_filename"
+                            />
+                            <field
+                                name="appointment_letter_doc_filename"
+                                invisible="1"
+                            />
                         </group>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
-
     <record id="view_dependant_tree" model="ir.ui.view">
         <field name="name">view.hr.dependant.tree</field>
         <field name="model">hr.dependant</field>
         <field name="arch" type="xml">
             <tree string="Dependants" decoration-muted="inactive">
-                <field name="name"/>
-                <field name="dependant_categ"/>
-                <field name="birthday"/>
-                <field name="inactive" invisible="1"/>
+                <field name="name" />
+                <field name="dependant_categ" />
+                <field name="birthday" />
+                <field name="inactive" invisible="1" />
             </tree>
         </field>
     </record>
-
     <record id="hr_dependant_search" model="ir.ui.view">
         <field name="name">hr.dependant.search</field>
         <field name="model">hr.dependant</field>
         <field name="arch" type="xml">
             <search string="Search Dependants">
-                <field name="name"/>
-                <field name="employee_id"/>
+                <field name="name" />
+                <field name="employee_id" />
             </search>
         </field>
     </record>
-
 </odoo>
