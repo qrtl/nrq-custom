@@ -6,14 +6,13 @@ from odoo import api, fields, models
 
 
 class PurchasePrint(models.Model):
-    _inherit = 'purchase.order'
+    _inherit = "purchase.order"
 
-    display_tax = fields.Boolean(
-        'Display Tax',
-    )
+    display_tax = fields.Boolean("Display Tax",)
 
     @api.multi
     def print_quotation(self):
-        self.write({'state': "sent"})
-        return self.env['report'].get_action(
-            self, 'report_purchase_nrq.report_purchaseorder')
+        self.write({"state": "sent"})
+        return self.env["report"].get_action(
+            self, "report_purchase_nrq.report_purchaseorder"
+        )
