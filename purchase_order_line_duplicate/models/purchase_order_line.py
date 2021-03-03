@@ -6,17 +6,17 @@ from odoo import api, models
 
 
 class PurchaseOrderLine(models.Model):
-    _inherit = 'purchase.order.line'
+    _inherit = "purchase.order.line"
 
     @api.multi
     def action_duplicate_line(self):
         for line in self:
             default = {
-                'product_id': line.product_id.id,
-                'name': line.name,
-                'product_uom': line.product_uom.id,
-                'price_unit': line.price_unit,
-                'product_qty': line.product_qty,
-                'order_id': line.order_id.id
+                "product_id": line.product_id.id,
+                "name": line.name,
+                "product_uom": line.product_uom.id,
+                "price_unit": line.price_unit,
+                "product_qty": line.product_qty,
+                "order_id": line.order_id.id,
             }
             line.copy(default=default)
