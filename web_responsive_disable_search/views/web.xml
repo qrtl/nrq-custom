@@ -1,16 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-    <template id="menu_inherit_web_responsive" inherit_id="web_responsive.menu" name="App Drawer - Menu inherit web responsive">
-        <xpath expr="//div[@id='appDrawerAppPanelHead']/div[@class='col-xs-6']/h4/a[@class='app-drawer-icon-search drawer-search-open']" position="attributes">
+    <template
+        id="menu_inherit_web_responsive"
+        inherit_id="web_responsive.menu"
+        name="App Drawer - Menu inherit web responsive"
+    >
+        <xpath
+            expr="//div[@id='appDrawerAppPanelHead']/div[@class='col-xs-6']/h4/a[@class='app-drawer-icon-search drawer-search-open']"
+            position="attributes"
+        >
             <attribute name="class">hidden</attribute>
         </xpath>
-        <xpath expr="//div[@id='appDrawerAppPanelHead']/div[@class='col-xs-6']/h4/a[@class='app-drawer-icon-search drawer-search-close']" position="attributes">
+        <xpath
+            expr="//div[@id='appDrawerAppPanelHead']/div[@class='col-xs-6']/h4/a[@class='app-drawer-icon-search drawer-search-close']"
+            position="attributes"
+        >
             <attribute name="class">hidden</attribute>
         </xpath>
         <xpath expr="//ul[@id='appDrawerMenuSearch']" position="attributes">
             <attribute name="class">hidden</attribute>
         </xpath>
     </template>
-
 </odoo>
