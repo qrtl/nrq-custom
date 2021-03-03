@@ -11,24 +11,9 @@
     "license": "LGPL-3",
     "application": False,
     "installable": True,
-    "pre_init_hook": "",
-    "post_init_hook": "",
-    "post_load": "",
-    "uninstall_hook": "",
-    "external_dependencies": {
-        "python": [],
-        "bin": [],
-    },
-    "depends": [
-        "account",
-        "report_common_nrq",
-    ],
+    "depends": ["account", "report_common_nrq"],
     "data": [
-        'report/account_report_invoice_acceptance.xml',
-        'report/account_report_deliverynote.xml',
+        "report/account_report_invoice_acceptance.xml",
+        "report/account_report_deliverynote.xml",
     ],
-    "demo": [
-    ],
-    "qweb": [
-    ]
 }
