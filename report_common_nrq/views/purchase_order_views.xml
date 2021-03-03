@@ -1,38 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="purchase_order_form" model="ir.ui.view">
         <field name="name">purchase.order.form</field>
         <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='is_shipped']" position="after">
-                <field name="doc_title"/>
+                <field name="doc_title" />
             </xpath>
             <xpath expr="//field[@name='company_id']" position="after">
-                <field name="user_id"/>
+                <field name="user_id" />
             </xpath>
         </field>
     </record>
-
     <record id="purchase_order_tree" model="ir.ui.view">
         <field name="name">purchase.order.tree</field>
         <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="doc_title"/>
+                <field name="doc_title" />
             </xpath>
         </field>
     </record>
-
     <record id="purchase_order_filter" model="ir.ui.view">
         <field name="name">request.quotation.select</field>
         <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="doc_title"/>
+                <field name="doc_title" />
             </xpath>
         </field>
     </record>

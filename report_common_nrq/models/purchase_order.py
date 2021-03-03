@@ -6,14 +6,12 @@ from odoo import fields, models
 
 
 class PurchaseOrder(models.Model):
-    _inherit = 'purchase.order'
+    _inherit = "purchase.order"
 
-    doc_title = fields.Char(
-        string="Doc Title",
-    )
+    doc_title = fields.Char(string="Doc Title",)
     user_id = fields.Many2one(
-        comodel_name='res.users',
-        string='Salesperson',
-        track_visibility='onchange',
-        default=lambda self: self.env.user
+        comodel_name="res.users",
+        string="Salesperson",
+        track_visibility="onchange",
+        default=lambda self: self.env.user,
     )
