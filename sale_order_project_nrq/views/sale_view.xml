@@ -4,6 +4,7 @@
         <field name="name">view_project_quotation_order_form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale_order_project.view_order_form" />
+        <field name="priority">99</field>
         <field name="arch" type="xml">
             <button name="action_create_project" position="replace" />
             <button name="action_done" position="after">
