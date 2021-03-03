@@ -1,57 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="hr_holidays_compute_days.edit_holiday_new" model="ir.ui.view">
-        <field name="name">Leave Request - Add full day + hide nº of days + show related readonly</field>
+        <field
+            name="name"
+        >Leave Request - Add full day + hide nº of days + show related readonly</field>
         <field name="model">hr.holidays</field>
         <field name="inherit_id" ref="hr_holidays.edit_holiday_new" />
         <field name="arch" type="xml">
             <field name="date_from" position="before">
                 <!-- QRTL Edit: Overwrite the template and make Full Day checkboxes relatd labels and field invisible -->
-                <field name="from_full_day" nolabel="1" class="oe_inline" invisible="1"/>
+                <field
+                    name="from_full_day"
+                    nolabel="1"
+                    class="oe_inline"
+                    invisible="1"
+                />
                 <!-- <label string="Full day" class="oe_inline"/> -->
                 <!-- <label string="-" class="oe_inline"/> -->
-                <field name="to_full_day" nolabel="1" class="oe_inline" invisible="1"/>
+                <field name="to_full_day" nolabel="1" class="oe_inline" invisible="1" />
                 <!-- <label string="Full day" class="oe_inline"/> -->
                 <!-- <br/> -->
-                <field name="date_from_full" attrs="{'required':[('type', '=', 'remove')], 'invisible': [('from_full_day', '=', False)]}" class="oe_inline"/>
+                <field
+                    name="date_from_full"
+                    attrs="{'required':[('type', '=', 'remove')], 'invisible': [('from_full_day', '=', False)]}"
+                    class="oe_inline"
+                />
             </field>
             <field name="date_from" position="attributes">
-                <attribute name="attrs">{'required':[('type', '=', 'remove')], 'invisible': [('from_full_day', '=', True)]}</attribute>
+                <attribute
+                    name="attrs"
+                >{'required':[('type', '=', 'remove')], 'invisible': [('from_full_day', '=', True)]}</attribute>
             </field>
             <field name="date_to" position="before">
-                <field name="date_to_full" attrs="{'required':[('type', '=', 'remove')], 'invisible': [('to_full_day', '=', False)]}" class="oe_inline"/>
+                <field
+                    name="date_to_full"
+                    attrs="{'required':[('type', '=', 'remove')], 'invisible': [('to_full_day', '=', False)]}"
+                    class="oe_inline"
+                />
             </field>
             <field name="date_to" position="attributes">
-                <attribute name="attrs">{'required':[('type', '=', 'remove')], 'invisible': [('to_full_day', '=', True)]}</attribute>
+                <attribute
+                    name="attrs"
+                >{'required':[('type', '=', 'remove')], 'invisible': [('to_full_day', '=', True)]}</attribute>
             </field>
             <field name="number_of_days_temp" position="attributes">
-                <attribute name="attrs">{'invisible': [('type', '=', 'remove')]}</attribute>
+                <attribute
+                    name="attrs"
+                >{'invisible': [('type', '=', 'remove')]}</attribute>
             </field>
             <field name="number_of_days_temp" position="after">
-                <field name="number_of_days_temp_related"
+                <field
+                    name="number_of_days_temp_related"
                     attrs="{'invisible': [('type', '!=', 'remove')]}"
                 />
             </field>
         </field>
     </record>
-
     <record id="edit_holiday_new" model="ir.ui.view">
-        <field name="name">Leave Request - Add full day + hide nº of days + show related readonly</field>
+        <field
+            name="name"
+        >Leave Request - Add full day + hide nº of days + show related readonly</field>
         <field name="model">hr.holidays</field>
         <field name="inherit_id" ref="hr_holidays.edit_holiday_new" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='number_of_days_temp']/.." position="inside">
                 <!-- QRTL Add: Add help text to remind users if they want to take half day off -->
-                <br/>
-                <p>* Please make a manual adjustment to "days" in case requesting for a half-day leave.</p>
+                <br />
+                <p
+                >* Please make a manual adjustment to "days" in case requesting for a half-day leave.</p>
             </xpath>
         </field>
     </record>
-
     <!-- QRTL Edit: Remove the group settings hence all employees can edit the days field -->
     <record id="hr_holidays_compute_days.edit_holiday_new_manager" model="ir.ui.view">
-        <field name="groups_id" eval="[(5, 0, 0)]"/>
+        <field name="groups_id" eval="[(5, 0, 0)]" />
     </record>
-
 </odoo>
