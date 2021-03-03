@@ -6,7 +6,6 @@ from odoo import fields, models
 
 
 class ResCompany(models.Model):
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
-    appointment_letter_url = fields.Char('Letter of Appointment Link('
-                                         'Dependant)')
+    appointment_letter_url = fields.Char("Letter of Appointment Link(" "Dependant)")
