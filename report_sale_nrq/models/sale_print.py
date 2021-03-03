@@ -6,11 +6,11 @@ from odoo import api, models
 
 
 class SalePrint(models.Model):
-    _inherit = 'sale.order'
+    _inherit = "sale.order"
 
     @api.multi
     def print_quotation(self):
-        self.filtered(lambda s: s.state == 'draft').write(
-            {'state': 'sent'})
-        return self.env['report'].get_action(
-            self, 'report_sale_nrq.report_salequotation')
+        self.filtered(lambda s: s.state == "draft").write({"state": "sent"})
+        return self.env["report"].get_action(
+            self, "report_sale_nrq.report_salequotation"
+        )
