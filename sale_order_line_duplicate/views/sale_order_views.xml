@@ -1,16 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_order_form" model="ir.ui.view">
         <field name="name">view.order.form</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']"
-                   position="before">
-                <button name="action_duplicate_line" icon="fa fa-clone"
-                        string="Duplicate Order Line" type="object"
-                        attrs="{'invisible':[('state','not in', ('draft', 'sent'))]}"/>
+            <xpath
+                expr="//field[@name='order_line']//tree//field[@name='product_id']"
+                position="before"
+            >
+                <button
+                    name="action_duplicate_line"
+                    icon="fa fa-clone"
+                    string="Duplicate Order Line"
+                    type="object"
+                    attrs="{'invisible':[('state','not in', ('draft', 'sent'))]}"
+                />
             </xpath>
             <xpath expr="//field[@name='order_line']" position="attributes">
                 <attribute name="options">{'reload_on_button': True}
@@ -18,5 +23,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
