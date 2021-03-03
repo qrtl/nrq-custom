@@ -6,10 +6,10 @@ from odoo import fields, models
 
 
 class AccountInvoice(models.Model):
-    _inherit = 'account.invoice'
+    _inherit = "account.invoice"
 
     sale_ids = fields.Many2many(
-        'sale.order',
-        related='invoice_line_ids.sale_ids',
-        string='Related Sales Order(s)'
+        "sale.order",
+        related="invoice_line_ids.sale_ids",
+        string="Related Sales Order(s)",
     )
