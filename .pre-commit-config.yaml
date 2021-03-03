@@ -13,62 +13,7 @@ exclude: |
   (LICENSE.*|COPYING.*)|
   # Exclude .travis.yml
   (^\.travis\.yml$)|
-  # For v10.0 and before, exclude all oca modules
-  account_analytic_required/|
-  account_invoice_line_view_nrq/|
-  account_type_menu/|
-  auditlog/|
-  auto_backup/|
-  base_export_manager/|
-  base_optional_quick_create/|
-  base_partner_number/|
-  base_technical_features/|
-  base_user_role/|
-  date_range/|
-  dbfilter_from_header/|
-  help_online/|
-  hr_attendance_timesheet_adj/|
-  hr_employee_manager_follower/|
-  hr_employee_nrq/|
-  hr_expense_adj/|
-  hr_expense_sheet_post/|
-  hr_holidays_compute_days/|
-  hr_holidays_compute_days_adj/|
-  hr_holidays_notify_employee_manager/|
-  hr_holidays_settings/|
-  hr_public_holidays/|
-  hr_timesheet_adj/|
-  hr_timesheet_project_date_range_check/|
-  hr_timesheet_sheet_work_hours_summary/|
-  ir_sequence_range_month/|
-  l10n_jp_hr_employee/|
-  mail_hide_send_email_button/|
-  product_permission_adj_nrq/|
-  project_parent/|
-  project_parent_adj/|
-  project_view_adjust_nrq/|
-  purchase_order_line_duplicate/|
-  purchase_order_sale_order_nrq/|
-  report_account_nrq/|
-  report_common_nrq/|
-  report_purchase_nrq/|
-  report_sale_nrq/|
-  sale_order_adj/|
-  sale_order_line_duplicate/|
-  sale_order_project/|
-  sale_order_project_nrq/|
-  sale_order_team_propose/|
-  sale_price_unchange/|
-  sale_quotation_approval/|
-  translation_adj/|
-  user_activity_log/|
-  web_auto_complete_adj/|
-  web_environment_ribbon/|
-  web_export_view/|
-  web_m2x_options/|
-  web_responsive/|
-  web_responsive_disable_search/|
-  website_no_crawler/
+  ^pyproject\.toml$
 default_language_version:
   python: python2.7
 repos:
@@ -76,8 +21,8 @@ repos:
     rev: 19.10b0
     hooks:
       - id: black
-  - repo: https://github.com/prettier/prettier
-    rev: "1.19.1"
+  - repo: https://github.com/prettier/pre-commit
+    rev: "v1.19.1"
     hooks:
       - id: prettier
   # TODO Avoid awebdeveloper/pre-commit-prettier if possible
