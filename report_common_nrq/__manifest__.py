@@ -10,19 +10,14 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": [
-        "account",
-        "sale",
-        "purchase",
-        "base_partner_number",
-    ],
+    "depends": ["account", "sale", "purchase", "base_partner_number"],
     "data": [
-        'data/res_partner_data.xml',
-        'views/res_company_views.xml',
-        'views/res_partner_views.xml',
-        'views/sale_order_views.xml',
-        'views/purchase_order_views.xml',
-        'views/account_invoice_views.xml',
-        'report/common_template.xml',
-    ]
+        "data/res_partner_data.xml",
+        "views/res_company_views.xml",
+        "views/res_partner_views.xml",
+        "views/sale_order_views.xml",
+        "views/purchase_order_views.xml",
+        "views/account_invoice_views.xml",
+        "report/common_template.xml",
+    ],
 }

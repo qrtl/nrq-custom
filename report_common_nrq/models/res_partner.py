@@ -6,10 +6,9 @@ from odoo import fields, models
 
 
 class ResPartner(models.Model):
-    _inherit = 'res.partner'
+    _inherit = "res.partner"
 
     delivery_note = fields.Boolean(
         string="Delivery Note",
-        help="Select if delivery note should be printed together with "
-             "invoice.",
+        help="Select if delivery note should be printed together with " "invoice.",
     )
