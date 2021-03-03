@@ -6,19 +6,20 @@ from odoo import api, fields, models
 
 
 class PurchaseOrderLine(models.Model):
-    _inherit = 'purchase.order.line'
+    _inherit = "purchase.order.line"
 
     sale_ids = fields.Many2many(
-        'sale.order',
+        "sale.order",
         compute="_compute_sale_ids",
         store=True,
-        string='Related Sales Order(s)'
+        string="Related Sales Order(s)",
     )
 
     @api.multi
-    @api.depends('account_analytic_id')
+    @api.depends("account_analytic_id")
     def _compute_sale_ids(self):
         for order_line in self:
             if order_line.account_analytic_id:
-                order_line.sale_ids = self.env["sale.order"].search([(
-                    "project_id", "=", order_line.account_analytic_id.id)])
+                order_line.sale_ids = self.env["sale.order"].search(
+                    [("project_id", "=", order_line.account_analytic_id.id)]
+                )
