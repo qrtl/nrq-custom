@@ -18,4 +18,4 @@
 # commit SHA to select:
 # sale-workflow https://github.com/OCA/sale-workflow branchname f848e37
 
-nrq-oca https://github.com/qrtl/nrq-oca.git st1
+nrq-oca https://github.com/qrtl/nrq-oca.git 10.0
