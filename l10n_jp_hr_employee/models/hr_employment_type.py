@@ -6,8 +6,6 @@ from odoo import fields, models
 
 
 class HrEmploymentType(models.Model):
-    _name = 'hr.employment.type'
+    _name = "hr.employment.type"
 
-    name = fields.Char(
-        required=True,
-    )
+    name = fields.Char(required=True,)

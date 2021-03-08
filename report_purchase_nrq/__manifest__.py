@@ -11,24 +11,6 @@
     "license": "LGPL-3",
     "application": False,
     "installable": True,
-    "pre_init_hook": "",
-    "post_init_hook": "",
-    "post_load": "",
-    "uninstall_hook": "",
-    "external_dependencies": {
-        "python": [],
-        "bin": [],
-    },
-    "depends": [
-        "purchase",
-        "report_common_nrq",
-    ],
-    "data": [
-        'report/purchase_report_template.xml',
-        'views/purchase_order_views.xml',
-    ],
-    "demo": [
-    ],
-    "qweb": [
-    ]
+    "depends": ["purchase", "report_common_nrq"],
+    "data": ["report/purchase_report_template.xml", "views/purchase_order_views.xml"],
 }

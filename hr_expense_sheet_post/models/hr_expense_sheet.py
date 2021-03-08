@@ -6,22 +6,23 @@ from odoo import _, api, models
 
 
 class HrExpenseSheet(models.Model):
-    _inherit = 'hr.expense.sheet'
+    _inherit = "hr.expense.sheet"
 
     @api.multi
     def post_expense_sheets(self):
-        sheets = self.browse(self._context.get('active_ids', [])).filtered(
-            lambda r: r.state == "approve")
+        sheets = self.browse(self._context.get("active_ids", [])).filtered(
+            lambda r: r.state == "approve"
+        )
         posted_sheets_ids = []
         for sheet in sheets:
             res = sheet.action_sheet_move_create()
             if res:
                 posted_sheets_ids.append(sheet.id)
         return {
-            'type': 'ir.actions.act_window',
-            'name': _('Posted Expense Sheet(s)'),
-            'res_model': 'hr.expense.sheet',
-            'view_mode': 'tree,form',
-            'domain': [('id', 'in', posted_sheets_ids)],
-            'target': 'current'
+            "type": "ir.actions.act_window",
+            "name": _("Posted Expense Sheet(s)"),
+            "res_model": "hr.expense.sheet",
+            "view_mode": "tree,form",
+            "domain": [("id", "in", posted_sheets_ids)],
+            "target": "current",
         }

@@ -16,8 +16,8 @@
         "l10n_jp_hr_employee",
     ],
     "data": [
-        'security/hr_security.xml',
-        'security/ir.model.access.csv',
-        'views/hr_employee_views.xml',
+        "security/hr_security.xml",
+        "security/ir.model.access.csv",
+        "views/hr_employee_views.xml",
     ],
 }

@@ -10,12 +10,6 @@
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "installable": True,
-    "depends": [
-        "sale",
-        "report_common_nrq",
-    ],
-    "data": [
-        'views/res_company_views.xml',
-        'report/sale_report_quotation.xml'
-    ]
+    "depends": ["sale", "report_common_nrq"],
+    "data": ["views/res_company_views.xml", "report/sale_report_quotation.xml"],
 }

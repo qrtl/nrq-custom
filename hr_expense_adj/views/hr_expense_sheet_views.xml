@@ -1,76 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_hr_expense_sheet_form" model="ir.ui.view">
         <field name="name">hr.expense.sheet.form</field>
         <field name="model">hr.expense.sheet</field>
-        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form" />
+        <field name="priority">99</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="attributes">
                 <attribute name="statusbar_visible">
                     draft,submit,approve,post,done
                 </attribute>
             </xpath>
-            <xpath expr="//button[@name='approve_expense_sheets']"
-                   position="before">
-                <button name="action_submit" type="object" states="draft"
-                        string="Submit" class="oe_highlight"/>
-                <button name="action_cancel_submission" type="object"
-                        states="submit" string="Cancel Submission"/>
+            <xpath expr="//button[@name='approve_expense_sheets']" position="before">
+                <button
+                    name="action_submit"
+                    type="object"
+                    states="draft"
+                    string="Submit"
+                    class="oe_highlight"
+                />
+                <button
+                    name="action_cancel_submission"
+                    type="object"
+                    states="submit"
+                    string="Cancel Submission"
+                />
             </xpath>
-            <xpath expr="//button[@name='reset_expense_sheets']"
-                   position="attributes">
+            <xpath expr="//button[@name='reset_expense_sheets']" position="attributes">
                 <attribute name="string">Set to Draft</attribute>
             </xpath>
             <xpath expr="//tree" position="attributes">
                 <attribute name="default_order">date,id</attribute>
             </xpath>
             <xpath expr="//tree/field[@name='date']" position="before">
-                <field name="number"/>
+                <field name="number" />
             </xpath>
             <xpath expr="//tree/field[@name='date']" position="after">
-                <field name="product_id"/>
+                <field name="product_id" />
             </xpath>
             <xpath expr="//tree/field[@name='name']" position="after">
-                <field name="reference" string="Reference"/>
+                <field name="reference" string="Reference" />
             </xpath>
-            <xpath expr="//tree/field[@name='tax_ids']" position="replace"/>
-            <xpath expr="//tree/field[@name='analytic_account_id']"
-                   position="after">
-                <field name="tax_ids" widget="many2many_tags"/>
+            <xpath expr="//tree/field[@name='tax_ids']" position="replace" />
+            <xpath expr="//tree/field[@name='analytic_account_id']" position="after">
+                <field name="tax_ids" widget="many2many_tags" />
             </xpath>
             <xpath expr="//tree/field[@name='total_amount']" position="before">
-                <field name="unit_amount"/>
-                <field name="quantity"/>
+                <field name="unit_amount" />
+                <field name="quantity" />
             </xpath>
             <xpath expr="//tree/field[@name='total_amount']" position="after">
-                <field name="description"/>
+                <field name="description" />
             </xpath>
         </field>
     </record>
-
     <record id="view_hr_expense_sheet_tree" model="ir.ui.view">
         <field name="name">hr.expense.sheet.filter</field>
         <field name="model">hr.expense.sheet</field>
-        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_tree"/>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='employee_id']" position="after">
-                <field name="code"/>
+                <field name="code" />
             </xpath>
         </field>
     </record>
-
     <record id="view_hr_expense_sheet_filter" model="ir.ui.view">
         <field name="name">hr.expense.sheet.filter</field>
         <field name="model">hr.expense.sheet</field>
-        <field name="inherit_id"
-               ref="hr_expense.view_hr_expense_sheet_filter"/>
+        <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_filter" />
         <field name="arch" type="xml">
             <xpath expr="filter[@name='submitted']" position="before">
-                <filter domain="[('state', '=', 'draft')]" string="To Submit"
-                        name="draft" help="Draft Expenses"/>
+                <filter
+                    domain="[('state', '=', 'draft')]"
+                    string="To Submit"
+                    name="draft"
+                    help="Draft Expenses"
+                />
             </xpath>
         </field>
     </record>
-
 </odoo>

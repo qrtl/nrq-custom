@@ -1,0 +1,9 @@
+<templates>
+    <t t-extend="mail.ChatThread.Message">
+        <t t-jquery="small.o_mail_timestamp" t-operation="replace">
+            <small class="o_mail_timestamp" t-att-title="message.date"><t
+                    t-esc="message.hour"
+                /> (<t t-esc="message.date" />)</small>
+        </t>
+    </t>
+</templates>

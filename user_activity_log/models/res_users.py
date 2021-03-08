@@ -6,9 +6,9 @@ from odoo import api, fields, models
 
 
 class ResUsers(models.Model):
-    _inherit = 'res.users'
+    _inherit = "res.users"
 
-    track_user_activity = fields.Boolean('Track User Activity', dafault=False)
+    track_user_activity = fields.Boolean("Track User Activity", dafault=False)
 
     @api.multi
     def toggle_track_user_activity(self):
