@@ -5,11 +5,11 @@
         <field name="model">auditlog.log.line</field>
         <field name="arch" type="xml">
             <tree default_order="create_date desc">
-                <field name="create_date"/>
-                <field name="field_name"/>
-                <field name="log_id"/>
-                <field name="old_value_text"/>
-                <field name="new_value_text"/>
+                <field name="create_date" />
+                <field name="field_name" />
+                <field name="log_id" />
+                <field name="old_value_text" />
+                <field name="new_value_text" />
             </tree>
         </field>
     </record>
@@ -19,5 +19,10 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree</field>
     </record>
-    <menuitem id="menu_auditlog_log_line" name="Auditlog Lines" parent="auditlog.menu_audit" action="action_auditlog_log_line_tree"/>
+    <menuitem
+        id="menu_auditlog_log_line"
+        name="Auditlog Lines"
+        parent="auditlog.menu_audit"
+        action="action_auditlog_log_line_tree"
+    />
 </odoo>
