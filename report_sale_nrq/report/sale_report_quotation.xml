@@ -184,9 +184,10 @@
                         </table>
                     </div>
                 </div>
-                <p t-if="doc.show_tax == False" align="right">Consumption tax
-                    will be added in our invoice as applicable.
-                </p>
+                <p
+                    t-if="doc.show_tax == False"
+                    align="right"
+                >Consumption tax will be added in our invoice as applicable.</p>
                 <table class="table">
                     <tr>
                         <td style="font-size:16px">

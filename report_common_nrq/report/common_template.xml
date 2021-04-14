@@ -26,24 +26,20 @@
                         <tr>
                             <td>
                                 <t t-if="type in ('invoice', 'invoice_copy')">
-                                    <span>Please find our invoice details as
-                                        follows.
-                                    </span>
+                                    <span
+                                    >Please find our invoice details as follows.</span>
                                 </t>
                                 <t t-if="type == 'deliverynote'">
-                                    <span>Please find our delivery details as
-                                        follows.
-                                    </span>
+                                    <span
+                                    >Please find our delivery details as follows.</span>
                                 </t>
                                 <t t-if="type == 'quotation'">
-                                    <span>Please find our quotation details as
-                                        follows.
-                                    </span>
+                                    <span
+                                    >Please find our quotation details as follows.</span>
                                 </t>
                                 <t t-if="type == 'purchase'">
-                                    <span>Please find our order details as
-                                        follows.
-                                    </span>
+                                    <span
+                                    >Please find our order details as follows.</span>
                                 </t>
                             </td>
                         </tr>
@@ -54,9 +50,7 @@
                                 >
                                     Total Invoiced:
                                 </t>
-                                <t t-if="type == 'quotation'">Quotation
-                                    Amount:
-                                </t>
+                                <t t-if="type == 'quotation'">Quotation Amount:</t>
                                 <t t-if="type == 'purchase'">Total Amount:</t>
                                 <t t-if="type == 'quotation' and doc.show_tax == False">
                                     <span
@@ -234,9 +228,8 @@
                                         </t>
                                     </t>
                                     <t t-else="">
-                                        <span>Effective for one month from the
-                                            date of quotation.
-                                        </span>
+                                        <span
+                                        >Effective for one month from the date of quotation.</span>
                                     </t>
                                 </p>
                             </t>
@@ -276,9 +269,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>We have accepted your work listed as
-                                    follows.
-                                </span>
+                                <span
+                                >We have accepted your work listed as follows.</span>
                             </td>
                         </tr>
                         <tr t-if="doc.doc_title">
@@ -687,10 +679,7 @@
                             <td>
                                 <span
                                     style="position:relative; left:20px; font-size:14px"
-                                >
-                                    Bank charges shall be borne by the
-                                    customer.
-                                </span>
+                                >Bank charges shall be borne by the customer.</span>
                             </td>
                         </tr>
                     </table>
