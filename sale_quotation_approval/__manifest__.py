@@ -11,25 +11,10 @@
     "license": "LGPL-3",
     "application": False,
     "installable": True,
-    "pre_init_hook": "",
-    "post_init_hook": "",
-    "post_load": "",
-    "uninstall_hook": "",
-    "external_dependencies": {
-        "python": [],
-        "bin": [],
-    },
-    "depends": [
-        "sale",
-        "report_sale_nrq",
-    ],
+    "depends": ["sale", "report_sale_nrq"],
     "data": [
-        'data/mail_template_data.xml',
-        'views/sale_order_views.xml',
-        'report/sale_report.xml',
+        "data/mail_template_data.xml",
+        "views/sale_order_views.xml",
+        "report/sale_report.xml",
     ],
-    "demo": [
-    ],
-    "qweb": [
-    ]
 }

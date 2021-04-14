@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-    <template id="assets_backend" name="Auto-Complete Search Assets" inherit_id="web.assets_backend">
+    <template
+        id="assets_backend"
+        name="Auto-Complete Search Assets"
+        inherit_id="web.assets_backend"
+    >
         <xpath expr=".">
-            <script type="application/javascript"
-                    src="/web_auto_complete_adj/static/src/js/widgets/auto_complete.js"/>
+            <script
+                type="application/javascript"
+                src="/web_auto_complete_adj/static/src/js/widgets/auto_complete.js"
+            />
         </xpath>
     </template>
-
 </odoo>

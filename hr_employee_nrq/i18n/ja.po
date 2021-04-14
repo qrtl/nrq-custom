@@ -45,4 +45,3 @@ msgstr "資格"
 #: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_year_enrolled
 msgid "Year enrolled"
 msgstr "在籍年数"
-

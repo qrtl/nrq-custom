@@ -6,25 +6,20 @@ from odoo import fields, models
 
 
 class AnalyticType(models.Model):
-    _name = 'analytic.type'
-    _order = 'sequence'
+    _name = "analytic.type"
+    _order = "sequence"
 
-    name = fields.Char(
-        string="Name",
-        translate=True,
-        required=True
-    )
-    type = fields.Selection(selection=[
-        ('sales', 'Sales'),
-        ('labour', 'Labour'),
-        ('outsourcing', 'Outsourcing'),
-        ('expenses', 'Expenses'),
-        ('advances', 'Advances'),
-        ('other', 'Other')],
-        string='Analytic Type',
+    name = fields.Char(string="Name", translate=True, required=True)
+    type = fields.Selection(
+        selection=[
+            ("sales", "Sales"),
+            ("labour", "Labour"),
+            ("outsourcing", "Outsourcing"),
+            ("expenses", "Expenses"),
+            ("advances", "Advances"),
+            ("other", "Other"),
+        ],
+        string="Analytic Type",
         required=True,
     )
-    sequence = fields.Integer(
-        default=10,
-        required=True,
-    )
+    sequence = fields.Integer(default=10, required=True,)

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="analytic_type_sales" model="analytic.type">
         <field name="name">Sales</field>
         <field name="type">sales</field>
@@ -31,5 +30,4 @@
         <field name="type">other</field>
         <field name="sequence">60</field>
     </record>
-
 </odoo>

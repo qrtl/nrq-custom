@@ -1,17 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_employee_form" model="ir.ui.view">
         <field name="name">hr.employee.form</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="priority">99</field>
         <field name="arch" type="xml">
             <xpath expr="//page[2]" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath expr="//field[@name='address_home_id']" position="replace"/>
+            <xpath expr="//field[@name='address_home_id']" position="replace" />
             <xpath expr="//field[@name='work_phone']" position="after">
-                <field name="address_home_id" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"/>
+                <field
+                    name="address_home_id"
+                    context="{'show_address': 1}"
+                    options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}"
+                />
             </xpath>
             <xpath expr="//field[@name='address_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -20,41 +24,44 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='work_email']" position="after">
-                <field name="date_of_joining"/>
-                <field name="year_enrolled"/>
+                <field name="date_of_joining" />
+                <field name="year_enrolled" />
             </xpath>
             <xpath expr="//field[@name='work_phone']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-
             <xpath expr="//field[@name='coach_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
             <xpath expr="//div[@name='button_box']" position="inside">
-                <field name="employee_info_visible" invisible="1"/>
+                <field name="employee_info_visible" invisible="1" />
             </xpath>
             <xpath expr="//div[@name='button_box']" position="attributes">
-                <attribute name="groups"/>
+                <attribute name="groups" />
             </xpath>
             <xpath expr="//button[@name='toggle_active']" position="attributes">
                 <attribute name="groups">hr.group_hr_user</attribute>
             </xpath>
             <xpath expr="//page[@groups='hr.group_hr_user'][2]" position="attributes">
-                <attribute name="groups"/>
-                <attribute name="attrs">{'invisible':[('employee_info_visible', '!=', True)]}</attribute>
+                <attribute name="groups" />
+                <attribute name="attrs">{'invisible':[('employee_info_visible',
+                    '!=', True)]}
+                </attribute>
             </xpath>
             <xpath expr="//page[@name='public']/group" position="after">
                 <group string="Qualifications">
-                    <field name="qualification_names" string="Acquired Qualifications"/>
+                    <field
+                        name="qualification_names"
+                        string="Acquired Qualifications"
+                    />
                 </group>
             </xpath>
         </field>
     </record>
-
     <record id="hr_hr_employee_view_form2" model="ir.ui.view">
         <field name="name">hr.employee.form</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+        <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='manager']" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -64,61 +71,66 @@
             </xpath>
         </field>
     </record>
-
     <record id="hr_timesheet_sheet_employee_extd_form" model="ir.ui.view">
         <field name="name">hr.employee.form</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_employee_extd_form"/>
+        <field
+            name="inherit_id"
+            ref="hr_timesheet_sheet.hr_timesheet_sheet_employee_extd_form"
+        />
         <field name="arch" type="xml">
-            <xpath expr="//button[@groups='hr_timesheet.group_hr_timesheet_user']" position="attributes">
-                <attribute name="groups"/>
-                <attribute name="attrs">{'invisible':[('employee_info_visible', '!=', True)]}</attribute>
+            <xpath
+                expr="//button[@groups='hr_timesheet.group_hr_timesheet_user']"
+                position="attributes"
+            >
+                <attribute name="groups" />
+                <attribute name="attrs">{'invisible':[('employee_info_visible',
+                    '!=', True)]}
+                </attribute>
             </xpath>
         </field>
     </record>
-
     <record id="view_employee_form_leave_inherit" model="ir.ui.view">
         <field name="name">hr.employee.form</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr_holidays.view_employee_form_leave_inherit"/>
+        <field name="inherit_id" ref="hr_holidays.view_employee_form_leave_inherit" />
         <field name="arch" type="xml">
             <xpath expr="//page[3]//group[2]" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>
-
     <record id="hr_kanban_view_employees" model="ir.ui.view">
         <field name="name">hr.employee.kanban</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='oe_kanban_details']//field[@name='name']" position="before">
-                <field name="code"/>
+            <xpath
+                expr="//div[@class='oe_kanban_details']//field[@name='name']"
+                position="before"
+            >
+                <field name="code" />
             </xpath>
         </field>
     </record>
-
     <record id="view_employee_tree" model="ir.ui.view">
         <field name="name">hr.employee.tree</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="inherit_id" ref="hr.view_employee_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="code"/>
+                <field name="code" />
             </xpath>
         </field>
     </record>
-
     <record id="view_employee_filter" model="ir.ui.view">
         <field name="name">hr.employee.search</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="inherit_id" ref="hr.view_employee_filter" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="code"/>
+                <field name="code" />
             </xpath>
         </field>
     </record>
-
 </odoo>

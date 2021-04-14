@@ -10,9 +10,6 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": [
-        "purchase",
-    ],
-    "data": [
-    ],
+    "depends": ["purchase"],
+    "data": [],
 }

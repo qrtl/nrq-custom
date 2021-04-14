@@ -10,10 +10,9 @@ class SaleAdvancePaymentInv(models.TransientModel):
 
     @api.multi
     def _create_invoice(self, order, so_line, amount):
-        invoice =\
-            super(SaleAdvancePaymentInv, self)._create_invoice(order,
-                                                               so_line,
-                                                               amount)
+        invoice = super(SaleAdvancePaymentInv, self)._create_invoice(
+            order, so_line, amount
+        )
         if invoice:
             invoice.doc_title = order.doc_title
         return invoice

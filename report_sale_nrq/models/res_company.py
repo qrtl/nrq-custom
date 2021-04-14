@@ -6,8 +6,6 @@ from odoo import fields, models
 
 
 class Company(models.Model):
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
-    sale_remarks = fields.Text(
-        string="Sales Remarks",
-    )
+    sale_remarks = fields.Text(string="Sales Remarks",)
