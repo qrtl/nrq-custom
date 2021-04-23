@@ -211,18 +211,15 @@
                                             <span
                                                 t-field="doc.validity_date"
                                                 t-field-options="{'format':'YYYY'}"
-                                            />
-                                            年
+                                            />年
                                             <span
                                                 t-field="doc.validity_date"
                                                 t-field-options="{'format':'MM'}"
-                                            />
-                                            月
+                                            />月
                                             <span
                                                 t-field="doc.validity_date"
                                                 t-field-options="{'format':'dd'}"
-                                            />
-                                            日
+                                            />日
                                             <br />
                                         </t>
                                         <t t-if="doc.partner_id.lang != 'ja_JP'">
@@ -308,18 +305,15 @@
                                         <span
                                             t-field="doc.date_invoice"
                                             t-field-options="{'format':'YYYY'}"
-                                        />
-                                        年
+                                        />年
                                         <span
                                             t-field="doc.date_invoice"
                                             t-field-options="{'format':'MM'}"
-                                        />
-                                        月
+                                        />月
                                         <span
                                             t-field="doc.date_invoice"
                                             t-field-options="{'format':'dd'}"
-                                        />
-                                        日
+                                        />日
                                         <br />
                                     </td>
                                 </t>
@@ -666,8 +660,7 @@
                                     <span
                                         t-field="doc.date_due"
                                         t-field-options="{'format':'YYYY'}"
-                                    />
-                                    年
+                                    />年
                                     <span
                                         t-field="doc.date_due"
                                         t-field-options="{'format':'MM'}"
@@ -730,18 +723,15 @@
                                             <span
                                                 t-field="doc.date_invoice"
                                                 t-field-options="{'format':'YYYY'}"
-                                            />
-                                            年
+                                            />年
                                             <span
                                                 t-field="doc.date_invoice"
                                                 t-field-options="{'format':'MM'}"
-                                            />
-                                            月
+                                            />月
                                             <span
                                                 t-field="doc.date_invoice"
                                                 t-field-options="{'format':'dd'}"
-                                            />
-                                            日
+                                            />日
                                             <br />
                                         </t>
                                         <t t-if="doc.partner_id.lang != 'ja_JP'">
@@ -780,18 +770,15 @@
                                             <span
                                                 t-field="doc.date_order"
                                                 t-field-options="{'format':'YYYY'}"
-                                            />
-                                            年
+                                            />年
                                             <span
                                                 t-field="doc.date_order"
                                                 t-field-options="{'format':'MM'}"
-                                            />
-                                            月
+                                            />月
                                             <span
                                                 t-field="doc.date_order"
                                                 t-field-options="{'format':'dd'}"
-                                            />
-                                            日
+                                            />日
                                             <br />
                                         </t>
                                         <t t-if="doc.partner_id.lang != 'ja_JP'">
@@ -820,18 +807,15 @@
                                             <span
                                                 t-field="doc.date_order"
                                                 t-field-options="{'format':'YYYY'}"
-                                            />
-                                            年
+                                            />年
                                             <span
                                                 t-field="doc.date_order"
                                                 t-field-options="{'format':'MM'}"
-                                            />
-                                            月
+                                            />月
                                             <span
                                                 t-field="doc.date_order"
                                                 t-field-options="{'format':'dd'}"
-                                            />
-                                            日
+                                            />日
                                             <br />
                                         </t>
                                         <t t-if="doc.partner_id.lang != 'ja_JP'">
