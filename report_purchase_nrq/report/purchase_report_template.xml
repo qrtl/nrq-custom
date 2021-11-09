@@ -53,7 +53,16 @@
                                 />
                             </td>
                             <td class="text-right">
-                                <span t-field="line.price_unit" />
+                                <t t-set="price_unit" t-value="line.price_unit"/>
+                                <t t-if="round(price_unit) == price_unit">
+                                    <span
+                                        t-esc="float('%.2f'%(price_unit))"
+                                        t-options='{"widget": "monetary", "display_currency": doc.currency_id, "precision":2}'
+                                    />
+                                </t>
+                                <t t-if="not round(price_unit) == price_unit">
+                                    <span t-field="line.price_unit" />
+                                </t>
                             </td>
                             <td t-if="doc.display_tax">
                                 <span
