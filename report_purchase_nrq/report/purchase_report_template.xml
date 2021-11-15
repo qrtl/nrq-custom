@@ -55,7 +55,7 @@
                             <td class="text-right">
                                 <t t-set="price_unit" t-value="line.price_unit" />
                                 <t t-if="round(price_unit) == price_unit">
-                                    <span t-field="line.currency_id.symbol"/>
+                                    <span t-field="line.currency_id.symbol" />
                                     <span
                                         t-esc="float('%.2f'%(price_unit))"
                                         digits="[12,2]"
