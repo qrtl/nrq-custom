@@ -66,7 +66,9 @@
                                             />
                                         </td>
                                         <td class="text-right">
-                                            <t t-call="report_common_nrq.price_unit_display"/>
+                                            <t
+                                                t-call="report_common_nrq.price_unit_display"
+                                            />
                                         </td>
                                         <td
                                             t-if="display_discount"
