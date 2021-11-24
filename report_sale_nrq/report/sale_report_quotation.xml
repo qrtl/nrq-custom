@@ -66,28 +66,7 @@
                                             />
                                         </td>
                                         <td class="text-right">
-                                            <t
-                                                t-set="price_unit"
-                                                t-value="l.price_unit"
-                                            />
-                                            <t
-                                                t-if="round(price_unit) != price_unit
-                                                or
-                                                not doc.currency_id.rounding >= 1"
-                                            >
-                                                <span
-                                                    t-esc="'{:,.2f}'.format(price_unit)"
-                                                />
-                                            </t>
-                                            <t
-                                                t-if="round(price_unit) == price_unit
-                                                and
-                                                doc.currency_id.rounding >= 1"
-                                            >
-                                                <span
-                                                    t-esc="'{:,.0f}'.format(price_unit)"
-                                                />
-                                            </t>
+                                            <t t-call="report_common_nrq.price_unit_display"/>
                                         </td>
                                         <td
                                             t-if="display_discount"

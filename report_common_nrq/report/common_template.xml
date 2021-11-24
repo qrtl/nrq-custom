@@ -354,6 +354,23 @@
             </tr>
         </table>
     </template>
+    <template id="price_unit_display">
+        <t t-set="price_unit" t-value="l.price_unit" />
+        <t
+            t-if="round(price_unit) != price_unit
+            or
+            not doc.currency_id.rounding >= 1"
+        >
+            <span t-esc="'{:,.2f}'.format(price_unit)" />
+        </t>
+        <t
+            t-if="round(price_unit) == price_unit
+            and
+            doc.currency_id.rounding >= 1"
+        >
+            <span t-esc="'{:,.0f}'.format(price_unit)" />
+        </t>
+    </template>
     <template id="invoice_table_layout">
         <br />
         <!-- Is there a discount on at least one line? -->
