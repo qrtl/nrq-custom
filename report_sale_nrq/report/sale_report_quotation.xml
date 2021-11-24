@@ -73,7 +73,7 @@
                                             <t
                                                 t-if="round(price_unit) != price_unit
                                                 or
-                                                doc.currency_id.rounding == 0.01"
+                                                not doc.currency_id.rounding >= 1"
                                             >
                                                 <span
                                                     t-esc="'{:,.2f}'.format(price_unit)"
@@ -82,7 +82,7 @@
                                             <t
                                                 t-if="round(price_unit) == price_unit
                                                 and
-                                                doc.currency_id.rounding == 1"
+                                                doc.currency_id.rounding >= 1"
                                             >
                                                 <span
                                                     t-esc="'{:,.0f}'.format(price_unit)"
