@@ -474,7 +474,21 @@
                                     />
                                 </td>
                                 <td class="text-right">
-                                    <span t-field="l.price_unit" />
+                                    <t t-set="price_unit" t-value="l.price_unit" />
+                                    <t
+                                        t-if="round(price_unit) != price_unit
+                                        or
+                                        doc.currency_id.rounding == 0.01"
+                                    >
+                                        <span t-esc="'{:,.2f}'.format(price_unit)" />
+                                    </t>
+                                    <t
+                                        t-if="round(price_unit) == price_unit
+                                        and
+                                        doc.currency_id.rounding == 1"
+                                    >
+                                        <span t-esc="'{:,.0f}'.format(price_unit)" />
+                                    </t>
                                 </td>
                                 <td
                                     t-if="display_discount"
