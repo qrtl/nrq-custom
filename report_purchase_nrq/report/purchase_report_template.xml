@@ -54,10 +54,18 @@
                             </td>
                             <td class="text-right">
                                 <t t-set="price_unit" t-value="line.price_unit" />
-                                <t t-if="doc.currency_id.rounding == 0.01">
+                                <t
+                                    t-if="round(price_unit) != price_unit
+                                    or
+                                    doc.currency_id.rounding == 0.01"
+                                >
                                     <span t-esc="'{:,.2f}'.format(price_unit)" />
                                 </t>
-                                <t t-if="doc.currency_id.rounding == 1">
+                                <t
+                                    t-if="round(price_unit) == price_unit
+                                    and
+                                    doc.currency_id.rounding == 1"
+                                >
                                     <span t-esc="'{:,.0f}'.format(price_unit)" />
                                 </t>
                             </td>
