@@ -67,7 +67,11 @@
                                         </td>
                                         <td class="text-right">
                                             <t
-                                                t-call="report_common_nrq.price_unit_display"
+                                                t-set="price_unit"
+                                                t-value="l.price_unit"
+                                            />
+                                            <t
+                                                t-call="report_common_nrq.price_unit_value_format"
                                             />
                                         </td>
                                         <td
