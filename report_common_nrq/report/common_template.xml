@@ -404,7 +404,8 @@
                         <span t-field="l.uom_id" groups="product.group_uom" />
                     </td>
                     <td class="text-right">
-                        <span t-field="l.price_unit" />
+                        <t t-set="price_unit" t-value="l.price_unit" />
+                        <t t-call="report_common_nrq.price_unit_value_format" />
                     </td>
                     <td
                         t-if="display_discount"
