@@ -346,6 +346,27 @@
             </tr>
         </table>
     </template>
+    <template id="price_unit_value_format">
+        <!--
+            It should define the price_unit value.
+            e.g.
+            <t t-set="price_unit" t-value="l.price_unit" />
+        -->
+        <t
+            t-if="round(price_unit) != price_unit
+            or
+            not doc.currency_id.rounding >= 1"
+        >
+            <span t-esc="'{:,.2f}'.format(price_unit)" />
+        </t>
+        <t
+            t-if="round(price_unit) == price_unit
+            and
+            doc.currency_id.rounding >= 1"
+        >
+            <span t-esc="'{:,.0f}'.format(price_unit)" />
+        </t>
+    </template>
     <template id="invoice_table_layout">
         <br />
         <!-- Is there a discount on at least one line? -->
@@ -466,7 +487,10 @@
                                     />
                                 </td>
                                 <td class="text-right">
-                                    <span t-field="l.price_unit" />
+                                    <t t-set="price_unit" t-value="l.price_unit" />
+                                    <t
+                                        t-call="report_common_nrq.price_unit_value_format"
+                                    />
                                 </td>
                                 <td
                                     t-if="display_discount"
