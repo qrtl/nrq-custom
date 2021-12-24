@@ -5,8 +5,8 @@
 from odoo import _, api, fields, models
 
 
-class SaleOrder(models.Model):
-    _inherit = "sale.order"
+class PurchaseOrder(models.Model):
+    _inherit = "purchase.order"
 
     approval = fields.Boolean(
         string="Approved", readonly=True, default=False, copy=False,
