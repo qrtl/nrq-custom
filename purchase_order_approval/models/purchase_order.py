@@ -38,7 +38,7 @@ class PurchaseOrder(models.Model):
                     self.send_track_notification_email(
                         _("Approval"), str(quote.approval), str(vals["approval"])
                     )
-        return super(SaleOrder, self).write(vals)
+        return super(PurchaseOrder, self).write(vals)
 
     @api.multi
     def action_approve(self):
@@ -78,7 +78,7 @@ class PurchaseOrder(models.Model):
         ir_model_data = self.env["ir.model.data"]
         try:
             template_id = ir_model_data.get_object_reference(
-                "sale_quotation_approval", "sale_order_track_notification"
+                "purchase_approval", "purchase_order_track_notification"
             )[1]
         except ValueError:
             template_id = False
@@ -91,7 +91,7 @@ class PurchaseOrder(models.Model):
         ctx = dict()
         ctx.update(
             {
-                "default_model": "sale.order",
+                "default_model": "purchase.order",
                 "default_res_id": self.ids[0],
                 "default_use_template": bool(template_id),
                 "default_template_id": template_id,
