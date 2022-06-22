@@ -1,3 +1,3 @@
 This modules does the following:
 
-Makes adjustments to purhcase views.
+Makes adjustments to account views.
