@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-# Copyright 2019 Quartile Limited
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2022 Quartile Limited
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Account View Adj",
-    "summary": "",
     "version": "10.0.1.0.0",
     "category": "Accounting",
     "website": "https://www.quartile.co/",

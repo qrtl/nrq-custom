@@ -5,8 +5,8 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_tree" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='origin']" position="after">
-                <field name="amount_untaxed" />
+            <xpath expr="//field[@name='amount_total_signed']" position="before">
+                <field name="amount_untaxed" sum="Total w/o Tax" />
             </xpath>
         </field>
     </record>
