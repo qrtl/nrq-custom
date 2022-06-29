@@ -9,7 +9,7 @@ class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
     amount_untaxed_curr_signed = fields.Monetary(
-        "Untaxed Amount in Transactions Currency",
+        "Untaxed Amount in Transaction Currency",
         compute="_compute_amount_untaxed_curr_signed",
         currency_field="currency_id",
         store=True,

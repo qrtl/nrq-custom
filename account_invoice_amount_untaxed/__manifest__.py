@@ -2,7 +2,7 @@
 # Copyright 2022 Quartile Limited
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Account Invoice Amount Untaxed Curr Singed",
+    "name": "Account Invoice Amount",
     "version": "10.0.1.0.0",
     "category": "Accounting",
     "website": "https://www.quartile.co/",
