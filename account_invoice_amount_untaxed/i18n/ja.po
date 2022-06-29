@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_invoice_amount_untaxed_curr_signed
+#	* account_invoice_amount_untaxed
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-28 09:44+0000\n"
-"PO-Revision-Date: 2022-06-28 09:44+0000\n"
+"POT-Creation-Date: 2022-06-29 01:36+0000\n"
+"PO-Revision-Date: 2022-06-29 01:36+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,18 +15,17 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: account_invoice_amount_untaxed_curr_signed
-#: model:ir.model,name:account_invoice_amount_untaxed_curr_signed.model_account_invoice
+#. module: account_invoice_amount_untaxed
+#: model:ir.model,name:account_invoice_amount_untaxed.model_account_invoice
 msgid "Invoice"
 msgstr "請求書"
 
-#. module: account_invoice_amount_untaxed_curr_signed
-#: model:ir.ui.view,arch_db:account_invoice_amount_untaxed_curr_signed.invoice_tree
+#. module: account_invoice_amount_untaxed
+#: model:ir.ui.view,arch_db:account_invoice_amount_untaxed.invoice_tree
 msgid "Total w/o Tax"
 msgstr "Total w/o Tax"
 
-#. module: account_invoice_amount_untaxed_curr_signed
-#: model:ir.model.fields,field_description:account_invoice_amount_untaxed_curr_signed.field_account_invoice_amount_untaxed_curr_signed
-msgid "Untaxed Amount in Transactions Currency"
+#. module: account_invoice_amount_untaxed
+#: model:ir.model.fields,field_description:account_invoice_amount_untaxed.field_account_invoice_amount_untaxed_curr_signed
+msgid "Untaxed Amount in Transaction Currency"
 msgstr "税抜金額"
-
