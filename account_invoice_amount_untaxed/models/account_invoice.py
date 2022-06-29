@@ -19,5 +19,5 @@ class AccountInvoice(models.Model):
     @api.depends("amount_untaxed")
     def _compute_amount_untaxed_curr_signed(self):
         for invoice in self:
-            sign = invoice.type in ['in_refund', 'out_refund'] and -1 or 1
+            sign = invoice.type in ["in_refund", "out_refund"] and -1 or 1
             invoice.amount_untaxed_curr_signed = invoice.amount_untaxed * sign
