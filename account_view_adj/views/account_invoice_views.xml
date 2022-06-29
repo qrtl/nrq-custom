@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="invoice_tree" model="ir.ui.view">
+        <field name="name">account.invoice.tree</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total_signed']" position="after">
+                <field name="amount_untaxed_signed" sum="Total w/o Tax" />
+                <field name="amount_total_company_signed" sum="Total w/o Tax" />
+            </xpath>
+        </field>
+    </record>
+    <record id="invoice_supplier_tree" model="ir.ui.view">
+        <field name="name">account.invoice.supplier.tree</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total_signed']" position="after">
+                <field name="amount_untaxed_signed" sum="Total w/o Tax" />
+                <field name="amount_total_company_signed" sum="Total w/o Tax" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
