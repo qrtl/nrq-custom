@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='amount_total_signed']" position="after">
                 <field name="amount_untaxed_signed" sum="Total w/o Tax" />
-                <field name="amount_total_company_signed" sum="Total w/o Tax" />
+                <field name="amount_total_company_signed" string="Total in Company Curr" sum="Total w/o Tax" />
             </xpath>
         </field>
     </record>
@@ -18,7 +18,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='amount_total_signed']" position="after">
                 <field name="amount_untaxed_signed" sum="Total w/o Tax" />
-                <field name="amount_total_company_signed" sum="Total w/o Tax" />
+                <field name="amount_total_company_signed" string="Total in Company Curr" sum="Total w/o Tax" />
             </xpath>
         </field>
     </record>
