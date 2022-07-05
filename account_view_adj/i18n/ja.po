@@ -26,3 +26,9 @@ msgstr "合計(会社通貨)"
 #: model:ir.ui.view,arch_db:account_view_adj.invoice_tree
 msgid "Total w/o Tax"
 msgstr "Total w/o Tax"
+
+#. module: account_view_adj
+#: model:ir.ui.view,arch_db:account_view_adj.invoice_supplier_tree
+#: model:ir.ui.view,arch_db:account_view_adj.invoice_tree
+msgid "Untaxed Amount in Company Curr"
+msgstr "税抜金額(会社通貨)"
