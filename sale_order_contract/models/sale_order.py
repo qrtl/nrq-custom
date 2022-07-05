@@ -4,9 +4,12 @@
 
 from odoo import fields, models
 
+
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    contract = fields.Selection([
-        ('cont', 'contract'),
-        ('quasi', 'quasi-mandate')], string='Contract', required=True)
+    contract = fields.Selection(
+        [("cont", "Contract"), ("quasi", "Quasi-mandate")],
+        string="Contract",
+        required=True,
+    )

@@ -20,7 +20,7 @@
             </xpath>
         </field>
     </record>
-        <record id="view_quotation_tree" model="ir.ui.view">
+    <record id="view_quotation_tree" model="ir.ui.view">
         <field name="name">view.quotation.tree</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree" />
