@@ -5,8 +5,12 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_tree" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='amount_total_signed']" position="after">
-                <field name="amount_untaxed_signed" sum="Total w/o Tax" />
+            <xpath expr="//field[@name='origin']" position="after">
+                <field
+                    name="amount_untaxed_signed"
+                    string="Untaxed Amount in Company Curr"
+                    sum="Total w/o Tax"
+                />
                 <field
                     name="amount_total_company_signed"
                     string="Total in Company Curr"
@@ -20,8 +24,12 @@
         <field name="model">account.invoice</field>
         <field name="inherit_id" ref="account.invoice_supplier_tree" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='amount_total_signed']" position="after">
-                <field name="amount_untaxed_signed" sum="Total w/o Tax" />
+            <xpath expr="//field[@name='origin']" position="after">
+                <field
+                    name="amount_untaxed_signed"
+                    string="Untaxed Amount in Company Curr"
+                    sum="Total w/o Tax"
+                />
                 <field
                     name="amount_total_company_signed"
                     string="Total in Company Curr"
