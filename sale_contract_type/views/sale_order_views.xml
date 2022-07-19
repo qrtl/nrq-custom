@@ -33,14 +33,26 @@
     <record id="sale_order_view_search_inherit_quotation" model="ir.ui.view">
         <field name="name">sale.order.search.inherit.quotation</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="inherit_id" ref="sale.view_sales_order_filter" />
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
-                <separator/>
-                <filter string="Contract Agreement" name="contract_agreement" domain="[('contract','=','cont')]"/>
-                <filter string="Quasi-mandate" name="quasi_mandate" domain="[('contract','=','quasi')]"/>
-                <filter string="Temporary" name="contract_agreement" domain="[('contract','=','temp')]"/>
+                <separator />
+                <filter
+                    string="Contract Agreement"
+                    name="contract_agreement"
+                    domain="[('contract','=','cont')]"
+                />
+                <filter
+                    string="Quasi-mandate"
+                    name="quasi_mandate"
+                    domain="[('contract','=','quasi')]"
+                />
+                <filter
+                    string="Temporary"
+                    name="contract_agreement"
+                    domain="[('contract','=','temp')]"
+                />
             </xpath>
         </field>
     </record>
-</odoo>     
+</odoo>

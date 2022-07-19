@@ -9,7 +9,11 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     contract = fields.Selection(
-        [("cont", "Contract Agreement"), ("quasi", "Quasi-mandate"), ("temp","Temporary")],
+        [
+            ("cont", "Contract Agreement"),
+            ("quasi", "Quasi-mandate"),
+            ("temp", "Temporary"),
+        ],
         string="Contract",
         required=True,
     )
