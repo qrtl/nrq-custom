@@ -8,12 +8,11 @@ from odoo import fields, models
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    contract = fields.Selection(
+    contract_type = fields.Selection(
         [
-            ("cont", "Contract Agreement"),
-            ("quasi", "Quasi-mandate"),
-            ("temp", "Temporary"),
+            ("fixed", "Fixed Price"),
+            ("delegation", "Delegation"),
+            ("temp", "Temporary Staffing"),
         ],
         string="Contract",
-        required=True,
     )

@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_order_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_order']" position="after">
-                <field name="contract" />
+                <field name="contract_type" />
             </xpath>
         </field>
     </record>
@@ -16,7 +16,7 @@
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_order']" position="after">
-                <field name="contract" />
+                <field name="contract_type" />
             </xpath>
         </field>
     </record>
@@ -26,7 +26,7 @@
         <field name="inherit_id" ref="sale.view_quotation_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_order']" position="after">
-                <field name="contract" />
+                <field name="contract_type" />
             </xpath>
         </field>
     </record>
@@ -38,19 +38,19 @@
             <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
                 <separator />
                 <filter
-                    string="Contract Agreement"
-                    name="contract_agreement"
-                    domain="[('contract','=','cont')]"
+                    string="Fixed Price"
+                    name="fixed"
+                    domain="[('contract_type','=','fixed')]"
                 />
                 <filter
-                    string="Quasi-mandate"
-                    name="quasi_mandate"
-                    domain="[('contract','=','quasi')]"
+                    string="Delegation"
+                    name="delegation"
+                    domain="[('contract_type','=','delegation')]"
                 />
                 <filter
-                    string="Temporary"
-                    name="contract_agreement"
-                    domain="[('contract','=','temp')]"
+                    string="Temporary Staffing"
+                    name="temporary"
+                    domain="[('contract_type','=','temp')]"
                 />
             </xpath>
         </field>
