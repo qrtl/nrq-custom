@@ -34,6 +34,36 @@
                     name="amount_total_company_signed"
                     string="Total in Company Curr"
                     sum="Total w/o Tax"
+                />      
+            </xpath>
+        </field>
+    </record>
+    <record id="invoice_form" model="ir.ui.view">
+        <field name="name">account.invoice.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@groups='base.group_multi_currency']" position="after">
+                <field name="is_company_curr" invisible="1"/>
+                <field
+                    name="amount_total_company_signed"
+                    string="Total in Company Curr"
+                    attrs="{'invisible':[('is_company_curr','=',True)]}" 
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="invoice_supplier_form" model="ir.ui.view">
+        <field name="name">account.invoice.supplier.form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="is_company_curr" invisible="1"/>
+                <field
+                    name="amount_total_company_signed"
+                    string="Total in Company Curr"
+                    attrs="{'invisible':[('is_company_curr','=',True)]}" 
                 />
             </xpath>
         </field>
