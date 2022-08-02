@@ -17,7 +17,7 @@ msgstr ""
 
 #. module: sale_contract_type
 #: model:ir.model.fields,field_description:sale_contract_type.field_sale_order_contract_type
-msgid "Contract"
+msgid "Contract Type"
 msgstr "契約形態"
 
 #. module: sale_contract_type

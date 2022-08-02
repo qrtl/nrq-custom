@@ -14,5 +14,4 @@ class SaleOrder(models.Model):
             ("delegation", "Delegation"),
             ("temp", "Temporary Staffing"),
         ],
-        string="Contract",
     )
