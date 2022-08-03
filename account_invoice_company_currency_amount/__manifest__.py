@@ -2,7 +2,7 @@
 # Copyright 2022 Quartile Limited
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 {
-    "name": "Account Company Currency",
+    "name": "Account Invoice Company Currency Amount",
     "version": "10.0.1.0.0",
     "category": "Accounting",
     "website": "https://www.quartile.co/",

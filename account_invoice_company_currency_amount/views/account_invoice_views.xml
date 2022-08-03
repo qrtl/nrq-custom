@@ -46,6 +46,11 @@
             <xpath expr="//div[@groups='base.group_multi_currency']" position="after">
                 <field name="is_company_curr" invisible="1"/>
                 <field
+                    name="amount_untaxed_signed"
+                    string="Untaxed Amount in Company Curr"
+                    attrs="{'invisible':[('is_company_curr','=',True)]}"
+                />
+                <field
                     name="amount_total_company_signed"
                     string="Total in Company Curr"
                     attrs="{'invisible':[('is_company_curr','=',True)]}" 
@@ -60,6 +65,11 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='currency_id']" position="after">
                 <field name="is_company_curr" invisible="1"/>
+                <field
+                    name="amount_untaxed_signed"
+                    string="Untaxed Amount in Company Curr"
+                    attrs="{'invisible':[('is_company_curr','=',True)]}"
+                />
                 <field
                     name="amount_total_company_signed"
                     string="Total in Company Curr"

@@ -10,10 +10,8 @@ class AccountInvoice(models.Model):
 
     is_company_curr = fields.Boolean("Is_Company_Currency",
         compute="_compute_is_company_curr",
-        store=True,
     )
     
-    @api.depends("company_currency_id")
     def _compute_is_company_curr(self):
         for invoice in self:
             invoice.is_company_curr = False
