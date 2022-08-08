@@ -9,3 +9,4 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     appointment_letter_url = fields.Char("Letter of Appointment Link(" "Dependant)")
+    private_page_header_text = fields.Html("Private Page Header Text", sanitize=True)
