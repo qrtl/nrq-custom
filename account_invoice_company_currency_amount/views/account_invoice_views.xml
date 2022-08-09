@@ -34,7 +34,7 @@
                     name="amount_total_company_signed"
                     string="Total in Company Curr"
                     sum="Total w/o Tax"
-                />      
+                />
             </xpath>
         </field>
     </record>
@@ -44,7 +44,7 @@
         <field name="inherit_id" ref="account.invoice_form" />
         <field name="arch" type="xml">
             <xpath expr="//div[@groups='base.group_multi_currency']" position="after">
-                <field name="is_company_curr" invisible="1"/>
+                <field name="is_company_curr" invisible="1" />
                 <field
                     name="amount_untaxed_signed"
                     string="Untaxed Amount in Company Curr"
@@ -53,7 +53,7 @@
                 <field
                     name="amount_total_company_signed"
                     string="Total in Company Curr"
-                    attrs="{'invisible':[('is_company_curr','=',True)]}" 
+                    attrs="{'invisible':[('is_company_curr','=',True)]}"
                 />
             </xpath>
         </field>
@@ -64,7 +64,7 @@
         <field name="inherit_id" ref="account.invoice_supplier_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='currency_id']" position="after">
-                <field name="is_company_curr" invisible="1"/>
+                <field name="is_company_curr" invisible="1" />
                 <field
                     name="amount_untaxed_signed"
                     string="Untaxed Amount in Company Curr"
@@ -73,7 +73,7 @@
                 <field
                     name="amount_total_company_signed"
                     string="Total in Company Curr"
-                    attrs="{'invisible':[('is_company_curr','=',True)]}" 
+                    attrs="{'invisible':[('is_company_curr','=',True)]}"
                 />
             </xpath>
         </field>

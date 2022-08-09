@@ -135,6 +135,11 @@ class HrPrivateInfo(models.Model):
         track_visibility="onchange",
         default="draft",
     )
+    private_page_header_text = fields.Html(
+        "Private Page Header Text",
+        related="company_id.private_page_header_text",
+        readonly=True,
+    )
 
     _sql_constraints = [
         (
