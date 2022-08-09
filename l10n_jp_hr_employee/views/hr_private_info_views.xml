@@ -40,7 +40,11 @@
                         states="submit,confirm"
                         string="Set to Draft"
                     />
-                    <field name="state" widget="statusbar" clickable="0" />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        options="{'clickable':False}"
+                    />
                 </header>
                 <div class="o_form_sheet_bg">
                     <field name="private_page_header_text" widget="html" />
