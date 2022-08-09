@@ -8,6 +8,13 @@
             <xpath expr="//field[@name='parent_id']" position="after">
                 <field name="appointment_letter_url" />
             </xpath>
+            <xpath expr="//page[1]" position="after">
+                <page string="Private Page">
+                    <group>
+                        <field name="private_page_header_text" />
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
 </odoo>
