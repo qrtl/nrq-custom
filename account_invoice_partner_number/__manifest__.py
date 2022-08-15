@@ -9,6 +9,6 @@
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "installable": True,
-    "depends": ["account","base_partner_number"],
+    "depends": ["account", "base_partner_number"],
     "data": ["views/account_invoice_views.xml"],
 }

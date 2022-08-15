@@ -8,4 +8,4 @@ from odoo import fields, models
 class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
-    partner_no = fields.Char(related="partner_id.partner_no" ,readonly=True ,store=True)
+    partner_no = fields.Char(related="partner_id.partner_no", readonly=True, store=True)
