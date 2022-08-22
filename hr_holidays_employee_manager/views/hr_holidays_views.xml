@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="edit_holiday_new" model="ir.ui.view">
+        <field name="name">Leave Request</field>
+        <field name="model">hr.holidays</field>
+        <field name="inherit_id" ref="hr_holidays.edit_holiday_new" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field
+                    name="employee_manager_id"
+                    attrs="{'required':[('holiday_type','=','employee')],'invisible':[('holiday_type','=','category')]}"
+                    groups="hr_holidays.group_hr_holidays_user"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_holiday_allocation_tree" model="ir.ui.view">
+        <field name="name">hr.holidays.allocation.tree</field>
+        <field name="model">hr.holidays</field>
+        <field name="inherit_id" ref="hr_holidays.view_holiday_allocation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="before">
+                <field name="employee_manager_id" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_hr_holidays_filter" model="ir.ui.view">
+        <field name="name">hr.holidays.filter</field>
+        <field name="model">hr.holidays</field>
+        <field name="inherit_id" ref="hr_holidays.view_hr_holidays_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="employee_manager_id" />
+            </xpath>
+            <xpath expr="//filter[@name='group_employee']" position="after">
+                <filter
+                    name="group_employee_manager"
+                    string="Employee Manager"
+                    context="{'group_by':'employee_manager_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
