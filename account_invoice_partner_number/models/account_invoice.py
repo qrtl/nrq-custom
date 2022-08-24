@@ -15,6 +15,9 @@ class AccountInvoice(models.Model):
         compute="_compute_partner_no",
     )
 
+    # We apply padding for better sorting and searchability.
+    # i.e. there can be '999' and '1111' for partner_no of res.partner
+    # records and sorting does not yield the expected result without padding.
     @api.depends("commercial_partner_id", "commercial_partner_id.partner_no")
     def _compute_partner_no(self):
         for rec in self:
