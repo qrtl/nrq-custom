@@ -19,7 +19,7 @@ Hr Employee Qualification
 
 |badge1| |badge2| |badge3| 
 
-This module adds private information fields to employee.
+This module adds qualification view to employee and group_employee_qualification_manage
 
 **Table of contents**
 

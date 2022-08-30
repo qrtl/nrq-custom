@@ -1,1 +1,1 @@
-This module adds private information fields to employee.
+This module adds qualification view to employee and group_employee_qualification_manage
