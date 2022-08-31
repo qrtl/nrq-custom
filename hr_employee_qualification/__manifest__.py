@@ -16,6 +16,5 @@
         "security/res_groups.xml",
         "security/hr_security.xml",
         "views/hr_qualification_views.xml",
-        "data/manuitem_data.xml",
     ],
 }
