@@ -1,0 +1,63 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_employee_qualification
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-30 07:49+0000\n"
+"PO-Revision-Date: 2022-08-30 07:49+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_employee_qualification
+#: model:ir.ui.view,arch_db:hr_employee_qualification.view_hr_qualification_tree
+msgid "'YYYY/MM/DD' or 'YYYY/MM'"
+msgstr "'YYYY/MM/DD' または 'YYYY/MM'"
+
+#. module: hr_employee_qualification
+#: model:ir.model.fields,field_description:hr_employee_qualification.field_hr_qualification_department_id
+msgid "Department"
+msgstr "部門"
+
+#. module: hr_employee_qualification
+#: model:res.groups,name:hr_employee_qualification.group_employee_qualification_manage
+msgid "Employee Qualification Manage"
+msgstr "資格情報管理"
+
+#. module: hr_employee_qualification
+#: model:ir.ui.view,arch_db:hr_employee_qualification.view_hr_qualification_tree
+msgid "Fill in the qualification number."
+msgstr "資格NO.を記入"
+
+#. module: hr_employee_qualification
+#: model:ir.ui.view,arch_db:hr_employee_qualification.view_hr_qualification_tree
+msgid "Full in when there is an Expiry Date"
+msgstr "有効期限がある場合は記入"
+
+#. module: hr_employee_qualification
+#: model:ir.model.fields,field_description:hr_employee_qualification.field_hr_qualification_parent_id
+msgid "Manager"
+msgstr "マネージャ"
+
+#. module: hr_employee_qualification
+#: model:ir.actions.act_window,name:hr_employee_qualification.action_hr_qualification_view
+#: model:ir.ui.menu,name:hr_employee_qualification.menu_auction_qualification
+msgid "Qualification"
+msgstr "資格"
+
+#. module: hr_employee_qualification
+#: model:ir.model,name:hr_employee_qualification.model_hr_private_info
+msgid "hr.private.info"
+msgstr "hr.private.info"
+
+#. module: hr_employee_qualification
+#: model:ir.model,name:hr_employee_qualification.model_hr_qualification
+msgid "hr.qualification"
+msgstr "hr.qualification"
+
