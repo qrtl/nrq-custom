@@ -11,3 +11,4 @@ class HrQualification(models.Model):
 
     parent_id = fields.Many2one(related="employee_id.parent_id")
     department_id = fields.Many2one(related="employee_id.department_id")
+    active = fields.Boolean(related="employee_id.active")
