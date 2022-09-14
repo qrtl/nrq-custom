@@ -33,7 +33,7 @@
                 <field name="employee_id" />
                 <group expand="0" string="Group By">
                     <filter
-                        string="name"
+                        string="Qualification Name"
                         context="{'group_by':'name'}"
                         name="group_name"
                     />
