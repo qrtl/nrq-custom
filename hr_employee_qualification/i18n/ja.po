@@ -57,6 +57,11 @@ msgid "hr.private.info"
 msgstr "hr.private.info"
 
 #. module: hr_employee_qualification
+#: model:ir.ui.view,arch_db:hr_employee_qualification.hr_qualification_search
+msgid "Qualification Name"
+msgstr "資格名"
+
+#. module: hr_employee_qualification
 #: model:ir.model,name:hr_employee_qualification.model_hr_qualification
 msgid "hr.qualification"
 msgstr "hr.qualification"
