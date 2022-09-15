@@ -99,7 +99,10 @@ class HrPrivateInfo(models.Model):
     school_completion_desc = fields.Char("Note (School Completion)",)
     year_left_school = fields.Selection(get_years(), "Year of Leaving School",)
     qualification_ids = fields.One2many(
-        "hr.qualification", "private_info_id", string="Qualification",
+        "hr.qualification",
+        "private_info_id",
+        string="Qualification",
+        context={"active_test": False},
     )
     dependant_ids = fields.One2many(
         "hr.dependant", "private_info_id", string="Dependants",
