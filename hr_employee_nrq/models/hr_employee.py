@@ -54,6 +54,7 @@ class HrEmployee(models.Model):
         for employee in self:
             qualification_ids = (
                 self.env["hr.qualification"]
+                .with_context(active_test=False)
                 .sudo()
                 .search([("employee_id", "=", employee.id)])
             )
