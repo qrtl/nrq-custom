@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017-2018 Quartile Limited
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# Copyright 2017-2022 Quartile Limited
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
 from odoo import _, api, fields, models
 
@@ -11,7 +11,9 @@ class SaleOrder(models.Model):
     approval = fields.Boolean(
         string="Approved", readonly=True, default=False, copy=False,
     )
-    approval_user_id = fields.Many2one("res.users", string="Approver", readonly=True,)
+    approval_user_id = fields.Many2one(
+        "res.users", string="Approver", readonly=True, copy=False
+    )
     self_approval_permission = fields.Boolean(
         string="Self-approval Permission", default=False,
     )
@@ -54,10 +56,11 @@ class SaleOrder(models.Model):
 
     @api.multi
     def _compute_approval_availability(self):
-        for quote in self:
-            quote.approval_availability = (
-                quote.user_id != quote.env.user
-            ) or quote.self_approval_permission
+        user = self.env.user
+        for order in self:
+            order.approval_availability = user.has_group(
+                "sales_team.group_sale_manager"
+            ) and (user != order.user_id or order.self_approval_permission)
 
     @api.multi
     def send_track_notification_email(self, field, old_value, new_value):
