@@ -1,1 +1,1 @@
-This module adds approval functions to sales order.
+This module adds approval functions to the sales order.
