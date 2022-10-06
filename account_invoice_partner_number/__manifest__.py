@@ -7,7 +7,7 @@
     "category": "Accounting",
     "website": "https://www.quartile.co",
     "author": "Quartile Limited",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "installable": True,
     "depends": ["account", "base_partner_number"],
     "data": ["views/account_invoice_views.xml"],

@@ -7,7 +7,7 @@
     "category": "HR",
     "website": "https://www.quartile.co",
     "author": "Quartile Limited",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "installable": True,
     "depends": [
         "hr_contract",

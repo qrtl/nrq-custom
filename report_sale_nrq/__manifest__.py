@@ -8,7 +8,7 @@
     "category": "Sales",
     "website": "https://www.quartile.co",
     "author": "Quartile Limited",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "installable": True,
     "depends": ["sale", "report_common_nrq"],
     "data": ["views/res_company_views.xml", "report/sale_report_quotation.xml"],

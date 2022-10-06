@@ -8,7 +8,7 @@
     "category": "Purchases",
     "website": "https://www.quartile.co",
     "author": "Quartile Limited",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "application": False,
     "installable": True,
     "depends": ["purchase", "report_common_nrq"],
