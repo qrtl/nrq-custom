@@ -6,7 +6,7 @@
     "summary": "",
     "version": "10.0.2.0.0",
     "category": "Purchases",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "application": False,

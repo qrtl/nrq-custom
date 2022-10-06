@@ -8,7 +8,7 @@
     """,
     "version": "10.0.1.3.2",
     "category": "HR",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "depends": ["hr_attendance", "hr_timesheet_attendance", "hr_timesheet_sheet"],

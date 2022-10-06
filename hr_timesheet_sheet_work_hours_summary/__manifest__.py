@@ -6,7 +6,7 @@
     "summary": "",
     "version": "10.0.1.0.2",
     "category": "HR",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "depends": ["hr_public_holidays", "hr_timesheet_attendance"],

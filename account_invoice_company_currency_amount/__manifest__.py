@@ -5,7 +5,7 @@
     "name": "Account Invoice Company Currency Amount",
     "version": "10.0.1.0.0",
     "category": "Accounting",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "installable": True,

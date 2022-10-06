@@ -5,7 +5,7 @@
     "name": "Propose Sales Order's Sales Team",
     "version": "10.0.1.0.0",
     "category": "Sales",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "application": False,

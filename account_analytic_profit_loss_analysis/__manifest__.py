@@ -7,7 +7,7 @@
     "description": """""",
     "version": "10.0.1.2.2",
     "category": "Accounting",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,

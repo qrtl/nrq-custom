@@ -5,7 +5,7 @@
     "name": "Checking project date in timesheet",
     "version": "10.0.1.1.0",
     "category": "HR",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "depends": ["hr_timesheet_sheet"],

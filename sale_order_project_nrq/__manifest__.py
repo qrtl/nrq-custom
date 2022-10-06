@@ -7,7 +7,7 @@
     "category": "Generic Modules/Others",
     "license": "AGPL-3",
     "author": "Quartile Limited",
-    "website": "http://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "depends": ["sale_order_project", "report_common_nrq"],
     "data": ["views/sale_view.xml"],
     "installable": True,

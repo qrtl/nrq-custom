@@ -5,7 +5,7 @@
     "name": "Post Expense Reports",
     "version": "10.0.1.0.0",
     "category": "Expense",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,

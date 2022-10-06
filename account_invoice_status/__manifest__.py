@@ -6,7 +6,7 @@
     "summary": "Make the invoice validation operation easier",
     "version": "10.0.1.1.0",
     "category": "Accounting",
-    "website": "https://www.odoo-asia.com/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "application": False,

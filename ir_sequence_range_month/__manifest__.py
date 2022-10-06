@@ -5,7 +5,7 @@
     "name": "Auto-create monthly date ranges for sequence",
     "version": "10.0.1.0.0",
     "category": "Technical Settings",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "application": False,

@@ -6,7 +6,7 @@
     "summary": "",
     "version": "10.0.1.3.1",
     "category": "Sales",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "LGPL-3",
     "installable": True,
