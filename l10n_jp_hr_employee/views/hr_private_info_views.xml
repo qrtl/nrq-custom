@@ -30,7 +30,7 @@
                         name="action_confirm"
                         type="object"
                         states="submit"
-                        string="Confirm"
+                        string="Labor Confirm"
                         class="oe_highlight"
                         groups="hr.group_hr_manager"
                     />

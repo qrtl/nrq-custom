@@ -406,21 +406,6 @@ msgid "999999"
 msgstr "999999"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_dependant_form
-msgid "<span>\n"
-"                                ※扶養の加入、除外の際は都度、委任状が必要です。internalサイト→入社手続→委任状をダウンロードして記名押印の上この申請書に添付して下さい。\n"
-"                                <br/>\n"
-"                                （複数名の同時加入・除外の場合は一枚で構いません）\n"
-"                                <br/>\n"
-"                            </span>"
-msgstr "<span>\n"
-"                                ※扶養の加入、除外の際は都度、委任状が必要です。internalサイト→入社手続→委任状をダウンロードして記名押印の上この申請書に添付して下さい。\n"
-"                                <br/>\n"
-"                                （複数名の同時加入・除外の場合は一枚で構いません）\n"
-"                                <br/>\n"
-"                            </span>"
-
-#. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "A1234567"
 msgstr "A1234567"
@@ -986,6 +971,11 @@ msgstr "JPY"
 #: selection:hr.dependant,occupation:0
 msgid "Junior High or Below"
 msgstr "小・中学生以下"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
+msgid "Labor Confirm"
+msgstr "労務確認"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant___last_update
