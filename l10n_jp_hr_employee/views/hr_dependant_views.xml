@@ -7,16 +7,6 @@
             <form string="Dependants">
                 <sheet>
                     <group>
-                        <label for="appointment_letter_url" string="Download Link" />
-                        <div>
-                            <field
-                                name="appointment_letter_url"
-                                readonly="1"
-                                widget="url"
-                            />
-                        </div>
-                    </group>
-                    <group>
                         <group>
                             <field name="private_info_id" invisible='1' />
                             <field name="employee_id" invisible='1' />

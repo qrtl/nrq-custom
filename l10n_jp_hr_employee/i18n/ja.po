@@ -660,11 +660,6 @@ msgid "Display Name"
 msgstr "表示名"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_dependant_form
-msgid "Download Link"
-msgstr "ダウンロードリンク"
-
-#. module: l10n_jp_hr_employee
 #: selection:hr.private.info,state:0
 msgid "Draft"
 msgstr "ドラフト"
@@ -1016,11 +1011,6 @@ msgstr "委任状"
 msgid "Letter of Appointment File Name"
 msgstr "委任状ファイル名"
 
-#. module: l10n_jp_hr_employee
-#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_appointment_letter_url
-#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_res_company_appointment_letter_url
-msgid "Letter of Appointment Link(Dependant)"
-msgstr "委任状リンク (被扶養者)"
 
 #. module: l10n_jp_hr_employee
 #: selection:hr.dependant,residence_categ:0
