@@ -6,7 +6,7 @@
     "summary": "",
     "version": "10.0.1.7.2",
     "category": "Uncategorized",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
