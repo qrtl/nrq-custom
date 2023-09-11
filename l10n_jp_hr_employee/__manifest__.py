@@ -5,9 +5,9 @@
     "name": "Extension to Employees for Japan",
     "description": """
     """,
-    "version": "10.0.1.5.0",
+    "version": "10.0.1.5.1",
     "category": "Localization",
-    "website": "https://www.quartile.co/",
+    "website": "https://www.quartile.co",
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,

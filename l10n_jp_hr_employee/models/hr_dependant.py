@@ -136,11 +136,6 @@ class HrDependant(models.Model):
     appointment_letter_doc_filename = fields.Char(
         string="Letter of Appointment File Name",
     )
-    appointment_letter_url = fields.Char(
-        related="private_info_id.employee_id." "company_id.appointment_letter_url",
-        default=lambda self: self._default_url(),
-        readonly=True,
-    )
 
     @api.onchange("phone")
     def _onchange_phone(self):
@@ -231,7 +226,3 @@ class HrDependant(models.Model):
     def _onchange_furi_name(self):
         if self.furi_name:
             self.furi_name = jaconv.z2h(jaconv.hira2kata(self.furi_name))
-
-    @api.model
-    def _default_url(self):
-        return self.env.user.company_id.appointment_letter_url

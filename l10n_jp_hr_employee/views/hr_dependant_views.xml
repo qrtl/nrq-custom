@@ -7,26 +7,6 @@
             <form string="Dependants">
                 <sheet>
                     <group>
-                        <div class="o_row mr16">
-                            <span>
-                                ※扶養の加入、除外の際は都度、委任状が必要です。internalサイト→入社手続→委任状をダウンロードして記名押印の上この申請書に添付して下さい。
-                                <br />
-                                （複数名の同時加入・除外の場合は一枚で構いません）
-                                <br />
-                            </span>
-                        </div>
-                    </group>
-                    <group>
-                        <label for="appointment_letter_url" string="Download Link" />
-                        <div>
-                            <field
-                                name="appointment_letter_url"
-                                readonly="1"
-                                widget="url"
-                            />
-                        </div>
-                    </group>
-                    <group>
                         <group>
                             <field name="private_info_id" invisible='1' />
                             <field name="employee_id" invisible='1' />
