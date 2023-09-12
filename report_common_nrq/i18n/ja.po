@@ -427,7 +427,7 @@ msgstr "単価"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
-msgid "VAT:"
+msgid "Registration No."
 msgstr "登録番号:"
 
 #. module: report_common_nrq

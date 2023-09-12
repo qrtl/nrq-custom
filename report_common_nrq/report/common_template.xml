@@ -176,7 +176,7 @@
                                     </td>
                                 </tr>
                                 <tr t-if="doc.company_id.vat">
-                                    <td style="width:100;">VAT:</td>
+                                    <td style="width:100;">Registration No.</td>
                                     <td>
                                         <t>
                                             <span
