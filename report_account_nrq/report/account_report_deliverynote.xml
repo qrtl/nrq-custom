@@ -23,33 +23,12 @@
             </t>
         </t>
     </template>
-    <template id="report_deliverynote_alt">
-        <t t-call="report.html_container">
-            <t t-set="alt">true</t>
-            <t t-foreach="docs" t-as="doc">
-                <div class="row">
-                    <t
-                        t-call="report_account_nrq.report_deliverynote_document_nrq"
-                        t-lang="doc.partner_id.lang"
-                    />
-                </div>
-            </t>
-        </t>
-    </template>
     <report
         id="report_delivery_note"
         model="account.invoice"
         string="Delivery Note"
         name="report_account_nrq.report_deliverynote"
         file="report_account_nrq.report_deliverynote"
-        report_type="qweb-pdf"
-    />
-    <report
-        id="report_delivery_note_alt"
-        model="account.invoice"
-        string="Delivery Note (Alt.)"
-        name="report_account_nrq.report_deliverynote_alt"
-        file="report_account_nrq.report_deliverynote_alt"
         report_type="qweb-pdf"
     />
     <report

@@ -77,102 +77,52 @@
                 <td width="50" />
                 <td width="260">
                     <table>
-                        <t t-if="alt != 'true'">
-                            <div
-                                class="background-image"
-                                style="position:absolute; opacity:0.6; right:100px; padding:0px; background-repeat:no-repeat;"
-                            >
-                                <img
-                                    t-if="doc.company_id.chop"
-                                    t-att-src="'data:image/png;base64,%s' % doc.company_id.chop"
-                                    style="max-height: 100px;"
-                                    align="top"
-                                />
-                            </div>
-                        </t>
-                        <t t-if="alt == 'true'">
-                            <div
-                                class="background-image"
-                                style="position:absolute; opacity:0.6; right:50px; padding:0px; background-repeat:no-repeat;"
-                            >
-                                <img
-                                    t-if="doc.company_id.chop_alt"
-                                    t-att-src="'data:image/png;base64,%s' % doc.company_id.chop_alt"
-                                    style="max-height: 100px;"
-                                    align="top"
-                                />
-                            </div>
-                        </t>
+                        <div
+                            class="background-image"
+                            style="position:absolute; opacity:0.6; right:100px; padding:0px; background-repeat:no-repeat;"
+                        >
+                            <img
+                                t-if="doc.company_id.chop"
+                                t-att-src="'data:image/png;base64,%s' % doc.company_id.chop"
+                                style="max-height: 100px;"
+                                align="top"
+                            />
+                        </div>
                         <tr>
                             <table>
                                 <tr height="40px" />
                             </table>
                             <p>
                                 <strong style="font-size:20px">
-                                    <t t-if="alt != 'true'">
-                                        <span t-field="doc.company_id.company_name" />
-                                    </t>
-                                    <t t-if="alt == 'true'">
-                                        <span
-                                            t-field="doc.company_id.company_name_alt"
-                                        />
-                                    </t>
+                                    <span t-field="doc.company_id.company_name" />
                                 </strong>
                             </p>
                             <p>
-                                <t t-if="alt != 'true'">
-                                    <span t-field="doc.company_id.company_address" />
-                                </t>
-                                <t t-if="alt == 'true'">
-                                    <span
-                                        t-field="doc.company_id.company_address_alt"
-                                    />
-                                </t>
+                                <span t-field="doc.company_id.company_address" />
                             </p>
                             <table style="margin-bottom:10px;">
                                 <tr>
                                     <td style="width:100;">Phone:</td>
                                     <td>
-                                        <t t-if="alt != 'true'">
-                                            <span
-                                                t-field="doc.company_id.company_phone"
-                                            />
-                                        </t>
-                                        <t t-if="alt == 'true'">
-                                            <span
-                                                t-field="doc.company_id.company_phone_alt"
-                                            />
-                                        </t>
+                                        <span
+                                            t-field="doc.company_id.company_phone"
+                                        />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width:100;">Fax:</td>
                                     <td>
-                                        <t t-if="alt != 'true'">
-                                            <span
-                                                t-field="doc.company_id.company_fax"
-                                            />
-                                        </t>
-                                        <t t-if="alt == 'true'">
-                                            <span
-                                                t-field="doc.company_id.company_fax_alt"
-                                            />
-                                        </t>
+                                        <span
+                                            t-field="doc.company_id.company_fax"
+                                        />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width:100;">Website:</td>
                                     <td>
-                                        <t t-if="alt != 'true'">
-                                            <span
-                                                t-field="doc.company_id.company_website"
-                                            />
-                                        </t>
-                                        <t t-if="alt == 'true'">
-                                            <span
-                                                t-field="doc.company_id.company_website_alt"
-                                            />
-                                        </t>
+                                        <span
+                                            t-field="doc.company_id.company_website"
+                                        />
                                     </td>
                                 </tr>
                                 <tr t-if="doc.company_id.vat">
@@ -256,12 +206,7 @@
                     <table class="table">
                         <tr>
                             <td style="font-size:16px">
-                                <t t-if="alt != 'true'">
-                                    <span t-field="doc.company_id.company_name" />
-                                </t>
-                                <t t-if="alt == 'true'">
-                                    <span t-field="doc.company_id.company_name_alt" />
-                                </t>
+                                <span t-field="doc.company_id.company_name" />
                                 <t t-if="doc.partner_id.lang == 'ja_JP'">
                                     <span
                                         style="position:relative; left:20px;"
@@ -658,26 +603,14 @@
                 t-field="doc.company_id.invoice_remarks"
             />
             <div style="font-size:16px">
-                <t t-if="alt != 'true'">
-                    <table style="margin-bottom:10px;">
-                        <tr>
-                            <td style="width:120;">Bank Details:</td>
-                            <td>
-                                <span t-field="doc.company_id.bank_details" />
-                            </td>
-                        </tr>
-                    </table>
-                </t>
-                <t t-if="alt == 'true'">
-                    <table style="margin-bottom:10px;">
-                        <tr>
-                            <td style="width:120;">Bank Details:</td>
-                            <td>
-                                <span t-field="doc.company_id.bank_details_alt" />
-                            </td>
-                        </tr>
-                    </table>
-                </t>
+                <table style="margin-bottom:10px;">
+                    <tr>
+                        <td style="width:120;">Bank Details:</td>
+                        <td>
+                            <span t-field="doc.company_id.bank_details" />
+                        </td>
+                    </tr>
+                </table>
                 <t t-if="doc.date_due">
                     <table style="margin-bottom:10px;">
                         <tr>
