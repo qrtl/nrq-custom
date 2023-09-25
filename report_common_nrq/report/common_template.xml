@@ -178,11 +178,7 @@
                                 <tr t-if="doc.company_id.vat">
                                     <td style="width:100;">Registration No.</td>
                                     <td>
-                                        <t>
-                                            <span
-                                                t-field="doc.company_id.vat"
-                                            />
-                                        </t>
+                                        <span t-field="doc.company_id.vat" />
                                     </td>
                                 </tr>
                             </table>
