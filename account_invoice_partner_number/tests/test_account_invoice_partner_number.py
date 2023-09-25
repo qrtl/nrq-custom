@@ -1,5 +1,5 @@
 # Copyright 2023 Quartile Limited
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo.tests import common
 
