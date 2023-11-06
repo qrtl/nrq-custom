@@ -82,6 +82,11 @@ msgstr "<span>下記のとおり、検収いたしました。</span>"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
+msgid "<span>on</span>"
+msgstr "<span>対象</span>"
+
+#. module: report_common_nrq
+#: model:ir.ui.view,arch_db:report_common_nrq.invoice_table_layout
 msgid "<strong>Subtotal: </strong>"
 msgstr "<strong>小計: </strong>"
 
