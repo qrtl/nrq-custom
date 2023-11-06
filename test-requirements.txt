@@ -1,0 +1,6 @@
+git+https://github.com/qrtl/nrq-oca@10.0#subdirectory=setup/auditlog
+git+https://github.com/qrtl/nrq-oca@10.0#subdirectory=setup/hr_holidays_compute_days
+git+https://github.com/qrtl/nrq-oca@10.0#subdirectory=setup/hr_public_holidays
+git+https://github.com/qrtl/nrq-oca@10.0#subdirectory=setup/project_parent
+git+https://github.com/qrtl/nrq-oca@10.0#subdirectory=setup/sale_order_project
+git+https://github.com/qrtl/nrq-oca@10.0#subdirectory=setup/web_responsive

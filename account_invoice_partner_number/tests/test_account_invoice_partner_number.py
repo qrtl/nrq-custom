@@ -15,7 +15,7 @@ class TestAccountInvoiceParterNumber(common.SavepointCase):
         self.partner = self.env.ref('base.res_partner_1')
 
     def test_account_invoice_partner_number(self):
-        self.assertFalse(self.partner.parnter_no)
+        self.assertFalse(self.partner.partner_no)
         invoice = self.env['account.invoice'].create({
             'partner_id': self.partner.id,
             'account_id': self.invoice_account.id,
@@ -23,7 +23,7 @@ class TestAccountInvoiceParterNumber(common.SavepointCase):
         })
         self.assertFalse(invoice.partner_no)
         
-        self.partner.write({'parnter_no': '123'})
+        self.partner.write({'partner_no': '123'})
         invoice = self.env['account.invoice'].create({
             'partner_id': self.partner.id,
             'account_id': self.invoice_account.id,

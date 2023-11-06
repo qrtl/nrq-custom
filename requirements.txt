@@ -1,2 +1,2 @@
-pysftp
+# generated from manifests external_dependencies
 jaconv
