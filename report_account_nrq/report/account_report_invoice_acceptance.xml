@@ -56,30 +56,6 @@
             </t>
         </t>
     </template>
-    <template id="report_invoice_acceptance_alt">
-        <t t-call="report.html_container">
-            <t t-set="alt">true</t>
-            <t t-foreach="docs" t-as="doc">
-                <t
-                    t-call="report_account_nrq.report_invoice_document_nrq"
-                    t-lang="doc.partner_id.lang"
-                />
-                <t
-                    t-call="report_account_nrq.report_invoice_copy_document_nrq"
-                    t-lang="doc.partner_id.lang"
-                />
-                <t
-                    t-call="report_account_nrq.report_acceptance_document_nrq"
-                    t-lang="doc.partner_id.lang"
-                />
-                <t
-                    t-if="doc.delivery_note"
-                    t-call="report_account_nrq.report_deliverynote_document_nrq"
-                    t-lang="doc.partner_id.lang"
-                />
-            </t>
-        </t>
-    </template>
     <report
         id="report_account_invoice_acceptance"
         model="account.invoice"
@@ -87,15 +63,6 @@
         report_type="qweb-pdf"
         name="report_account_nrq.report_invoice_acceptance"
         file="report_account_nrq.report_invoice_acceptance"
-        attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
-    />
-    <report
-        id="report_account_invoice_acceptance_alt"
-        model="account.invoice"
-        string="Invoice (Alt.)"
-        report_type="qweb-pdf"
-        name="report_account_nrq.report_invoice_acceptance_alt"
-        file="report_account_nrq.report_invoice_acceptance_alt"
         attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
     />
     <report

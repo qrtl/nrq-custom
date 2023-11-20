@@ -116,11 +116,6 @@ msgid "Address for Reports"
 msgstr "レポート用アドレス"
 
 #. module: report_common_nrq
-#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_address_alt
-msgid "Address for Reports (Alt.)"
-msgstr "レポート用アドレス(旧)"
-
-#. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.view_company_form
 msgid "Alternative Particulars"
 msgstr "旧詳細"
@@ -139,11 +134,6 @@ msgstr "承認済"
 #: model:ir.model.fields,field_description:report_common_nrq.field_res_company_bank_details
 msgid "Bank Details"
 msgstr "銀行詳細"
-
-#. module: report_common_nrq
-#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_bank_details_alt
-msgid "Bank Details (Alt.)"
-msgstr "銀行詳細(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.document_footer_layout
@@ -171,19 +161,9 @@ msgid "Company Chop Image"
 msgstr "社印画像"
 
 #. module: report_common_nrq
-#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_chop_alt
-msgid "Company Chop Image (Alt.)"
-msgstr "社印画像(旧)"
-
-#. module: report_common_nrq
 #: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_name
 msgid "Company Name for Reports"
 msgstr "レポート用社名"
-
-#. module: report_common_nrq
-#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_name_alt
-msgid "Company Name for Reports (Alt.)"
-msgstr "レポート用社名(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.acceptance_header_layout
@@ -227,11 +207,6 @@ msgstr "有効期日:"
 #: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_fax
 msgid "Fax for Reports"
 msgstr "レポート用FAX"
-
-#. module: report_common_nrq
-#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_fax_alt
-msgid "Fax for Reports (Alt.)"
-msgstr "レポート用FAX(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
@@ -298,11 +273,6 @@ msgstr "取引先番号"
 #: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_phone
 msgid "Phone for Reports"
 msgstr "レポート用電話番号"
-
-#. module: report_common_nrq
-#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_phone_alt
-msgid "Phone for Reports (Alt.)"
-msgstr "レポート用電話番号(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout
@@ -449,11 +419,6 @@ msgstr "仕入先返金"
 #: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_website
 msgid "Website for Reports"
 msgstr "レポート用ウェブサイト"
-
-#. module: report_common_nrq
-#: model:ir.model.fields,field_description:report_common_nrq.field_res_company_company_website_alt
-msgid "Website for Reports (Alt.)"
-msgstr "レポート用ウェブサイト(旧)"
 
 #. module: report_common_nrq
 #: model:ir.ui.view,arch_db:report_common_nrq.common_header_layout

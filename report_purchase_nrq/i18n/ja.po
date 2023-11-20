@@ -52,11 +52,6 @@ msgid "Purchase Order"
 msgstr "注文書"
 
 #. module: report_purchase_nrq
-#: model:ir.actions.report.xml,name:report_purchase_nrq.report_purchase_order_alt
-msgid "Purchase Order (Alt.)"
-msgstr "注文書(旧)"
-
-#. module: report_purchase_nrq
 #: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_document
 msgid "Quantity"
 msgstr "数量"
@@ -85,8 +80,3 @@ msgstr "単価"
 #: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_document
 msgid "purchase"
 msgstr "purchase"
-
-#. module: report_purchase_nrq
-#: model:ir.ui.view,arch_db:report_purchase_nrq.report_purchaseorder_alt
-msgid "true"
-msgstr "true"

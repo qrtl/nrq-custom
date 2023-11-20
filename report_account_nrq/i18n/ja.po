@@ -26,20 +26,10 @@ msgid "Delivery Note"
 msgstr "納品書"
 
 #. module: report_account_nrq
-#: model:ir.actions.report.xml,name:report_account_nrq.report_delivery_note_alt
-msgid "Delivery Note (Alt.)"
-msgstr "納品書(旧)"
-
-#. module: report_account_nrq
 #: model:ir.actions.report.xml,name:report_account_nrq.report_account_invoice_acceptance
 #: model:ir.model,name:report_account_nrq.model_account_invoice
 msgid "Invoice"
 msgstr "請求書"
-
-#. module: report_account_nrq
-#: model:ir.actions.report.xml,name:report_account_nrq.report_account_invoice_acceptance_alt
-msgid "Invoice (Alt.)"
-msgstr "請求書(旧)"
 
 #. module: report_account_nrq
 #: model:ir.ui.view,arch_db:report_account_nrq.report_acceptance_document_nrq
@@ -56,8 +46,3 @@ msgstr "deliverynote"
 msgid "invoice"
 msgstr "invoice"
 
-#. module: report_account_nrq
-#: model:ir.ui.view,arch_db:report_account_nrq.report_deliverynote_alt
-#: model:ir.ui.view,arch_db:report_account_nrq.report_invoice_acceptance_alt
-msgid "true"
-msgstr "true"

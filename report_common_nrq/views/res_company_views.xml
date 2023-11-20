@@ -16,14 +16,6 @@
                             <field name="company_website" />
                             <field name="bank_details" />
                         </group>
-                        <group name="misc_alt" string="Alternative Particulars">
-                            <field name="company_name_alt" />
-                            <field name="company_address_alt" />
-                            <field name="company_phone_alt" />
-                            <field name="company_fax_alt" />
-                            <field name="company_website_alt" />
-                            <field name="bank_details_alt" />
-                        </group>
                         <group>
                             <field name="invoice_remarks" />
                         </group>
@@ -32,13 +24,6 @@
                         <group>
                             <group>
                                 <field name="chop" widget='image' class="oe_avatar" />
-                            </group>
-                            <group>
-                                <field
-                                    name="chop_alt"
-                                    widget='image'
-                                    class="oe_avatar"
-                                />
                             </group>
                         </group>
                     </page>

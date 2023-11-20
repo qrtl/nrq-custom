@@ -220,31 +220,12 @@
             </t>
         </t>
     </template>
-    <template id="report_salequotation_alt">
-        <t t-call="report.html_container">
-            <t t-set="alt">true</t>
-            <t t-foreach="docs" t-as="doc">
-                <t
-                    t-call="report_sale_nrq.report_salequotation_document"
-                    t-lang="doc.partner_id.lang"
-                />
-            </t>
-        </t>
-    </template>
     <report
         id="report_sale_quotation"
         model="sale.order"
         string="Quotation"
         name="report_sale_nrq.report_salequotation"
         file="report_sale_nrq.report_salequotation"
-        report_type="qweb-pdf"
-    />
-    <report
-        id="report_sale_quotation_alt"
-        model="sale.order"
-        string="Quotation (Alt.)"
-        name="report_sale_nrq.report_salequotation_alt"
-        file="report_sale_nrq.report_salequotation_alt"
         report_type="qweb-pdf"
     />
     <report
