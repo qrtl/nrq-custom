@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_qualification_tree" model="ir.ui.view">
+        <field name="name">view.qualification.name.tree</field>
+        <field name="model">qualification.name</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="qualification_name_search" model="ir.ui.view">
+        <field name="name">qualification.name.search</field>
+        <field name="model">qualification.name</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+    <record id="act_qualification_name" model="ir.actions.act_window">
+        <field name="name">Qualification Name</field>
+        <field name="res_model">qualification.name</field>
+    </record>
+    <menuitem
+        id="menu_qualification_name"
+        action="act_qualification_name"
+        parent="hr.menu_hr_root"
+        sequence="4"
+        groups="base.group_user"
+    />
+</odoo>

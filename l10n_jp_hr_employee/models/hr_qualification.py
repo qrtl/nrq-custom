@@ -15,7 +15,7 @@ class HrQualification(models.Model):
     _name = "hr.qualification"
     _order = "date_obtained"
 
-    name = fields.Char(required=True, help="e.g. CISA",)
+    name = fields.Many2one("qualification.name", required=True)
     private_info_id = fields.Many2one("hr.private.info", string="Private Info",)
     employee_id = fields.Many2one(related="private_info_id.employee_id", store=True,)
     date_obtained = fields.Char("Date Obtained", required=True,)
