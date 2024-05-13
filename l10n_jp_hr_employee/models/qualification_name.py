@@ -6,5 +6,7 @@ from odoo import fields, models
 
 class QualificationName(models.Model):
     _name = "qualification.name"
+    _order = "sequence, id"
 
     name = fields.Char(required=True, help="e.g. CISA")
+    sequence = fields.Integer(default=10)
