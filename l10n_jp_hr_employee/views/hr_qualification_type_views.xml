@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_hr_qualification_type_tree" model="ir.ui.view">
+        <field name="name">view.hr.qualification.type.tree</field>
+        <field name="model">hr.qualification.type</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="hr_qualification_type_search" model="ir.ui.view">
+        <field name="name">hr.qualification.type.search</field>
+        <field name="model">hr.qualification.type</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+    <record id="act_hr_qualification_type" model="ir.actions.act_window">
+        <field name="name">Qualification Type</field>
+        <field name="res_model">hr.qualification.type</field>
+    </record>
+    <menuitem
+        id="menu_hr_qualification_type"
+        action="act_hr_qualification_type"
+        parent="hr.menu_hr_root"
+        sequence="4"
+        groups="base.group_user"
+    />
+</odoo>

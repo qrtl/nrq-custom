@@ -4,8 +4,8 @@
 from odoo import fields, models
 
 
-class QualificationName(models.Model):
-    _name = "qualification.name"
+class HrQualificationType(models.Model):
+    _name = "hr.qualification.type"
     _order = "sequence, id"
 
     name = fields.Char(required=True, help="e.g. CISA")

@@ -25,6 +25,6 @@
         "views/hr_qualification_views.xml",
         "views/hr_dependant_views.xml",
         "views/res_company_views.xml",
-        "views/qualification_name_views.xml",
+        "views/hr_qualification_type_views.xml",
     ],
 }
