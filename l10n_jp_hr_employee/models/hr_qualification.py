@@ -31,9 +31,9 @@ class HrQualification(models.Model):
     def name_get(self):
         result = []
         for rec in self:
-            name = rec.name.display_name
+            name = rec.name.name
             if rec.score:  
-                name = rec.name.display_name + " " + rec.score
+                name = rec.name.name + " " + rec.score
             result.append((rec.id, name))
         return result
 
