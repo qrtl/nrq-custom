@@ -27,13 +27,13 @@ class HrQualification(models.Model):
     score = fields.Char()
 
     @api.multi
-    @api.depends('name', 'score')
+    @api.depends("name", "score")
     def name_get(self):
         result = []
         for rec in self:
             name = rec.name.display_name
             if rec.score:  
-                name = rec.name.display_name + ' ' + rec.score
+                name = rec.name.display_name + " " + rec.score
             result.append((rec.id, name))
         return result
 
@@ -42,7 +42,7 @@ class HrQualification(models.Model):
         args = args or []
         domain = []
         if name:
-            domain = ['|', ('name', operator, name), ('score', operator, name)]
+            domain = ["|", ("name", operator, name), ("score", operator, name)]
         recs = self.search(domain + args, limit=limit)
         return recs.name_get()
 
