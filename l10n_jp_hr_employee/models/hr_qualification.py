@@ -23,6 +23,28 @@ class HrQualification(models.Model):
     reference = fields.Char()
     qualification_file = fields.Binary("Attachment",)
     qualification_file_filename = fields.Char("Attachment File Name",)
+    is_allowed_score = fields.Boolean(related="name.is_allowed_score", store=True)
+    score = fields.Char()
+
+    @api.multi
+    @api.depends('name', 'score')
+    def name_get(self):
+        result = []
+        for rec in self:
+            name = rec.name.display_name
+            if rec.score:  
+                name = rec.name.display_name + ' ' + rec.score
+            result.append((rec.id, name))
+        return result
+
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100):
+        args = args or []
+        domain = []
+        if name:
+            domain = ['|', ('name', operator, name), ('score', operator, name)]
+        recs = self.search(domain + args, limit=limit)
+        return recs.name_get()
 
     @api.onchange("date_obtained")
     def _onchange_date_obtained(self):
@@ -52,3 +74,7 @@ class HrQualification(models.Model):
                             "'YYYY/MM/DD' or 'YYYY/MM'."
                         )
                     )
+        
+    @api.onchange("name")
+    def _onchange_qualification_name(self):
+        self.score= False

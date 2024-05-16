@@ -36,6 +36,8 @@
         <field name="arch" type="xml">
             <tree string="Qualifications" editable="top">
                 <field name="name" />
+                <field name="is_allowed_score" invisible="1" />
+                <field name="score" attrs="{'readonly': [('is_allowed_score', '=', False)], 'required': [('is_allowed_score', '=', True)]}" />
                 <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
                 <field
                     name="date_expiry"

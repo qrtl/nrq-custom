@@ -10,3 +10,4 @@ class HrQualificationType(models.Model):
 
     name = fields.Char(required=True, help="e.g. CISA")
     sequence = fields.Integer(default=10)
+    is_allowed_score = fields.Boolean(help="If enabled, allows input in the score field of the qualification.")

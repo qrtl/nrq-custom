@@ -10,6 +10,7 @@
                 <field name="parent_id" />
                 <field name="department_id" String="Department" />
                 <field name="name" />
+                <field name="score" />
                 <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
                 <field
                     name="date_expiry"
