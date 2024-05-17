@@ -27,8 +27,7 @@
     <menuitem
         id="menu_hr_qualification_type"
         action="act_hr_qualification_type"
-        parent="hr.menu_hr_root"
-        sequence="4"
-        groups="base.group_user"
+        parent="hr.menu_human_resources_configuration"
+        sequence="10"
     />
 </odoo>
