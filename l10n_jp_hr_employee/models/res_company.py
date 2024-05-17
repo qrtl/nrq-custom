@@ -11,3 +11,4 @@ class ResCompany(models.Model):
     private_page_header_text = fields.Html(
         "Private Page Header Text", translate=True, sanitize=True
     )
+    qualification_information = fields.Text()

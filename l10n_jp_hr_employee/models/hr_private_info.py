@@ -104,6 +104,7 @@ class HrPrivateInfo(models.Model):
         string="Qualification",
         context={"active_test": False},
     )
+    qualification_information = fields.Text(related="company_id.qualification_information")
     dependant_ids = fields.One2many(
         "hr.dependant", "private_info_id", string="Dependants",
     )
