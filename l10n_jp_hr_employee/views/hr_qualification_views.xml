@@ -37,7 +37,7 @@
             <tree string="Qualifications" editable="top">
                 <field name="qualification_type_id" />
                 <field name="needs_description" invisible="1" />
-                <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" force_save="1"/>
+                <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
                 <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
                 <field
                     name="date_expiry"
