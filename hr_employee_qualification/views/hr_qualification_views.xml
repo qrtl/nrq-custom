@@ -6,11 +6,12 @@
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name" />
                 <field name="employee_id" />
                 <field name="parent_id" />
                 <field name="department_id" String="Department" />
-                <field name="name" />
-                <field name="score" />
+                <field name="qualification_type_id" />
+                <field name="description" />
                 <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
                 <field
                     name="date_expiry"

@@ -35,9 +35,9 @@
         <field name="model">hr.qualification</field>
         <field name="arch" type="xml">
             <tree string="Qualifications" editable="top">
-                <field name="name" />
-                <field name="is_allowed_score" invisible="1" />
-                <field name="score" attrs="{'readonly': [('is_allowed_score', '=', False)], 'required': [('is_allowed_score', '=', True)]}" />
+                <field name="qualification_type_id" />
+                <field name="needs_description" invisible="1" />
+                <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
                 <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
                 <field
                     name="date_expiry"

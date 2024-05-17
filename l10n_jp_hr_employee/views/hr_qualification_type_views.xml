@@ -7,7 +7,7 @@
             <tree editable="top">
                 <field name="sequence" widget="handle" />
                 <field name="name" />
-                <field name="is_allowed_score" />
+                <field name="needs_description" />
             </tree>
         </field>
     </record>

@@ -15,7 +15,7 @@ class HrQualification(models.Model):
     _name = "hr.qualification"
     _order = "date_obtained"
 
-    name = fields.Many2one("hr.qualification.type", required=True)
+    name = fields.Char(compute="_compute_name", store=True)
     private_info_id = fields.Many2one("hr.private.info", string="Private Info",)
     employee_id = fields.Many2one(related="private_info_id.employee_id", store=True,)
     date_obtained = fields.Char("Date Obtained", required=True,)
@@ -23,28 +23,18 @@ class HrQualification(models.Model):
     reference = fields.Char()
     qualification_file = fields.Binary("Attachment",)
     qualification_file_filename = fields.Char("Attachment File Name",)
-    is_allowed_score = fields.Boolean(related="name.is_allowed_score", store=True)
-    score = fields.Char()
+    qualification_type_id = fields.Many2one("hr.qualification.type", required=True, string="Qualification Type")
+    needs_description = fields.Boolean(related="qualification_type_id.needs_description")
+    description = fields.Char()
 
-    @api.multi
-    @api.depends("name", "score")
-    def name_get(self):
-        result = []
+    @api.depends("qualification_type_id", "description")
+    def _compute_name(self):
         for rec in self:
-            name = rec.name.name
-            if rec.score:  
-                name = rec.name.name + " " + rec.score
-            result.append((rec.id, name))
-        return result
-
-    @api.model
-    def name_search(self, name, args=None, operator='ilike', limit=100):
-        args = args or []
-        domain = []
-        if name:
-            domain = ["|", ("name", operator, name), ("score", operator, name)]
-        recs = self.search(domain + args, limit=limit)
-        return recs.name_get()
+            rec.name = ""
+            if rec.qualification_type_id:
+                rec.name += rec.qualification_type_id.name
+            if rec.description:
+                rec.name += " " + rec.description
 
     @api.onchange("date_obtained")
     def _onchange_date_obtained(self):
