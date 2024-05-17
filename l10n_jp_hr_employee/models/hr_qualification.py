@@ -65,6 +65,6 @@ class HrQualification(models.Model):
                         )
                     )
         
-    @api.onchange("name")
+    @api.onchange("qualification_type_id")
     def _onchange_qualification_name(self):
-        self.score= False
+        self.description= False
