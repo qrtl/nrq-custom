@@ -14,7 +14,7 @@
     "depends": [
         "hr",
         "hr_contract",
-        "web_readonly_bypass"
+        "web_readonly_bypass" # for _onchange_qualification_type_id
     ],
     "external_dependencies": {"python": ["jaconv"]},
     "data": [
