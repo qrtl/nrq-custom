@@ -43,6 +43,7 @@ class HrQualification(models.Model):
                 vals.update({'description': False})
         return super(HrQualification, self).write(vals)
 
+    # This onchange is only for UI purposes; the actual operation will be handled by create() and write() methods.
     @api.onchange("qualification_type_id")
     def _onchange_qualification_type_id(self):
         self.description= False
