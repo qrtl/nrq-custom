@@ -27,23 +27,6 @@ class HrQualification(models.Model):
     needs_description = fields.Boolean(related="qualification_type_id.needs_description")
     description = fields.Char()
 
-    @api.model
-    def create(self, vals):
-        if "qualification_type_id" in vals:
-            qualification_type = self.env['hr.qualification.type'].browse(vals['qualification_type_id'])
-            if not qualification_type.needs_description:
-                vals.update({'description': False})
-        return super(HrQualification, self).create(vals)
-
-    @api.multi
-    def write(self, vals):
-        if 'qualification_type_id' in vals:
-            qualification_type = self.env['hr.qualification.type'].browse(vals['qualification_type_id'])
-            if not qualification_type.needs_description:
-                vals.update({'description': False})
-        return super(HrQualification, self).write(vals)
-
-    # This onchange is only for UI purposes; the actual operation will be handled by create() and write() methods.
     @api.onchange("qualification_type_id")
     def _onchange_qualification_type_id(self):
         self.description= False

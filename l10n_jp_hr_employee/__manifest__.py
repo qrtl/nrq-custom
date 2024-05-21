@@ -11,7 +11,11 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["hr", "hr_contract"],
+    "depends": [
+        "hr",
+        "hr_contract",
+        "web_readonly_bypass",
+    ],
     "external_dependencies": {"python": ["jaconv"]},
     "data": [
         "security/res_groups.xml",
