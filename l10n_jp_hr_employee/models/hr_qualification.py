@@ -27,6 +27,26 @@ class HrQualification(models.Model):
     needs_description = fields.Boolean(related="qualification_type_id.needs_description")
     description = fields.Char()
 
+    @api.model
+    def create(self, vals):
+        if "qualification_type_id" in vals:
+            qualification_type = self.env['hr.qualification.type'].browse(vals['qualification_type_id'])
+            if not qualification_type.needs_description:
+                vals.update({'description': False})
+        return super(HrQualification, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        if 'qualification_type_id' in vals:
+            qualification_type = self.env['hr.qualification.type'].browse(vals['qualification_type_id'])
+            if not qualification_type.needs_description:
+                vals.update({'description': False})
+        return super(HrQualification, self).write(vals)
+
+    @api.onchange("qualification_type_id")
+    def _onchange_qualification_type_id(self):
+        self.description= False
+
     @api.depends("qualification_type_id", "description")
     def _compute_name(self):
         for rec in self:
@@ -64,7 +84,3 @@ class HrQualification(models.Model):
                             "'YYYY/MM/DD' or 'YYYY/MM'."
                         )
                     )
-        
-    @api.onchange("qualification_type_id")
-    def _onchange_qualification_type_id(self):
-        self.description= False
