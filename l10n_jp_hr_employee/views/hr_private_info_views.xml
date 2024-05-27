@@ -306,7 +306,7 @@
                                             attrs="{'readonly':[('state','!=','draft')]}"
                                         />
                                         <div>
-                                            <field name="qualification_information" />
+                                            <field name="qualification_information_note" readonly="True" />
                                         </div>
                                     </div>
                                 </div>

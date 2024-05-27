@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree editable="top">
                 <field name="name" />
-                <field name="employee_id" />
+                <field name="employee_id" invisible="1" />
                 <field name="private_info_id" />
                 <field name="parent_id" />
                 <field name="department_id" String="Department" />

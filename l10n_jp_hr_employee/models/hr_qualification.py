@@ -23,13 +23,15 @@ class HrQualification(models.Model):
     reference = fields.Char()
     qualification_file = fields.Binary("Attachment",)
     qualification_file_filename = fields.Char("Attachment File Name",)
-    qualification_type_id = fields.Many2one("hr.qualification.type", required=True, string="Qualification Type")
-    needs_description = fields.Boolean(related="qualification_type_id.needs_description")
+    qualification_type_id = fields.Many2one(
+        "hr.qualification.type", required=True, string="Qualification Type")
+    needs_description = fields.Boolean(
+        related="qualification_type_id.needs_description")
     description = fields.Char()
 
     @api.onchange("qualification_type_id")
     def _onchange_qualification_type_id(self):
-        self.description= False
+        self.description = False
 
     @api.depends("qualification_type_id", "description")
     def _compute_name(self):

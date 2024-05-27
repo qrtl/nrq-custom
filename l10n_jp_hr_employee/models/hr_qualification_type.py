@@ -10,4 +10,5 @@ class HrQualificationType(models.Model):
 
     name = fields.Char(required=True, help="e.g. CISA")
     sequence = fields.Integer(default=10)
-    needs_description = fields.Boolean(help="If enabled, description field of the qualification becomes required.")
+    needs_description = fields.Boolean(
+        help="If enabled, description field of the qualification becomes required.")
