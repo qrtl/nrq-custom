@@ -8,6 +8,7 @@
             <tree editable="top">
                 <field name="name" />
                 <field name="employee_id" />
+                <field name="private_info_id" />
                 <field name="parent_id" />
                 <field name="department_id" String="Department" />
                 <field name="qualification_type_id" />
