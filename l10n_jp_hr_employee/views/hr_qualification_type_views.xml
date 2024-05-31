@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <tree editable="top">
                 <field name="sequence" widget="handle" />
+                <field name="qualification_category" />
                 <field name="name" />
                 <field name="needs_description" />
             </tree>

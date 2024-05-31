@@ -11,6 +11,7 @@
                 <field name="private_info_id" />
                 <field name="parent_id" />
                 <field name="department_id" String="Department" />
+                <field name="qualification_category" />
                 <field name="qualification_type_id" />
                 <field name="needs_description" invisible="1" />
                 <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />

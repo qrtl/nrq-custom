@@ -35,6 +35,7 @@
         <field name="model">hr.qualification</field>
         <field name="arch" type="xml">
             <tree string="Qualifications" editable="top">
+                <field name="qualification_category" invisible="0" readonly="1" />
                 <field name="qualification_type_id" />
                 <field name="needs_description" invisible="1" />
                 <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />

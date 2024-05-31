@@ -303,7 +303,21 @@
                                     <div>
                                         <field
                                             name="qualification_ids"
+                                            domain="[('qualification_category','=','recommended')]"
                                             attrs="{'readonly':[('state','!=','draft')]}"
+                                            string="Recommended Qualifications"
+                                        />
+                                        <field
+                                            name="qualification_ids"
+                                            domain="[('qualification_category','=','non_recommended')]"
+                                            attrs="{'readonly':[('state','!=','draft')]}"
+                                            string="Non-Recommended Qualifications"
+                                        />
+                                        <field
+                                            name="qualification_ids"
+                                            domain="[('qualification_category','=','language')]"
+                                            attrs="{'readonly':[('state','!=','draft')]}"
+                                            string="Language"
                                         />
                                         <div>
                                             <field name="qualification_information_note" readonly="True" />
