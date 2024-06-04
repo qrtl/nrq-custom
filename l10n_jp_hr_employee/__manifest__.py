@@ -26,7 +26,6 @@
         "data/mail_template_data.xml",
         "views/hr_private_info_views.xml",
         "views/hr_employee_views.xml",
-        "views/hr_qualification_views.xml",
         "views/hr_dependant_views.xml",
         "views/res_company_views.xml",
         "views/hr_qualification_type_views.xml",

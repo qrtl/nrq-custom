@@ -298,31 +298,83 @@
                                 </group>
                             </group>
                             <group name="qualification" string="Qualifications">
-                                <label for="qualification_ids" />
+                                <label string="Recommended Qualifications"/>
                                 <div>
-                                    <div>
-                                        <field
-                                            name="qualification_ids"
-                                            domain="[('qualification_category','=','recommended')]"
-                                            attrs="{'readonly':[('state','!=','draft')]}"
-                                            string="Recommended Qualifications"
-                                        />
-                                        <field
-                                            name="qualification_ids"
-                                            domain="[('qualification_category','=','non_recommended')]"
-                                            attrs="{'readonly':[('state','!=','draft')]}"
-                                            string="Non-Recommended Qualifications"
-                                        />
-                                        <field
-                                            name="qualification_ids"
-                                            domain="[('qualification_category','=','language')]"
-                                            attrs="{'readonly':[('state','!=','draft')]}"
-                                            string="Language"
-                                        />
-                                        <div>
-                                            <field name="qualification_information_note" readonly="True" />
-                                        </div>
-                                    </div>
+                                    <field name="recom_qualification_ids"
+                                        attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                        <tree editable="bottom">
+                                            <field name="qualification_category" />
+                                            <field name="qualification_type_id" domain="[('qualification_category','=','recommended')]"/>
+                                            <field name="needs_description" invisible="1" />
+                                            <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
+                                            <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
+                                            <field
+                                                name="date_expiry"
+                                                placeholder="Full in when there is an Expiry Date"
+                                            />
+                                            <field
+                                                name="reference"
+                                                placeholder="Fill in the qualification number."
+                                            />
+                                            <field
+                                                name="qualification_file"
+                                                filename="qualification_file_filename"
+                                            />
+                                            <field name="qualification_file_filename" invisible="1" />
+                                        </tree>
+                                    </field>
+                                </div>
+                                <label string="Non Recommended Qualifications"/>
+                                <div>
+                                    <field name="non_recom_qualification_ids"
+                                        attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                        <tree editable="bottom">
+                                            <field name="qualification_category" />
+                                            <field name="qualification_type_id" domain="[('qualification_category','=','non_recommended')]"/>
+                                            <field name="needs_description" invisible="1" />
+                                            <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
+                                            <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
+                                            <field
+                                                name="date_expiry"
+                                                placeholder="Full in when there is an Expiry Date"
+                                            />
+                                            <field
+                                                name="reference"
+                                                placeholder="Fill in the qualification number."
+                                            />
+                                            <field
+                                                name="qualification_file"
+                                                filename="qualification_file_filename"
+                                            />
+                                            <field name="qualification_file_filename" invisible="1" />
+                                        </tree>
+                                    </field>
+                                </div>
+                                <label string="Language Qualifications"/>
+                                <div>
+                                    <field name="lang_qualification_ids"
+                                        attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                        <tree editable="bottom">
+                                            <field name="qualification_category" />
+                                            <field name="qualification_type_id" domain="[('qualification_category','=','language')]"/>
+                                            <field name="needs_description" invisible="1" />
+                                            <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
+                                            <field name="date_obtained" placeholder="'YYYY/MM/DD' or 'YYYY/MM'" />
+                                            <field
+                                                name="date_expiry"
+                                                placeholder="Full in when there is an Expiry Date"
+                                            />
+                                            <field
+                                                name="reference"
+                                                placeholder="Fill in the qualification number."
+                                            />
+                                            <field
+                                                name="qualification_file"
+                                                filename="qualification_file_filename"
+                                            />
+                                            <field name="qualification_file_filename" invisible="1" />
+                                        </tree>
+                                    </field>
                                 </div>
                             </group>
                             <group>

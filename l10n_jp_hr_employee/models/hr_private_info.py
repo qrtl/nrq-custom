@@ -98,11 +98,26 @@ class HrPrivateInfo(models.Model):
     )
     school_completion_desc = fields.Char("Note (School Completion)",)
     year_left_school = fields.Selection(get_years(), "Year of Leaving School",)
-    qualification_ids = fields.One2many(
+    recom_qualification_ids = fields.One2many(
         "hr.qualification",
         "private_info_id",
-        string="Qualification",
+        string="Recommended Qualification",
         context={"active_test": False},
+        domain=[('qualification_category','=','recommended')]
+    )
+    non_recom_qualification_ids = fields.One2many(
+        "hr.qualification",
+        "private_info_id",
+        string="Non Recommended Qualification",
+        context={"active_test": False},
+        domain=[('qualification_category','=','non_recommended')]
+    )
+    lang_qualification_ids = fields.One2many(
+        "hr.qualification",
+        "private_info_id",
+        string="Language Qualification",
+        context={"active_test": False},
+        domain=[('qualification_category','=','language')]
     )
     qualification_information_note = fields.Text(
         related="company_id.qualification_information_note")
