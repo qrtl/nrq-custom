@@ -298,7 +298,7 @@
                                 </group>
                             </group>
                             <group name="qualification" string="Qualifications">
-                                <label string="Recommended Qualifications"/>
+                                <label for="recom_qualification_ids"/>
                                 <div>
                                     <field name="recom_qualification_ids"
                                         attrs="{'readonly': [('state', '!=', 'draft')]}">
@@ -324,7 +324,7 @@
                                         </tree>
                                     </field>
                                 </div>
-                                <label string="Non Recommended Qualifications"/>
+                                <label for="non_recom_qualification_ids" />
                                 <div>
                                     <field name="non_recom_qualification_ids"
                                         attrs="{'readonly': [('state', '!=', 'draft')]}">
@@ -350,7 +350,7 @@
                                         </tree>
                                     </field>
                                 </div>
-                                <label string="Language Qualifications"/>
+                                <label for="lang_qualification_ids"/>
                                 <div>
                                     <field name="lang_qualification_ids"
                                         attrs="{'readonly': [('state', '!=', 'draft')]}">
