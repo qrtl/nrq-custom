@@ -23,7 +23,11 @@ class HrQualification(models.Model):
     reference = fields.Char()
     qualification_file = fields.Binary("Attachment",)
     qualification_file_filename = fields.Char("Attachment File Name",)
-    qualification_category = fields.Selection(related="qualification_type_id.qualification_category", store=True, readonly=True)
+    qualification_category = fields.Selection(
+        related="qualification_type_id.qualification_category", 
+        store=True, 
+        readonly=True
+        )
     qualification_type_id = fields.Many2one(
         "hr.qualification.type", required=True, string="Qualification Type")
     needs_description = fields.Boolean(

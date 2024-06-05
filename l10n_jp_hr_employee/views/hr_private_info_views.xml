@@ -303,7 +303,7 @@
                                     <field name="recom_qualification_ids"
                                         attrs="{'readonly': [('state', '!=', 'draft')]}">
                                         <tree editable="bottom">
-                                            <field name="qualification_category" />
+                                            <field name="qualification_category" invisible="1" />
                                             <field name="qualification_type_id" domain="[('qualification_category','=','recommended')]"/>
                                             <field name="needs_description" invisible="1" />
                                             <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
@@ -329,7 +329,7 @@
                                     <field name="non_recom_qualification_ids"
                                         attrs="{'readonly': [('state', '!=', 'draft')]}">
                                         <tree editable="bottom">
-                                            <field name="qualification_category" />
+                                            <field name="qualification_category" invisible="1" />
                                             <field name="qualification_type_id" domain="[('qualification_category','=','non_recommended')]"/>
                                             <field name="needs_description" invisible="1" />
                                             <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
@@ -355,7 +355,7 @@
                                     <field name="lang_qualification_ids"
                                         attrs="{'readonly': [('state', '!=', 'draft')]}">
                                         <tree editable="bottom">
-                                            <field name="qualification_category" />
+                                            <field name="qualification_category" invisible="1" />
                                             <field name="qualification_type_id" domain="[('qualification_category','=','language')]"/>
                                             <field name="needs_description" invisible="1" />
                                             <field name="description" attrs="{'readonly': [('needs_description', '=', False)], 'required': [('needs_description', '=', True)]}" />
