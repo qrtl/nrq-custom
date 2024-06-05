@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-05 08:36+0000\n"
-"PO-Revision-Date: 2024-06-05 08:36+0000\n"
+"POT-Creation-Date: 2024-06-05 09:22+0000\n"
+"PO-Revision-Date: 2024-06-05 09:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucid
 
 #. module: l10n_jp_hr_employee
 #: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:472
-#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:56
+#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:60
 #, python-format
 msgid "%s seems to be incorrect."
 msgstr "%s が正しくないようです。"
@@ -599,7 +599,7 @@ msgid "Current Address"
 msgstr "現在住所"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:66
+#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:70
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_date_obtained
 #, python-format
 msgid "Date Obtained"
@@ -988,6 +988,7 @@ msgid "Labor Confirm"
 msgstr "労務確認"
 
 #. module: l10n_jp_hr_employee
+#: selection:hr.qualification.type,qualification_category:0
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_lang_qualification_ids
 msgid "Language Qualification"
 msgstr "言語資格"
@@ -1101,13 +1102,9 @@ msgid "Needs description"
 msgstr "説明必要"
 
 #. module: l10n_jp_hr_employee
+#: selection:hr.qualification.type,qualification_category:0
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_non_recom_qualification_ids
 msgid "Non Recommended Qualification"
-msgstr "推奨資格以外"
-
-#. module: l10n_jp_hr_employee
-#: selection:hr.qualification.type,qualification_category:0
-msgid "Non-recommended Qualification"
 msgstr "推奨資格以外"
 
 #. module: l10n_jp_hr_employee
@@ -1233,7 +1230,7 @@ msgid "Phone"
 msgstr "電話"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:69
+#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:73
 #, python-format
 msgid "Please adjust the format to be 'YYYY/MM/DD' or 'YYYY/MM'."
 msgstr "フォーマットは 'YYYY/MM/DD' または 'YYYY/MM' としてください。"

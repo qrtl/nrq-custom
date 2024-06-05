@@ -10,9 +10,10 @@ class HrQualificationType(models.Model):
 
     qualification_category = fields.Selection(
         [("recommended", "Recommended Qualification"), 
-        ("non_recommended", "Non-recommended Qualification"), 
-        ("language", "Language")]
-        )
+        ("non_recommended", "Non Recommended Qualification"), 
+        ("language", "Language Qualification")], 
+        required=True,
+    )
     name = fields.Char(required=True, help="e.g. CISA")
     sequence = fields.Integer(default=10)
     needs_description = fields.Boolean(
