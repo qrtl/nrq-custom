@@ -50,10 +50,13 @@
             </xpath>
             <xpath expr="//page[@name='public']/group" position="after">
                 <group string="Qualifications">
-                    <field
-                        name="qualification_names"
-                        string="Acquired Qualifications"
-                    />
+                    <group>
+                        <field name="recom_qualification_names" />
+                        <field name="lang_qualification_names" />
+                    </group>
+                    <group>
+                        <field name="non_recom_qualification_names" />
+                    </group>
                 </group>
             </xpath>
         </field>
