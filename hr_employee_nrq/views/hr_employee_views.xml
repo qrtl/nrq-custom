@@ -52,10 +52,8 @@
                 <group string="Qualifications">
                     <group>
                         <field name="recom_qualification_names" />
-                        <field name="lang_qualification_names" />
-                    </group>
-                    <group>
                         <field name="non_recom_qualification_names" />
+                        <field name="lang_qualification_names" />
                     </group>
                 </group>
             </xpath>
