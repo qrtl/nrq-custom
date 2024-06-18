@@ -18,7 +18,7 @@ class HrQualification(models.Model):
     name = fields.Char(compute="_compute_name", store=True)
     private_info_id = fields.Many2one("hr.private.info", string="Private Info",)
     employee_id = fields.Many2one(related="private_info_id.employee_id", store=True,)
-    date_obtained = fields.Char("Date Obtained", required=True,)
+    date_obtained = fields.Char("Date Obtained",)
     date_expiry = fields.Date("Valid Until",)
     reference = fields.Char()
     qualification_file = fields.Binary("Attachment",)

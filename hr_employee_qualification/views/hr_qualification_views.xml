@@ -38,9 +38,9 @@
                 <field name="employee_id" />
                 <group expand="0" string="Group By">
                     <filter
-                        string="Qualification Name"
-                        context="{'group_by':'name'}"
-                        name="group_name"
+                        string="Qualification Type"
+                        context="{'group_by':'qualification_type_id'}"
+                        name="group_qualification_type_id"
                     />
                 </group>
             </search>
@@ -52,7 +52,7 @@
         <field name="view_mode">tree</field>
         <field name="view_id" ref="view_hr_qualification_tree" />
         <field name="search_view_id" ref="hr_qualification_search" />
-        <field name="context">{'search_default_group_name': 1}</field>
+        <field name="context">{'search_default_group_qualification_type_id': 1}</field>
     </record>
     <menuitem
         id="menu_auction_qualification"
