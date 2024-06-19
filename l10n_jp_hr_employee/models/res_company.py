@@ -11,6 +11,3 @@ class ResCompany(models.Model):
     private_page_header_text = fields.Html(
         "Private Page Header Text", translate=True, sanitize=True
     )
-    qualification_information_note = fields.Text(
-        help="This information will be displayed as an instruction for "
-        "the Qualification in Private Info.")

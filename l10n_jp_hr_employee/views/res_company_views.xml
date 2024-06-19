@@ -9,7 +9,6 @@
                 <page string="Private Page">
                     <group>
                         <field name="private_page_header_text" />
-                        <field name="qualification_information_note" />
                     </group>
                 </page>
             </xpath>

@@ -1337,12 +1337,6 @@ msgid "Qualification category"
 msgstr "資格カテゴリ"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_qualification_information_note
-#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_res_company_qualification_information_note
-msgid "Qualification information note"
-msgstr "個人情報注意書き"
-
-#. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "Qualifications"
 msgstr "資格"
