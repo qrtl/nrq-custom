@@ -1,0 +1,20 @@
+# Copyright 2024 Quartile Limited
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+from odoo import fields, models
+
+
+class HrQualificationType(models.Model):
+    _name = "hr.qualification.type"
+    _order = "sequence, id"
+
+    qualification_category = fields.Selection(
+        [("recommended", "Recommended Qualification"), 
+        ("non_recommended", "Non Recommended Qualification"), 
+        ("language", "Language Qualification")], 
+        required=True,
+    )
+    name = fields.Char(required=True, help="e.g. CISA")
+    sequence = fields.Integer(default=10)
+    needs_description = fields.Boolean(
+        help="If enabled, description field of the qualification becomes required.")

@@ -15,14 +15,37 @@ class HrQualification(models.Model):
     _name = "hr.qualification"
     _order = "date_obtained"
 
-    name = fields.Char(required=True, help="e.g. CISA",)
+    name = fields.Char(compute="_compute_name", store=True)
     private_info_id = fields.Many2one("hr.private.info", string="Private Info",)
     employee_id = fields.Many2one(related="private_info_id.employee_id", store=True,)
-    date_obtained = fields.Char("Date Obtained", required=True,)
+    date_obtained = fields.Char("Date Obtained",)
     date_expiry = fields.Date("Valid Until",)
     reference = fields.Char()
     qualification_file = fields.Binary("Attachment",)
     qualification_file_filename = fields.Char("Attachment File Name",)
+    qualification_category = fields.Selection(
+        related="qualification_type_id.qualification_category", 
+        store=True, 
+        readonly=True
+        )
+    qualification_type_id = fields.Many2one(
+        "hr.qualification.type", required=True, string="Qualification Type")
+    needs_description = fields.Boolean(
+        related="qualification_type_id.needs_description")
+    description = fields.Char()
+
+    @api.onchange("qualification_type_id")
+    def _onchange_qualification_type_id(self):
+        self.description = False
+
+    @api.depends("qualification_type_id", "description")
+    def _compute_name(self):
+        for rec in self:
+            rec.name = ""
+            if rec.qualification_type_id:
+                rec.name += rec.qualification_type_id.name
+            if rec.description:
+                rec.name += " " + rec.description
 
     @api.onchange("date_obtained")
     def _onchange_date_obtained(self):

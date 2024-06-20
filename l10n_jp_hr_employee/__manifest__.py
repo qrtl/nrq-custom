@@ -11,7 +11,11 @@
     "author": "Quartile Limited",
     "license": "AGPL-3",
     "installable": True,
-    "depends": ["hr", "hr_contract"],
+    "depends": [
+        "hr",
+        "hr_contract",
+        "web_readonly_bypass",
+    ],
     "external_dependencies": {"python": ["jaconv"]},
     "data": [
         "security/res_groups.xml",
@@ -22,8 +26,8 @@
         "data/mail_template_data.xml",
         "views/hr_private_info_views.xml",
         "views/hr_employee_views.xml",
-        "views/hr_qualification_views.xml",
         "views/hr_dependant_views.xml",
         "views/res_company_views.xml",
+        "views/hr_qualification_type_views.xml",
     ],
 }

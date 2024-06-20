@@ -6,3 +6,4 @@ from . import hr_employment_type
 from . import hr_private_info
 from . import hr_qualification
 from . import res_company
+from . import hr_qualification_type

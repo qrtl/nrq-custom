@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-08 08:37+0000\n"
-"PO-Revision-Date: 2022-08-08 08:37+0000\n"
+"POT-Creation-Date: 2024-06-05 09:22+0000\n"
+"PO-Revision-Date: 2024-06-05 09:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,22 +33,21 @@ msgstr "<p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucid
 "        <p style=\"margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\"></p>"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:452
-#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:37
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:472
+#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:60
 #, python-format
 msgid "%s seems to be incorrect."
 msgstr "%s が正しくないようです。"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:213
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:418
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:208
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:438
 #, python-format
 msgid "%s should be %s digit(s)."
 msgstr "%s には %s 桁の数値を入れてください。"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_qualification_form
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_qualification_tree
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "'YYYY/MM/DD' or 'YYYY/MM'"
 msgstr "'YYYY/MM/DD' または 'YYYY/MM'"
 
@@ -389,6 +388,16 @@ msgid "2022"
 msgstr "2022"
 
 #. module: l10n_jp_hr_employee
+#: selection:hr.private.info,year_left_school:0
+msgid "2023"
+msgstr "2023"
+
+#. module: l10n_jp_hr_employee
+#: selection:hr.private.info,year_left_school:0
+msgid "2024"
+msgstr "2024"
+
+#. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "2025/01/01"
 msgstr "2025/01/01"
@@ -416,8 +425,8 @@ msgid "Account Holder Furigana"
 msgstr "口座名義(ｶﾅ)"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:388
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:427
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:408
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:447
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_bank_acc_number
 #, python-format
 msgid "Account Number"
@@ -516,6 +525,11 @@ msgid "Child"
 msgstr "子"
 
 #. module: l10n_jp_hr_employee
+#: model:ir.actions.act_window,help:l10n_jp_hr_employee.act_hr_employee_2_hr_private_info
+msgid "Click here to add new document"
+msgstr "ここをクリックして新しいドキュメントを追加"
+
+#. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_code
 msgid "Code"
 msgstr "コード"
@@ -542,11 +556,6 @@ msgid "Completed"
 msgstr "卒業/修了"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
-msgid "Confirm"
-msgstr "確認"
-
-#. module: l10n_jp_hr_employee
 #: selection:hr.private.info,state:0
 msgid "Confirmed"
 msgstr "確認済"
@@ -561,6 +570,7 @@ msgstr "国コード"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type_create_uid
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_create_uid
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_create_uid
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_create_uid
 msgid "Created by"
 msgstr "作成者"
 
@@ -569,6 +579,7 @@ msgstr "作成者"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type_create_date
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_create_date
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_create_date
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_create_date
 msgid "Created on"
 msgstr "作成日"
 
@@ -588,7 +599,7 @@ msgid "Current Address"
 msgstr "現在住所"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:47
+#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:70
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_date_obtained
 #, python-format
 msgid "Date Obtained"
@@ -642,6 +653,11 @@ msgid "Dependants"
 msgstr "被扶養者"
 
 #. module: l10n_jp_hr_employee
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_description
+msgid "Description"
+msgstr "説明"
+
+#. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_disability_class
 msgid "Disability Class"
 msgstr "障害者区分"
@@ -656,6 +672,7 @@ msgstr "障害メモ"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type_display_name
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_display_name
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_display_name
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_display_name
 msgid "Display Name"
 msgstr "表示名"
 
@@ -663,15 +680,6 @@ msgstr "表示名"
 #: selection:hr.private.info,state:0
 msgid "Draft"
 msgstr "ドラフト"
-
-#. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
-msgid "E.g. Name: CISA, Date Obtained:\n"
-"                                            2018/03/01, Valid Until:\n"
-"                                            2019/02/28, Reference: 1234567"
-msgstr "E.g. Name: CISA, Date Obtained:\n"
-"                                            2018/03/01, Valid Until:\n"
-"                                            2019/02/28, Reference: 1234567"
 
 #. module: l10n_jp_hr_employee
 #: selection:hr.dependant,dependant_categ:0
@@ -694,15 +702,15 @@ msgid "Emerg. Contact Name"
 msgstr "緊急連絡先氏名"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:376
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:396
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_emerg_contact_phone
 #, python-format
 msgid "Emerg. Contact Phone"
 msgstr "電話"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:383
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:425
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:403
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:445
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_emerg_contact_postal_code
 #, python-format
 msgid "Emerg. Contact Postal Code"
@@ -772,7 +780,7 @@ msgid "Employment Info"
 msgstr "雇用情報"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:404
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:424
 #, python-format
 msgid "Employment Insurance Number"
 msgstr "雇用保険番号"
@@ -783,8 +791,8 @@ msgid "Employment Type"
 msgstr "雇用タイプ"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:159
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:172
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:179
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:192
 #, python-format
 msgid "Error"
 msgstr "エラー"
@@ -824,7 +832,7 @@ msgid "Female"
 msgstr "女"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_qualification_tree
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "Fill in the qualification number."
 msgstr "資格NO.を記入"
 
@@ -839,7 +847,7 @@ msgid "For Japan Post Bank, please remove the '1' in the end of the account numb
 msgstr "ゆうちょの場合は最後の1を外してください"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_qualification_tree
+#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
 msgid "Full in when there is an Expiry Date"
 msgstr "有効期限がある場合は記入"
 
@@ -907,8 +915,15 @@ msgstr "高校生"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type_id
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_id
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_id
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_id
 msgid "ID"
 msgstr "ID"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model.fields,help:l10n_jp_hr_employee.field_hr_qualification_needs_description
+#: model:ir.model.fields,help:l10n_jp_hr_employee.field_hr_qualification_type_needs_description
+msgid "If enabled, description field of the qualification becomes required."
+msgstr "有効にすると、資格の説明フィールドが必須になります。"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,help:l10n_jp_hr_employee.field_hr_private_info_active
@@ -973,10 +988,17 @@ msgid "Labor Confirm"
 msgstr "労務確認"
 
 #. module: l10n_jp_hr_employee
+#: selection:hr.qualification.type,qualification_category:0
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_lang_qualification_ids
+msgid "Language Qualification"
+msgstr "言語資格"
+
+#. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant___last_update
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type___last_update
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info___last_update
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification___last_update
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type___last_update
 msgid "Last Modified on"
 msgstr "最終更新日"
 
@@ -984,6 +1006,7 @@ msgstr "最終更新日"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_write_uid
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type_write_uid
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_write_uid
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_write_uid
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_write_uid
 msgid "Last Updated by"
 msgstr "最終更新者"
@@ -992,6 +1015,7 @@ msgstr "最終更新者"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_write_date
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type_write_date
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_write_date
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_write_date
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_write_date
 msgid "Last Updated on"
 msgstr "最終更新日"
@@ -1010,7 +1034,6 @@ msgstr "委任状"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_appointment_letter_doc_filename
 msgid "Letter of Appointment File Name"
 msgstr "委任状ファイル名"
-
 
 #. module: l10n_jp_hr_employee
 #: selection:hr.dependant,residence_categ:0
@@ -1046,6 +1069,7 @@ msgstr "母"
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_employment_type_name
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_name
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_name
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_employee_form
 msgid "Name"
 msgstr "名称"
@@ -1059,7 +1083,7 @@ msgstr "名前　姓/名"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_name_furigana
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_employee_form
 msgid "Name Furigana"
-msgstr "名前(カナ)"
+msgstr "名前(ｶﾅ)"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
@@ -1070,6 +1094,18 @@ msgstr "名前(ｶﾅ)　姓/名"
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_private_country_id
 msgid "Nationality (Private)"
 msgstr "国籍"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_needs_description
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_needs_description
+msgid "Needs description"
+msgstr "説明必要"
+
+#. module: l10n_jp_hr_employee
+#: selection:hr.qualification.type,qualification_category:0
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_non_recom_qualification_ids
+msgid "Non Recommended Qualification"
+msgstr "推奨資格以外"
 
 #. module: l10n_jp_hr_employee
 #: selection:hr.dependant,disability_class:0
@@ -1097,20 +1133,20 @@ msgid "Occupation Description"
 msgstr "職業説明"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:173
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:193
 #, python-format
 msgid "Only Roman alphabets are allowed."
 msgstr "ローマ字のみで入力してください。"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:197
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:369
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:192
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:389
 #, python-format
 msgid "Only digits are allowed for %s field."
 msgstr "%s には数値を入力してください。"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:160
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:180
 #, python-format
 msgid "Only digits are allowed."
 msgstr "数値のみで入力してください。"
@@ -1150,8 +1186,8 @@ msgid "Pension Info"
 msgstr "年金情報"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:208
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:395
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:203
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:415
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_pension_number
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_pension_number
 #, python-format
@@ -1187,14 +1223,14 @@ msgid "Personal Particulars"
 msgstr "基本情報"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:201
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:196
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_phone
 #, python-format
 msgid "Phone"
 msgstr "電話"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:50
+#: code:addons/l10n_jp_hr_employee/models/hr_qualification.py:73
 #, python-format
 msgid "Please adjust the format to be 'YYYY/MM/DD' or 'YYYY/MM'."
 msgstr "フォーマットは 'YYYY/MM/DD' または 'YYYY/MM' としてください。"
@@ -1216,10 +1252,10 @@ msgid "Please prepare a passbook copy etc. which can confirm the amount sent to 
 msgstr "仕送額が確認できる通帳コピー等をご用意ください"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:199
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:215
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:378
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:420
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:194
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:210
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:398
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:440
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_dependant_postal_code
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_postal_code
 #, python-format
@@ -1266,7 +1302,7 @@ msgid "Private Page Header Text"
 msgstr "個人情報ページヘッダ"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:371
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:391
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_private_phone
 #, python-format
 msgid "Private Phone"
@@ -1288,16 +1324,28 @@ msgid "Proof of Amount Sent to Family File Name"
 msgstr "仕送額確認ファイル名"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_qualification_ids
-msgid "Qualification"
-msgstr "資格"
+#: model:ir.actions.act_window,name:l10n_jp_hr_employee.act_hr_qualification_type
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_qualification_type_id
+#: model:ir.ui.menu,name:l10n_jp_hr_employee.menu_hr_qualification_type
+msgid "Qualification Type"
+msgstr "資格名称"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_qualification_category
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_qualification_category
+msgid "Qualification category"
+msgstr "資格カテゴリ"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_qualification_form
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_qualification_tree
 msgid "Qualifications"
 msgstr "資格"
+
+#. module: l10n_jp_hr_employee
+#: selection:hr.qualification.type,qualification_category:0
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_private_info_recom_qualification_ids
+msgid "Recommended Qualification"
+msgstr "推奨資格"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_reference
@@ -1386,9 +1434,9 @@ msgid "Search Private Info"
 msgstr "個人情報検索"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.ui.view,arch_db:l10n_jp_hr_employee.hr_qualification_search
-msgid "Search Qualifications"
-msgstr "資格検索"
+#: model:ir.model.fields,field_description:l10n_jp_hr_employee.field_hr_qualification_type_sequence
+msgid "Sequence"
+msgstr "付番"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
@@ -1464,36 +1512,42 @@ msgstr "ISOの国別コードは2文字です。\n"
 "これを使ってクイックサーチできます。"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:438
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:458
 #, python-format
 msgid "The first section of Employment Insurance Number"
 msgstr "雇用保険番号の1つ目のセクション"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:218
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:430
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:213
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:450
 #, python-format
 msgid "The first section of Pension Number"
 msgstr "基礎年金番号の1つ目のセクション"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:442
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:462
 #, python-format
 msgid "The second section of Employment Insurance Number"
 msgstr "雇用保険番号の2つ目のセクション"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:222
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:434
+#: code:addons/l10n_jp_hr_employee/models/hr_dependant.py:217
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:454
 #, python-format
 msgid "The second section of Pension Number"
 msgstr "基礎年金番号の2つ目のセクション"
 
 #. module: l10n_jp_hr_employee
-#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:446
+#: code:addons/l10n_jp_hr_employee/models/hr_private_info.py:466
 #, python-format
 msgid "The third section of Employment Insurance Number"
 msgstr "雇用保険番号の3つ目のセクション"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model.fields,help:l10n_jp_hr_employee.field_hr_private_info_qualification_information_note
+#: model:ir.model.fields,help:l10n_jp_hr_employee.field_res_company_qualification_information_note
+msgid "This information will be displayed as an instruction for the Qualification in Private Info."
+msgstr "この情報は個人情報の資格に関する注意書きとして表示されます。"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_private_info_form
@@ -1571,7 +1625,7 @@ msgid "Younger Sibling"
 msgstr "弟妹"
 
 #. module: l10n_jp_hr_employee
-#: model:ir.model.fields,help:l10n_jp_hr_employee.field_hr_qualification_name
+#: model:ir.model.fields,help:l10n_jp_hr_employee.field_hr_qualification_type_name
 msgid "e.g. CISA"
 msgstr "例)CISA"
 
@@ -1594,6 +1648,11 @@ msgstr "hr.private.info"
 #: model:ir.model,name:l10n_jp_hr_employee.model_hr_qualification
 msgid "hr.qualification"
 msgstr "hr.qualification"
+
+#. module: l10n_jp_hr_employee
+#: model:ir.model,name:l10n_jp_hr_employee.model_hr_qualification_type
+msgid "hr.qualification.type"
+msgstr "hr.qualification.type"
 
 #. module: l10n_jp_hr_employee
 #: model:ir.ui.view,arch_db:l10n_jp_hr_employee.view_hr_dependant_form

@@ -19,8 +19,14 @@ class HrEmployee(models.Model):
         compute="_compute_employee_info_visible",
         string="Employee Information Visibility",
     )
-    qualification_names = fields.Text(
-        compute="_compute_qualification_names", string="Qualification Names",
+    recom_qualification_names = fields.Text(
+        compute="_compute_qualification_names", string="Recommended Qualifications",
+    )
+    non_recom_qualification_names = fields.Text(
+        compute="_compute_qualification_names", string="Non Recommended Qualifications",
+    )
+    lang_qualification_names = fields.Text(
+        compute="_compute_qualification_names", string="Language Qualifications",
     )
 
     @api.multi
@@ -58,6 +64,12 @@ class HrEmployee(models.Model):
                 .sudo()
                 .search([("employee_id", "=", employee.id)])
             )
-            employee.qualification_names = "\n".join(
-                qualification_ids.mapped("display_name")
+            employee.recom_qualification_names = "\n".join(
+                qualification_ids.filtered(lambda q: q.qualification_category == "recommended").mapped("display_name")
+            )
+            employee.non_recom_qualification_names = "\n".join(
+                qualification_ids.filtered(lambda q: q.qualification_category == "non_recommended").mapped("display_name")
+            )
+            employee.lang_qualification_names = "\n".join(
+                qualification_ids.filtered(lambda q: q.qualification_category == "language").mapped("display_name")
             )

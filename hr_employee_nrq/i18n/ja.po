@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-28 11:35+0000\n"
-"PO-Revision-Date: 2019-02-28 11:35+0000\n"
+"POT-Creation-Date: 2024-06-17 03:00+0000\n"
+"PO-Revision-Date: 2024-06-17 03:00+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,15 +16,16 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: hr_employee_nrq
-#: code:addons/hr_employee_nrq/models/hr_employee.py:30
+#: code:addons/hr_employee_nrq/models/hr_employee.py:43
 #, python-format
 msgid "%s Year %s Month(s)"
 msgstr "%s年%sヶ月"
 
 #. module: hr_employee_nrq
-#: model:ir.ui.view,arch_db:hr_employee_nrq.view_employee_form
-msgid "Acquired Qualifications"
-msgstr "取得済資格"
+#: code:addons/hr_employee_nrq/models/hr_holidays.py:40
+#, python-format
+msgid "%s on %s : %.2f day(s)"
+msgstr "%s on %s : %.2f day(s)"
 
 #. module: hr_employee_nrq
 #: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_date_of_joining
@@ -37,11 +38,37 @@ msgid "Employee"
 msgstr "従業員"
 
 #. module: hr_employee_nrq
+#: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_employee_info_visible
+msgid "Employee Information Visibility"
+msgstr "Employee Information Visibility"
+
+#. module: hr_employee_nrq
+#: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_lang_qualification_names
+msgid "Language Qualifications"
+msgstr "言語資格"
+
+#. module: hr_employee_nrq
+#: model:ir.model,name:hr_employee_nrq.model_hr_holidays
+msgid "Leave"
+msgstr "休暇"
+
+#. module: hr_employee_nrq
+#: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_non_recom_qualification_names
+msgid "Non Recommended Qualifications"
+msgstr "推奨資格以外"
+
+#. module: hr_employee_nrq
 #: model:ir.ui.view,arch_db:hr_employee_nrq.view_employee_form
 msgid "Qualifications"
 msgstr "資格"
 
 #. module: hr_employee_nrq
+#: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_recom_qualification_names
+msgid "Recommended Qualifications"
+msgstr "推奨資格"
+
+#. module: hr_employee_nrq
 #: model:ir.model.fields,field_description:hr_employee_nrq.field_hr_employee_year_enrolled
 msgid "Year enrolled"
 msgstr "在籍年数"
+
