@@ -16,8 +16,8 @@ odoo_version: 10.0
 org_name: Quartile Limited
 org_slug: qrtl
 rebel_module_groups: []
-repo_description: null
-repo_name: null
+repo_description: ''
+repo_name: ''
 repo_slug: nrq-custom
 repo_website: https://www.quartile.co
 travis_apt_packages: []
