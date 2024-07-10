@@ -31,7 +31,7 @@ class HrQualification(models.Model):
     qualification_type_id = fields.Many2one(
         "hr.qualification.type", required=True, string="Qualification Type")
     needs_description = fields.Boolean(
-        related="qualification_type_id.needs_description")
+        related="qualification_type_id.needs_description", readonly=True)
     description = fields.Char()
 
     @api.onchange("qualification_type_id")
